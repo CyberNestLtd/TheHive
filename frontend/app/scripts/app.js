@@ -35,7 +35,9 @@ angular.module('thehive', [
     'theHiveServices',
     'theHiveFilters',
     'theHiveDirectives',
-    'theHiveComponents'
+    'theHiveComponents',
+    'pascalprecht.translate',
+    'ui.router'
 ])
     .config(function ($resourceProvider) {
         'use strict';
@@ -690,6 +692,33 @@ angular.module('thehive', [
                 return $delegate;
             }
         ]);
+    })
+    .config(function($translateProvider) {
+        $translateProvider.useStaticFilesLoader({
+            prefix: 'scripts/languages/',
+            suffix: '.json'
+        });
+        $translateProvider.preferredLanguage('en');
+    })
+    app.service('languageService', function() {
+        var language = 'en';
+
+        this.getLanguage = function() {
+            return language;
+        };
+
+        this.setLanguage = function(newLanguage) {
+            language = newLanguage;
+        };
+    })
+    app.controller('LanguageController', function($scope, $translate, languageService) {
+        $scope.selectedLanguage = languageService.getLanguage();
+        $scope.languages = ['en', 'es', 'fr'];
+
+        $scope.changeLanguage = function(langKey) {
+            $translate.use(langKey);
+            languageService.setLanguage(langKey);
+        };
     })
     .run(function ($rootScope, $state, $q, AuthenticationSrv) {
         'use strict';
