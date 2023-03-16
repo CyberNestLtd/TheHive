@@ -61,6 +61,20 @@
                     </a>
                 </li>
 
+                <!-- dropdown menu for language-selection -->
+                <li class="dropdown" uib-dropdown ng-controller="LanguageController">
+                <a class="dropdown-toggle" uib-dropdown-toggle href>
+                    <i class="fa fa-language"></i>
+                    <span class="hpad5">{{selectedLanguage}}</span>
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu" uib-dropdown-menu>
+                    <li ng-repeat="lang in languages">
+                    <a href ng-click="changeLanguage(lang)">{{lang}}</a>
+                    </li>
+                </ul>
+                </li>
+
                 <!-- Super Admin menu -->
                 <li ng-if="!isSuperAdmin()">
                     <form ng-submit="search(querystring)" style="margin-top : 10px">
@@ -72,6 +86,8 @@
                         </div>
                     </form>
                 </li>
+
+
                 <li class="dropdown" uib-dropdown ng-if="isSuperAdmin()">
                     <a class="dropdown-toggle" uib-dropdown-toggle href>
                         <i class="fa fa-cog"></i>
