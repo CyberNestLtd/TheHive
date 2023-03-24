@@ -1,16 +1,16 @@
 <div class="mb-xs">
     <i class="glyphicon glyphicon-user"></i>
-    by <user-info value="value.createdBy" field="name"></user-info>
+    {{ 'views.directives.search.audit.by' | translate}} <user-info value="value.createdBy" field="name"></user-info>
 
     <i class="glyphicon glyphicon-calendar ml-xxs"></i>
-    Occurred on <span ng-bind="value.startDate | shortDate"> </span>
+    {{ 'views.directives.search.audit.occurred_on' | translate}} <span ng-bind="value.startDate | shortDate"> </span>
 </div>
 
 <div ng-switch="value.objectType">
     <div ng-switch-when="user">
         <div class="search-item-title">
             <a href>
-            {{value.operation}} of {{value.objectType}} <br>
+            {{value.operation}} {{ 'views.directives.search.audit.of' | translate}} {{value.objectType}} <br>
             <em class="text-muted"><span>{{value.stats.name}}</span></em>
             </a>
         </div>
@@ -18,7 +18,7 @@
     <div ng-switch-when="case" ui-sref="app.case.details({caseId: value.objectId})">
         <div class="search-item-title">
             <a href>
-            {{value.operation}} of {{value.objectType}} <br>
+            {{value.operation}} {{ 'views.directives.search.audit.of' | translate}} {{value.objectType}} <br>
             <em class="text-muted"><span>{{value.stats.title || value.details.title}}</span></em>
             </a>
         </div>
@@ -31,10 +31,10 @@
 
             <span ng-if="value.stats.endDate" class="text-success">
                 (
-                <strong>Closed</strong>
-                on
+                <strong>{{ 'views.directives.search.audit.closed' | translate}}</strong>
+                {{ 'views.directives.search.audit.on' | translate}}
                 {{value.stats.endDate | shortDate}}
-                as
+                {{ 'views.directives.search.audit.as' | translate}}
                 <strong>{{value.stats.resolutionStatus}}</strong>)
             </span>
         </div>
@@ -42,7 +42,7 @@
     <div ng-switch-when="case_task">
         <div class="search-item-title">
             <a href>
-            {{value.operation}} of task <br>
+            {{value.operation}} {{ 'views.directives.search.audit.of_task' | translate}} <br>
             <em class="text-muted"><span>{{value.stats.title || value.details.title}}</span></em>
             </a>
         </div>
@@ -50,14 +50,14 @@
     <div ng-switch-when="case_task_log">
         <div class="search-item-title">
             <a href>
-            {{value.operation}} of task log
+            {{value.operation}} {{ 'views.directives.search.audit.of_task_log' | translate}}
             </a>
         </div>
     </div>
     <div ng-switch-when="case_artifact" ui-sref="app.case.observables-item({caseId: value.stats.case.id, itemId: value.stats.id})">
         <div class="search-item-title">
             <a href>
-            {{value.operation}} of observable <br>
+            {{value.operation}} {{ 'views.directives.search.audit.of_observable' | translate}} <br>
             <em class="text-muted"><span>{{value.stats.data}}</span></em>
             </a>
         </div>
@@ -65,7 +65,7 @@
     <div ng-switch-when="case_artifact_job">
         <div class="search-item-title">
             <a href>
-            {{value.operation}} of observable job <br>
+            {{value.operation}} {{ 'views.directives.search.audit.of_observable_job' | translate}} <br>
             <em class="text-muted"><span>{{value.stats.analyzerName}}</span></em>
             </a>
         </div>
@@ -73,31 +73,31 @@
     <div ng-switch-when="alert">
         <div class="search-item-title">
             <a href>
-            {{value.operation}} of alert<br>
+            {{value.operation}} {{ 'views.directives.search.audit.of_alert' | translate}}<br>
             <em class="text-muted"><span>{{value.stats.title}}</span></em>
             </a>
         </div>
         <div>
             <span>
-                <i class="fa fa-calendar"></i> Date:
+                <i class="fa fa-calendar"></i> {{ 'views.directives.search.audit.date' | translate}}
                 <strong class="text-muted">{{value.stats.date | shortDate}}</strong>
             </span>
             <span class="ml-xxs">
-                <i class="fa fa-certificate"></i> Type:
+                <i class="fa fa-certificate"></i> {{ 'views.directives.search.audit.type' | translate}}
                 <strong class="text-muted">{{value.stats.type}}</strong>
             </span>
             <span class="ml-xxs">
-                <i class="fa fa-barcode"></i> Reference:
+                <i class="fa fa-barcode"></i> {{ 'views.directives.search.audit.reference' | translate}}
                 <strong class="text-muted">{{value.stats.sourceRef}}</strong>
             </span>
             <span class="ml-xxs">
-                <i class="fa fa-bullseye"></i> Source:
+                <i class="fa fa-bullseye"></i> {{ 'views.directives.search.audit.source' | translate}}
                 <strong class="text-muted">{{value.stats.source}}</strong>
             </span>
         </div>
     </div>
 </div>
 <div class="mt-xs wrap">
-    <strong>Details (<a href ng-show="!value.show" ng-click="value.show = true">Expand</a><a href ng-show="value.show" ng-click="value.show = false">Collapse</a>)</strong>
+    <strong>{{ 'views.directives.search.audit.details' | translate}}(<a href ng-show="!value.show" ng-click="value.show = true">{{ 'views.directives.search.audit.expand' | translate}}</a><a href ng-show="value.show" ng-click="value.show = false">{{ 'views.directives.search.audit.collapse' | translate}}</a>)</strong>
     <pre ng-show="value.show">{{value.details | flattern | json}}</pre>
 </div>
