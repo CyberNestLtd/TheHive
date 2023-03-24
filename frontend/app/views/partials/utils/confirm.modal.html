@@ -7,7 +7,7 @@
       <p ng-if="$modal.config.isHtml" ng-bind-html="$modal.message"></p>
   </div>
   <div class="modal-footer text-left">
-      <button class="btn btn-default" ng-click="$modal.cancel()" type="button">Cancel</button>
+      <button class="btn btn-default" ng-click="$modal.cancel()" type="button">{{ "views.partials.utils.confirm.modal.cancel" | translateDefault:  "Cancel" }}</button>
       <button class="btn btn-{{$modal.config.flavor || 'primary'}} pull-right" type="submit" auto-focus>{{$modal.config.okText || 'Ok'}}</button>
   </div>
 </form>
