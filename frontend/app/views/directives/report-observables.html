@@ -1,12 +1,12 @@
 <div class="">
     <div class="empty-message" ng-if="observables.length === 0">
-        No observables found
+        {{"views.directives.report-observables.no_observables_found" | translateDefault: "No observables found" }}
     </div>
     <div ng-if="observables.length > 0">
         <div class="mb-xs" ng-if="groups">
             <span class="label label-lg label-default mr-xxs clickable"
                 ng-click="filterArtifacts('');"
-                ng-class="{'label-primary': pagination.filter===''}">All ({{observables.length || 0}})</span>
+                ng-class="{'label-primary': pagination.filter===''}">{{ 'views.directives.report-observables.all' | translate}} ({{observables.length || 0}})</span>
 
             <span class="label label-lg label-default mr-xxs clickable"
                 ng-repeat="(type, list) in groups"
@@ -14,12 +14,12 @@
                 ng-class="{'label-primary': pagination.filter===type}">{{type}} ({{list.length}})</span>
         </div>
         <div class="mv-xxs" if-permission="manageObservable" allowed="{{permissions}}">
-            <strong class="text-muted">{{selected}} items selected</strong>
-            <a class="ml-xs" href ng-click="selectAll()"><i class="fa fa-check"></i> Select all</a>
+            <strong class="text-muted">{{selected}} {{ 'views.directives.report-observables.items_selected' | translate}}</strong>
+            <a class="ml-xs" href ng-click="selectAll()"><i class="fa fa-check"></i>{{ 'views.directives.report-observables.select_all' | translate}}</a>
             <span ng-if="selected > 0">
-                <a class="ml-xs" href ng-click="clearSelection()"><i class="fa fa-times"></i> Clear Selection</a>
+                <a class="ml-xs" href ng-click="clearSelection()"><i class="fa fa-times"></i>{{ 'views.directives.report-observables.clear_selection' | translate}}</a>
                 <span class="ml-xs">|</span>
-                <a class="ml-xs" href ng-click="import()"><i class="fa fa-plus"></i> Import Selection</a>
+                <a class="ml-xs" href ng-click="import()"><i class="fa fa-plus"></i>{{ 'views.directives.report-observables.import_selection' | translate}}</a>
             </span>
         </div>
 
@@ -27,10 +27,10 @@
             <thead>
                 <tr>
                     <th style="width:10px;"></th>
-                    <th style="width:80px;">Flags</th>
-                    <th style="width:80px;">Imported</th>
-                    <th style="width:150px;">Type</th>
-                    <th>Data</th>
+                    <th style="width:80px;">{{ 'views.directives.report-observables.flags' | translate}}</th>
+                    <th style="width:80px;">{{ 'views.directives.report-observables.imported' | translate}}</th>
+                    <th style="width:150px;">{{ 'views.directives.report-observables.type' | translate}}</th>
+                    <th>{{ 'views.directives.report-observables.data' | translate}}</th>
                     <th style="width:80px;"></th>
                 </tr>
             </thead>
@@ -55,12 +55,12 @@
                         </div>
                         <div class="case-tags flexwrap mt-xxs">
                             <span class="mr-xxxs text-muted"><i class="fa fa-tags"></i></span>
-                            <strong class="text-muted mr-xxxs" ng-if="!observable.tags || observable.tags.length === 0">None</strong>
+                            <strong class="text-muted mr-xxxs" ng-if="!observable.tags || observable.tags.length === 0">{{ 'views.directives.report-observables.none' | translate}}</strong>
                             <tag-item class="pointer" ng-repeat="tag in observable.tags track by $index" value="tag"></tag-item>
                         </div>
                     </td>
                     <td class="wrap">
-                        <a ng-if="!!observable.stats.observableId" href ui-sref="app.case.observables-item({caseId: caseId, itemId: observable.stats.observableId})"><i class="fa fa-search"></i> View</a>
+                        <a ng-if="!!observable.stats.observableId" href ui-sref="app.case.observables-item({caseId: caseId, itemId: observable.stats.observableId})"><i class="fa fa-search"></i>{{ 'views.directives.report-observables.view' | translate}}</a>
                     </td>
                 </tr>
             </tbody>

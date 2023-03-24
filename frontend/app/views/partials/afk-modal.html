@@ -1,11 +1,11 @@
 <div class="modal-header bg-primary">
-    <h3 class="modal-title">Session expiration</h3>
+    <h3 class="modal-title">{{ "views.partials.afk-modal.session_expiration" | translateDefault:  "Session expiration" }}</h3>
 </div>
 <div class="modal-body">
     <div class="vpad20">
-        The session is about to expire. If you are still connected, please click OK.
+        {{ "views.partials.afk-modal.the_session_is_about_to_expire._if_you_are_still_connected,_please_click_ok." | translateDefault:  "The session is about to expire. If you are still connected, please click OK." }}
     </div>
 </div>
 <div class="modal-footer text-center">
-    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-primary" ng-click="ok()">{{ "views.partials.afk-modal.ok" | translateDefault:  "OK" }}</button>
 </div>

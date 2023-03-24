@@ -1,6 +1,6 @@
 <form name="procedureForm" class="procedure-modal" ng-submit="$modal.addProcedure()" novalidate>
     <div class="modal-header bg-primary">
-        <h3 class="modal-title">Add Tactic, Technique and Procedure</h3>
+        <h3 class="modal-title">{{ "views.partials.case.procedures.add-procedure.modal.add_tactic,_technique_and_procedure" | translateDefault:  "Add Tactic, Technique and Procedure" }}</h3>
     </div>
     <div class="modal-body">
 
@@ -9,7 +9,7 @@
                 <div class="form-group"
                     ng-class="{ 'has-error' : procedureForm.tactic.$invalid && !procedureForm.tactic.$pristine }">
                     <label>
-                        Tactic
+                        {{ "views.partials.case.procedures.add-procedure.modal.tactic" | translateDefault:  "Tactic" }}
                         <i class="fa fa-asterisk text-danger"></i>
                     </label>
                     <select class="form-control" name="tactic" ng-model="$modal.procedure.tactic"
@@ -18,21 +18,20 @@
                         required ng-change="$modal.showTechniques()">
                     </select>
                     <p class="help-block" ng-show="procedureForm.tactic.$invalid && !procedureForm.tactic.$pristine">
-                        This field is required.</p>
+                        {{ "views.partials.case.procedures.add-procedure.modal.this_field_is_required." | translateDefault:  "This field is required." }}</p>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group"
                     ng-class="{ 'has-error' : procedureForm.occureDate.$invalid && !procedureForm.occureDate.$pristine }">
                     <label>
-                        Occur Date
+                        {{ "views.partials.case.procedures.add-procedure.modal.occur_date" | translateDefault:  "Occur Date" }}
                         <i class="fa fa-asterisk text-danger"></i>
                     </label>
                     <div>
                         <date-time-picker date="$modal.procedure.occurDate" name="occurDate"></date-time-picker>
                         <p class="help-block"
-                            ng-show="procedureForm.occureDate.$invalid && !procedureForm.occureDate.$pristine">The field
-                            is required.</p>
+                            ng-show="procedureForm.occureDate.$invalid && !procedureForm.occureDate.$pristine">{{ "views.partials.case.procedures.add-procedure.modal.this_field_is_required." | translateDefault:  "This field is required." }}</p>
                     </div>
                 </div>
             </div>
@@ -42,12 +41,12 @@
         <div class="form-group"
             ng-class="{ 'has-error' : procedureForm.pattern.$invalid && !procedureForm.pattern.$pristine }">
             <label>
-                Technique
+                {{ "views.partials.case.procedures.add-procedure.modal.technique" | translateDefault:  "Technique" }}
                 <i class="fa fa-asterisk text-danger"></i>
             </label>
 
             <div ng-show="!$modal.procedure.tactic" class="text-muted">
-                Please select a tactic above.
+                {{ "views.partials.case.procedures.add-procedure.modal.please_select_a_tactic_above." | translateDefault:  "Please select a tactic above." }}
             </div>
 
             <div ng-show="$modal.procedure.tactic">
@@ -86,8 +85,7 @@
                         </div>
                     </div>
                 </div>
-                <p class="help-block" ng-show="procedureForm.pattern.$invalid && !procedureForm.pattern.$pristine">This
-                    field is required.</p>
+                <p class="help-block" ng-show="procedureForm.pattern.$invalid && !procedureForm.pattern.$pristine">{{ "views.partials.case.procedures.add-procedure.modal.this_field_is_required." | translateDefault:  "This field is required." }}</p>
             </div>
 
 
@@ -95,17 +93,17 @@
         </div>
 
         <div class="mv-xxs" ng-if="!$modal.showProcedure">
-            <a href ng-click="$modal.showProcedure = true"><i class="fa fa-plus"></i> Add Procedure</a>
+            <a href ng-click="$modal.showProcedure = true"><i class="fa fa-plus"></i> {{ "views.partials.case.procedures.add-procedure.modal.add_procedure" | translateDefault:  "Add Procedure" }}</a>
         </div>
 
         <div class="form-group" ng-if="$modal.showProcedure"
             ng-class="{ 'has-error' : procedureForm.description.$invalid && !procedureForm.description.$pristine }">
-            <label>Procedure</label>
+            <label>{{ "views.partials.case.procedures.add-procedure.modal.procedure" | translateDefault:  "Procedure" }}</label>
             <div>
                 <div class="clearfix">
                     <a class="pull-right" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"
                         target="_blank">
-                        <i class="fa fa-question-circle"></i> Markdown Reference
+                        <i class="fa fa-question-circle"></i> {{ "views.partials.case.procedures.add-procedure.modal.markdown_reference" | translateDefault:  "Markdown Reference" }}
                     </a>
                 </div>
 
@@ -113,17 +111,16 @@
                     ng-model="$modal.procedure.description" required></textarea>
 
                 <p class="help-block"
-                    ng-show="procedureForm.description.$invalid && !procedureForm.description.$pristine">This field is
-                    required.</p>
+                    ng-show="procedureForm.description.$invalid && !procedureForm.description.$pristine">{{ "views.partials.case.procedures.add-procedure.modal.this_field_is_required." | translateDefault:  "This field is required." }}</p>
             </div>
         </div>
     </div>
     <div class="modal-footer text-left">
-        <button class="btn btn-default" ng-click="$modal.cancel()" type="button">Cancel</button>
+        <button class="btn btn-default" ng-click="$modal.cancel()" type="button">{{ "views.partials.case.procedures.add-procedure.modal.cancel" | translateDefault:  "Cancel" }}</button>
 
         <button class="btn btn-primary pull-right" type="submit"
             ng-disabled="$modal.state.loading || procedureForm.$invalid">
-            Add TTP
+            {{ "views.partials.case.procedures.add-procedure.modal.add_ttp" | translateDefault:  "Add TTP" }}
         </button>
     </div>
 </form>

@@ -5,7 +5,7 @@
     <div class="modal-body">
         <div class="form-group">
             <label class="col-sm-3 control-label">
-                Organisation
+                {{ "views.partials.admin.organisation.user.modal.organisation" | translateDefault:  "Organisation" }}
                 <i class="fa fa-asterisk text-danger"></i>
             </label>
             <div class="col-sm-9">
@@ -17,7 +17,7 @@
         </div>
         <div class="form-group" ng-class="{ 'has-error' : userForm.login.$invalid && !userForm.login.$pristine }">
             <label class="col-sm-3 control-label">
-                Login
+                {{ "views.partials.admin.organisation.user.modal.login" | translateDefault:  "Login" }}
                 <i class="fa fa-asterisk text-danger"></i>
             </label>
             <div class="col-sm-9">
@@ -26,14 +26,14 @@
                     ng-disabled="$modal.isEdit"
                     ng-model="$modal.formData.login"
                     required type="email">
-                <p class="help-block" ng-show="userForm.login.$error.required && !userForm.login.$pristine">This field is required.</p>
-                <p class="help-block" ng-show="userForm.login.$error.email && !userForm.login.$pristine">This field must be a valid email.</p>
+                <p class="help-block" ng-show="userForm.login.$error.required && !userForm.login.$pristine">{{ "views.partials.admin.organisation.user.modal.this_field_is_required." | translateDefault:  "This field is required." }}</p>
+                <p class="help-block" ng-show="userForm.login.$error.email && !userForm.login.$pristine">{{ "views.partials.admin.organisation.user.modal.this_field_must_be_a_valid_email." | translateDefault:  "This field must be a valid email." }}</p>
             </div>
         </div>
 
         <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
             <label class="col-sm-3 control-label">
-                Full name
+                {{ "views.partials.admin.organisation.user.modal.full_name" | translateDefault:  "Full name" }}
                 <i class="fa fa-asterisk text-danger"></i>
             </label>
             <div class="col-sm-9">
@@ -41,20 +41,20 @@
                     placeholder="User's name"
                     ng-model="$modal.formData.name"
                     required type="text">
-                <p class="help-block" ng-show="userForm.name.$invalid && !userForm.name.$pristine">This field is required.</p>
+                <p class="help-block" ng-show="userForm.name.$invalid && !userForm.name.$pristine">{{ "views.partials.admin.organisation.user.modal.this_field_is_required." | translateDefault:  "This field is required." }}</p>
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-sm-3 control-label">
-                Profile
+                {{ "views.partials.admin.organisation.user.modal.profile" | translateDefault:  "Profile" }}
                 <i class="fa fa-asterisk text-danger"></i>
             </label>
             <div class="col-sm-9">
                 <select class="form-control" ng-model="$modal.formData.profile"
                     ng-options="name for (name, profile) in $modal.profiles"
                     ng-change="permissions = $modal.profiles[$modal.formData.profile.name].permissions">
-                        <option value="" disabled selected>-- Select profile --</option>
+                        <option value="" disabled selected>{{ "views.partials.admin.organisation.user.modal.--_select_profile_--" | translateDefault:  "-- Select profile --" }}</option>
                 </select>
                 <permission-list  ng-init="permissions = $modal.profiles[$modal.formData.profile.name].permissions"
                     permissions="permissions"
@@ -64,9 +64,9 @@
         </div>
     </div>
     <div class="modal-footer text-left">
-        <button class="btn btn-default" ng-click="$modal.cancel()" type="button">Cancel</button>
+        <button class="btn btn-default" ng-click="$modal.cancel()" type="button">{{ "views.partials.admin.organisation.user.modal.cancel" | translateDefault:  "Cancel" }}</button>
         <span class="hpad10">
-            <i class="fa fa-asterisk text-danger"></i>&nbsp;Required field</span>
-        <button class="btn btn-primary pull-right" ng-disabled="userForm.$invalid" type="submit">Save user</button>
+            <i class="fa fa-asterisk text-danger"></i>&nbsp;{{ "views.partials.admin.organisation.user.modal.required_field" | translateDefault:  "Required field" }}</span>
+        <button class="btn btn-primary pull-right" ng-disabled="userForm.$invalid" type="submit">{{ "views.partials.admin.organisation.user.modal.save_user" | translateDefault:  "Save user" }}</button>
     </div>
 </form>

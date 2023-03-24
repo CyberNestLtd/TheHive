@@ -1,6 +1,6 @@
 <div class="modal-header bg-primary">
     <h3 class="modal-title">
-        Alert Preview <span class="label label-default"
+        {{ "views.partials.alert.event.dialog.alert_preview" | translateDefault:  "Alert Preview" }} <span class="label label-default"
             ng-class="{'label-danger': !!!dialog.event.read}">{{dialog.event.caseId ? 'Imported' : 'New'}}</span>
     </h3>
 </div>
@@ -9,7 +9,7 @@
         <div class="m-s">
             <i class="fa fa-3x fa-spinner fa-spin"></i>
         </div>
-        Loading...
+        {{ "views.partials.alert.event.dialog.loading..." | translateDefault:  "Loading..." }}
     </div>
     <div class="row" ng-hide="dialog.loading">
         <div class="col-md-12">
@@ -20,24 +20,24 @@
                 </h4>
                 <div class="mt-xxs">
                     <span>
-                        <strong><i class="fa fa-copy"></i> ID: </strong>
+                        <strong><i class="fa fa-copy"></i>{{ "views.partials.alert.event.dialog.id:" | translateDefault:  "ID:" }} </strong>
                         <span class="clickable"><a
                                 ng-click="dialog.copyId(dialog.event._id)">{{dialog.event._id}}</a></span>
                     </span>
                     <span class="ml-xxs">
-                        <strong><i class="fa fa-calendar"></i> Date: </strong>
+                        <strong><i class="fa fa-calendar"></i>{{ "views.partials.alert.event.dialog.date:" | translateDefault:  "Date:" }} </strong>
                         <span>{{dialog.event.date | shortDate}}</span>
                     </span>
                     <span class="ml-xxs">
-                        <strong><i class="fa fa-certificate"></i> Type: </strong>
+                        <strong><i class="fa fa-certificate"></i> {{ "views.partials.alert.event.dialog.type:" | translateDefault:  "Type:" }}</strong>
                         <span>{{dialog.event.type}}</span>
                     </span>
                     <span class="ml-xxs">
-                        <strong><i class="fa fa-barcode"></i> Reference: </strong>
+                        <strong><i class="fa fa-barcode"></i> {{ "views.partials.alert.event.dialog.reference:" | translateDefault:  "Reference:" }}</strong>
                         <span>{{dialog.event.sourceRef}}</span>
                     </span>
                     <span class="ml-xxs">
-                        <strong><i class="fa fa-bullseye"></i> Source: </strong>
+                        <strong><i class="fa fa-bullseye"></i> {{ "views.partials.alert.event.dialog.source:" | translateDefault:  "Source:" }} </strong>
                         <span>{{dialog.event.source}}</span>
                     </span>
                 </div>
@@ -50,10 +50,10 @@
 
                 <div class="mt-xs">
                     <h4 class="vpad10 text-primary">
-                        Basic Information
+                        {{ "views.partials.alert.event.dialog.basic_information" | translateDefault:  "Basic Information" }}
                     </h4>
                     <dl class="dl-horizontal">
-                        <dt class="pull-left">Tags</dt>
+                        <dt class="pull-left">{{ "views.partials.alert.event.dialog.tags" | translateDefault:  "Tags" }}</dt>
                         <dd ng-if="dialog.canEdit && !dialog.readonly">
                             <updatable-tag-list on-update="dialog.updateField('tags', dialog.getTags(newValue))"
                                 value="dialog.event.tags" source="dialog.getAlertTags"></updatable-tag-list>
@@ -66,7 +66,7 @@
 
                 <div class="mt-xs">
                     <h4 class="vpad10 text-primary">
-                        Description
+                        {{ "views.partials.alert.event.dialog.description" | translateDefault:  "Description" }}
                     </h4>
                     <div class="description-pane" ng-if="!dialog.canEdit || dialog.readonly">
                         <div marked="dialog.event.description" class="markdown"></div>
@@ -80,21 +80,21 @@
 
                 <div class="mt-xs">
                     <h4 class="vpad10 text-primary">
-                        Additional fields
+                        {{ "views.partials.alert.event.dialog.additional_fields" | translateDefault:  "Additional fields" }}
 
                         <span uib-dropdown class="ml-m">
                             <a href class="dropdown-toggle" uib-dropdown-toggle>
-                                <small><i class="fa fa-columns"></i> Layout</small>
+                                <small><i class="fa fa-columns"></i> {{ "views.partials.alert.event.dialog.layout" | translateDefault:  "Layout" }}</small>
                             </a>
                             <ul class="dropdown-menu scroll-dropdown" uib-dropdown-menu>
                                 <li ng-class="{'active': appLayout.alertCustomFieldColumns === 1}">
-                                    <a ng-click="layoutSrv.alertCustomFields(1)">1 column</a>
+                                    <a ng-click="layoutSrv.alertCustomFields(1)">{{ "views.partials.alert.event.dialog.1_column" | translateDefault:  "1 column" }}</a>
                                 </li>
                                 <li ng-class="{'active': appLayout.alertCustomFieldColumns === 2}">
-                                    <a ng-click="layoutSrv.alertCustomFields(2)">2 columns</a>
+                                    <a ng-click="layoutSrv.alertCustomFields(2)">{{ "views.partials.alert.event.dialog.2_columns" | translateDefault:  "2 columns" }}</a>
                                 </li>
                                 <li ng-class="{'active': appLayout.alertCustomFieldColumns === 3}">
-                                    <a ng-click="layoutSrv.alertCustomFields(3)">3 columns</a>
+                                    <a ng-click="layoutSrv.alertCustomFields(3)">{{ "views.partials.alert.event.dialog.3_columns" | translateDefault:  "3 columns" }}</a>
                                 </li>
                             </ul>
                         </span>
@@ -109,7 +109,7 @@
                     <uib-tab-heading>
                         <span>
                             <i class="mr-xxs glyphicon glyphicon-pushpin"></i>
-                            Observables <span class="ml-xxs badge">{{dialog.counts.observables}}</span>
+                            {{ "views.partials.alert.event.dialog.observables" | translateDefault:  "Observables" }} <span class="ml-xxs badge">{{dialog.counts.observables}}</span>
                         </span>
                     </uib-tab-heading>
                     <div>
@@ -121,7 +121,7 @@
                     <uib-tab-heading>
                         <span>
                             <i class="mr-xxs glyphicon glyphicon-link"></i>
-                            Similar cases <span class="ml-xxs badge">{{dialog.counts.similarCases}}</span>
+                            {{ "views.partials.alert.event.dialog.similar_cases" | translateDefault:  "Similar cases" }} <span class="ml-xxs badge">{{dialog.counts.similarCases}}</span>
                         </span>
                     </uib-tab-heading>
                     <div>
@@ -137,17 +137,17 @@
 
 </div>
 <div class="modal-footer text-left">
-    <button class="btn btn-default" ng-click="dialog.cancel()" type="button">Cancel</button>
+    <button class="btn btn-default" ng-click="dialog.cancel()" type="button">{{ "views.partials.alert.event.dialog.cancel" | translateDefault:  "Cancel" }}</button>
 
 
 
     <button class="btn btn-default" type="button" ng-if="dialog.canMarkAsRead(dialog.event) && !dialog.readonly"
         ng-disabled="dialog.loading" ng-click="dialog.markAsRead(dialog.event)">
-        <i class="fa fa-envelope"></i> Mark as read
+        <i class="fa fa-envelope"></i> {{ "views.partials.alert.event.dialog.mark_as_read" | translateDefault:  "Mark as read" }}
     </button>
     <button class="btn btn-default" type="button" ng-if="dialog.canMarkAsUnread(dialog.event) && !dialog.readonly"
         ng-disabled="dialog.loading" ng-click="dialog.markAsRead(dialog.event)">
-        <i class="fa fa-envelope-open-o"></i> Mark as unread
+        <i class="fa fa-envelope-open-o"></i> {{ "views.partials.alert.event.dialog.mark_as_unread" | translateDefault:  "Mark as unread" }}
     </button>
 
     <button class="btn btn-default" type="button" ng-if="!dialog.readonly" ng-disabled="dialog.loading"
@@ -158,29 +158,28 @@
 
     <button class="btn btn-default" type="button" ng-if="!dialog.readonly" ng-disabled="dialog.loading"
         ng-click="dialog.merge()">
-        <i class="fa fa-compress"></i> Merge into case
+        <i class="fa fa-compress"></i> {{ "views.partials.alert.event.dialog.merge_into_case" | translateDefault:  "Merge into case" }}
     </button>
 
     <button ng-if="!dialog.readonly" class="btn btn-danger" type="button" ng-disabled="dialog.loading"
         ng-click="dialog.delete()">
-        <i class="fa fa-trash"></i> Delete
+        <i class="fa fa-trash"></i> {{ "views.partials.alert.event.dialog.delete" | translateDefault:  "Delete" }}
     </button>
 
     <form ng-if="!dialog.readonly" name="eventForm" class="form-horizontal pull-right mr-xs" style="width:450px;"
         ng-submit="dialog.import()">
         <div class="form-group">
-            <label class="col-sm-4 control-label">Import alert as</label>
+            <label class="col-sm-4 control-label">{{ "views.partials.alert.event.dialog.import_alert_as" | translateDefault:  "Import alert as" }}</label>
             <div class="col-sm-8 input-group">
                 <select class="form-control" ng-model="dialog.event.caseTemplate"
                     ng-options="template for template in dialog.templates | orderBy:displayName | orderBy:name">
-                    <option value="" ng-if="dialog.templates.length === 0 || !!!dialog.hideEmptyCaseButton">-- Empty
-                        case --
+                    <option value="" ng-if="dialog.templates.length === 0 || !!!dialog.hideEmptyCaseButton">{{ "views.partials.alert.event.dialog.--_empty_case_--" | translateDefault:  "-- Empty case --" }}
                     </option>
                 </select>
                 <span class="input-group-btn">
                     <button class="btn btn-primary" type="submit"
                         ng-disabled="dialog.loading || (!dialog.event.caseTemplate && !!dialog.hideEmptyCaseButton && dialog.templates.length > 0)"><i
-                            class="fa fa-download"></i> Yes, Import</button>
+                            class="fa fa-download"></i>{{ "views.partials.alert.event.dialog.yes,_import" | translateDefault:  "Yes, Import" }}</button>
                 </span>
             </div>
 

@@ -1,10 +1,10 @@
 <form class="form-horizontal" name="taskForm" ng-submit="addTask()" novalidate>
     <div class="modal-header bg-primary">
-        <h3 class="modal-title">{{action}} task</h3>
+        <h3 class="modal-title">{{action}} {{ 'views.components.org.case-template.case-templates.task.task' | translateDefault:'task'}}</h3>
     </div>
     <div class="modal-body">
         <div class="form-group" ng-class="{ 'has-error' : taskForm.name.$invalid && !taskForm.name.$pristine }">
-            <label class="col-md-3 control-label">Task title
+            <label class="col-md-3 control-label">{{ 'views.components.org.case-template.case-templates.task.task_title' | translateDefault:'Task title'}}
                 <i class="fa fa-asterisk text-danger"></i>
             </label>
             <div class="col-md-9">
@@ -13,7 +13,7 @@
         </div>
 
         <div class="form-group" ng-class="{ 'has-error' : taskForm.group.$invalid && !taskForm.group.$pristine }">
-            <label class="col-md-3 control-label">Task group
+            <label class="col-md-3 control-label">{{ 'views.components.org.case-template.case-templates.task.task_group' | translateDefault:'Task group'}}
                 <i class="fa fa-asterisk text-danger"></i>
             </label>
             <div class="col-md-9">
@@ -24,26 +24,26 @@
         </div>
 
         <div class="form-group" ng-class="{ 'has-error' : taskForm.description.$invalid && !taskForm.description.$pristine }">
-            <label class="col-md-3 control-label">Task description</label>
+            <label class="col-md-3 control-label">{{ 'views.components.org.case-template.case-templates.task.task_description' | translateDefault:'Task description'}}</label>
             <div class="col-md-9">
                 <textarea name="content" class="content-box" markdown-editor="{'iconlibrary': 'fa', addExtraButtons: true, resize: 'vertical'}" rows="10" ng-model="task.description"></textarea>
 
-                <p class="help-block small">Task's default description</p>
+                <p class="help-block small">{{ 'views.components.org.case-template.case-templates.task.tasks_default_description' | translateDefault:"Task's default description"}}</p>
             </div>
         </div>
 
         <div class="form-group">
-            <label class="col-md-3 control-label">Assignee</label>
+            <label class="col-md-3 control-label">{{ 'views.components.org.case-template.case-templates.task.assignee' | translateDefault:'Assignee'}}</label>
             <div class="col-md-9">
                 <select class="form-control" ng-model="task.owner"
                     ng-options="item.login as item.name for item in users | orderBy:'login'">
-                    <option value="" selected>-- Select assignee --</option>
+                    <option value="" selected>{{ 'views.components.org.case-template.case-templates.task.select_assignee' | translateDefault:'-- Select assignee --'}}</option>
                 </select>
             </div>
         </div>
     </div>
     <div class="modal-footer text-left">
-        <button class="btn btn-default" ng-click="cancel()" type="button">Cancel</button>
-        <button class="btn btn-primary pull-right" ng-disabled="taskForm.$invalid" type="submit">{{action}} task</button>
+        <button class="btn btn-default" ng-click="cancel()" type="button">{{ 'views.components.org.case-template.case-templates.task.cancel' | translateDefault:'Cancel'}}</button>
+        <button class="btn btn-primary pull-right" ng-disabled="taskForm.$invalid" type="submit">{{action}} {{ 'views.components.org.case-template.case-templates.task.task' | translateDefault:'task'}}</button>
     </div>
 </form>

@@ -4,10 +4,10 @@
     </div>
     <div class="flow-item-updates" ng-switch-when="Creation">
         <div>
-            occureDate: <span><em>{{base.details.occurDate | shortDate}}</em></span>
+            {{"views.directives.flow.procedure.occuredate:" | translateDefault: "occureDate:" }} <span><em>{{base.details.occurDate | shortDate}}</em></span>
         </div>
         <div>
-            description: <span><em>{{(base.details.procedure || '-')| limitTo: 250}}</em></span>
+            {{"views.directives.flow.procedure.description:" | translateDefault: "description:" }} <span><em>{{(base.details.procedure || '-')| limitTo: 250}}</em></span>
         </div>
     </div>
     <div class="flow-item-updates" ng-switch-default>

@@ -12,24 +12,24 @@
                 </button>
                 <ul class="dropdown-menu" uib-dropdown-menu>
                     <li>
-                        <a href ng-click="$vm.bulkEdit()"><i class="fa fa-edit"></i> Edit</a>
+                        <a href ng-click="$vm.bulkEdit()"><i class="fa fa-edit"></i> {{ "views.partials.case.list.toolbar.edit" | translateDefault:  "Edit" }}</a>
                     </li>
                     <li class="divider"></li>
                     <li ng-if="$vm.menu.flag">
-                        <a href ng-click="$vm.bulkFlag(true)"><i class="fa fa-flag"></i> Add flag</a>
+                        <a href ng-click="$vm.bulkFlag(true)"><i class="fa fa-flag"></i> {{ "views.partials.case.list.toolbar.add_flag" | translateDefault:  "Add flag" }}</a>
                     </li>
                     <li ng-if="$vm.menu.unflag">
-                        <a href ng-click="$vm.bulkFlag(false)"><i class="fa fa-flag-o"></i> Remove flag</a>
+                        <a href ng-click="$vm.bulkFlag(false)"><i class="fa fa-flag-o"></i> {{ "views.partials.case.list.toolbar.remove_flag" | translateDefault:  "Remove flag" }}</a>
                     </li>
                     <li ng-if="$vm.menu.reopen">
-                        <a href ng-click="$vm.bulkReopen()"><i class="fa fa-folder-open"></i> Reopen</a>
+                        <a href ng-click="$vm.bulkReopen()"><i class="fa fa-folder-open"></i> {{ "views.partials.case.list.toolbar.reopen" | translateDefault:  "Reopen" }}</a>
                     </li>
                     <li ng-if="$vm.menu.close">
-                        <a href ng-click="$vm.bulkClose()"><i class="fa fa-folder"></i> Close</a>
+                        <a href ng-click="$vm.bulkClose()"><i class="fa fa-folder"></i> {{ "views.partials.case.list.toolbar.close" | translateDefault:  "Close" }}</a>
                     </li>
                     <li ng-if="$vm.menu.delete" class="divider"></li>
                     <li>
-                        <a href ng-click="$vm.bulkRemove()"><i class="fa fa-trash"></i> Delete</a>
+                        <a href ng-click="$vm.bulkRemove()"><i class="fa fa-trash"></i> {{ "views.partials.case.list.toolbar.delete" | translateDefault:  "Delete" }}</a>
                     </li>
                 </ul>
             </div>
@@ -37,30 +37,29 @@
             <div class="btn-group" uib-dropdown>
                 <button class="btn btn-primary btn-sm dropdown-toggle" uib-dropdown-toggle type="button">
                     <i class="fa fa-filter"></i>
-                    Quick Filters
+                    {{ "views.partials.case.list.toolbar.quick_filters" | translateDefault:  "Quick Filters" }}
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" uib-dropdown-menu>
                     <li>
-                        <a ng-click="$vm.filterByStatus('Open')"><i class="fa fa-folder-open-o"></i> Open cases</a>
+                        <a ng-click="$vm.filterByStatus('Open')"><i class="fa fa-folder-open-o"></i> {{ "views.partials.case.list.toolbar.open_cases" | translateDefault:  "Open cases" }}</a>
                     </li>
                     <li>
-                        <a ng-click="$vm.filterByStatus('Resolved')"><i class="fa fa-folder-o"></i> Closed cases</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a ng-click="$vm.filterMyOpenCases()"><i class="fa fa-folder-open"></i> My open cases</a>
-                    </li>
-                    <li>
-                        <a ng-click="$vm.filterMyCases()"><i class="fa fa-user"></i> My cases</a>
+                        <a ng-click="$vm.filterByStatus('Resolved')"><i class="fa fa-folder-o"></i> {{ "views.partials.case.list.toolbar.closed_cases" | translateDefault:  "Closed cases" }}</a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a ng-click="$vm.filterMyOrgCases()"><i class="fa fa-building-o"></i> Owned by my org</a>
+                        <a ng-click="$vm.filterMyOpenCases()"><i class="fa fa-folder-open"></i> {{ "views.partials.case.list.toolbar.my_open_cases" | translateDefault:  "My open cases" }}</a>
                     </li>
                     <li>
-                        <a ng-click="$vm.filterSharedWithMyOrg()"><i class="fa fa-share-square"></i> Shared with my
-                            org</a>
+                        <a ng-click="$vm.filterMyCases()"><i class="fa fa-user"></i> {{ "views.partials.case.list.toolbar.my_cases" | translateDefault:  "My cases" }}</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a ng-click="$vm.filterMyOrgCases()"><i class="fa fa-building-o"></i> {{ "views.partials.case.list.toolbar.owned_by_my_org" | translateDefault:  "Owned by my org" }}</a>
+                    </li>
+                    <li>
+                        <a ng-click="$vm.filterSharedWithMyOrg()"><i class="fa fa-share-square"></i> {{ "views.partials.case.list.toolbar.shared_with_my_org" | translateDefault:  "Shared with my org" }}</a>
                     </li>
                 </ul>
             </div>
@@ -68,27 +67,27 @@
             <div class="btn-group" uib-dropdown>
                 <button class="btn btn-primary btn-sm dropdown-toggle" uib-dropdown-toggle type="button">
                     <i class="fa fa-sort"></i>
-                    Sort by
+                    {{ "views.partials.case.list.toolbar.sort_by" | translateDefault:  "Sort by" }}
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" uib-dropdown-menu>
                     <li>
-                        <a ng-click="$vm.sortBy(['-flag', '-startDate'])">Newest first</a>
+                        <a ng-click="$vm.sortBy(['-flag', '-startDate'])">{{ "views.partials.case.list.toolbar.newest_first" | translateDefault:  "Newest first" }}</a>
                     </li>
                     <li>
-                        <a ng-click="$vm.sortBy(['-flag', '+startDate'])">Oldest first</a>
+                        <a ng-click="$vm.sortBy(['-flag', '+startDate'])">{{ "views.partials.case.list.toolbar.oldest_first" | translateDefault:  "Oldest first" }}</a>
                     </li>
                     <li>
-                        <a ng-click="$vm.sortBy(['-flag', '-severity'])">High Severity first</a>
+                        <a ng-click="$vm.sortBy(['-flag', '-severity'])">{{ "views.partials.case.list.toolbar.high_severity_first" | translateDefault:  "High Severity first" }}</a>
                     </li>
                     <li>
-                        <a ng-click="$vm.sortBy(['-flag', '+severity'])">Low Severity first</a>
+                        <a ng-click="$vm.sortBy(['-flag', '+severity'])">{{ "views.partials.case.list.toolbar.low_severity_first" | translateDefault:  "Low Severity first" }}</a>
                     </li>
                     <li>
-                        <a ng-click="$vm.sortBy(['-flag', '+assignee'])">Ascendant assignee</a>
+                        <a ng-click="$vm.sortBy(['-flag', '+assignee'])">{{ "views.partials.case.list.toolbar.ascendant_assignee" | translateDefault:  "Ascendant assignee" }}</a>
                     </li>
                     <li>
-                        <a ng-click="$vm.sortBy(['-flag', '-assignee'])">Descendant assignee</a>
+                        <a ng-click="$vm.sortBy(['-flag', '-assignee'])">{{ "views.partials.case.list.toolbar.descendant_assignee" | translateDefault:  "Descendant assignee" }}</a>
                     </li>
                 </ul>
             </div>
@@ -101,7 +100,7 @@
                 <button class="btn btn-sm"
                     ng-class="{true: 'btn-primary', false:'btn-default'}[$vm.filtering.context.showFilters]"
                     type="button" ng-click="$vm.toggleFilters()">
-                    <i class="fa fa-search"></i> Filters
+                    <i class="fa fa-search"></i> {{ "views.partials.case.list.toolbar.filters" | translateDefault:  "Filters" }}
                 </button>
             </div>
 
@@ -109,7 +108,7 @@
                 <button class="btn btn-sm"
                     ng-class="{true: 'btn-primary', false:'btn-default'}[!!$vm.filtering.context.showStats]"
                     type="button" ng-click="$vm.toggleStats()">
-                    <i class="fa fa-bar-chart"></i> Stats
+                    <i class="fa fa-bar-chart"></i> {{ "views.partials.case.list.toolbar.stats" | translateDefault:  "Stats" }}
                 </button>
             </div>
 
@@ -117,7 +116,7 @@
                 <button class="btn btn-sm"
                     ng-class="{true: 'btn-primary', false:'btn-default'}[!!$vm.filtering.context.showAdvanced]"
                     type="button" ng-click="$vm.toggleAdvanced()">
-                    <i class="fa fa-code"></i> Custom Fields
+                    <i class="fa fa-code"></i> {{ "views.partials.case.list.toolbar.custom_fields" | translateDefault:  "Custom Fields" }}
                 </button>
             </div>
         </div>

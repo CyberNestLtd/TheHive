@@ -12,18 +12,18 @@
 
     <span ng-if="value.endDate" class="text-success">
         (
-        <strong>Closed</strong>
-        on
+        <strong>{{ 'views.directives.search.case.closed' | translate}}</strong>
+        {{ 'views.directives.search.case.on' | translate}}
         {{value.endDate | shortDate}}
-        as
+        {{ 'views.directives.search.case.as' | translate}}
         <strong>{{value.resolutionStatus}}</strong>)
     </span>
 </div>
 <div class="mt-xs wrap" ng-if="value.tags.length>0">
-    <strong>Tags:</strong><tag-list data="value.tags"></tag-list>
+    <strong>{{ 'views.directives.search.case.tags' | translate}}</strong><tag-list data="value.tags"></tag-list>
 </div>
 <div class="mt-xs wrap">
-    <strong>Status:</strong>
+    <strong>{{ 'views.directives.search.case.status' | translate}}</strong>
     <div>
       <span class="label label-default" ng-class="{'label-success': value.status === 'Resolved'}">{{value.status}}</span>
     </div>

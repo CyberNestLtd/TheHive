@@ -5,17 +5,17 @@
     </div>
 
     <div class="flow-item-updates wrap" ng-switch-when="Creation">
-        User {{base.object.name}} added
+        {{"views.directives.flow.user.user" | translateDefault: "User" }} {{base.object.name}} {{"views.directives.flow.user.added" | translateDefault: "added" }}
     </div>
 
     <div class="flow-item-updates wrap" ng-switch-when="Delete">
-        User {{base.object.name}} removed
+        {{"views.directives.flow.user.user" | translateDefault: "User" }} {{base.object.name}} {{"views.directives.flow.user.removed" | translateDefault: "removed" }}
     </div>
 
     <div class="flow-item-updates wrap" ng-switch-default>
         <span ng-repeat="(k, v) in base.details" ng-switch="k">
             <span ng-switch-when="password">
-                password changed
+                {{"views.directives.flow.user.password_changed" | translateDefault: "password changed" }}
             </span>
             <span ng-switch-default>
                 {{k}}: <em>{{v}}</em>

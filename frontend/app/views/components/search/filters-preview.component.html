@@ -1,5 +1,5 @@
 <div class="active-filters flexwrap mv-xs" ng-if="$ctrl.filters.length > 0">
-    <span class="mr-xxxs text-muted">{{$ctrl.filters.length}} filter(s) applied:</span>
+    <span class="mr-xxxs text-muted">{{$ctrl.filters.length}} {{ "views.components.search.filters-preview.component.filter(s)_applied:" | translateDefault:  "filter(s) applied:" }}</span>
 
     <span class="kv-label kv-label-addon mb-xxxs mr-xxxs"
         ng-repeat="filter in $ctrl.filters track by $index">
@@ -12,7 +12,7 @@
     </span>
 
     <span class="ml-xs">
-        <a href ng-click="$ctrl.clearAll()">Clear filters</a>
+        <a href ng-click="$ctrl.clearAll()">{{ "views.components.search.filters-preview.component.clear_filters" | translateDefault:  "Clear filters" }}</a>
     </span>
 
 </div>

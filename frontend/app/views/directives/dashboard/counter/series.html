@@ -1,5 +1,6 @@
 <div ng-if="!component.options.series || component.options.series.length === 0" class="empty-message">
-    No series defined. <a href ng-click="addSerie()">Add a serie</a>
+    {{ 'views.directives.dashboard.counter.series.no_series_defined' | translate}} <a href ng-click="addSerie()">{{ 'views.directives.dashboard.counter.series.add_a_serie' | translate}}
+</a>
 </div>
 
 <div class="mb-xxxs dashboard-serie" ng-repeat="serie in component.options.series track by $index">
@@ -18,7 +19,7 @@
         <div class="form-group">
             <select class="form-control" ng-model="serie.field" ng-disabled="serie.agg === 'count'"
                 ng-options="item.name as item.name for (key, item) in fieldsForAggregation(metadata[component.options.entity].attributes, serie.agg)">
-                <option value="" disabled selected>-- Select field --</option>
+                <option value="" disabled selected>{{ 'views.directives.dashboard.counter.series.select_field' | translate}}</option>
             </select>
         </div>
         <div class="form-group">
@@ -33,6 +34,6 @@
 
 <div ng-if="component.options.series && component.options.series.length > 0" class="mv-xs">
     <a href ng-click="addSerie()">
-        <i class="fa fa-plus"></i> Add a serie
+        <i class="fa fa-plus"></i> {{ 'views.directives.dashboard.counter.series.add_a_serie' | translate}}
     </a>
 </div>

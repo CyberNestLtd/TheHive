@@ -2,7 +2,7 @@
     <div class="text-danger" ng-repeat="schema in appConfig.schemaStatus" ng-if="schema.error">
         <div class="callout callout-danger">
             <h4>Error in {{schema.name}} schema: expected version {{schema.expectedVersion}}, got {{schema.currentVersion}}</h4>
-            <p>Please contact the administrator</p>
+            <p>{{ 'views.login.please_contact_the_administrator' | translate}}</p>
         </div>
     </div>
 </div>
@@ -12,7 +12,7 @@
         <img src="images/logo.svg" height="70"/>
     </div>
     <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg">{{ 'views.login.sign_in_to_start_your_session' | translate}}</p>
         <form name="loginForm">
             <div class="form-group has-feedback has-feedback-left">
                  <input type="text" class="form-control" placeholder="Login" ng-model="params.username" autocomplete="off" required>
@@ -24,7 +24,7 @@
             </div>
             <div class="mv-s" ng-if="params.requireMfa === true">
                 <div class="text-danger text-center">
-                    Please provide MFA code
+                    {{ 'views.login.please_provide_mfa_code' | translate}}
                 </div>
                 <div class="form-group has-feedback has-feedback-left">
                     <input type="text" class="input form-control" placeholder="Code" ng-model="params.mfaCode" autocomplete="off" ng-required="params.requireMfa">
@@ -34,15 +34,15 @@
 
             <div class="row">
                 <div class="col-xs-12">
-                    <button type="submit" ng-click="login()" class="btn btn-primary btn-block" ng-disabled="loginForm.$invalid">Sign In</button>
+                    <button type="submit" ng-click="login()" class="btn btn-primary btn-block" ng-disabled="loginForm.$invalid">{{ 'views.login.sign_in' | translate}}</button>
                 </div>
             </div>
 
             <div ng-if="::ssoEnabled()">
-                <div class="mt-s or-separator">OR</div>
+                <div class="mt-s or-separator">{{ 'views.login.or' | translate}}</div>
 
                 <div class="mv-xs">
-                    <a class="btn btn-success btn-m btn-block" href="./api/ssoLogin">Sign In with SSO</a>
+                    <a class="btn btn-success btn-m btn-block" href="./api/ssoLogin">{{ 'views.login.sign_in_with_sso' | translate}}</a>
                 </div>
 
                 <div class="text-danger wrap" ng-if="ssoError">
@@ -54,6 +54,6 @@
     </div>
 
     <div class="text-center mv-xs text-muted">
-        <small>Version: {{version}}</small>
+        <small>{{ 'views.login.version' | translate}}{{version}}</small>
     </div>
 </div>

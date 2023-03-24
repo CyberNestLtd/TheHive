@@ -19,12 +19,12 @@
                             </span>
 
                             <span ng-switch-when="observables">
-                                <i class="glyphicon glyphicon-pushpin"></i>&nbsp;&nbsp; Observables&nbsp;&nbsp;
+                                <i class="glyphicon glyphicon-pushpin"></i>&nbsp;&nbsp; {{"app.case.observables" | translateDefault: "Observables" }}&nbsp;&nbsp;
                                 <span class="badge badge-primary">{{observablesCount}}</span>
                             </span>
 
                             <span ng-switch-when="procedures">
-                                <i class="glyphicon glyphicon-knight"></i>&nbsp;&nbsp; TTPs&nbsp;&nbsp;
+                                <i class="glyphicon glyphicon-knight"></i>&nbsp;&nbsp; {{"app.case.ttps" | translateDefault: "TTPs" }}&nbsp;&nbsp;
                             </span>
 
                             <span ng-switch-default>
@@ -63,13 +63,13 @@
                 <div class="box-tools pull-right">
                     <span class="ml-xs" tooltip="Open in new window">
                         <a class="text-muted" href ng-click="layoutSrv.detachFlow()">
-                            <i class="fa fa-external-link"></i> Open in new window
+                            <i class="fa fa-external-link"></i> {{"app.case.open_in_new_window" | translateDefault: "Open in new window" }}
                         </a>
                     </span>
 
                     <span class="ml-xs" tooltip="Hide">
                         <a class="text-muted" href ng-click="layoutSrv.showFlow(false)">
-                            <i class="fa fa-minus"></i> Hide
+                            <i class="fa fa-minus"></i> {{"app.case.hide" | translateDefault: "Hide" }}
                         </a>
                     </span>
                 </div>

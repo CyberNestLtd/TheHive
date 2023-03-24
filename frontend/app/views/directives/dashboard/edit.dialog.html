@@ -7,7 +7,7 @@
     </div>
     <div class="modal-body" ng-include="'views/directives/dashboard/'+component.type+'/edit.html'"></div>
     <div class="modal-footer text-left">
-        <button class="btn btn-default" ng-click="cancel()" type="button">Cancel</button>
-        <button class="btn btn-primary pull-right" ng-click="save()">Apply</button>
+        <button class="btn btn-default" ng-click="cancel()" type="button">{{ 'views.directives.dashboard.edit.dialog.cancel' | translate}}</button>
+        <button class="btn btn-primary pull-right" ng-click="save()">{{ 'views.directives.dashboard.edit.dialog.apply' | translate}}</button>
     </div>
 </form>

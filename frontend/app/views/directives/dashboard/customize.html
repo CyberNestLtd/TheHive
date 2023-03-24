@@ -1,6 +1,6 @@
 
 <div class="empty-message" ng-if="!component.options.entity || !component.options.field">
-    Please select entity and field in <a href ng-click="layout.activeTab = 0">Basic tab</a>
+    {{ 'views.directives.dashboard.customize.please_select_entity_and_field_in' | translate}} <a href ng-click="layout.activeTab = 0">{{ 'views.directives.dashboard.customize.basic_tab' | translate}}</a>
 </div>
 
 <!-- <div class="empty-message" ng-if="metadata[component.options.entity].attributes[component.options.field].values.length === 0">

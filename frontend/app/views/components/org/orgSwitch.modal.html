@@ -1,10 +1,10 @@
 <form ng-submit="$modal.confirm()">
     <div class="modal-header bg-primary">
-        <h3 class="modal-title"><i class="fa fa-random"></i> Switch organisation</h3>
+        <h3 class="modal-title"><i class="fa fa-random"></i> {{ 'views.components.org.orgSwitch.modal.switch_organisation' | translateDefault:'Switch organisation'}}</h3>
     </div>
     <div class="modal-body">
         <p class="mb-xs">
-            Please select the organisation you want to switch to:
+            {{ 'views.components.org.orgSwitch.modal.please_select_the_organisation_you_want_to_switch_to:' | translateDefault:'Please select the organisation you want to switch to:'}}
         </p>
 
         <div class="form-group has-feedback has-feedback-left" ng-if="$dialog.currentUser.organisations.length > 5">
@@ -18,13 +18,13 @@
                 <a href ng-click="$dialog.selectOrg(item.organisationId)" class="list-group-item"
                     ng-class="{'active': $dialog.currentUser.organisation === item.organisation}"
                     ng-repeat="item in $dialog.currentUser.organisations | filter:$modal.filter track by $index">
-                    <h4 class="list-group-item-heading">{{item.organisation}} <em class="pull-right" ng-if="$dialog.currentUser.organisation === item.organisation">(current)</em></h4>
-                    <p class="list-group-item-text">Profile: <strong>{{item.profile}}</strong></p>
+                    <h4 class="list-group-item-heading">{{item.organisation}} <em class="pull-right" ng-if="$dialog.currentUser.organisation === item.organisation">{{ 'views.components.org.orgSwitch.modal.(current)' | translateDefault:'(current)'}}</em></h4>
+                    <p class="list-group-item-text">{{ 'views.components.org.orgSwitch.modal.profile' | translateDefault:'Profile: '}}<strong>{{item.profile}}</strong></p>
                 </a>
             </div>
         </ul>
     </div>
     <div class="modal-footer text-left">
-        <button class="btn btn-default" ng-click="$dialog.cancel()" type="button">Cancel</button>
+        <button class="btn btn-default" ng-click="$dialog.cancel()" type="button">{{ 'views.components.org.orgSwitch.modal.cancel' | translateDefault:'Cancel'}}</button>
     </div>
 </form>

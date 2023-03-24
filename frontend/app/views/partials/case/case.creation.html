@@ -1,13 +1,13 @@
 <form name="caseCreateForm" ng-submit="createNewCase(caseCreateForm.$valid);" novalidate>
     <div class="modal-header bg-primary">
-        <h3 class="modal-title">Create a new case</h3>
+        <h3 class="modal-title">{{ "views.partials.case.case.creation.create_a_new_case" | translateDefault:  "Create a new case" }}</h3>
     </div>
     <div class="modal-body">
-        <h4 class="vpad10 text-primary">Case details</h4>
+        <h4 class="vpad10 text-primary">{{ "views.partials.case.case.creation.case_details" | translateDefault:  "Case details" }}</h4>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group" ng-class="{ 'has-error' : caseCreateForm.title.$invalid && !caseCreateForm.title.$pristine }">
-                    <label class="control-label">Title
+                    <label class="control-label">{{ "views.partials.case.case.creation.title" | translateDefault:  "Title" }}
                         <i class="fa fa-asterisk text-danger"></i>
                     </label>
                     <div>
@@ -18,18 +18,18 @@
                             <input class="form-control input-sm" name="title" ng-model="newCase.title" placeholder="Title" required type="text"/>
                         </div>
 
-                        <p class="help-block" ng-show="caseCreateForm.title.$invalid && !caseCreateForm.title.$pristine">The case title is required.</p>
+                        <p class="help-block" ng-show="caseCreateForm.title.$invalid && !caseCreateForm.title.$pristine">{{ "views.partials.case.case.creation.the_case_title_is_required." | translateDefault:  "The case title is required." }}</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group" ng-class="{ 'has-error' : caseCreateForm.startDate.$invalid && !caseCreateForm.startDate.$pristine }">
-                    <label class="control-label">Date
+                    <label class="control-label">{{ "views.partials.case.case.creation.date" | translateDefault:  "Date" }}
                         <i class="fa fa-asterisk text-danger"></i>
                     </label>
                     <div>
                         <date-time-picker date="newCase.startDate" name="startDate"></date-time-picker>
-                        <p class="help-block" ng-show="caseCreateForm.startDate.$invalid && !caseCreateForm.startDate.$pristine">The case start date is required.</p>
+                        <p class="help-block" ng-show="caseCreateForm.startDate.$invalid && !caseCreateForm.startDate.$pristine">{{ "views.partials.case.case.creation.the_case_start_date_is_required." | translateDefault:  "The case start date is required." }}</p>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <label class="control-label">Severity
+                    <label class="control-label">{{ "views.partials.case.case.creation.severity" | translateDefault:  "Severity" }}
                         <i class="fa fa-asterisk text-danger"></i>
                     </label>
                     <div>
@@ -47,7 +47,7 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label class="control-label">TLP
+                    <label class="control-label">{{ "views.partials.case.case.creation.tlp" | translateDefault:  "TLP" }}
                         <i class="fa fa-asterisk text-danger"></i>
                     </label>
                     <div>
@@ -59,7 +59,7 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label class="control-label">PAP
+                    <label class="control-label">{{ "views.partials.case.case.creation.pap" | translateDefault:  "PAP" }}
                         <i class="fa fa-asterisk text-danger"></i>
                     </label>
                     <div>
@@ -73,7 +73,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label class="control-label">Tags</label>
+                    <label class="control-label">{{ "views.partials.case.case.creation.tags" | translateDefault:  "Tags" }}</label>
 
                     <div class="input-group">
                         <tags-input class="ti-input-sm input-sm form-control form-control-wrapper ti-tag-selector"
@@ -100,27 +100,27 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group" ng-class="{ 'has-error' : caseCreateForm.description.$invalid && !caseCreateForm.description.$pristine }">
-                    <label class="control-label">Description
+                    <label class="control-label">{{ "views.partials.case.case.creation.description" | translateDefault:  "Description" }}
                         <i class="fa fa-asterisk text-danger"></i>
                     </label>
                     <div>
                         <textarea class="form-control" name="description" ng-model="newCase.description" placeholder="Case description" required rows="3"></textarea>
-                        <p class="help-block" ng-show="caseCreateForm.description.$invalid && !caseCreateForm.description.$pristine">The case description is required.</p>
+                        <p class="help-block" ng-show="caseCreateForm.description.$invalid && !caseCreateForm.description.$pristine">{{ "views.partials.case.case.creation.the_case_description_is_required." | translateDefault:  "The case description is required." }}</p>
                     </div>
                 </div>
             </div>
         </div>
 
         <div if-permission="manageTask">
-            <h4 class="vpad10 text-primary">Case tasks
-                <small ng-if="fromTemplate">(from template: {{template.displayName || template.name}} )</small>
+            <h4 class="vpad10 text-primary">{{ "views.partials.case.case.creation.case_tasks" | translateDefault:  "Case tasks" }}
+                <small ng-if="fromTemplate">({{ "views.partials.case.case.creation.from_template:" | translateDefault:  "from template:" }} {{template.displayName || template.name}} )</small>
             </h4>
             <div class="row" ng-if="!fromTemplate">
                 <div class="col-md-12">
                     <div class="input-group input-group-sm">
                         <input class="form-control task-input" name="task-input" ng-model="temp.task" placeholder="Task title" type="text" />
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" ng-disabled="!temp.task" ng-click="addTask(temp.task)">Add task</button>
+                            <button class="btn btn-primary" type="button" ng-disabled="!temp.task" ng-click="addTask(temp.task)">{{ "views.partials.case.case.creation.add_task" | translateDefault:  "Add task" }}</button>
                         </span>
                     </div>
                 </div>
@@ -128,7 +128,7 @@
             <div class="row vpad5" ng-if="tasks.length === 0">
                 <div class="col-md-12">
                     <div class="empty-message">
-                        No tasks have been specified
+                        {{ "views.partials.case.case.creation.no_tasks_have_been_specified" | translateDefault:  "No tasks have been specified" }}
                     </div>
                 </div>
             </div>
@@ -145,10 +145,10 @@
     </div>
 
     <div class="modal-footer text-left">
-        <button class="btn btn-default" ng-click="cancel()" type="button">Cancel</button>
+        <button class="btn btn-default" ng-click="cancel()" type="button">{{ "views.partials.case.case.creation.cancel" | translateDefault:  "Cancel" }}</button>
         <span class="btn">
-            <i class="fa fa-asterisk text-danger"></i>&nbsp;Required field</span>
+            <i class="fa fa-asterisk text-danger"></i>&nbsp;{{ "views.partials.case.case.creation.required_field" | translateDefault:  "Required field" }}</span>
         <button class="btn btn-primary pull-right" ng-disabled="caseCreateForm.$invalid || pendingAsync" type="submit">
-            <i class="fa fa-plus"></i>&nbsp;Create case</button>
+            <i class="fa fa-plus"></i>&nbsp;{{ "views.partials.case.case.creation.create_case" | translateDefault:  "Create case" }}</button>
     </div>
 </form>

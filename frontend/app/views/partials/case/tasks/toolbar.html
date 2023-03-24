@@ -12,23 +12,23 @@
                 </button>
                 <ul class="dropdown-menu" uib-dropdown-menu>
                     <li ng-if="menu.flag">
-                        <a href ng-click="bulkFlag(true)"><i class="fa fa-flag"></i> Add flag</a>
+                        <a href ng-click="bulkFlag(true)"><i class="fa fa-flag"></i> {{ "views.partials.case.tasks.toolbar.add_flag" | translateDefault:  "Add flag" }}</a>
                     </li>
                     <li ng-if="menu.unflag">
-                        <a href ng-click="bulkFlag(false)"><i class="fa fa-flag-o"></i> Remove flag</a>
+                        <a href ng-click="bulkFlag(false)"><i class="fa fa-flag-o"></i> {{ "views.partials.case.tasks.toolbar.remove_flag" | translateDefault:  "Remove flag" }}</a>
                     </li>
                     <li ng-if="menu.start">
-                        <a href ng-click="bulkStatus('InProgress')"><i class="fa fa-play"></i> Start</a>
+                        <a href ng-click="bulkStatus('InProgress')"><i class="fa fa-play"></i> {{ "views.partials.case.tasks.toolbar.start" | translateDefault:  "Start" }}</a>
                     </li>
                     <li ng-if="menu.reopen">
-                        <a href ng-click="bulkStatus('InProgress')"><i class="fa fa-folder-open"></i> Reopen</a>
+                        <a href ng-click="bulkStatus('InProgress')"><i class="fa fa-folder-open"></i> {{ "views.partials.case.tasks.toolbar.reopen" | translateDefault:  "Reopen" }}</a>
                     </li>
                     <li ng-if="menu.close">
-                        <a href ng-click="bulkStatus('Completed')"><i class="fa fa-folder"></i> Close</a>
+                        <a href ng-click="bulkStatus('Completed')"><i class="fa fa-folder"></i> {{ "views.partials.case.tasks.toolbar.close" | translateDefault:  "Close" }}</a>
                     </li>
                     <li ng-if="menu.delete" class="divider"></li>
                     <li>
-                        <a href ng-click="bulkRemove()"><i class="fa fa-trash"></i> Delete</a>
+                        <a href ng-click="bulkRemove()"><i class="fa fa-trash"></i> {{ "views.partials.case.tasks.toolbar.delete" | translateDefault:  "Delete" }}</a>
                     </li>
                 </ul>
             </div>
@@ -36,34 +36,33 @@
             <div class="btn-group" if-permission="manageTask" allowed="{{userPermissions}}">
                 <button class="btn btn-sm btn-primary" ng-click="state.isNewTask = true">
                     <i class="glyphicon glyphicon-plus"></i>
-                    Add Task
+                    {{ "views.partials.case.tasks.toolbar.add_task" | translateDefault:  "Add Task" }}
                 </button>
             </div>
 
             <div class="btn-group" uib-dropdown>
                 <button class="btn btn-primary btn-sm dropdown-toggle" uib-dropdown-toggle type="button">
                     <i class="fa fa-filter"></i>
-                    Quick Filters
+                    {{ "views.partials.case.tasks.toolbar.quick_filters" | translateDefault:  "Quick Filters" }}
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" uib-dropdown-menu>
                     <li>
-                        <a ng-click="filterMyTasks()"><i class="fa fa-user"></i> My tasks</a>
+                        <a ng-click="filterMyTasks()"><i class="fa fa-user"></i> {{ "views.partials.case.tasks.toolbar.my_tasks" | translateDefault:  "My tasks" }}</a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a ng-click="filterBy('status', 'InProgress')"><i class="glyphicon glyphicon-play"></i> In
-                            progress tasks</a>
+                        <a ng-click="filterBy('status', 'InProgress')"><i class="glyphicon glyphicon-play"></i> {{ "views.partials.case.tasks.toolbar.in_progress_tasks" | translateDefault:  "In progress tasks" }}</a>
                     </li>
                     <li>
-                        <a ng-click="filterBy('status', 'Waiting')"><i class="fa fa-hourglass-o"></i> Waiting tasks</a>
+                        <a ng-click="filterBy('status', 'Waiting')"><i class="fa fa-hourglass-o"></i> {{ "views.partials.case.tasks.toolbar.waiting_tasks" | translateDefault:  "Waiting tasks" }}</a>
                     </li>
                     <li>
-                        <a ng-click="filterBy('status', 'Completed')"><i class="fa fa-check"></i> Completed tasks</a>
+                        <a ng-click="filterBy('status', 'Completed')"><i class="fa fa-check"></i> {{ "views.partials.case.tasks.toolbar.completed_tasks" | translateDefault:  "Completed tasks" }}</a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a ng-click="filterBy('flag', true)"><i class="fa fa-folder-open"></i> Flagged tasks</a>
+                        <a ng-click="filterBy('flag', true)"><i class="fa fa-folder-open"></i> {{ "views.partials.case.tasks.toolbar.flagged_tasks" | translateDefault:  "Flagged tasks" }}</a>
                     </li>
                 </ul>
             </div>
@@ -76,13 +75,13 @@
                 <button class="btn btn-sm"
                     ng-class="{true: 'btn-primary', false:'btn-default'}[filtering.context.showFilters]" type="button"
                     ng-click="toggleFilters()">
-                    <i class="fa fa-search"></i> Filters
+                    <i class="fa fa-search"></i> {{ "views.partials.case.tasks.toolbar.filters" | translateDefault:  "Filters" }}
                 </button>
             </div>
             <div class="btn-group pull-right">
                 <button class="btn btn-sm btn-default" ng-click="toggleGroupedView()">
                     <i class="glyphicon glyphicon-th-list"></i>
-                    Show {{state.showGrouped ? 'as a List' : 'Groups'}}
+                    {{ "views.partials.case.tasks.toolbar.show" | translateDefault:  "Show" }} {{state.showGrouped ? 'as a List' : 'Groups'}}
                 </button>
             </div>
         </div>

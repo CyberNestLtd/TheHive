@@ -1,5 +1,5 @@
 <div ng-if="serie.filters.length > 0">
-    <strong>Serie's filter</strong>
+    <strong>{{ 'views.directives.dashboard.serie.filters.series_filter' | translate}}</strong>
 </div>
 <div class="row mb-xxxs" ng-repeat="filter in serie.filters track by $index">
     <div class="col-sm-4">
@@ -21,6 +21,6 @@
 </div>
 <div class="mt-xxs">
     <a href ng-click="addSerieFilter(serie)">
-        <i class="fa fa-plus"></i> Add a filter
+        <i class="fa fa-plus"></i> {{ 'views.directives.dashboard.serie.filters.add_a_filter' | translate}}
     </a>
 </div>

@@ -1,9 +1,9 @@
 <form name="removeForm" ng-submit="$dialog.confirm()">
     <div class="modal-header bg-danger">
-        <h3 class="modal-title">Permanently remove selected cases</h3>
+        <h3 class="modal-title">{{ "views.partials.case.case.bulk.delete.confirm.permanently_remove_selected_cases" | translateDefault:  "Permanently remove selected cases" }}</h3>
     </div>
     <div class="modal-body">
-        <p>Are you sure you want to permanently delete the following <b>{{$dialog.selection.length}}</b> case(s)?</p>
+        <p>{{ "views.partials.case.case.bulk.delete.confirm.are_you_sure_you_want_to_permanently_delete_the_following" | translateDefault:  "Are you sure you want to permanently delete the following" }}<b>{{$dialog.selection.length}}</b> {{ "views.partials.case.case.bulk.delete.confirm.case(s)?" | translateDefault:  "case(s)?" }}</p>
 
         <div class="mt-xs">
             <table class="table table-striped">
@@ -14,19 +14,19 @@
         </div>
 
         <div class="mt-xs">
-            <p><b>To confirm, please type the number of cases to delete.</b></p>
+            <p><b>{{ "views.partials.case.case.bulk.delete.confirm.to_confirm,_please_type_the_number_of_cases_to_delete." | translateDefault:  "To confirm, please type the number of cases to delete." }}</b></p>
 
             <input class="form-control input-lg" name="count" type="number" placeholder="{{$dialog.count}}"
                 ng-required ng-model="$dialog.typedCount">
 
-            <p><b class="text-danger">This action might take a while and cannot be undone.</b></p>
+            <p><b class="text-danger">{{ "views.partials.case.case.bulk.delete.confirm.this_action_might_take_a_while_and_cannot_be_undone." | translateDefault:  "This action might take a while and cannot be undone." }}</b></p>
         </div>
     </div>
     <div class="modal-footer text-left">
-        <button class="btn btn-default" ng-click="$dialog.cancel()" ng-disabled="$dialog.loading" type="button">Cancel</button>
+        <button class="btn btn-default" ng-click="$dialog.cancel()" ng-disabled="$dialog.loading" type="button">{{ "views.partials.case.case.bulk.delete.confirm.cancel" | translateDefault:  "Cancel" }}</button>
         <button class="btn btn-danger pull-right" type="submit"
             ng-disabled="$dialog.loading || removeForm.$invalid || ($dialog.count != $dialog.typedCount)">
-            Yes, confirm.
+            {{ "views.partials.case.case.bulk.delete.confirm.yes,_confirm." | translateDefault:  "Yes, confirm." }}
         </button>
     </div>
 </form>

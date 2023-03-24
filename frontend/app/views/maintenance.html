@@ -10,10 +10,10 @@
         <div class="col-md-8 col-md-offset-2">
 
             <div class="alert alert-warning center-block" role="alert">
-                <p class="text-center">TheHive needs to update its database</p>
+                <p class="text-center">{{ 'views.maintenance.thehive_needs_to_update_its_database' | translate}}</p>
                 <br>
                 <div class="text-center">
-                    <button type="button" class="btn btn-sm btn-default" ng-click="migrate()" ng-hide="migrating">Update Database</button>
+                    <button type="button" class="btn btn-sm btn-default" ng-click="migrate()" ng-hide="migrating">{{ 'views.maintenance.update_database' | translate}}</button>
                 </div>
             </div>
         </div>
@@ -35,23 +35,23 @@
     <div class="row" ng-show="showUserForm">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"><h4>Create administrator account</h4></div>
+                <div class="panel-heading"><h4>{{ 'views.maintenance.create_administrator_account' | translate}}</h4></div>
                 <div class="panel-body">
                     <form class="form-horizontal" ng-submit="createInitialUser()">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Login</label>
+                            <label class="col-sm-2 control-label">{{ 'views.maintenance.login' | translate}}</label>
                             <div class="col-sm-10">
                                 <input class="form-control" ng-model="newUser.login" placeholder="Login" type="text" autocomplete="off">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Name</label>
+                            <label class="col-sm-2 control-label">{{ 'views.maintenance.name' | translate}}</label>
                             <div class="col-sm-10">
                                 <input class="form-control" ng-model="newUser.name" placeholder="Name" type="text" autocomplete="off">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Password</label>
+                            <label class="col-sm-2 control-label">{{ 'views.maintenance.password' | translate}}</label>
                             <div class="col-sm-10">
                                 <input class="form-control" ng-model="newUser.password" placeholder="Password" type="password" autocomplete="off">
                             </div>
@@ -59,7 +59,7 @@
                         <div class="form-group">
                             <div class="text-center">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button class="btn btn-primary" type="submit">Create</button>
+                                    <button class="btn btn-primary" type="submit">{{ 'views.maintenance.create' | translate}}</button>
                                 </div>
                             </div>
                         </div>

@@ -1,7 +1,7 @@
 <form class="form">
     <div class="modal-header" ng-class="{'bg-primary': !!!$modal.pattern.revoked, 'bg-danger': !!$modal.pattern.revoked}">
         <h3 class="modal-title">{{$modal.pattern.isSubTechnique ? ($modal.pattern.parentName + ': ') : ''}}{{::$modal.pattern.name}}
-            <span ng-if="$modal.pattern.revoked" class="label label-danger">Revoked</span>
+            <span ng-if="$modal.pattern.revoked" class="label label-danger">{{ "views.partials.admin.attack.view.revoked" | translateDefault:  "Revoked" }}</span>
         </h3>
     </div>
 
@@ -15,13 +15,13 @@
             </div>
             <div class="col-sm-4" ng-if="::$modal.pattern.isSubTechnique">
                 <div class="form-group">
-                    <label>Sub-Technique of</label>
+                    <label>{{ "views.partials.admin.attack.view.sub-technique_of" | translateDefault:  "Sub-Technique of" }}</label>
                     <div>{{::$modal.pattern.parentName || '-'}}</div>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="form-group">
-                    <label>URL</label>
+                    <label>{{ "views.partials.admin.attack.view.url" | translateDefault:  "URL" }}</label>
                     <div>
                         <a href="{{::$modal.pattern.url}}" target="_blank">
                             {{::$modal.pattern.url}}<i class="fa fa-external-link ml-xxxs"></i>
@@ -34,9 +34,9 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="form-group">
-                    <label>Tactics</label>
+                    <label>{{ "views.partials.admin.attack.view.tactics" | translateDefault:  "Tactics" }}</label>
                     <div ng-if="::$modal.pattern.tactics.length === 0">
-                        <em class="text-muted">None</em>
+                        <em class="text-muted">{{ "views.partials.admin.attack.view.none" | translateDefault:  "None" }}</em>
                     </div>
                     <div ng-repeat="tactic in ::$modal.pattern.tactics" class="mb-xxs">
                         <span class="label label-default">{{tactic}}</span>
@@ -45,9 +45,9 @@
             </div>
             <div class="col-sm-4">
                 <div class="form-group">
-                    <label>Data Sources</label>
+                    <label>{{ "views.partials.admin.attack.view.data_sources" | translateDefault:  "Data Sources" }}</label>
                     <div ng-if="::$modal.pattern.dataSources.length === 0">
-                        <em class="text-muted">None</em>
+                        <em class="text-muted">{{ "views.partials.admin.attack.view.none" | translateDefault:  "None" }}</em>
                     </div>
                     <div ng-repeat="ds in ::$modal.pattern.dataSources" class="mb-xxs">
                         <span class="label label-default">{{ds}}</span>
@@ -56,9 +56,9 @@
             </div>
             <div class="col-sm-4">
                 <div class="form-group">
-                    <label>Platforms</label>
+                    <label>{{ "views.partials.admin.attack.view.platforms" | translateDefault:  "Platforms" }}</label>
                     <div ng-if="::$modal.pattern.platforms.length === 0">
-                        <em class="text-muted">None</em>
+                        <em class="text-muted">{{ "views.partials.admin.attack.view.none" | translateDefault:  "None" }}</em>
                     </div>
                     <div ng-repeat="platform in ::$modal.pattern.platforms" class="mb-xxs">
                         <span class="label label-default">{{platform}}</span>
@@ -70,9 +70,9 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="form-group">
-                    <label>Defense Bypassed</label>
+                    <label>{{ "views.partials.admin.attack.view.defense_bypassed" | translateDefault:  "Defense Bypassed" }}</label>
                     <div ng-if="::$modal.pattern.defenseBypassed.length === 0">
-                        <em class="text-muted">None</em>
+                        <em class="text-muted">{{ "views.partials.admin.attack.view.none" | translateDefault:  "None" }}</em>
                     </div>
                     <div ng-repeat="defense in ::$modal.pattern.defenseBypassed" class="mb-xxs">
                         <span class="label label-default">{{defense}}</span>
@@ -81,9 +81,9 @@
             </div>
             <div class="col-sm-4">
                 <div class="form-group">
-                    <label>Permissions Required</label>
+                    <label>{{ "views.partials.admin.attack.view.permissions_required" | translateDefault:  "Permissions Required" }}</label>
                     <div ng-if="::$modal.pattern.permissionsRequired.length === 0">
-                        <em class="text-muted">None</em>
+                        <em class="text-muted">{{ "views.partials.admin.attack.view.none" | translateDefault:  "None" }}</em>
                     </div>
                     <div ng-repeat="perm in ::$modal.pattern.permissionsRequired" class="mb-xxs">
                         <span class="label label-default">{{perm}}</span>
@@ -92,9 +92,9 @@
             </div>
             <div class="col-sm-4">
                 <div class="form-group">
-                    <label>System Requirements</label>
+                    <label>{{ "views.partials.admin.attack.view.system_requirements" | translateDefault:  "System Requirements" }}</label>
                     <div ng-if="::$modal.pattern.systemRequirements.length === 0">
-                        <em class="text-muted">None</em>
+                        <em class="text-muted">{{ "views.partials.admin.attack.view.none" | translateDefault:  "None" }}</em>
                     </div>
                     <div ng-repeat="req in ::$modal.pattern.systemRequirements" class="mb-xxs">
                         <span class="label label-default">{{req}}</span>
@@ -106,43 +106,43 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="form-group">
-                    <label>Remote Support</label>
+                    <label>{{ "views.partials.admin.attack.view.remote_support" | translateDefault:  "Remote Support" }}</label>
                     <div>{{!!$modal.pattern.remoteSupport}}</div>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="form-group">
-                    <label>Capec ID</label>
+                    <label>{{ "views.partials.admin.attack.view.capec_id" | translateDefault:  "Capec ID" }}</label>
                     <div ng-if="$modal.pattern.capecId">
                         {{::$modal.pattern.capecId}}
                     </div>
                     <div ng-if="!$modal.pattern.capecId">
-                        <em class="text-muted">None</em>
+                        <em class="text-muted">{{ "views.partials.admin.attack.view.none" | translateDefault:  "None" }}</em>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="form-group">
-                    <label>Capec URL</label>
+                    <label>{{ "views.partials.admin.attack.view.capec_url" | translateDefault:  "Capec URL" }}</label>
                     <div ng-if="$modal.pattern.capecUrl">
                         <a href="{{::$modal.pattern.capecUrl}}" target="_blank">
                             {{::$modal.pattern.capecUrl}} <i class="fa fa-external-link ml-xxxs"></i>
                         </a>
                     </div>
                     <div ng-if="!$modal.pattern.capecUrl">
-                        <em class="text-muted">None</em>
+                        <em class="text-muted">{{ "views.partials.admin.attack.view.none" | translateDefault:  "None" }}</em>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="form-group">
-            <label>Description</label>
+            <label>{{ "views.partials.admin.attack.view.description" | translateDefault:  "Description" }}</label>
             <div ng-if="$modal.pattern.description">
                 {{::$modal.pattern.description}}
             </div>
             <div ng-if="!$modal.pattern.description">
-                <em class="text-muted">None</em>
+                <em class="text-muted">{{ "views.partials.admin.attack.view.none" | translateDefault:  "None" }}</em>
             </div>
         </div>
 
@@ -151,9 +151,9 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th class="pl-0" width="200">ID</th>
-                            <th>Name</th>
-                            <th>Tactics</th>
+                            <th class="pl-0" width="200">{{ "views.partials.admin.attack.view.id" | translateDefault:  "ID" }}</th>
+                            <th>{{ "views.partials.admin.attack.view.name" | translateDefault:  "Name" }}</th>
+                            <th>{{ "views.partials.admin.attack.view.tactics" | translateDefault:  "Tactics" }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -177,6 +177,6 @@
     <div class="modal-footer">
         <button class="btn btn-primary pull-right"
             ng-class="{'btn-primary': !!!$modal.pattern.revoked, 'btn-danger': !!$modal.pattern.revoked}"
-            type="button" ng-click="$modal.cancel()">Close</button>
+            type="button" ng-click="$modal.cancel()">{{ "views.partials.admin.attack.view.close" | translateDefault:  "Close" }}</button>
     </div>
 </form>

@@ -2,13 +2,13 @@
     <!-- Observable details information-->
     <div class="col-md-6">
         <h4 class="vpad10 text-primary">
-            Basic Information
+            {{ "views.partials.observables.details.summary.basic_information" | translateDefault:  "Basic Information" }}
             <div class="task-actions pull-right">
                 <!-- <span if-permission="manageShare" allowed="{{userPermissions}}"> -->
                 <span>
                     <a href ng-click="scrollTo('#observable-sharings')">
                         <span class="mr-xxs action-button">
-                            <i class="fa fa-users"></i> Sharing
+                            <i class="fa fa-users"></i> {{ "views.partials.observables.details.summary.sharing" | translateDefault:  "Sharing" }}
                         </span>
                     </a>
                 </span>
@@ -16,13 +16,13 @@
                 <span class="ml-xxs action-button" if-permission="manageAction" allowed="{{userPermissions}}" ng-if="appConfig.connectors.cortex.enabled">
                     <a href class="text-primary noline nowrap" ng-click="getObsResponders(artifact, true)">
                         <i class="text-primary fa fa-cog"></i>
-                        Responders
+                        {{ "views.partials.observables.details.summary.responders" | translateDefault:  "Responders" }}
                     </a>
                 </span>
             </div>
         </h4>
         <dl class="dl-horizontal clear">
-            <dt class="pull-left">TLP</dt>
+            <dt class="pull-left">{{ "views.partials.observables.details.summary.tlp" | translateDefault:  "TLP" }}</dt>
             <dd ng-if="canEdit">
                 <a class="noline" href ng-init="activeTlp = 'static'" ng-click="activeTlp = 'active'">
                     <tlp value="artifact.tlp" format="activeTlp" on-update="updateField('tlp', newValue)"></tlp>
@@ -34,24 +34,24 @@
         </dl>
 
         <dl class="dl-horizontal clear" ng-if="artifact.attachment && artifact.attachment.hashes">
-            <dt class="pull-left">Hash</dt>
+            <dt class="pull-left">{{ "views.partials.observables.details.summary.hash" | translateDefault:  "Hash" }}</dt>
             <dd>
                 <div ng-repeat="hash in artifact.attachment.hashes" class="wrap" marked="hash | hashType"></div>
             </dd>
         </dl>
 
         <dl class="dl-horizontal clear" ng-show="artifact.metadata.size">
-            <dt class="pull-left">Size</dt>
-            <dd>{{artifact.attachment.size}} bytes</dd>
+            <dt class="pull-left">{{ "views.partials.observables.details.summary.size" | translateDefault:  "Size" }}</dt>
+            <dd>{{artifact.attachment.size}} {{ "views.partials.observables.details.summary.bytes" | translateDefault:  "bytes" }}</dd>
         </dl>
 
         <dl class="dl-horizontal clear">
-            <dt class="pull-left">Date added</dt>
+            <dt class="pull-left">{{ "views.partials.observables.details.summary.date_added" | translateDefault:  "Date added" }}</dt>
             <dd>{{artifact.startDate | shortDate}}</dd>
         </dl>
 
         <dl class="dl-horizontal clear">
-            <dt class="pull-left">Is IOC</dt>
+            <dt class="pull-left">{{ "views.partials.observables.details.summary.is_ioc" | translateDefault:  "Is IOC" }}</dt>
             <dd ng-if="canEdit">
                 <span class="clickable" ng-click="updateField('ioc', !artifact.ioc)">
                     <i class="text-primary fa" ng-class="{'true': 'fa-star', 'false': 'fa-star-o'}[artifact.ioc]"></i>
@@ -65,7 +65,7 @@
         </dl>
 
         <dl class="dl-horizontal clear">
-            <dt class="pull-left">Has been sighted</dt>
+            <dt class="pull-left">{{ "views.partials.observables.details.summary.has_been_sighted" | translateDefault:  "Has been sighted" }}</dt>
             <dd ng-if="canEdit">
                 <span class="clickable" ng-click="updateField('sighted', !artifact.sighted)">
                     <i class="text-primary fa" ng-class="{'true': 'fa-toggle-on', 'false': 'fa-toggle-off'}[artifact.sighted]"></i>
@@ -79,7 +79,7 @@
         </dl>
 
         <dl class="dl-horizontal clear">
-            <dt class="pull-left">Ignored for similarity</dt>
+            <dt class="pull-left">{{ "views.partials.observables.details.summary.ignored_for_similarity" | translateDefault:  "Ignored for similarity" }}</dt>
             <dd ng-if="canEdit">
                 <span class="clickable" ng-click="updateField('ignoreSimilarity', !!!artifact.ignoreSimilarity)">
                     <i class="text-primary fa" ng-class="{'true': 'fa-chain-broken', 'false': 'fa-chain'}[!!artifact.ignoreSimilarity]"></i>
@@ -93,43 +93,43 @@
         </dl>
 
         <dl class="dl-horizontal">
-            <dt class="pull-left">Tags</dt>
+            <dt class="pull-left">{{ "views.partials.observables.details.summary.tags" | translateDefault:  "Tags" }}</dt>
             <dd ng-if="canEdit">
                 <updatable-tag-list on-update="updateField('tags', getLabels(newValue))" value="artifact.tags" source="getTags"></updatable-tag-list>
             </dd>
             <dd ng-if="!canEdit">
                 <tag-list ng-if="artifact.tags.length > 0" data="artifact.tags"></tag-list>
-                <em ng-if="!artifact.tags || artifact.tags.length === 0" class="text-warning">Not Specified</em>
+                <em ng-if="!artifact.tags || artifact.tags.length === 0" class="text-warning">{{ "views.partials.observables.details.summary.not_specified" | translateDefault:  "Not Specified" }}</em>
             </dd>
         </dl>
 
         <dl class="dl-horizontal clear">
-            <dt class="pull-left">Description</dt>
+            <dt class="pull-left">{{ "views.partials.observables.details.summary.description" | translateDefault:  "Description" }}</dt>
             <dd ng-if="canEdit">
                 <updatable-text value="artifact.message" on-update="updateField('message', newValue)" placeholder="Artifact description"></updatable-text>
             </dd>
             <dd ng-if="!canEdit">
                 <div ng-if="artifact.message" marked="artifact.message" class="markdown"></div>
-                <em ng-if="!artifact.message" class="text-warning">Not Specified</em>
+                <em ng-if="!artifact.message" class="text-warning">{{ "views.partials.observables.details.summary.not_specified" | translateDefault:  "Not Specified" }}</em>
             </dd>
         </dl>
     </div>
     <!-- Observable links -->
     <div class="col-md-6" ng-if="!!!artifact.ignoreSimilarity">
-        <h4 class="vpad10 text-primary">Links</h4>
+        <h4 class="vpad10 text-primary">{{ "views.partials.observables.details.summary.links" | translateDefault:  "Links" }}</h4>
 
         <div class="empty-message" ng-if="similarArtifacts.length === 0">
-            This observable has not been seen in any other case
+            {{ "views.partials.observables.details.summary.this_observable_has_not_been_seen_in_any_other_case" | translateDefault:  "This observable has not been seen in any other case" }}
         </div>
 
         <div ng-if="similarArtifacts.length > 0">
-            <strong>Observable seen in {{similarArtifacts.length}} other case(s)</strong>
+            <strong>{{ "views.partials.observables.details.summary.observable_seen_in" | translateDefault:  "Observable seen in" }} {{similarArtifacts.length}} {{ "views.partials.observables.details.summary.other_case(s)" | translateDefault:  "other case(s)" }}</strong>
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th width="80">Flags</th>
-                        <th>Case</th>
-                        <th width="120">Date added</th>
+                        <th width="80">{{ "views.partials.observables.details.summary.flags" | translateDefault:  "Flags" }}</th>
+                        <th>{{ "views.partials.observables.details.summary.case" | translateDefault:  "Case" }}</th>
+                        <th width="120">{{ "views.partials.observables.details.summary.date_added" | translateDefault:  "Date added" }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -146,7 +146,7 @@
                 </tbody>
             </table>
             <div class="mt-xxs text-center" ng-if="similarArtifactsLimit < similarArtifacts.length">
-                <a href ng-click="showMoreSimilar()"><i class="fa fa-angle-down"></i> Show more</a>
+                <a href ng-click="showMoreSimilar()"><i class="fa fa-angle-down"></i> {{ "views.partials.observables.details.summary.show_more" | translateDefault:  "Show more" }}</a>
             </div>
         </div>
 

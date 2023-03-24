@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-md-12" id="observable-sharings">
-         <h4 class="vpad10 text-primary">Sharing</h4>
+         <h4 class="vpad10 text-primary">{{ "views.partials.observables.details.sharing.sharing" | translateDefault:  "Sharing" }}</h4>
          <div class="btn-toolbar" role="toolbar" if-permission="manageShare" allowed="{{userPermissions}}">
              <div class="btn-group">
                  <button class="btn btn-sm btn-primary" ng-click="addTaskShare()">
                      <i class="fa fa-plus"></i>
-                     Add share
+                     {{ "views.partials.observables.details.sharing.add_share" | translateDefault:  "Add share" }}
                  </button>
              </div>
          </div>

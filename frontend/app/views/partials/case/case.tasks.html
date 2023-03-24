@@ -19,7 +19,7 @@
 
 <div class="row mv-s" ng-show="list.total === 0 && list.values.length === 0">
     <div class="col-md-12">
-        <div class="empty-message">No task found for this case.</div>
+        <div class="empty-message">{{ "views.partials.case.case.tasks.no_task_found_for_this_case." | translateDefault:  "No task found for this case." }}</div>
     </div>
 </div>
 
@@ -68,14 +68,14 @@
                                 ng-model="menu.selectAll" ng-change="selectAll()">
                         </th>
                         <th style="width: 70px"></th>
-                        <th style="width: 150px">Group</th>
+                        <th style="width: 150px">{{ "views.partials.case.case.tasks.group" | translateDefault:  "Group" }}</th>
                         <th style="width: 15px"></th>
-                        <th>Task</th>
+                        <th>{{ "views.partials.case.case.tasks.task" | translateDefault:  "Task" }}</th>
                         <th style="width: 70px;"></th>
-                        <th style="width: 150px">Date</th>
-                        <th style="width: 150px">Assignee</th>
+                        <th style="width: 150px">{{ "views.partials.case.case.tasks.date" | translateDefault:  "Date" }}</th>
+                        <th style="width: 150px">{{ "views.partials.case.case.tasks.assignee" | translateDefault:  "Assignee" }}</th>
                         <th style="width: 100px" class="text-right" if-permission="manageTask"
-                            allowed="{{userPermissions}}">Actions</th>
+                            allowed="{{userPermissions}}">{{ "views.partials.case.case.tasks.actions" | translateDefault:  "Actions" }}</th>
                     </tr>
                 </thead>
                 <tbody ng-repeat="task in list.values">
@@ -124,11 +124,11 @@
                                 </a>
                             </div>
                             <div ng-show="task.status === 'Completed'" class="text-success">
-                                Closed after <em>{{(task.endDate - task.startDate) | amDurationFormat :
+                                {{ "views.partials.case.case.tasks.closed_after" | translateDefault:  "Closed after" }} <em>{{(task.endDate - task.startDate) | amDurationFormat :
                                     'milliseconds'}}</em>
                             </div>
                             <div ng-show="task.status === 'InProgress'" class="text-warning">
-                                Started <em am-time-ago="task.startDate"></em>
+                                {{ "views.partials.case.case.tasks.started" | translateDefault:  "Started" }} <em am-time-ago="task.startDate"></em>
                             </div>
                         </td>
                         <td align="center">
@@ -160,7 +160,7 @@
                                 <user-info value="task.assignee" field="name"></user-info>
                             </span>
                             <span ng-show="!task.assignee">
-                                <em class="text-warning">Not Assigned</em>
+                                <em class="text-warning">{{ "views.partials.case.case.tasks.not_assigned" | translateDefault:  "Not Assigned" }}</em>
                             </span>
                         </td>
                         <!--  class="task-delete" -->
@@ -202,7 +202,7 @@
         <div ng-if="state.showGrouped">
             <div class="panel panel-default" ng-repeat="group in groupedTasks">
                 <div class="panel-heading">
-                    <strong>{{group.group || 'Not Specified'}}</strong> <small>({{group.tasks.length}} task(s))</small>
+                    <strong>{{group.group || 'Not Specified'}}</strong> <small>({{group.tasks.length}} {{ "views.partials.case.case.tasks.task(s)" | translateDefault:  "task(s)" }})</small>
                 </div>
                 <div class="panel-body p-0">
                     <table class="table table-hover valigned tasks-table data-list">
@@ -213,14 +213,14 @@
                                         ng-model="menu.selectAll" ng-change="selectAll()">
                                 </th>
                                 <th style="width: 70px"></th>
-                                <th style="width: 150px">Group</th>
+                                <th style="width: 150px">{{ "views.partials.case.case.tasks.group" | translateDefault:  "Group" }}</th>
                                 <th style="width: 15px"></th>
-                                <th>Task</th>
+                                <th>{{ "views.partials.case.case.tasks.task" | translateDefault:  "Task" }}</th>
                                 <th style="width: 70px;"></th>
-                                <th style="width: 150px">Date</th>
-                                <th style="width: 150px">Assignee</th>
+                                <th style="width: 150px">{{ "views.partials.case.case.tasks.date" | translateDefault:  "Date" }}</th>
+                                <th style="width: 150px">{{ "views.partials.case.case.tasks.assignee" | translateDefault:  "Assignee" }}</th>
                                 <th style="width: 100px" class="text-right" if-permission="manageTask"
-                                    allowed="{{userPermissions}}">Actions</th>
+                                    allowed="{{userPermissions}}">{{ "views.partials.case.case.tasks.actions" | translateDefault:  "Actions" }}</th>
                             </tr>
                         </thead>
                         <tbody ng-repeat="task in group.tasks">
@@ -272,11 +272,11 @@
                                         </a>
                                     </div>
                                     <div ng-show="task.status === 'Completed'" class="text-success">
-                                        Closed after <em>{{(task.endDate - task.startDate) | amDurationFormat :
+                                        {{ "views.partials.case.case.tasks.closed_after" | translateDefault:  "Closed after" }}<em>{{(task.endDate - task.startDate) | amDurationFormat :
                                             'milliseconds'}}</em>
                                     </div>
                                     <div ng-show="task.status === 'InProgress'" class="text-warning">
-                                        Started <em am-time-ago="task.startDate"></em>
+                                        {{ "views.partials.case.case.tasks.started" | translateDefault:  "Started" }} <em am-time-ago="task.startDate"></em>
                                     </div>
                                 </td>
                                 <td align="center">
@@ -307,7 +307,7 @@
                                         <user-info value="task.assignee" field="name"></user-info>
                                     </span>
                                     <span ng-show="!task.assignee">
-                                        <em class="text-warning">Not Assigned</em>
+                                        <em class="text-warning">{{ "views.partials.case.case.tasks.not_assigned" | translateDefault:  "Not Assigned" }}</em>
                                     </span>
                                 </td>
                                 <!--  class="task-delete" -->

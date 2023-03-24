@@ -1,15 +1,15 @@
 <form class="form-horizontal" name="form" ng-submit="$modal.ok()">
     <div class="modal-header bg-primary">
-        <h3 class="modal-title">Manage organisation links</h3>
+        <h3 class="modal-title">{{ "views.partials.admin.organisation.list.link.modal.manage_organisation_links" | translateDefault:  "Manage organisation links" }}</h3>
     </div>
     <div class="modal-body">
         <div ng-show="$modal.organisations.length === 0">
-            <div class="empty-message">No organisation can be linked</div>
+            <div class="empty-message">{{ "views.partials.admin.organisation.list.link.modal.no_organisation_can_be_linked" | translateDefault:  "No organisation can be linked" }}</div>
         </div>
 
         <div ng-show="$modal.organisations.length > 0">
             <p>
-                Please select the organisation(s) you want to make visible to users of organisation <strong>{{$modal.organisation.name}}</strong>
+                {{ "views.partials.admin.organisation.list.link.modal.please_select_the_organisation(s)_you_want_to_make_visible_to_users_of_organisation" | translateDefault:  "Please select the organisation(s) you want to make visible to users of organisation" }} <strong>{{$modal.organisation.name}}</strong>
             </p>
 
 
@@ -19,10 +19,10 @@
                         <input type="checkbox" ng-change="$modal.toggleLinkAll()" ng-model="$modal.allSelected">
                     </th>
                     <th>
-                        Organisation
+                        {{ "views.partials.admin.organisation.list.link.modal.organisation" | translateDefault:  "Organisation" }}
                     </th>
                     <th width="220">
-                        Added at
+                        {{ "views.partials.admin.organisation.list.link.modal.added_at" | translateDefault:  "Added at" }}
                     </th>
                 </thead>
                 <tbody>
@@ -42,7 +42,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-default pull-left" type="button" ng-click="$modal.cancel()">Cancel</button>
-        <button class="btn btn-primary pull-right" type="submit" ng-disabled="$modal.initialHash === $modal.hash">Save</button>
+        <button class="btn btn-default pull-left" type="button" ng-click="$modal.cancel()">{{ "views.partials.admin.organisation.list.link.modal.cancel" | translateDefault:  "Cancel" }}</button>
+        <button class="btn btn-primary pull-right" type="submit" ng-disabled="$modal.initialHash === $modal.hash">{{ "views.partials.admin.organisation.list.link.modal.save" | translateDefault:  "Save" }}</button>
     </div>
 </form>

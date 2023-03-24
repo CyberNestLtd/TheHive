@@ -1,22 +1,22 @@
 <form class="form-horizontal" name="form" ng-submit="vm.ok()" novalidate>
     <div class="modal-header bg-primary">
-        <h3 class="modal-title">Select Cortex server</h3>
+        <h3 class="modal-title">{{ "views.partials.cortex.choose-instance-dialog.select_cortex_server" | translateDefault:  "Select Cortex server" }}</h3>
     </div>
     <div class="modal-body">
         <div class="form-group">
             <label class="col-sm-4 control-label">
-                Cortex Server
+                {{ "views.partials.cortex.choose-instance-dialog.cortex_server" | translateDefault:  "Cortex Server" }}
                 <i class="fa fa-asterisk text-danger"></i>
             </label>
             <div class="col-sm-8">
                 <select class="form-control" ng-model="vm.selected" ng-options="s for s in vm.servers" required>
-                    <option value="">-- choose server --</option>
+                    <option value="">{{ "views.partials.cortex.choose-instance-dialog.--_choose_server_--" | translateDefault:  "-- choose server --" }}</option>
                 </select>
             </div>
         </div>
     </div>
     <div class="modal-footer text-left">
-        <button class="btn btn-default" ng-click="vm.cancel()">Cancel</button>
-        <button class="btn btn-primary pull-right" type="submit" ng-disabled="form.$invalid">Yes, select this server</button>
+        <button class="btn btn-default" ng-click="vm.cancel()">{{ "views.partials.cortex.choose-instance-dialog.cancel" | translateDefault:  "Cancel" }}</button>
+        <button class="btn btn-primary pull-right" type="submit" ng-disabled="form.$invalid">{{ "views.partials.cortex.choose-instance-dialog.yes,_select_this_server" | translateDefault:  "Yes, select this server" }}</button>
     </div>
 </form>

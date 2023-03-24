@@ -700,6 +700,16 @@ angular.module('thehive', [
         });
         $translateProvider.preferredLanguage('en');
     })
+
+    app.filter('translateDefault', ['$translate', function($translate) {
+    return function(translationKey, defaultValue = '') {
+        var translation = $translate.instant(translationKey);
+        if (translation === translationKey) {
+        return defaultValue;
+        }
+        return translation;
+    };
+    }])
     app.service('languageService', function() {
         var language = 'en';
 

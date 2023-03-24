@@ -16,7 +16,7 @@
     <div class="row">
 
         <div class="col-md-12" ng-show="$cmp.list.total === 0 && $cmp.list.values.length === 0">
-            <div class="empty-message">No records</div>
+            <div class="empty-message">{{ "views.components.alert.observable-list.component.no_records" | translateDefault:  "No records" }}</div>
         </div>
 
         <div class="col-md-12" ng-show="!$cmp.list.loading && $cmp.list.values.length !== 0">
@@ -25,10 +25,10 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th style="width:50px;">Flags</th>
-                        <th style="width:100px;">Type</th>
-                        <th>Data</th>
-                        <th style="width: 120px">Date Added</th>
+                        <th style="width:50px;">{{ "views.components.alert.observable-list.component.flags" | translateDefault:  "Flags" }}</th>
+                        <th style="width:100px;">{{ "views.components.alert.observable-list.component.type" | translateDefault:  "Type" }}</th>
+                        <th>{{ "views.components.alert.observable-list.component.data" | translateDefault:  "Data" }}</th>
+                        <th style="width: 120px">{{ "views.components.alert.observable-list.component.date_added" | translateDefault:  "Date Added" }}</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -1,15 +1,15 @@
 <div class="modal-header bg-primary">
-    <h3 class="modal-title">Delete log</h3>
+    <h3 class="modal-title">{{ 'views.directives.log-entry-delete.delete_log' | translate}}</h3>
 </div>
 <div class="modal-body">
     <p>
-        You are about to delete a task log. If you do so, its contents will be permanently lost.
+        {{ 'views.directives.log-entry-delete.you_are_about_to_delete_a_task_log_if_you_do_so_its_contents_will_be_permanently_lost' | translate}}
     </p>
     <p>
-        Do you want to proceed?
+        {{ 'views.directives.log-entry-delete.do_you_want_to_proceed' | translate}}
     </p>
 </div>
 <div class="modal-footer text-left">
-    <button class="btn btn-default" ng-click="cancelDropLog()" type="button">Cancel</button>
-    <button class="btn btn-danger pull-right" ng-click="confirmDropLog()">Confirm</button>
+    <button class="btn btn-default" ng-click="cancelDropLog()" type="button">{{ 'views.directives.log-entry-delete.cancel' | translate}}</button>
+    <button class="btn btn-danger pull-right" ng-click="confirmDropLog()">{{ 'views.directives.log-entry-delete.confirm' | translate}}</button>
 </div>

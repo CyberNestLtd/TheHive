@@ -1,15 +1,15 @@
 <div class="modal-header bg-primary">
-    <h3 class="modal-title">Reopen Case #{{caze.number}}</h3>
+    <h3 class="modal-title">{{ "views.partials.case.case.reopen.reopen_case_#" | translateDefault:  "Reopen Case #" }}{{caze.number}}</h3>
 </div>
 <div class="modal-body">
     <div class="vpad20">
-        You are about to reopen the case <strong>#{{caze.number}}: {{caze.title}}</strong>
+        {{ "views.partials.case.case.reopen.you_are_about_to_reopen_the_case" | translateDefault:  "You are about to reopen the case" }} <strong>#{{caze.number}}: {{caze.title}}</strong>
         <br/>
         <br/>
-        Are you sure you want to continue ?
+        {{ "views.partials.case.case.reopen.are_you_sure_you_want_to_continue_?" | translateDefault:  "Are you sure you want to continue ?" }}
     </div>
 </div>
 <div class="modal-footer text-left">
-    <button class="btn btn-default" ng-click="cancel()" type="button">Cancel</button>
-    <button class="btn btn-primary pull-right" type="button" ng-click="confirm()">Confirm</button>
+    <button class="btn btn-default" ng-click="cancel()" type="button">{{ "views.partials.case.case.reopen.cancel" | translateDefault:  "Cancel" }}</button>
+    <button class="btn btn-primary pull-right" type="button" ng-click="confirm()">{{ "views.partials.case.case.reopen.confirm" | translateDefault:  "Confirm" }}</button>
 </div>

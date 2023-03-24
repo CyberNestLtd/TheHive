@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">List of organisations ({{$vm.list.values.length || 0}} of {{$vm.list.total}})</h3>
+                <h3 class="box-title">{{ "views.partials.admin.organisation.list.list_of_organisations" | translateDefault:  "List of organisations" }} ({{$vm.list.values.length || 0}} of {{$vm.list.total}})</h3>
             </div>
             <div class="box-body">
                 <div ng-include="'views/partials/admin/organisation/list/toolbar.html'"></div>
@@ -28,7 +28,7 @@
                                 <tr>
                                     <th>
                                         <a href class="text-default" ng-click="$vm.sortByField('name')">
-                                            Name
+                                            {{ "views.partials.admin.organisation.list.name" | translateDefault:  "Name" }}
                                             <i ng-show="$vm.filtering.context.sort.indexOf('+name') === -1 && $vm.filtering.context.sort.indexOf('-name') === -1" class="fa fa-sort"></i>
                                             <i ng-show="$vm.filtering.context.sort.indexOf('+name') !== -1" class="fa fa-caret-up"></i>
                                             <i ng-show="$vm.filtering.context.sort.indexOf('-name') !== -1" class="fa fa-caret-down"></i>
@@ -36,23 +36,23 @@
                                     </th>
                                     <th style="width: 300px">
                                         <a href class="text-default" ng-click="$vm.sortByField('_createdBy')">
-                                            Created By
+                                            {{ "views.partials.admin.organisation.list.created_by" | translateDefault:  "Created By" }}
                                             <i ng-show="$vm.filtering.context.sort.indexOf('+_createdBy') === -1 && $vm.filtering.context.sort.indexOf('-_createdBy') === -1" class="fa fa-sort"></i>
                                             <i ng-show="$vm.filtering.context.sort.indexOf('+_createdBy') !== -1" class="fa fa-caret-up"></i>
                                             <i ng-show="$vm.filtering.context.sort.indexOf('-_createdBy') !== -1" class="fa fa-caret-down"></i>
                                         </a>
                                     </th>
                                     <th style="width: 160px">
-                                        Dates
+                                        {{ "views.partials.admin.organisation.list.dates" | translateDefault:  "Dates" }}
 
                                         <a href class="text-default ml-xxxs" ng-click="$vm.sortByField('_createdAt')" uib-tooltip="Sort by creation date">
-                                            C.
+                                            {{ "views.partials.admin.organisation.list.c." | translateDefault:  "C." }}
                                             <i ng-show="$vm.filtering.context.sort.indexOf('+_createdAt') === -1 && $vm.filtering.context.sort.indexOf('-_createdAt') === -1" class="fa fa-sort"></i>
                                             <i ng-show="$vm.filtering.context.sort.indexOf('+_createdAt') !== -1" class="fa fa-caret-up"></i>
                                             <i ng-show="$vm.filtering.context.sort.indexOf('-_createdAt') !== -1" class="fa fa-caret-down"></i>
                                         </a>
                                         <a href class="text-default ml-xxxs" ng-click="$vm.sortByField('_updatedAt')" uib-tooltip="Sort by last update date">
-                                            U.
+                                            {{ "views.partials.admin.organisation.list.u." | translateDefault:  "U." }}
                                             <i ng-show="$vm.filtering.context.sort.indexOf('+_updatedAt') === -1 && $vm.filtering.context.sort.indexOf('-_updatedAt') === -1" class="fa fa-sort"></i>
                                             <i ng-show="$vm.filtering.context.sort.indexOf('+_updatedAt') !== -1" class="fa fa-caret-up"></i>
                                             <i ng-show="$vm.filtering.context.sort.indexOf('-_updatedAt') !== -1" class="fa fa-caret-down"></i>
@@ -71,12 +71,12 @@
                                             {{::org.description || 'No description'}}
                                         </div>
                                         <div class="mt-xs" ng-if="org.links.length > 0">
-                                            <span class="text-muted mr-xxs">Linked organisations:</span>
+                                            <span class="text-muted mr-xxs">{{ "views.partials.admin.organisation.list.linked_organisations:" | translateDefault:  "Linked organisations:" }}</span>
                                             <span class="label label-default mr-xxs" ng-repeat="link in ::org.links | orderBy">{{link}}</span>
                                         </div>
                                         <div class="mt-xs" ng-if="org.links.length === 0">
-                                            <span class="text-muted mr-xxs">Linked organisations:</span>
-                                            <span class="text-warning"><em>None</em></span>
+                                            <span class="text-muted mr-xxs">{{ "views.partials.admin.organisation.list.linked_organisations:" | translateDefault:  "Linked organisations:" }}</span>
+                                            <span class="text-warning"><em>{{ "views.partials.admin.organisation.list.none" | translateDefault:  "None" }}</em></span>
                                         </div>
                                     </td>
 
@@ -85,22 +85,22 @@
                                     </td>
                                     <td>
                                         <div ng-class="{'text-bold': $vm.filtering.context.sort.indexOf('+_createdAt') !== -1 || $vm.filtering.context.sort.indexOf('-_createdAt') !== -1}">
-                                            C. <a href ng-click="$vm.addFilterValue('_createdAt', org._createdAt)">{{org._createdAt | shortDate}}</a>
+                                            {{ "views.partials.admin.organisation.list.c." | translateDefault:  "C." }} <a href ng-click="$vm.addFilterValue('_createdAt', org._createdAt)">{{org._createdAt | shortDate}}</a>
                                         </div>
                                         <div ng-if="org._updatedAt > 0" ng-class="{'text-bold': $vm.filtering.context.sort.indexOf('+_updatedAt') !== -1 || $vm.filtering.context.sort.indexOf('-_updatedAt') !== -1}">
-                                            U. <a href ng-click="$vm.addFilterValue('_updatedAt', org._updatedAt)">{{org._updatedAt | shortDate}}</a>
+                                            {{ "views.partials.admin.organisation.list.u." | translateDefault:  "U." }} <a href ng-click="$vm.addFilterValue('_updatedAt', org._updatedAt)">{{org._updatedAt | shortDate}}</a>
                                         </div>
                                     </td>
                                     <td>
                                         <span class="mr-xs text-primary">
                                             <a ui-sref="app.administration.organisations-details({organisation: org.name})">
-                                                <i class="fa fa-cog"></i> Configure
+                                                <i class="fa fa-cog"></i> {{ "views.partials.admin.organisation.list.configure" | translateDefault:  "Configure" }}
                                             </a>
                                         </span>
                                         <span class="clickable mr-xs text-primary" ng-click="$vm.showNewOrg('edit', org)">
-                                            <i class="fa fa-edit"></i> Edit</span>
+                                            <i class="fa fa-edit"></i> {{ "views.partials.admin.organisation.list.edit" | translateDefault:  "Edit" }}</span>
                                         <span class="clickable mr-xs text-primary" ng-click="$vm.showLinks(org)" ng-if="org.name !== 'admin'">
-                                            <i class="fa fa-link"></i> Link</span>
+                                            <i class="fa fa-link"></i> {{ "views.partials.admin.organisation.list.link" | translateDefault:  "Link" }}</span>
                                         <!-- <a class="btn btn-xs btn-icon btn-clear" href ng-click="$vm.showNewOrg('edit', org)" >
                                             <i class="text-info text-20 fa fa-edit"></i>
                                         </a> -->

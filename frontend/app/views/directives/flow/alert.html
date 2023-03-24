@@ -1,7 +1,7 @@
 <div class="flow-alert">
     <div class="flow-item-title wrap">
         <i class="fa fa-download"></i>
-        <span ng-show="bulk">Alert updates</span>
+        <span ng-show="bulk">{{ 'views.directives.flow.alert.alert_updates' | translate}}</span>
         <span ng-show="!bulk">[{{base.object.source}}] {{base.object.title}}</span>
     </div>
 
@@ -21,7 +21,7 @@
             </ng-pluralize>
         </div>
         <div>
-            <a class="small" href ng-click="openState('app.alert-list')">See all</a>
+            <a class="small" href ng-click="openState('app.alert-list')">{{ 'views.directives.flow.alert.see_all' | translate}}</a>
         </div>
     </div>
 
@@ -44,7 +44,7 @@
                 {{k}}: <a href ui-sref="app.case.details({caseId: v})">{{v}}</a>
             </div>
             <div ng-switch-when="description">
-                description: <em>{{v | limitTo: 250}}</em>
+                {{ 'views.directives.flow.alert.description' | translate}} <em>{{v | limitTo: 250}}</em>
             </div>
             <div ng-switch-when="tags">
                 {{k}}:
@@ -52,7 +52,7 @@
                     <tag-item value="tag"></tag-item>
                 </span>
                 <span ng-if="v.length === 0">
-                    <em>None</em>
+                    <em>{{ 'views.directives.flow.alert.none' | translate}}</em>
                 </span>
             </div>
             <div ng-switch-when="tlp">

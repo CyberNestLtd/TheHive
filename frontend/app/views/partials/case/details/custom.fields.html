@@ -1,9 +1,9 @@
 <div class="case-custom-fields" ng-controller="CaseCustomFieldsCtrl">
     <h4 class="vpad10 text-primary">
-        Additional information
+        {{ "views.partials.case.details.custom.fields.additional_information" | translateDefault:  "Additional information" }}
         <span uib-dropdown class="ml-m" ng-if="canEdit && customFieldsAvailable">
             <a href class="dropdown-toggle" uib-dropdown-toggle>
-                <small><i class="fa fa-plus"></i> Add</small>
+                <small><i class="fa fa-plus"></i> {{ "views.partials.case.details.custom.fields.add" | translateDefault:  "Add" }}</small>
             </a>
             <ul class="dropdown-menu scroll-dropdown" uib-dropdown-menu>
                 <li ng-repeat="key in keys(allCustomFields) | orderBy">
@@ -14,24 +14,24 @@
 
         <span uib-dropdown class="ml-m">
             <a href class="dropdown-toggle" uib-dropdown-toggle>
-                <small><i class="fa fa-columns"></i> Layout</small>
+                <small><i class="fa fa-columns"></i> {{ "views.partials.case.details.custom.fields.layout" | translateDefault:  "Layout" }}</small>
             </a>
             <ul class="dropdown-menu scroll-dropdown" uib-dropdown-menu>
                 <li ng-class="{'active': appLayout.caseCustomFieldColumns === 1}">
-                    <a ng-click="layoutSrv.caseCustomFields(1)">1 column</a>
+                    <a ng-click="layoutSrv.caseCustomFields(1)">{{ "views.partials.case.details.custom.fields.1_column" | translateDefault:  "1 column" }}</a>
                 </li>
                 <li ng-class="{'active': appLayout.caseCustomFieldColumns === 2}">
-                    <a ng-click="layoutSrv.caseCustomFields(2)">2 columns</a>
+                    <a ng-click="layoutSrv.caseCustomFields(2)">{{ "views.partials.case.details.custom.fields.2_columns" | translateDefault:  "2 columns" }}</a>
                 </li>
                 <li ng-class="{'active': appLayout.caseCustomFieldColumns === 3}">
-                    <a ng-click="layoutSrv.caseCustomFields(3)">3 columns</a>
+                    <a ng-click="layoutSrv.caseCustomFields(3)">{{ "views.partials.case.details.custom.fields.3_columns" | translateDefault:  "3 columns" }}</a>
                 </li>
             </ul>
         </span>
     </h4>
 
     <div ng-if="caze.customFields.length === 0">
-        <em>No additional information have been specified</em>
+        <em>{{ "views.partials.case.details.custom.fields.no_additional_information_have_been_specified" | translateDefault:  "No additional information have been specified" }}</em>
     </div>
 
     <div class="row">

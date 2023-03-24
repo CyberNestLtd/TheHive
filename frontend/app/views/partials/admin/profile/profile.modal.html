@@ -1,24 +1,24 @@
 <form class="form-horizontal" name="profileForm" ng-submit="$modal.ok()" novalidate>
     <div class="modal-header bg-primary">
-        <h3 class="modal-title">{{$modal.isEdit ? 'Update' : 'Add'}} profile</h3>
+        <h3 class="modal-title">{{$modal.isEdit ? 'Update' : 'Add'}} {{ "views.partials.admin.profile.profile.modal.profile" | translateDefault:  "profile" }}</h3>
     </div>
     <div class="modal-body">
         <div class="form-group">
             <label class="col-sm-3 control-label">
-                Profile type
+                {{ "views.partials.admin.profile.profile.modal.profile_type" | translateDefault:  "Profile type" }}
                 <i class="fa fa-asterisk text-danger"></i>
             </label>
             <div class="col-sm-9">
                 <div class="btn-group">
-                    <label class="btn btn-primary" ng-model="$modal.formData.isAdmin" uib-btn-radio="true">Administration Profile</label>
-                    <label class="btn btn-primary" ng-model="$modal.formData.isAdmin" uib-btn-radio="false">Organisation Profile</label>
+                    <label class="btn btn-primary" ng-model="$modal.formData.isAdmin" uib-btn-radio="true">{{ "views.partials.admin.profile.profile.modal.administration_profile" | translateDefault:  "Administration Profile" }}</label>
+                    <label class="btn btn-primary" ng-model="$modal.formData.isAdmin" uib-btn-radio="false">{{ "views.partials.admin.profile.profile.modal.organisation_profile" | translateDefault:  "Organisation Profile" }}</label>
                 </div>
                 <p class="help-block">{{$modal.permissions[$modal.formData.isAdmin ? 'admin' : 'org'].hints}}</p>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">
-                Name
+                {{ "views.partials.admin.profile.profile.modal.name" | translateDefault:  "Name" }}
                 <i class="fa fa-asterisk text-danger"></i>
             </label>
             <div class="col-sm-9">
@@ -31,7 +31,7 @@
 
         <div class="form-group">
             <label class="col-sm-3 control-label">
-                Permissions
+                {{ "views.partials.admin.profile.profile.modal.permissions" | translateDefault:  "Permissions" }}
                 <i class="fa fa-asterisk text-danger"></i>
             </label>
             <div class="col-sm-9">
@@ -39,15 +39,16 @@
                     ng-options="permission as ($modal.permissions[$modal.formData.isAdmin ? 'admin' : 'org'].labels[permission]) for permission in $modal.permissions[$modal.formData.isAdmin ? 'admin' : 'org'].keys" multiple size="15">
                 </select>
                 <div class="wrap">
-                    Selected ({{$modal.formData.permissions.length || 0}})
+                    {{ "views.partials.admin.profile.profile.modal.selected" | translateDefault:  "Selected" }} ({{$modal.formData.permissions.length || 0}})
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer text-left">
-        <button class="btn btn-default" ng-click="$modal.cancel()" type="button">Cancel</button>
+        <button class="btn btn-default" ng-click="$modal.cancel()" type="button">{{ "views.partials.admin.profile.profile.modal.cancel" | translateDefault:  "Cancel" }}</button>
         <span class="hpad10">
-            <i class="fa fa-asterisk text-danger"></i>&nbsp;Required field</span>
-        <button class="btn btn-primary pull-right" ng-disabled="profileForm.$invalid" type="submit">Save profile</button>
+            <i class="fa fa-asterisk text-danger"></i>&nbsp;{{ "views.partials.admin.profile.profile.modal.required_field" | translateDefault:  "Required field" }}
+        </span>
+        <button class="btn btn-primary pull-right" ng-disabled="profileForm.$invalid" type="submit">{{ "views.partials.admin.profile.profile.modal.save_profile" | translateDefault:  "Save profile" }}</button>
     </div>
 </form>

@@ -1,27 +1,27 @@
 <form class="form">
 
     <div class="modal-header bg-primary">
-        <h3 class="modal-title">{{::$modal.taxonomy.namespace}} taxonomy</h3>
+        <h3 class="modal-title">{{::$modal.taxonomy.namespace}} {{ "views.partials.admin.taxonomy.view.taxonomy" | translateDefault:  "taxonomy" }}</h3>
     </div>
 
     <div class="modal-body">
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label>Namespace</label>
+                    <label>{{ "views.partials.admin.taxonomy.view.namespace" | translateDefault:  "Namespace" }}</label>
                     <div>{{::$modal.taxonomy.namespace}}</div>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label>Version</label>
+                    <label>{{ "views.partials.admin.taxonomy.view.version" | translateDefault:  "Version" }}</label>
                     <div>{{::$modal.taxonomy.version}}</div>
                 </div>
             </div>
         </div>
 
         <div class="form-group">
-            <label>Description</label>
+            <label>{{ "views.partials.admin.taxonomy.view.description" | translateDefault:  "Description" }}</label>
             <div>{{::$modal.taxonomy.description}}</div>
         </div>
 
@@ -30,10 +30,10 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th class="pl-0" width="200">Tag</th>
-                            <th>Predicate</th>
-                            <th>Value</th>
-                            <th width="100">Color</th>
+                            <th class="pl-0" width="200">{{ "views.partials.admin.taxonomy.view.tag" | translateDefault:  "Tag" }}</th>
+                            <th>{{ "views.partials.admin.taxonomy.view.predicate" | translateDefault:  "Predicate" }}</th>
+                            <th>{{ "views.partials.admin.taxonomy.view.value" | translateDefault:  "Value" }}</th>
+                            <th width="100">{{ "views.partials.admin.taxonomy.view.color" | translateDefault:  "Color" }}</th>
                             <th width="10"></th>
                         </tr>
                     </thead>
@@ -58,7 +58,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-default pull-left" type="button" ng-click="$modal.cancel()">Cancel</button>
-        <button class="btn btn-primary pull-right" type="button" ng-click="$modal.cancel()">Close</button>
+        <button class="btn btn-default pull-left" type="button" ng-click="$modal.cancel()">{{ "views.partials.admin.taxonomy.view.cancel" | translateDefault:  "Cancel" }}</button>
+        <button class="btn btn-primary pull-right" type="button" ng-click="$modal.cancel()">{{ "views.partials.admin.taxonomy.view.close" | translateDefault:  "Close" }}</button>
     </div>
 </form>

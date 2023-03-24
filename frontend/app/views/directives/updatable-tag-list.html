@@ -1,7 +1,7 @@
 <div class="updatable-input updatable-input-tags-list">
     <span class="updatable-input-value-wrapper" ng-hide="updatable.updating" ng-click="edit()"
         ng-class="{'tags-list flexwrap': value.length > 0}">
-        <span class="updatable-value text-warning" ng-show="!value || value.length === 0"><em>Not Specified</em></span>
+        <span class="updatable-value text-warning" ng-show="!value || value.length === 0"><em>{{"views.directives.updatable-tag-list.not_specified" | translateDefault: "Not Specified" }}</em></span>
 
         <tag-item ng-repeat="tag in value" value="tag.text"></tag-item>
 
@@ -33,7 +33,7 @@
 
         <div class="btn-group btn-group-sm pull-right">
             <button class="btn btn-sm btn-default" type="button" ng-click="$cmp.fromLibrary()">
-                <i class="glyphicon glyphicon-plus"></i> Add from Library
+                <i class="glyphicon glyphicon-plus"></i> {{"views.directives.updatable-tag-list.add_from_library" | translateDefault: "Add from Library" }}
             </button>
         </div>
     </span>

@@ -3,15 +3,15 @@
         <div class="text-center">
             <h4 class="text-danger">
                 <div class="mb-xxs"><i class="fa fa-2x fa-exclamation-triangle"></i></div>
-                <div>Failed to fetch data, please edit the widget definition</div>
+                <div>{{ 'views.directives.dashboard.text.view.failed_to_fetch_data_please_edit_the_widget_definition' | translate}}</div>
             </h4>
         </div>
     </div>
     <div ng-if="!error" class="row">
         <div class="col-sm-12">
             <div class="clearfix" ng-show="content">
-                <a class="pull-right ml-xxs" href ng-click="copyHTML()"><i class="fa fa-file-text-o mr-xxxs"></i>HTML</a>
-                <strong class="text-primary pull-right">Copy</strong>
+                <a class="pull-right ml-xxs" href ng-click="copyHTML()"><i class="fa fa-file-text-o mr-xxxs"></i>{{ 'views.directives.dashboard.text.view.html' | translate}}</a>
+                <strong class="text-primary pull-right">{{ 'views.directives.dashboard.text.view.copy' | translate}}</strong>
             </div>
             <div marked="content" class="markdown widget-content"></div>
         </div>

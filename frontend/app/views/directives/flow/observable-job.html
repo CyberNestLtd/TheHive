@@ -2,10 +2,10 @@
     <div class="flow-item-title wrap">
         <i class="glyphicon glyphicon-cog"></i>
         <span ng-if="base.operation === 'Creation'">
-            Job: <em>{{base.object.analyzerName || base.object.analyzerId}}</em> started
+            {{"views.directives.flow.observable-job.job:" | translateDefault: "Job:" }} <em>{{base.object.analyzerName || base.object.analyzerId}}</em> {{"views.directives.flow.observable-job.started" | translateDefault: "started" }}
         </span>
         <span ng-if="base.operation === 'Update'">
-            Job <em>{{base.object.analyzerName || base.object.analyzerId}}</em> terminated
+            {{"views.directives.flow.observable-job.job" | translateDefault: "Job" }} <em>{{base.object.analyzerName || base.object.analyzerId}}</em> {{"views.directives.flow.observable-job.terminated" | translateDefault: "terminated" }}
         </span>
     </div>
     <div class="flow-item-updates wrap">
