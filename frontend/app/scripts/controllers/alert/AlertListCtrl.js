@@ -2,7 +2,7 @@
 (function () {
     'use strict';
     angular.module('theHiveControllers')
-        .controller('AlertListCtrl', function ($rootScope, $scope, $q, $state, $uibModal, TagSrv, UiSettingsSrv, StreamQuerySrv, CaseTemplateSrv, UtilsSrv, ModalUtilsSrv, AlertingSrv, NotificationSrv, FilteringSrv, CortexSrv, Severity, VersionSrv) {
+        .controller('AlertListCtrl', function ($rootScope, $scope, $q, $state, $uibModal, TagSrv, UiSettingsSrv, StreamQuerySrv, CaseTemplateSrv, UtilsSrv, ModalUtilsSrv, AlertingSrv, NotificationSrv, FilteringSrv, CortexSrv, Severity, VersionSrv, i18n) {
             var self = this;
 
             self.urls = VersionSrv.mispUrls();
@@ -138,7 +138,7 @@
                 });
 
                 $q.all(promises).then(function ( /*response*/) {
-                    NotificationSrv.log('The selected events have been ' + (follow ? 'followed' : 'unfollowed'), 'success');
+                    NotificationSrv.log(i18n.t("controllers.alert.AlertListCtrl.the_selected_events_have_been", "The selected events have been")+' '+ (follow ? i18n.t("controllers.alert.AlertListCtrl.followed", "followed") : i18n.t("controllers.alert.AlertListCtrl.unfollowed", "unfollowed")), 'success');
                 }, function (response) {
                     NotificationSrv.error('AlertListCtrl', response.data, response.status);
                 });
@@ -161,7 +161,7 @@
 
                 $q.all(promises).then(function ( /*response*/) {
                     self.list.update();
-                    NotificationSrv.log('The selected events have been ' + (markAsRead ? 'marked as read' : 'marked as unread'), 'success');
+                    NotificationSrv.log(i18n.t("controllers.alert.AlertListCtrl.the_selected_events_have_been", "The selected events have been")+' '+ (markAsRead ? i18n.t("controllers.alert.AlertListCtrl.marked_as_read", "marked as read") : i18n.t("controllers.alert.AlertListCtrl.marked_as_unread", "marked as unread")), 'success');
                 }, function (response) {
                     NotificationSrv.error('AlertListCtrl', response.data, response.status);
                 });
@@ -169,15 +169,15 @@
 
             self.bulkDelete = function () {
 
-                ModalUtilsSrv.confirm('Remove Alerts', 'Are you sure you want to delete the selected Alerts?', {
-                    okText: 'Yes, remove them',
+                ModalUtilsSrv.confirm(i18n.t("controllers.alert.AlertListCtrl.remove_alerts", "Remove Alerts"), i18n.t("controllers.alert.AlertListCtrl.are_you_sure_you_want_to_delete_the_selected_alerts?", "Are you sure you want to delete the selected Alerts?"), {
+                    okText: i18n.t("controllers.alert.AlertListCtrl.yes,_remove_them", "Yes, remove them"),
                     flavor: 'danger'
                 }).then(function () {
                     var ids = _.pluck(self.selection, '_id');
 
                     AlertingSrv.bulkRemove(ids)
                         .then(function (/*response*/) {
-                            NotificationSrv.log('The selected events have been deleted', 'success');
+                            NotificationSrv.log(i18n.t("controllers.alert.AlertListCtrl.the_selected_events_have_been_deleted", "The selected events have been deleted"), 'success');
                         })
                         .catch(function (response) {
                             NotificationSrv.error('AlertListCtrl', response.data, response.status);
@@ -238,7 +238,7 @@
                         }
                     })
                     .then(function (response) {
-                        NotificationSrv.log(['Responder', response.data.responderName, 'started successfully on alert', event.title].join(' '), 'success');
+                        NotificationSrv.log([i18n.t("controllers.alert.AlertListCtrl.responder", "Responder"), response.data.responderName, i18n.t("controllers.alert.AlertListCtrl.started_successfully_on_alert", "started successfully on alert"), event.title].join(' '), 'success');
                     })
                     .catch(function (err) {
                         if (err && !_.isString(err)) {
@@ -344,15 +344,15 @@
                     })
                     .then(function (createdCase) {
                         // Bulk merge the selected alerts into the created case
-                        NotificationSrv.log('New case has been created', 'success');
+                        NotificationSrv.log(i18n.t("controllers.alert.AlertListCtrl.new_case_has_been_created", "New case has been created"), 'success');
 
                         return AlertingSrv.bulkMergeInto(alertIds, createdCase.id);
                     })
                     .then(function (response) {
                         if (alertIds.length === 1) {
-                            NotificationSrv.log(alertIds.length + ' Alert has been merged into the newly created case.', 'success');
+                            NotificationSrv.log(alertIds.length +' '+ i18n.t("controllers.alert.AlertListCtrl.alert_has_been_merged_into_the_newly_created_case", "Alert has been merged into the newly created case."), 'success');
                         } else {
-                            NotificationSrv.log(alertIds.length + ' Alert(s) have been merged into the newly created case.', 'success');
+                            NotificationSrv.log(alertIds.length +' '+i18n.t("controllers.alert.AlertListCtrl.alert(s)_have_been_merged_into_the_newly_created_case", "Alert(s) have been merged into the newly created case."), 'success');
                         }
 
                         $rootScope.$broadcast('alert:event-imported');
@@ -380,10 +380,10 @@
                             return self.event;
                         },
                         title: function () {
-                            return 'Merge selected Alert(s)';
+                            return i18n.t("controllers.alert.AlertListCtrl.merge_selected_alert(s)", "Merge selected Alert(s)");
                         },
                         prompt: function () {
-                            return 'the ' + self.selection.length + ' selected Alert(s)';
+                            return i18n.t("controllers.alert.AlertListCtrl.the", "the") +' ' + self.selection.length +' '+ i18n.t("controllers.alert.AlertListCtrl.selected_alert(s)", "selected Alert(s)");
                         },
                         filter: function () {
                             var skipResolvedCases = UiSettingsSrv.disallowMergeAlertInResolvedSimilarCases() === true;

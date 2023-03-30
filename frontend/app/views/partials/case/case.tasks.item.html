@@ -167,7 +167,7 @@
     <div class="col-md-12">
         <h4 class="vpad10 text-primary">{{ "views.partials.case.case.tasks.item.description" | translateDefault:  "Description" }}</h4>
         <div ng-if="canEdit" class="description-pane">
-            <updatable-text on-update="updateField('description', newValue)" placeholder="Task description"
+            <updatable-text on-update="updateField('description', newValue)" placeholder="{{ 'views.placeholders.partials.case.case.tasks.item.task_description' | translateDefault: 'Task description' }}"
                 value="task.description"></updatable-text>
         </div>
         <div ng-if="!canEdit" class="description-pane">

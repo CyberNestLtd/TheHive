@@ -1,16 +1,16 @@
 (function() {
     'use strict';
     angular.module('theHiveControllers')
-        .controller('SearchCtrl', function($scope, $q, $stateParams, $uibModal, PSearchSrv, AlertingSrv, CaseTemplateSrv, CaseTaskSrv, NotificationSrv, EntitySrv, UserSrv, QueryBuilderSrv, GlobalSearchSrv, metadata) {
+        .controller('SearchCtrl', function($scope, $q, $stateParams, $uibModal, PSearchSrv, AlertingSrv, CaseTemplateSrv, CaseTaskSrv, NotificationSrv, EntitySrv, UserSrv, QueryBuilderSrv, GlobalSearchSrv, metadata, i18n) {
             $scope.metadata = metadata;
             $scope.toolbar = [
                 // {name: 'all', label: 'All', icon: 'glyphicon glyphicon-search'},
-                {name: 'case', label: 'Cases', icon: 'glyphicon glyphicon-folder-open'},
-                {name: 'case_task', label: 'Tasks', icon: 'glyphicon glyphicon-tasks'},
-                {name: 'case_task_log', label: 'Tasks Logs', icon: 'glyphicon glyphicon-comment'},
-                {name: 'case_artifact', label: 'Observables', icon: 'glyphicon glyphicon-pushpin'},
-                {name: 'alert', label: 'Alerts', icon: 'glyphicon glyphicon-alert'},
-                {name: 'case_artifact_job', label: 'Jobs', icon: 'glyphicon glyphicon-cog'}
+                {name: 'case', label: i18n.t("controllers.SearchCtrl.cases") || "Cases", icon: 'glyphicon glyphicon-folder-open'},
+                {name: 'case_task', label: i18n.t("controllers.SearchCtrl.tasks") || "Tasks", icon: 'glyphicon glyphicon-tasks'},
+                {name: 'case_task_log', label: i18n.t("controllers.SearchCtrl.tasks_logs") || "Tasks Logs", icon: 'glyphicon glyphicon-comment'},
+                {name: 'case_artifact', label: i18n.t("controllers.SearchCtrl.observables") || "Observables", icon: 'glyphicon glyphicon-pushpin'},
+                {name: 'alert', label: i18n.t("controllers.SearchCtrl.alerts") || "Alerts", icon: 'glyphicon glyphicon-alert'},
+                {name: 'case_artifact_job', label: i18n.t("controllers.SearchCtrl.jobs") || "Jobs", icon: 'glyphicon glyphicon-cog'}
                 // {name: 'audit', label: 'Audit Logs', icon: 'glyphicon glyphicon-list-alt'}
             ];
 
@@ -57,7 +57,7 @@
                 })
                 .catch(function(err) {
                     if(err && !_.isString(err)) {
-                        NotificationSrv.error('AlertPreview', err.data, err.status);
+                        NotificationSrv.error(i18n.t("controllers.SearchCtrl.alertpreview") || "AlertPreview ", err.data, err.status);
                     }
 
                 });
@@ -152,7 +152,7 @@
                         $scope.searchResults = null;
                     }
                 } catch(err) {
-                    NotificationSrv.log('Invalid filters error', 'error');
+                    NotificationSrv.log(i18n.t("controllers.SearchCtrl.invalid_filters_error") || "Invalid filters error", 'error');
                 }
             };
 

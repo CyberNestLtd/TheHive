@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     angular.module('theHiveControllers').controller('CaseObservablesItemCtrl',
-        function ($scope, $state, $stateParams, $q, $filter, $timeout, $document, $uibModal, PaginatedQuerySrv, CaseSrv, ModalSrv, SecuritySrv, CaseTabsSrv, CaseArtifactSrv, CortexSrv, PSearchSrv, AnalyzerSrv, NotificationSrv, VersionSrv, TagSrv, appConfig, artifact) {
+        function ($scope, $state, $stateParams, $q, $filter, $timeout, $document, $uibModal, PaginatedQuerySrv, CaseSrv, ModalSrv, SecuritySrv, CaseTabsSrv, CaseArtifactSrv, CortexSrv, PSearchSrv, AnalyzerSrv, NotificationSrv, VersionSrv, TagSrv, appConfig, artifact, i18n) {
             var observableId = $stateParams.itemId,
                 observableName = 'observable-' + observableId;
 
@@ -161,7 +161,7 @@
                         }, 500);
                     })
                     .catch(function(/*err*/) {
-                        NotificationSrv.error('An expected error occured while fetching the job report');
+                        NotificationSrv.error(i18n.t("controllers.case.CaseObservablesItemCtrl.an_expected_error_occured_while_fetching_the_job_report", "An expected error occured while fetching the job report"));
                     });
 
                 // $scope.report = {};
@@ -219,7 +219,7 @@
                     }, field)
                     .$promise
                     .then(function () {
-                        NotificationSrv.log('Observable has been updated', 'success');
+                        NotificationSrv.log(i18n.t("controllers.case.CaseObservablesItemCtrl.observable_has_been_updated", "Observable has been updated"), 'success');
                         return CaseArtifactSrv.api()
                             .get({
                                 artifactId: $scope.artifact.id
@@ -254,10 +254,10 @@
                         return $scope._runAnalyzer(serverId, analyzerName, $scope.artifact._id);
                     })
                     .then(function () {
-                        NotificationSrv.log('Analyzer ' + analyzerName + ' has been successfully started for observable: ' + artifactName, 'success');
+                        NotificationSrv.log(i18n.t("controllers.case.CaseObservablesItemCtrl.analyzer", "Analyzer")+' ' + analyzerName + ' '+i18n.t("controllers.case.CaseObservablesItemCtrl.has_been_successfully_started_for_observable:", "has been successfully started for observable:")+' ' + artifactName, 'success');
                     }, function (response) {
                         if (response && response.status) {
-                            NotificationSrv.log('Unable to run analyzer ' + analyzerName + ' for observable: ' + artifactName, 'error');
+                            NotificationSrv.log(i18n.t("controllers.case.CaseObservablesItemCtrl.unable_to_run_analyzer", "Unable to run analyzer")+' ' + analyzerName + ' '+i18n.t("controllers.case.CaseObservablesItemCtrl.for_observable:", "for observable:")+' ' + artifactName, 'error');
                         }
                     });
             };
@@ -276,7 +276,7 @@
                         }));
                     })
                     .then(function () {
-                        NotificationSrv.log('Analyzers has been successfully started for observable: ' + artifactName, 'success');
+                        NotificationSrv.log(i18n.t("controllers.case.CaseObservablesItemCtrl.analyzers_has_been_successfully_started_for_observable:", "Analyzers has been successfully started for observable:")+' ' + artifactName, 'success');
                     });
             };
 
@@ -300,11 +300,11 @@
                   })
                   .then(function(response){
                       var data = '['+$filter('fang')(observable.data || observable.attachment.name)+']';
-                      NotificationSrv.log(['Responder', response.data.responderName, 'started successfully on observable', data].join(' '), 'success');
+                      NotificationSrv.log([i18n.t("controllers.case.CaseObservablesItemCtrl.responder", "Responder"), response.data.responderName, i18n.t("controllers.case.CaseObservablesItemCtrl.started_successfully_on_observable", "started successfully on observable"), data].join(' '), 'success');
                   })
                   .catch(function(err) {
                       if(err && !_.isString(err)) {
-                          NotificationSrv.error('Observable Details', err.data, err.status);
+                          NotificationSrv.error(i18n.t("controllers.case.CaseObservablesItemCtrl.observable_details", "Observable Details"), err.data, err.status);
                       }
                   });
             };
@@ -322,9 +322,9 @@
 
             $scope.removeShare = function(share) {
                 var modalInstance = ModalSrv.confirm(
-                    'Remove observable share',
-                    'Are you sure you want to remove this sharing rule?', {
-                        okText: 'Yes, remove it',
+                    i18n.t("controllers.case.CaseObservablesItemCtrl.remove_observable_share", "Remove observable share"),
+                    i18n.t("controllers.case.CaseObservablesItemCtrl.are_you_sure_you_want_to_remove_this_sharing_rule?", "Are you sure you want to remove this sharing rule?"), {
+                        okText: i18n.t("controllers.case.CaseObservablesItemCtrl.yes,_remove_it", "Yes, remove it"),
                         flavor: 'danger'
                     }
                 );
@@ -335,11 +335,11 @@
                     })
                     .then(function(/*response*/) {
                         $scope.loadShares();
-                        NotificationSrv.log('Observable sharings updated successfully', 'success');
+                        NotificationSrv.log(i18n.t("controllers.case.CaseObservablesItemCtrl.observable_sharings_updated_successfully", "Observable sharings updated successfully"), 'success');
                     })
                     .catch(function(err) {
                         if(err && !_.isString(err)) {
-                            NotificationSrv.error('Error', 'Observable sharings update failed', err.status);
+                            NotificationSrv.error('Error', i18n.t("controllers.case.CaseObservablesItemCtrl.observable_sharings_update_failed", "Observable sharings update failed"), err.status);
                         }
                     });
             };
@@ -375,11 +375,11 @@
                     })
                     .then(function(/*response*/) {
                         $scope.loadShares();
-                        NotificationSrv.log('Observable sharings updated successfully', 'success');
+                        NotificationSrv.log(i18n.t("controllers.case.CaseObservablesItemCtrl.observable_sharings_updated_successfully", "Observable sharings updated successfully"), 'success');
                     })
                     .catch(function(err) {
                         if(err && !_.isString(err)) {
-                            NotificationSrv.error('Error', 'Observable sharings update failed', err.status);
+                            NotificationSrv.error('Error', i18n.t("controllers.case.CaseObservablesItemCtrl.observable_sharings_update_failed", "Observable sharings update failed"), err.status);
                         }
                     });
             };

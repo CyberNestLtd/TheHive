@@ -118,7 +118,7 @@
 					<i class="fa fa-asterisk text-danger"></i>
 				</label>
 				<div class="col-sm-9">
-					<textarea class="content-box" name="summary" placeholder="Close summary" markdown-editor="{'fullscreen': {enable: false}, 'iconlibrary': 'fa', addExtraButtons: true, resize: 'vertical'}" rows="6" ng-model="formData.summary" required></textarea>
+					<textarea class="content-box" name="summary" placeholder="{{ 'views.placeholders.partials.case.case.close.close_summary' | translateDefault: 'Close summary' }}" markdown-editor="{'fullscreen': {enable: false}, 'iconlibrary': 'fa', addExtraButtons: true, resize: 'vertical'}" rows="6" ng-model="formData.summary" required></textarea>
 					<p class="help-block" ng-show="caseCloseForm.summary.$invalid && !caseCloseForm.summary.$pristine">{{ "views.partials.case.case.close.the_case_summary_is_required." | translateDefault:  "The case summary is required." }}</p>
 				</div>
 			</div>

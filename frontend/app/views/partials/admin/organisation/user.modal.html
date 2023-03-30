@@ -22,7 +22,7 @@
             </label>
             <div class="col-sm-9">
                 <input class="form-control" name="login"
-                    placeholder="User's email address"
+                    placeholder="{{ 'views.placeholders.partials.admin.organisation.user.modal.users_email_address' | translateDefault: 'User\'s email address' }}"
                     ng-disabled="$modal.isEdit"
                     ng-model="$modal.formData.login"
                     required type="email">
@@ -38,7 +38,7 @@
             </label>
             <div class="col-sm-9">
                 <input class="form-control" name="name"
-                    placeholder="User's name"
+                    placeholder="{{ 'views.placeholders.partials.admin.organisation.user.modal.users_name' | translateDefault: 'User\'s name' }}"
                     ng-model="$modal.formData.name"
                     required type="text">
                 <p class="help-block" ng-show="userForm.name.$invalid && !userForm.name.$pristine">{{ "views.partials.admin.organisation.user.modal.this_field_is_required." | translateDefault:  "This field is required." }}</p>

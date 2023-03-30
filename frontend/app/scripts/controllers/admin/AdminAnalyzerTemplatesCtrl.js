@@ -8,7 +8,7 @@
         .controller('AdminAnalyzerTemplateDeleteCtrl', AdminAnalyzerTemplateDeleteCtrl);
 
 
-    function AdminAnalyzerTemplatesCtrl($q, $uibModal, AnalyzerSrv, AnalyzerTemplateSrv, NotificationSrv, appConfig) {
+    function AdminAnalyzerTemplatesCtrl($q, $uibModal, AnalyzerSrv, AnalyzerTemplateSrv, NotificationSrv, appConfig, i18n) {
         var self = this;
 
         this.appConfig = appConfig;
@@ -36,7 +36,7 @@
 
                 return $q.resolve(self.analyzers);
             }, function(rejection) {
-                NotificationSrv.error('Analyzer Templates', rejection.data, rejection.status);
+                NotificationSrv.error(i18n.t("controllers.admin.AdminAnalyzerTemplatesCtrl.has_been_successfully_removed.") || "Analyzer Templates", rejection.data, rejection.status);
             }).then(function (analyzersMap) {
                 if(_.isEmpty(analyzersMap)) {
                     _.each(_.pluck(self.templates, 'analyzerId'), function(item) {
@@ -77,7 +77,7 @@
                 })
                 .catch(function(err){
                     if(err && !_.isString(err)) {
-                        NotificationSrv.error('Analyzer Templates', err.data, err.status);
+                        NotificationSrv.error(i18n.t("controllers.admin.AdminAnalyzerTemplatesCtrl.has_been_successfully_removed.") || "Analyzer Templates", err.data, err.status);
                     }
                 });
         };
@@ -101,7 +101,7 @@
                 })
                 .catch(function(err){
                     if(err && !_.isString(err)) {
-                        NotificationSrv.error('Analyzer Templates', err.data, err.status);
+                        NotificationSrv.error(i18n.t("controllers.admin.AdminAnalyzerTemplatesCtrl.has_been_successfully_removed.") || "Analyzer Templates", err.data, err.status);
                     }
                 });
         };
@@ -121,7 +121,7 @@
                 })
                 .catch(function(err){
                     if(err && !_.isString(err)) {
-                        NotificationSrv.error('Analyzer Templates', err.data, err.status);
+                        NotificationSrv.error(i18n.t("controllers.admin.AdminAnalyzerTemplatesCtrl.has_been_successfully_removed.") || "Analyzer Templates", err.data, err.status);
                     }
                 });
         };

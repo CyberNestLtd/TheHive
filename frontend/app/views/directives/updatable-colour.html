@@ -10,7 +10,7 @@
 
 	<form ng-submit="update()" ng-show="updatable.updating">
 		<div class="input-group input-group-sm">
-            <input type="text" class="form-control" ng-model="value" placeholder="Colour" size="8">
+            <input type="text" class="form-control" ng-model="value" placeholder="{{ 'views.placeholders.directives.updatable-colour.colour' | translateDefault: 'Colour' }}" size="8">
 
 			<span class="input-group-btn">
                 <button colorpicker colorpicker-close-on-select class="btn btn-default" ng-model="value" type="button">

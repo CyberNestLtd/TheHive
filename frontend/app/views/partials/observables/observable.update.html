@@ -82,7 +82,7 @@
 
                 <div class="input-group">
                     <tags-input name="addTagsInput" ng-model="$dialog.params.addTags"
-                        class="ti-input-sm ti-tag-selector" placeholder="Add tags" replace-spaces-with-dashes="false"
+                        class="ti-input-sm ti-tag-selector" placeholder="{{ 'views.placeholders.partials.observables.observable.update.add_tags' | translateDefault: 'Add tags' }}" replace-spaces-with-dashes="false"
                         min-length="2" on-tag-added="$dialog.toggleAddTags()"
                         template="views/directives/tag-input-item.html">
                         <auto-complete min-length="3" debounce-delay="400" source="$dialog.getTags($query)">
@@ -110,7 +110,7 @@
                     ng-required="$dialog.state.enableRemoveTags" />
                 <div class="input-group">
                     <tags-input name="removeTagsInput" ng-model="$dialog.params.removeTags"
-                        class="ti-input-sm ti-tag-selector" placeholder="Remove tags" replace-spaces-with-dashes="false"
+                        class="ti-input-sm ti-tag-selector" placeholder="{{ 'views.placeholders.partials.observables.observable.update.remove_tags' | translateDefault: 'Remove tags' }}" replace-spaces-with-dashes="false"
                         min-length="2" on-tag-added="$dialog.toggleRemoveTags()"
                         template="views/directives/tag-input-item.html">
                         <auto-complete min-length="3" debounce-delay="400" source="$dialog.getTags($query)">

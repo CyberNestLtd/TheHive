@@ -10,7 +10,7 @@
             </label>
             <div class="col-sm-9">
                 <input class="form-control" name="name"
-                    placeholder="Field's display name, Ex: CVSS, Threat actor, Business risk"
+                    placeholder="{{ 'views.placeholders.partials.admin.custom-field-dialog.fields_display_name,_ex:_cvss,_threat_actor,_business_risk' | translateDefault: 'Field\'s display name, Ex: CVSS, Threat actor, Business risk' }}"
                     ng-model="$vm.customField.name"
                     ng-keyup="$vm.onNamechanged(fieldsForm)"
                     required type="text">
@@ -25,7 +25,7 @@
             </label>
             <div class="col-sm-9">
                 <input class="form-control" name="reference" type="text"
-                    placeholder="Internal name, Ex: cvss, threatActor, businessRisk"
+                    placeholder="{{ 'views.placeholders.partials.admin.custom-field-dialog.internal_name,_ex:_cvss,_threatactor,_businessrisk' | translateDefault: 'Internal name, Ex: cvss, threatActor, businessRisk' }}"
                     ng-model="$vm.customField.reference"
                     ng-keyup="$vm.clearUniqueNameError(fieldsForm)"
                     ng-pattern="$vm.config.referencePattern"
@@ -43,7 +43,7 @@
                 <i class="fa fa-asterisk text-danger"></i>
             </label>
             <div class="col-sm-9">
-                <input class="form-control" name="description" ng-model="$vm.customField.description" placeholder="A brief description of the custom field" required type="text">
+                <input class="form-control" name="description" ng-model="$vm.customField.description" placeholder="{{ 'views.placeholders.partials.admin.custom-field-dialog.a_brief_description_of_the_custom_field' | translateDefault: 'A brief description of the custom field' }}" required type="text">
                 <p class="help-block" ng-show="fieldsForm.description.$invalid && !fieldsForm.description.$pristine">{{ "views.partials.admin.custom-field-dialog.this_field_is_required." | translateDefault:  "This field is required." }}</p>
             </div>
         </div>
@@ -55,7 +55,7 @@
             <div class="col-sm-9">
                 <select class="form-control" name="type" ng-model="$vm.customField.type"
                     ng-options="fieldType for fieldType in $vm.config.types"
-                    placeholder="Field's type" required></select>
+                    placeholder="{{ 'views.placeholders.partials.admin.custom-field-dialog.fields_type' | translateDefault: 'Field\'s type' }}" required></select>
                 <p class="help-block" ng-show="fieldsForm.type.$invalid && !fieldsForm.type.$pristine">{{ "views.partials.admin.custom-field-dialog.this_field_is_required." | translateDefault:  "This field is required." }}</p>
             </div>
         </div>
@@ -65,7 +65,7 @@
                 {{ "views.partials.admin.custom-field-dialog.possible_values" | translateDefault:  "Possible values" }}
             </label>
             <div class="col-sm-9">
-                <textarea class="form-control" name="options" ng-model="$vm.customField.options" rows="5" placeholder="Possible values, one per line" type="text"></textarea>
+                <textarea class="form-control" name="options" ng-model="$vm.customField.options" rows="5" placeholder="{{ 'views.placeholders.partials.admin.custom-field-dialog.possible_values,_one_per_line' | translateDefault: 'Possible values, one per line' }}" type="text"></textarea>
             </div>
         </div>
 

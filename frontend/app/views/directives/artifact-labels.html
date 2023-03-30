@@ -1,5 +1,5 @@
 <div ng-if="active == true">
-	<tags-input ng-model="value.labels" class="ti-input-sm" placeholder="Add a label"
+	<tags-input ng-model="value.labels" class="ti-input-sm" placeholder="{{ 'views.placeholders.directives.artifact-labels.add_a_label' | translateDefault: 'Add a label' }}"
 				replace-spaces-with-dashes="false" min-length="2" ></tags-input>
 </div>
 

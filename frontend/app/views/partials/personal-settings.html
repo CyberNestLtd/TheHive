@@ -22,7 +22,7 @@
                             <i class="fa fa-asterisk text-danger"></i>
                         </label>
                         <div class="col-md-9">
-                            <input type="text" name="name" class="form-control input-sm" placeholder="Full name" ng-model="basicData.name" required/>
+                            <input type="text" name="name" class="form-control input-sm" placeholder="{{ 'views.placeholders.partials.personal-settings.full_name' | translateDefault: 'Full name' }}" ng-model="basicData.name" required/>
                             <div ng-messages="basicForm.name.$error" ng-show="!basicForm.name.$pristine && basicForm.name.$error">
                                 <div ng-messages-include="settings-error.html"></div>
                             </div>
@@ -93,7 +93,7 @@
                             <i class="fa fa-asterisk text-danger"></i>
                         </label>
                         <div class="col-md-9">
-                            <input type="password" name="currentPassword" class="form-control input-sm" placeholder="Current password" autocomplete="off" ng-model="passData.currentPassword" ng-required="passData.changePassword"/>
+                            <input type="password" name="currentPassword" class="form-control input-sm" placeholder="{{ 'views.placeholders.partials.personal-settings.current_password' | translateDefault: 'Current password' }}" autocomplete="off" ng-model="passData.currentPassword" ng-required="passData.changePassword"/>
                             <div ng-messages="passForm.currentPassword.$error" ng-show="!passForm.currentPassword.$pristine && passForm.currentPassword.$error">
                                 <div ng-messages-include="settings-error.html"></div>
                             </div>
@@ -105,7 +105,7 @@
                             <i class="fa fa-asterisk text-danger"></i>
                         </label>
                         <div class="col-md-9">
-                            <input type="password" name="password" class="form-control input-sm" placeholder="New password" autocomplete="off" ng-model="passData.password" ng-required="passData.changePassword"/>
+                            <input type="password" name="password" class="form-control input-sm" placeholder="{{ 'views.placeholders.partials.personal-settings.new_password' | translateDefault: 'New password' }}" autocomplete="off" ng-model="passData.password" ng-required="passData.changePassword"/>
                             <div ng-messages="passForm.password.$error" ng-show="!passForm.password.$pristine && passForm.password.$error">
                                 <div ng-messages-include="settings-error.html"></div>
                             </div>
@@ -117,7 +117,7 @@
                             <i class="fa fa-asterisk text-danger"></i>
                         </label>
                         <div class="col-md-9">
-                            <input type="password" name="confirmPassword" class="form-control input-sm" placeholder="Confirm Password" compare-to="passData.password" autocomplete="off" ng-model="passData.passwordConfirm" ng-required="passData.changePassword"/>
+                            <input type="password" name="confirmPassword" class="form-control input-sm" placeholder="{{ 'views.placeholders.partials.personal-settings.confirm_password' | translateDefault: 'Confirm Password' }}" compare-to="passData.password" autocomplete="off" ng-model="passData.passwordConfirm" ng-required="passData.changePassword"/>
                             <div ng-messages="passForm.confirmPassword.$error" ng-show="!passForm.confirmPassword.$pristine && passForm.confirmPassword.$error">
                                 <div ng-messages-include="settings-error.html"></div>
                             </div>
@@ -226,7 +226,7 @@
                                     <i class="fa fa-asterisk text-danger"></i>
                                 </label>
                                 <input type="number" name="mfaCode" class="form-control input-lg text-center"
-                                    placeholder="MFA Code" autocomplete="off"
+                                    placeholder="{{ 'views.placeholders.partials.personal-settings.mfa_code' | translateDefault: 'MFA Code' }}" autocomplete="off"
                                     ng-model="mfaData.code"
                                     ng-required="!currentUser.hasMFA"/>
                                 <div ng-messages="mfaForm.mfaCode.$error" ng-show="!mfaForm.mfaCode.$pristine && mfaForm.mfaCode.$error">

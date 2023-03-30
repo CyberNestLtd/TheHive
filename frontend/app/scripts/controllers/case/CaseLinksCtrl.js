@@ -1,7 +1,7 @@
 (function() {
     'use strict';
     angular.module('theHiveControllers').controller('CaseLinksCtrl',
-        function($scope, $state, $stateParams, $uibModal, $timeout, CaseTabsSrv, CaseResolutionStatus) {
+        function($scope, $state, $stateParams, $uibModal, $timeout, CaseTabsSrv, CaseResolutionStatus, i18n) {
             $scope.caseId = $stateParams.caseId;
             $scope.linkStats = [];
             $scope.currentFilter = '';
@@ -15,7 +15,7 @@
             // Add tab
             CaseTabsSrv.addTab(tabName, {
                 name: tabName,
-                label: 'Related Cases',
+                label: i18n.t("controllers.case.CaseLinksCtrl.related_cases", "Related Cases"),
                 closable: true,
                 state: 'app.case.links',
                 params: {}

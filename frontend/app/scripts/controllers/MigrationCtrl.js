@@ -1,8 +1,8 @@
 (function() {
     'use strict';
     angular.module('theHiveControllers').controller('MigrationCtrl',
-        function($rootScope, $scope, $http, $state, $timeout, $window, NotificationSrv, StreamSrv, UserSrv) {
-            $rootScope.title = 'Database migration';
+        function($rootScope, $scope, $http, $state, $timeout, $window, NotificationSrv, StreamSrv, UserSrv, i18n) {
+            $rootScope.title = i18n.t("controllers.MigrationCtrl.database_migration") || "Database migration";
             $scope.migrationStatus = {};
             $scope.showUserForm = false;
             $scope.migrating = false;

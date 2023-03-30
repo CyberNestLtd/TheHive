@@ -75,6 +75,7 @@
                 </ul>
                 </li>
 
+
                 <!-- Super Admin menu -->
                 <li ng-if="!isSuperAdmin()">
                     <form ng-submit="search(querystring)" style="margin-top : 10px">
@@ -82,7 +83,7 @@
                             <span class="input-group-addon">
                                 <i class="glyphicon glyphicon-search"></i>
                             </span>
-                            <input class="input-sm form-control" ng-model="querystring" placeholder="CaseId" style="width: 80px" tooltype="Enter a case number" type="number"></input>
+                            <input class="input-sm form-control" ng-model="querystring" placeholder="{{ 'views.placeholders.components.header.component.caseid' | translateDefault: 'CaseId' }}" style="width: 80px" tooltype="Enter a case number" type="number"></input>
                         </div>
                     </form>
                 </li>

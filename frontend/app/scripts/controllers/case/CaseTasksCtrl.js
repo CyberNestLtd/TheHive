@@ -3,7 +3,7 @@
     angular.module('theHiveControllers')
         .controller('CaseTasksCtrl', CaseTasksCtrl);
 
-    function CaseTasksCtrl($scope, $state, $stateParams, $q, AuthenticationSrv, ModalUtilsSrv, FilteringSrv, CaseTabsSrv, PaginatedQuerySrv, CaseTaskSrv, NotificationSrv, CortexSrv, AppLayoutSrv) {
+    function CaseTasksCtrl($scope, $state, $stateParams, $q, AuthenticationSrv, ModalUtilsSrv, FilteringSrv, CaseTabsSrv, PaginatedQuerySrv, CaseTaskSrv, NotificationSrv, CortexSrv, AppLayoutSrv, i18n) {
 
         CaseTabsSrv.activateTab($state.current.data.tab);
 
@@ -260,7 +260,7 @@
                 $scope.isNewTask = false;
                 $scope.newTask.title = '';
                 $scope.newTask.group = '';
-                NotificationSrv.success('Task has been successfully added');
+                NotificationSrv.success(i18n.t("controllers.case.CaseTasksCtrl.task_has_been_successfully_added", "Task has been successfully added"));
             }, function (response) {
                 NotificationSrv.error('taskList', response.data, response.status);
             });
@@ -268,8 +268,8 @@
 
         $scope.removeTask = function (task) {
 
-            ModalUtilsSrv.confirm('Delete task', 'Are you sure you want to delete the selected task?', {
-                okText: 'Yes, remove it',
+            ModalUtilsSrv.confirm(i18n.t("controllers.case.CaseTasksCtrl.delete_task", "Delete task"), i18n.t("controllers.case.CaseTasksCtrl.are_you_sure_you_want_to_delete_the_selected_task?", "Are you sure you want to delete the selected task?"), {
+                okText: i18n.t("controllers.case.CaseTasksCtrl.yes,_remove_it", "Yes, remove it"),
                 flavor: 'danger'
             }).then(function () {
                 CaseTaskSrv.update({
@@ -278,7 +278,7 @@
                     status: 'Cancel'
                 }, function () {
                     $scope.$emit('tasks:task-removed', task);
-                    NotificationSrv.success('Task has been successfully removed');
+                    NotificationSrv.success(i18n.t("controllers.case.CaseTasksCtrl.task_has_been_successfully_removed", "Task has been successfully removed"));
                 }, function (response) {
                     NotificationSrv.error('taskList', response.data, response.status);
                 });
@@ -288,10 +288,10 @@
         $scope.bulkUpdate = function (ids, patch) {
             return CaseTaskSrv.bulkUpdate(ids, patch)
                 .then(function (/*responses*/) {
-                    NotificationSrv.log('Selected tasks have been updated successfully', 'success');
+                    NotificationSrv.log(i18n.t("controllers.case.CaseTasksCtrl.selected_tasks_have_been_updated_successfully", "Selected tasks have been updated successfully"), 'success');
                 })
                 .catch(function (err) {
-                    NotificationSrv.error('Bulk update tasks', err.data, err.status);
+                    NotificationSrv.error(i18n.t("controllers.case.CaseTasksCtrl.bulk_update_tasks", "Bulk update tasks"), err.data, err.status);
                 });
         }
 
@@ -310,24 +310,24 @@
         $scope.bulkRemove = function () {
             var ids = _.pluck($scope.selection, '_id');
 
-            ModalUtilsSrv.confirm('Delete selected tasks', 'Are you sure you want to delete the selected tasks?', {
-                okText: 'Yes, proceed',
+            ModalUtilsSrv.confirm(i18n.t("controllers.case.CaseTasksCtrl.delete_selected_tasks", "Delete selected tasks"), i18n.t("controllers.case.CaseTasksCtrl.are_you_sure_you_want_to_delete_the_selected_tasks?", "Are you sure you want to delete the selected tasks?"), {
+                okText: i18n.t("controllers.case.CaseTasksCtrl.yes,_proceed", "Yes, proceed"),
                 flavor: 'danger'
             }).then(function () {
                 return CaseTaskSrv.bulkUpdate(ids, { status: 'Cancel' })
                     .then(function (/*responses*/) {
-                        NotificationSrv.log('Selected tasks have been successfully removed', 'success');
+                        NotificationSrv.log(i18n.t("controllers.case.CaseTasksCtrl.selected_tasks_have_been_successfully_removed", "Selected tasks have been successfully removed"), 'success');
 
                         _.each($scope.selection, function (task) {
                             $scope.$emit('tasks:task-removed', task);
                         });
                     })
                     .catch(function (err) {
-                        NotificationSrv.error('Bulk remove tasks', err.data, err.status);
+                        NotificationSrv.error(i18n.t("controllers.case.CaseTasksCtrl.bulk_remove_tasks", "Bulk remove tasks"), err.data, err.status);
                     });
             }).catch(function (err) {
                 if (err && !_.isString(err)) {
-                    NotificationSrv.error('Bulk remove tasks', err.data, err.status);
+                    NotificationSrv.error(i18n.t("controllers.case.CaseTasksCtrl.bulk_remove_tasks", "Bulk remove tasks"), err.data, err.status);
                 }
             })
         }
@@ -359,7 +359,7 @@
             if (task.status === 'InProgress') {
                 $scope.updateTaskStatus(task._id, 'Completed')
                     .then(function () {
-                        NotificationSrv.success('Task has been successfully closed');
+                        NotificationSrv.success(i18n.t("controllers.case.CaseTasksCtrl.task_has_been_successfully_closed", "Task has been successfully closed"));
                     });
             }
         };
@@ -400,7 +400,7 @@
                     }
                 })
                 .then(function (response) {
-                    NotificationSrv.success(['Responder', response.data.responderName, 'started successfully on task', task.title].join(' '));
+                    NotificationSrv.success([i18n.t("controllers.case.CaseTasksCtrl.responder", "Responder"), response.data.responderName, i18n.t("controllers.case.CaseTasksCtrl.started_successfully_on_task", "started successfully on task"), task.title].join(' '));
                 })
                 .catch(function (err) {
                     if (err && !_.isString(err)) {

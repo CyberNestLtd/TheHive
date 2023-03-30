@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('theHiveControllers').controller('ProfileListCtrl',
-        function($uibModal, ProfileSrv, NotificationSrv, ModalSrv) {
+        function($uibModal, ProfileSrv, NotificationSrv, ModalSrv, i18n) {
             var self = this;
 
             self.load = function() {
@@ -11,7 +11,7 @@
                         self.list = response.data;
                     })
                     .catch(function(rejection) {
-                        NotificationSrv.error('Profile management', rejection.data, rejection.status);
+                        NotificationSrv.error(i18n.t("controllers.admin.profile.ProfileListCtrl.profile_management", "Profile management"), rejection.data, rejection.status);
                     });
             };
 
@@ -39,7 +39,7 @@
                     })
                     .catch(function(err){
                         if (err && !_.isString(err)) {
-                            NotificationSrv.error('Unable to save the organisation.');
+                            NotificationSrv.error(i18n.t("controllers.admin.profile.ProfileListCtrl.unable_to_save_the_organisation", "Unable to save the organisation."));
                         }
                     });
             };
@@ -48,10 +48,10 @@
                 ProfileSrv.update(id, _.pick(profile, 'permissions'))
                     .then(function(/*response*/) {
                         self.load();
-                        NotificationSrv.log('Profile updated successfully', 'success');
+                        NotificationSrv.log(i18n.t("controllers.admin.profile.ProfileListCtrl.profile_updated_successfully", "Profile updated successfully"), 'success');
                     })
                     .catch(function(err) {
-                        NotificationSrv.error('Error', 'Profile update failed', err.status);
+                        NotificationSrv.error('Error', i18n.t("controllers.admin.profile.ProfileListCtrl.profile_update_failed", "Profile update failed"), err.status);
                     });
             };
 
@@ -59,19 +59,19 @@
                 ProfileSrv.create(profile)
                     .then(function(/*response*/) {
                         self.load();
-                        NotificationSrv.log('Profile created successfully', 'success');
+                        NotificationSrv.log(i18n.t("controllers.admin.profile.ProfileListCtrl.profile_created_successfully", "Profile created successfully"), 'success');
                     })
                     .catch(function(err) {
-                        NotificationSrv.error('Error', 'Profile creation failed', err.status);
+                        NotificationSrv.error('Error', i18n.t("controllers.admin.profile.ProfileListCtrl.profile_creation_failed", "Profile creation failed"), err.status);
                     });
             };
 
             self.removeProfile = function(profile) {
                 var modalInstance = ModalSrv.confirm(
-                    'Remove profile',
-                    'Are you sure you want to remove the selected profile?', {
+                    i18n.t("controllers.admin.profile.ProfileListCtrl.remove_profile", "Remove profile"),
+                    i18n.t("controllers.admin.profile.ProfileListCtrl.are_you_sure_you_want_to_remove_the_selected_profile", "Are you sure you want to remove the selected profile?"), {
                         flavor: 'danger',
-                        okText: 'Yes, remove it'
+                        okText: i18n.t("controllers.admin.profile.ProfileListCtrl.yes_remove_it", "Yes, remove it")
                     }
                 );
 
@@ -82,7 +82,7 @@
                     .then(function( /*response*/ ) {
                         self.load();
                         NotificationSrv.success(
-                            'Profile ' + profile.name + ' has been successfully removed.'
+                            i18n.t("controllers.admin.profile.ProfileListCtrl.profile", "Profile") +' '+ profile.name +' '+ i18n.t("controllers.admin.profile.ProfileListCtrl.has_been_successfully_removed.", "has been successfully removed.")
                         );
                     })
                     .catch(function(err) {

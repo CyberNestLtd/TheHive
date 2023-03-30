@@ -30,14 +30,14 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <input name="group" class="form-control" ng-model="newTask.group" type="text"
-                            placeholder="Task group" uib-typeahead="g for g in groups | filter:$viewValue"
+                            placeholder="{{ 'views.placeholders.partials.case.case.tasks.task_group' | translateDefault: 'Task group' }}" uib-typeahead="g for g in groups | filter:$viewValue"
                             typeahead-min-length="0">
                     </div>
                 </div>
                 <div class="col-sm-9">
                     <div class="input-group input-group">
                         <input name="title" class="form-control" ng-model="newTask.title" type="text"
-                            placeholder="Task title" required>
+                            placeholder="{{ 'views.placeholders.partials.case.case.tasks.task_title' | translateDefault: 'Task title' }}" required>
                         <span class="input-group-btn">
                             <button class="btn btn-default" ng-disabled="form.$invalid" type="submit">
                                 <i class="text-success glyphicon glyphicon-ok"></i>

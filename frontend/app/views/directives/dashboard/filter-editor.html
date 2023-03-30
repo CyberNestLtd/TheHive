@@ -38,7 +38,7 @@
             <div class="input-group">
                 <tags-input class="form-control-wrapper ti-tag-selector"
                     ng-model="filter.value.list"
-                    placeholder="ex: Enter a tag"
+                    placeholder="{{ 'views.placeholders.directives.dashboard.filter-editor.ex:_enter_a_tag' | translateDefault: 'ex: Enter a tag' }}"
                     replace-spaces-with-dashes="false"
                     template="views/directives/tag-input-item.html">
                         <auto-complete source="promiseFor(filter, $query)" min-length="3" debounce-delay="400"></auto-complete>
@@ -67,7 +67,7 @@
         </div>
         <div class="col-xs-10 pl-xxxs" ng-show="filter.value.operator !== 'empty'">
             <tags-input class="form-control-wrapper" min-length="2" ng-model="filter.value.list"
-                placeholder="ex: Firstname Lastname"
+                placeholder="{{ 'views.placeholders.directives.dashboard.filter-editor.ex:_firstname_lastname' | translateDefault: 'ex: Firstname Lastname' }}"
                 replace-spaces-with-dashes="false"
                 add-from-autocomplete-only="true"
                 display-property="label">
@@ -91,7 +91,7 @@
         <div class="col-xs-10 pl-xxxs" ng-show="filter.value.operator !== 'empty'">
             <tags-input class="form-control-wrapper" min-length="2"
                 ng-model="filter.value.list"
-                placeholder="Enter a {{filter.field}}"
+                placeholder="{{ 'views.placeholders.directives.dashboard.filter-editor.enter_a' | translateDefault: 'Enter a' }} {{filter.field}}"
                 replace-spaces-with-dashes="false"></tags-input>
         </div>
     </div>
@@ -112,7 +112,7 @@
             <tags-input class="form-control-wrapper" min-length="2" ng-model="filter.value.list"
                 replace-spaces-with-dashes="false"
                 add-from-autocomplete-only="true"
-                placeholder="Enter a {{filter.field}}"
+                placeholder="{{ 'views.placeholders.directives.dashboard.filter-editor.enter_a' | translateDefault: 'Enter a' }} {{filter.field}}"
                 display-property="label">
                 <auto-complete load-on-focus="true" load-on-down-arrow="true" min-length="1"
                     source="promiseFor(filter, $query)"
@@ -150,10 +150,10 @@
             </ul>
         </div>
         <div class="col-xs-5 pl-xxxs" ng-show="!filter.value.operator || filter.value.operator === 'custom'">
-            <dt-picker date="filter.value.from" placeholder="from"></dt-picker>
+            <dt-picker date="filter.value.from" placeholder="{{ 'views.placeholders.directives.dashboard.filter-editor.from' | translateDefault: 'from' }}"></dt-picker>
         </div>
         <div class="col-xs-5 pl-0" ng-show="!filter.value.operator || filter.value.operator === 'custom'">
-            <dt-picker date="filter.value.to" placeholder="to"></dt-picker>
+            <dt-picker date="filter.value.to" placeholder="{{ 'views.placeholders.directives.dashboard.filter-editor.to' | translateDefault: 'to' }}"></dt-picker>
         </div>
     </div>
 </div>

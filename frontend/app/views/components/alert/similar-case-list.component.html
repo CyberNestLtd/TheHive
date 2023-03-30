@@ -73,7 +73,7 @@
                 <div class="case-details text-bold">
                     <div class="form-group has-feedback has-clear">
                         <input type="text" class="form-control input-sm" ng-model="$cmp.similarityFilters.fTitle"
-                            placeholder="Filter by title">
+                            placeholder="{{ 'views.placeholders.components.alert.similar-case-list.component.filter_by_title' | translateDefault: 'Filter by title' }}">
                         <a class="fa fa-times-circle form-control-feedback form-control-clear text-muted"
                             ng-click="$cmp.similarityFilters.fTitle = undefined"
                             style="pointer-events: auto;cursor: pointer;"></a>
@@ -83,7 +83,7 @@
                 <div class="case-similarity text-bold">
                     <div class="form-group has-feedback has-clear">
                         <input type="number" class="form-control input-sm" ng-model="$cmp.rateFilters.fObservables"
-                            placeholder="% min.">
+                            placeholder="{{ 'views.placeholders.components.alert.similar-case-list.component.%_min.' | translateDefault: '% min.' }}">
                         <a class="fa fa-times-circle form-control-feedback form-control-clear text-muted"
                             ng-click="$cmp.rateFilters.fObservables = undefined"
                             style="pointer-events: auto;cursor: pointer;"></a>
@@ -92,7 +92,7 @@
                 <div class="case-similarity text-bold">
                     <div class="form-group has-feedback has-clear">
                         <input type="number" class="form-control input-sm" ng-model="$cmp.rateFilters.fIocs"
-                            placeholder="% min." step="1" min="0">
+                            placeholder="{{ 'views.placeholders.components.alert.similar-case-list.component.%_min.' | translateDefault: '% min.' }}" step="1" min="0">
                         <a class="fa fa-times-circle form-control-feedback form-control-clear text-muted"
                             ng-click="$cmp.rateFilters.fIocs = undefined"
                             style="pointer-events: auto;cursor: pointer;"></a>

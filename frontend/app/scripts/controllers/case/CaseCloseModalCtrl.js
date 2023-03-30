@@ -1,7 +1,7 @@
 (function() {
     'use strict';
     angular.module('theHiveControllers').controller('CaseCloseModalCtrl',
-        function($scope, $uibModalInstance, SearchSrv, CustomFieldsSrv, NotificationSrv, caze) {
+        function($scope, $uibModalInstance, SearchSrv, CustomFieldsSrv, NotificationSrv, caze, i18n) {
             $scope.caze = caze;
             $scope.tasksValid = false;
             $scope.tasks = [];
@@ -92,7 +92,7 @@
                 promise.then(function(caze) {
                     $scope.caze = caze;
 
-                    NotificationSrv.log('The case #' + caze.number + ' has been closed', 'success');
+                    NotificationSrv.log(i18n.t("controllers.case.CaseCloseModalCtrl.the_case_#", "The case #") + caze.number + ' '+i18n.t("controllers.case.CaseCloseModalCtrl.has_been_closed", "has been closed"), 'success');
 
                     $uibModalInstance.close();
                 });

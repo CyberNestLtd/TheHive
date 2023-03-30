@@ -50,7 +50,7 @@
             </div>
 
             <div ng-show="$modal.procedure.tactic">
-                <input type="text" class="form-control mv-xxxs" placeholder="Filter techniques"
+                <input type="text" class="form-control mv-xxxs" placeholder="{{ 'views.placeholders.partials.case.procedures.add-procedure.modal.filter_techniques' | translateDefault: 'Filter techniques' }}"
                     ng-model="$modal.state.search">
                 <input type="hidden" ng-model="$modal.procedure.patternId" required>
                 <div class="procedure-techniques-list p-xxs">

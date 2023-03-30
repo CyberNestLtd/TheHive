@@ -1,13 +1,13 @@
 <div class="form-group">
     <label>{{ 'views.directives.dashboard.text.basic.title' | translate}}</label>
-    <input type="text" class="form-control" placeholder="Ex: Summary" ng-model="component.options.title">
+    <input type="text" class="form-control" placeholder="{{ 'views.placeholders.directives.dashboard.text.basic.ex:_summary' | translateDefault: 'Ex: Summary' }}" ng-model="component.options.title">
 </div>
 <div class="row">
     <div class="col-sm-12">
         <div class="form-group">
             <label>{{ 'views.directives.dashboard.text.basic.template' | translate}}</label>
             <textarea class="content-box" name="template"
-              placeholder="Close summary" markdown-editor="{
+              placeholder="{{ 'views.placeholders.directives.dashboard.text.basic.close_summary' | translateDefault: 'Close summary' }}" markdown-editor="{
                 'fullscreen': {enable: false},
                 'iconlibrary': 'fa',
                 addExtraButtons: true,

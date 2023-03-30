@@ -1,7 +1,7 @@
 (function() {
     'use strict';
     angular.module('theHiveControllers').controller('SettingsCtrl',
-        function($scope, $state, UserSrv, ModalSrv, AuthenticationSrv, NotificationSrv, clipboard, resizeService, readLocalPicService, currentUser, appConfig) {
+        function($scope, $state, UserSrv, ModalSrv, AuthenticationSrv, NotificationSrv, clipboard, resizeService, readLocalPicService, currentUser, appConfig, i18n) {
             $scope.currentUser = currentUser;
             $scope.appConfig = appConfig;
 
@@ -64,7 +64,7 @@
 
                         UserSrv.updateCache(data.login, data);
 
-                        NotificationSrv.log('Your basic information have been successfully updated', 'success');
+                        NotificationSrv.log(i18n.t("controllers.SettingsCtrl.your_basic_information_have_been_successfully_updated", "Your basic information have been successfully updated."), 'success');
 
                         $state.reload();
                     })
@@ -87,7 +87,7 @@
                 if (updatedFields !== {}) {
                     UserSrv.changePass($scope.currentUser.login, updatedFields.currentPassword, updatedFields.password)
                         .then(function( /*data*/ ) {
-                            NotificationSrv.log('Your password has been successfully updated', 'success');
+                            NotificationSrv.log(i18n.t("controllers.SettingsCtrl.your_password_has_been_successfully_updated") || "Your password has been successfully updated.", 'success');
                             $state.reload();
                         })
                         .catch(function(response) {
@@ -100,10 +100,10 @@
 
             $scope.createKey = function(){
                     var modalInstance = ModalSrv.confirm(
-                        'Renew API Key',
-                        'Are you sure you want to renew your API Key?', {
+                        i18n.t("controllers.SettingsCtrl.renew_api_key") || "Renew API Key",
+                        i18n.t("controllers.SettingsCtrl.are_you_sure_you_want_to_renew_your_api_key") || "Are you sure you want to renew your API Key?", {
                             flavor: 'danger',
-                            okText: 'Yes, renew it'
+                            okText: i18n.t("controllers.SettingsCtrl.yes_renew it") || "Yes, renew it"
                         }
                     );
 
@@ -113,7 +113,7 @@
                         })
                         .then(function() {
                             delete $scope.keyData.key;
-                            NotificationSrv.success('API key has been successfully renewed.');
+                            NotificationSrv.success(i18n.t("controllers.SettingsCtrl.api_key_has_been_successfully_renewed") || "API key has been successfully renewed.");
                         })
                         .catch(function(err) {
                             if (!_.isString(err)) {
@@ -132,12 +132,12 @@
             $scope.copyKey = function() {
                 clipboard.copyText($scope.keyData.key);
                 delete $scope.keyData.key;
-                NotificationSrv.success('API key has been successfully copied to clipboard.');
+                NotificationSrv.success(i18n.t("controllers.SettingsCtrl.api_key_has_been_successfully_copied_to_clipboard") || "API key has been successfully copied to clipboard.");
             };
 
             $scope.copySecret = function(secret) {
                 clipboard.copyText(secret);
-                NotificationSrv.success('MFA Secret has been successfully copied to clipboard.');
+                NotificationSrv.success(i18n.t("controllers.SettingsCtrl.mfa_secret_has_been_successfully_copied_to_clipboard") || "MFA Secret has been successfully copied to clipboard.");
             };
 
             $scope.enableMfa = function() {
@@ -157,7 +157,7 @@
             $scope.setMfaSettings = function(form) {
                 UserSrv.setMfa($scope.mfaData.code)
                     .then(function(/*response*/) {
-                        NotificationSrv.log('Your multi-factor authentication has been successfully configured', 'success');
+                        NotificationSrv.log(i18n.t("controllers.SettingsCtrl.your_multi_factor_authentication_has_been_successfully_configured") || "Your multi-factor authentication has been successfully configured", 'success');
                         $state.reload();
                     })
                     .catch(function(/*err*/) {
@@ -168,9 +168,9 @@
 
             $scope.resetMfa = function() {
                 var modalInstance = ModalSrv.confirm(
-                    'Disable MFA',
-                    'Are you sure you want to disabble MFA settings?', {
-                        okText: 'Yes, disable it',
+                    i18n.t("controllers.SettingsCtrl.disable_mfa") || "Disable MFA",
+                    i18n.t("controllers.SettingsCtrl.are_you_sure_you_want_to_disable_mfa_settings") || "Are you sure you want to disable MFA settings?", {
+                        okText: i18n.t("controllers.SettingsCtrl.yes_disable_it") || "Yes, disable it",
                         flavor: 'danger'
                     }
                 );
@@ -180,7 +180,7 @@
                         UserSrv.resetMfa();
                     })
                     .then(function() {
-                        NotificationSrv.log('Your multi-factor authentication has been successfully disabled', 'success');
+                        NotificationSrv.log(i18n.t("controllers.SettingsCtrl.your_multi_factor_authentication_has_been_successfully_disabled") || "Your multi-factor authentication has been successfully disabled", 'success');
                         $state.reload();
                     })
                     .catch(function(err) {

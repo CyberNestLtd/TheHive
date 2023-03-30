@@ -6,7 +6,7 @@
         .controller('TaxonomyDialogCtrl', TaxonomyDialogCtrl)
         .controller('TaxonomyImportCtrl', TaxonomyImportCtrl);
 
-    function TaxonomyListCtrl($scope, $uibModal, PaginatedQuerySrv, FilteringSrv, TaxonomySrv, NotificationSrv, ModalSrv, QuerySrv, appConfig) {
+    function TaxonomyListCtrl($scope, $uibModal, PaginatedQuerySrv, FilteringSrv, TaxonomySrv, NotificationSrv, ModalSrv, QuerySrv, appConfig, i18n) {
         var self = this;
 
         this.appConfig = appConfig;
@@ -111,7 +111,7 @@
                 })
                 .catch(function (err) {
                     if (err && !_.isString(err)) {
-                        NotificationSrv.error('Taxonomies import', err.data, err.status);
+                        NotificationSrv.error(i18n.t("controllers.admin.taxonomy.TaxonomyListCtrl.taxonomies_import", "Taxonomies import"), err.data, err.status);
                     }
                 });
         };
@@ -121,23 +121,23 @@
 
             TaxonomySrv.toggleActive(taxonomy._id, active)
                 .then(function () {
-                    NotificationSrv.log(['Taxonomy [', taxonomy.namespace, '] has been successfully', (active ? 'activated' : 'deactivated')].join(' '), 'success');
+                    NotificationSrv.log([i18n.t("controllers.admin.taxonomy.TaxonomyListCtrl.taxonomy", "Taxonomy") +' [ ', taxonomy.namespace, ' ] '+ i18n.t("controllers.admin.taxonomy.TaxonomyListCtrl.has_been_successfully", "has been successfully"), (active ? i18n.t("controllers.admin.taxonomy.TaxonomyListCtrl.activated", "activated") : i18n.t("controllers.admin.taxonomy.TaxonomyListCtrl.deactivated", "deactivated"))].join(' '), 'success');
 
                     self.load();
                 })
                 .catch(function (err) {
                     if (err && !_.isString(err)) {
-                        NotificationSrv.error('Taxonomies ' + active ? 'activation' : 'deactivation', err.data, err.status);
+                        NotificationSrv.error(i18n.t("controllers.admin.taxonomy.TaxonomyListCtrl.Taxonomies", "Taxonomies") +' '+ active ? i18n.t("controllers.admin.taxonomy.TaxonomyListCtrl.activation", "activation") : i18n.t("controllers.admin.taxonomy.TaxonomyListCtrl.deactivation", "deactivation"), err.data, err.status);
                     }
                 });
         };
 
         self.remove = function (taxonomy) {
             var modalInstance = ModalSrv.confirm(
-                'Remove taxonomy',
-                'Are you sure you want to remove the selected taxonomy?', {
+                i18n.t("controllers.admin.taxonomy.TaxonomyListCtrl.remove_taxonomy", "Remove taxonomy"),
+                i18n.t("controllers.admin.taxonomy.TaxonomyListCtrl.are_you_sure_you_want_to_remove_the_selected_taxonomy", "Are you sure you want to remove the selected taxonomy?"), {
                 flavor: 'danger',
-                okText: 'Yes, remove it'
+                okText: i18n.t("controllers.admin.taxonomy.TaxonomyListCtrl.yes_remove_it", "Yes, remove it")
             }
             );
 
@@ -148,7 +148,7 @@
                 .then(function ( /*response*/) {
                     self.load();
                     NotificationSrv.success(
-                        'Taxonomy ' + taxonomy.namespace + ' has been successfully removed.'
+                        i18n.t("controllers.admin.taxonomy.TaxonomyListCtrl.taxonomy", "Taxonomy")+' '+ taxonomy.namespace +' '+i18n.t("controllers.admin.taxonomy.TaxonomyListCtrl.has_been_successfully_removed.", "has been successfully removed.")
                     );
                 })
                 .catch(function (err) {

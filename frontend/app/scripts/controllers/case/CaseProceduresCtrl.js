@@ -3,7 +3,7 @@
     angular.module('theHiveControllers')
         .controller('CaseProceduresCtrl', CaseProceduresCtrl);
 
-    function CaseProceduresCtrl($scope, $state, $stateParams, $uibModal, ModalUtilsSrv, AttackPatternSrv, FilteringSrv, CaseTabsSrv, ProcedureSrv, PaginatedQuerySrv, NotificationSrv) {
+    function CaseProceduresCtrl($scope, $state, $stateParams, $uibModal, ModalUtilsSrv, AttackPatternSrv, FilteringSrv, CaseTabsSrv, ProcedureSrv, PaginatedQuerySrv, NotificationSrv, i18n) {
         var self = this;
 
         CaseTabsSrv.activateTab($state.current.data.tab);
@@ -95,17 +95,17 @@
         };
 
         self.remove = function(procedure) {
-            ModalUtilsSrv.confirm('Delete TTP', 'Are you sure you want to delete the selected tactic, technique and procedure?', {
-                okText: 'Yes, remove it',
+            ModalUtilsSrv.confirm(i18n.t("controllers.case.CaseProceduresCtrl.delete_ttp", "Delete TTP"), i18n.t("controllers.case.CaseProceduresCtrl.are_you_sure_you_want_to_delete_the_selected_tactic,_technique_and_procedure?", "Are you sure you want to delete the selected tactic, technique and procedure?"), {
+                okText: i18n.t("controllers.case.CaseProceduresCtrl.yes,_remove_it", "Yes, remove it"),
                 flavor: 'danger'
             }).then(function() {
                 ProcedureSrv.remove(procedure._id)
                     .then(function() {
                         self.load();
-                        NotificationSrv.success('TTP has been successfully removed');
+                        NotificationSrv.success(i18n.t("controllers.case.CaseProceduresCtrl.ttp_has_been_successfully_removed", "TTP has been successfully removed"));
                     })
                     .catch(function(err) {
-                        NotificationSrv.error('Procedure List', err.data, err.status);
+                        NotificationSrv.error(i18n.t("controllers.case.CaseProceduresCtrl.procedure_list", "Procedure List"), err.data, err.status);
                     });
             });
         };

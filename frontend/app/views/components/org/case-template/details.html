@@ -2,7 +2,7 @@
     <div class="col-sm-4">
         <div class="form-group">
             <label class="control-label">{{ 'views.components.org.case-template.details.template_name' | translateDefault:'Template name'}}<i class="fa fa-asterisk text-danger"></i></label>
-            <input autocomplete="off" class="form-control" name="name" ng-model="$vm.template.name" placeholder="Template name" required type="text" />
+            <input autocomplete="off" class="form-control" name="name" ng-model="$vm.template.name" placeholder="{{ 'views.placeholders.components.org.case-template.details.template_name' | translateDefault: 'Template name' }}" required type="text" />
             <p class="help-block small">{{ 'views.components.org.case-template.details.this_name_should_be_unique' | translateDefault:'This name should be unique'}}</p>
         </div>
 
@@ -10,7 +10,7 @@
     <div class="col-sm-4">
         <div class="form-group">
             <label class="control-label">{{ 'views.components.org.case-template.details.display_name' | translateDefault:'Display name'}}</label>
-            <input autocomplete="off" class="form-control" name="displayName" ng-model="$vm.template.displayName" placeholder="Display name" type="text" />
+            <input autocomplete="off" class="form-control" name="displayName" ng-model="$vm.template.displayName" placeholder="{{ 'views.placeholders.components.org.case-template.details.display_name' | translateDefault: 'Display name' }}" type="text" />
             <p class="help-block small">{{ 'views.components.org.case-template.details.this_is_a_display_name_of_the_template' | translateDefault:'This is a display name of the template'}}</p>
         </div>
 
@@ -18,7 +18,7 @@
     <div class="col-sm-4">
         <div class="form-group">
             <label class="control-label">{{ 'views.components.org.case-template.details.title_prefix' | translateDefault:'Title prefix'}}</label>
-            <input class="form-control" name="titlePrefix" ng-model="$vm.template.titlePrefix" placeholder="Case title prefix" type="text" />
+            <input class="form-control" name="titlePrefix" ng-model="$vm.template.titlePrefix" placeholder="{{ 'views.placeholders.components.org.case-template.details.case_title_prefix' | translateDefault: 'Case title prefix' }}" type="text" />
             <p class="help-block small">{{ 'views.components.org.case-template.details.this_is_used_to_prefix_the_case_name' | translateDefault:'This is used to prefix the case name'}}</p>
         </div>
     </div>
@@ -76,7 +76,7 @@
     <label class="control-label">{{ 'views.components.org.case-template.details.tags' | translateDefault:'Tags'}}</label>
 
         <div class="input-group">
-            <tags-input class="ti-tag-selector" min-length="2" name="tags" ng-model="$vm.tags" placeholder="Tags" replace-spaces-with-dashes="false" template="views/directives/tag-input-item.html">
+            <tags-input class="ti-tag-selector" min-length="2" name="tags" ng-model="$vm.tags" placeholder="{{ 'views.placeholders.components.org.case-template.details.tags' | translateDefault: 'Tags' }}" replace-spaces-with-dashes="false" template="views/directives/tag-input-item.html">
                 <auto-complete min-length="3" debounce-delay="400" source="$vm.getTags($query)"></auto-complete>
             </tags-input>
 
@@ -93,7 +93,7 @@
     <label class="control-label">{{ 'views.components.org.case-template.details.description' | translateDefault:'Description'}}
         <i class="fa fa-asterisk text-danger"></i>
     </label>
-    <textarea class="form-control" name="description" ng-model="$vm.template.description" placeholder="Case description" required rows="3"></textarea>
+    <textarea class="form-control" name="description" ng-model="$vm.template.description" placeholder="{{ 'views.placeholders.components.org.case-template.details.case_description' | translateDefault: 'Case description' }}" required rows="3"></textarea>
     <p class="help-block small">{{ 'views.components.org.case-template.details.this_will_be_the_default_case_description' | translateDefault:'This will be the default case description'}}</p>
     <p class="help-block" ng-show="templateEditForm.description.$invalid && !templateEditForm.description.$pristine">{{ 'views.components.org.case-template.details.the_case_description_is_required.' | translateDefault:'The case description is required.'}}</p>
 </div>

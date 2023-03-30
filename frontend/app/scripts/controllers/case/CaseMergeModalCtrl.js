@@ -4,7 +4,7 @@
     angular.module('theHiveControllers')
         .controller('CaseMergeModalCtrl', CaseMergeModalCtrl);
 
-    function CaseMergeModalCtrl($uibModalInstance, $q, QuerySrv, UserSrv, NotificationSrv, source, title, prompt, filter) {
+    function CaseMergeModalCtrl($uibModalInstance, $q, QuerySrv, UserSrv, NotificationSrv, source, title, prompt, filter, i18n) {
         var me = this;
 
         this.source = source;
@@ -13,7 +13,7 @@
         this.prompt = prompt;
         this.search = {
             type: 'title',
-            placeholder: 'Search by case title. "Ex: Malware*"',
+            placeholder: i18n.t("controllers.case.CaseMergeModalCtrl.search_by_case_title_ex_malware", "Search by case title. 'Ex: Malware*'"),
             minInputLength: 1,
             input: null,
             cases: []
@@ -71,7 +71,7 @@
         this.onTypeChange = function (type) {
             this.clearSearch();
 
-            this.search.placeholder = 'Search by case ' + type;
+            this.search.placeholder = i18n.t("controllers.case.CaseMergeModalCtrl.search_by_case", "Search by case") +' '+ type;
 
             if (type === 'title') {
                 this.search.minInputLength = 3;

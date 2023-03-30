@@ -3,7 +3,7 @@
 
     angular
         .module('theHiveControllers')
-        .controller('DashboardImportCtrl', function ($scope, $uibModalInstance) {
+        .controller('DashboardImportCtrl', function ($scope, $uibModalInstance, i18n) {
             var self = this;
             this.formData = {
                 fileContent: {}
@@ -52,7 +52,7 @@
                 return $uibModalInstance.close(dashboard);
             };
         })
-        .controller('DashboardsCtrl', function ($scope, $state, $uibModal, PaginatedQuerySrv, FilteringSrv, ModalUtilsSrv, NotificationSrv, DashboardSrv, AuthenticationSrv) {
+        .controller('DashboardsCtrl', function ($scope, $state, $uibModal, PaginatedQuerySrv, FilteringSrv, ModalUtilsSrv, NotificationSrv, DashboardSrv, AuthenticationSrv, i18n) {
             this.dashboards = [];
             var self = this;
 
@@ -110,7 +110,7 @@
                     size: 'lg',
                     resolve: {
                         statuses: function () {
-                            return ['Private', 'Shared'];
+                            return [i18n.t("controllers.dashboard.DashboardsCtrl.private", "Private"), i18n.t("controllers.dashboard.DashboardsCtrl.shared", "Shared")];
                         },
                         dashboard: function () {
                             return dashboard;
@@ -123,7 +123,7 @@
                 var modalInstance = this.openDashboardModal({
                     title: null,
                     description: null,
-                    status: 'Private',
+                    status: i18n.t("controllers.dashboard.DashboardsCtrl.private", "Private"),
                     definition: JSON.stringify(DashboardSrv.defaultDashboard)
                 });
 
@@ -134,7 +134,7 @@
                     .then(function (response) {
                         $state.go('app.dashboards-view', { id: response.data.id });
 
-                        NotificationSrv.log('The dashboard has been successfully created', 'success');
+                        NotificationSrv.log(i18n.t("controllers.dashboard.DashboardsCtrl.the_dashboard_has_been_successfully_created", "The dashboard has been successfully created"), 'success');
                     })
                     .catch(function (err) {
                         if (err && err.status) {
@@ -154,7 +154,7 @@
                     .then(function (response) {
                         $state.go('app.dashboards-view', { id: response.data.id });
 
-                        NotificationSrv.log('The dashboard has been successfully created', 'success');
+                        NotificationSrv.log(i18n.t("controllers.dashboard.DashboardsCtrl.the_dashboard_has_been_successfully_created", "The dashboard has been successfully created"), 'success');
                     })
                     .catch(function (err) {
                         if (err && err.status) {
@@ -180,7 +180,7 @@
                     .then(function (response) {
                         self.load()
 
-                        NotificationSrv.log('The dashboard has been successfully updated', 'success');
+                        NotificationSrv.log(i18n.t("controllers.dashboard.DashboardsCtrl.the_dashboard_has_been_successfully_updated", "The dashboard has been successfully updated"), 'success');
                     })
                     .catch(function (err) {
                         if (err && err.status) {
@@ -190,8 +190,8 @@
             };
 
             this.deleteDashboard = function (id) {
-                ModalUtilsSrv.confirm('Remove dashboard', 'Are you sure you want to remove this dashboard', {
-                    okText: 'Yes, remove it',
+                ModalUtilsSrv.confirm(i18n.t("controllers.dashboard.DashboardsCtrl.remove_dashboard", "Remove dashboard"), i18n.t("controllers.dashboard.DashboardsCtrl.are_you_sure_you_want_to_remove_this_dashboard", "Are you sure you want to remove this dashboard"), {
+                    okText: i18n.t("controllers.dashboard.DashboardsCtrl.yes,_remove_it", "Yes, remove it"),
                     flavor: 'danger'
                 })
                     .then(function () {
@@ -200,7 +200,7 @@
                     .then(function (response) {
                         self.load();
 
-                        NotificationSrv.log('The dashboard has been successfully removed', 'success');
+                        NotificationSrv.log(i18n.t("controllers.dashboard.DashboardsCtrl.the_dashboard_has_been_successfully_removed", "The dashboard has been successfully removed"), 'success');
                     });
             };
 
@@ -223,7 +223,7 @@
                     .then(function (response) {
                         $state.go('app.dashboards-view', { id: response.data.id });
 
-                        NotificationSrv.log('The dashboard has been successfully imported', 'success');
+                        NotificationSrv.log(i18n.t("controllers.dashboard.DashboardsCtrl.the_dashboard_has_been_successfully_imported", "The dashboard has been successfully imported"), 'success');
                     })
                     .catch(function (err) {
                         if (err && err.status) {

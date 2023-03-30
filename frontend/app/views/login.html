@@ -15,11 +15,11 @@
         <p class="login-box-msg">{{ 'views.login.sign_in_to_start_your_session' | translate}}</p>
         <form name="loginForm">
             <div class="form-group has-feedback has-feedback-left">
-                 <input type="text" class="form-control" placeholder="Login" ng-model="params.username" autocomplete="off" required>
+                 <input type="text" class="form-control" placeholder="{{ 'views.placeholders.login.login' | translateDefault: 'Login' }}" ng-model="params.username" autocomplete="off" required>
                  <i class="form-control-feedback glyphicon glyphicon-user"></i>
             </div>
             <div class="form-group has-feedback has-feedback-left">
-                <input type="password" class="input form-control" placeholder="Password" ng-model="params.password" autocomplete="off" required>
+                <input type="password" class="input form-control" placeholder="{{ 'views.placeholders.login.password' | translateDefault: 'Password' }}" ng-model="params.password" autocomplete="off" required>
                 <i class="form-control-feedback glyphicon glyphicon-lock "></i>
             </div>
             <div class="mv-s" ng-if="params.requireMfa === true">
@@ -27,7 +27,7 @@
                     {{ 'views.login.please_provide_mfa_code' | translate}}
                 </div>
                 <div class="form-group has-feedback has-feedback-left">
-                    <input type="text" class="input form-control" placeholder="Code" ng-model="params.mfaCode" autocomplete="off" ng-required="params.requireMfa">
+                    <input type="text" class="input form-control" placeholder="{{ 'views.placeholders.login.code' | translateDefault: 'Code' }}" ng-model="params.mfaCode" autocomplete="off" ng-required="params.requireMfa">
                     <i class="form-control-feedback glyphicon glyphicon-qrcode"></i>
                 </div>
             </div>

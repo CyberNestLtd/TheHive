@@ -2,7 +2,7 @@
  * Controller for main page
  */
 angular.module('theHiveControllers').controller('RootCtrl',
-    function ($scope, $rootScope, $timeout, $uibModal, $location, $state, AuthenticationSrv, AnalyzerSrv, StreamSrv, StreamQuerySrv, CaseSrv, CaseTemplateSrv, CustomFieldsSrv, NotificationSrv, AppLayoutSrv, VersionSrv, currentUser, appConfig) {
+    function ($scope, $rootScope, $timeout, $uibModal, $location, $state, AuthenticationSrv, AnalyzerSrv, StreamSrv, StreamQuerySrv, CaseSrv, CaseTemplateSrv, CustomFieldsSrv, NotificationSrv, AppLayoutSrv, VersionSrv, currentUser, appConfig, i18n) {
         'use strict';
 
         if (currentUser === 520) {
@@ -37,11 +37,11 @@ angular.module('theHiveControllers').controller('RootCtrl',
                     currentStatus.status !== newStatus.status) {
 
                     if (newStatus.status === 'OK') {
-                        NotificationSrv.log('The configured ' + connector.toUpperCase() + ' connections are now up.', 'success');
+                        NotificationSrv.log((i18n.t("controllers.RootCtrl.the_configured") || "The configured ") + connector.toUpperCase() + (i18n.t("RootCtrl.connections_are_now_up") || " connections are now up"), 'success');
                     } else if (newStatus.status === 'WARNING') {
-                        NotificationSrv.log('Some of the configured ' + connector.toUpperCase() + ' connections have errors. Please check your configuration.', 'warning');
+                        NotificationSrv.log((i18n.t("controllers.RootCtrl.some_of_the_configured") || "Some of the configured ") + connector.toUpperCase() + (i18n.t("RootCtrl.connections_have_errors_please_check_your_configuration") || " connections have errors. Please check your configuration."), 'warning');
                     } else {
-                        NotificationSrv.log('The configured ' + connector.toUpperCase() + ' connections have errors. Please check your configuration.', 'error');
+                        NotificationSrv.log((i18n.t("controllers.RootCtrl.the_configured") || "The configured ") + connector.toUpperCase() + (i18n.t("RootCtrl.connections_have_errors_please_check_your_configuration") || " connections have errors. Please check your configuration."), 'error');
                     }
                 }
             });
@@ -188,7 +188,7 @@ angular.module('theHiveControllers').controller('RootCtrl',
                 })
                 .catch(function (err) {
                     if (err && !_.isString(err)) {
-                        NotificationSrv.error('Switch organisation', err.data, err.status);
+                        NotificationSrv.error(i18n.t("controllers.RootCtrl.switch_organisation") || "Switch organisation", err.data, err.status);
                     }
                 })
                 .finally(function () {
@@ -245,7 +245,7 @@ angular.module('theHiveControllers').controller('RootCtrl',
                 })
                 .catch(function (err) {
                     if (err && !_.isString(err)) {
-                        NotificationSrv.error('Template Selection', err.data, err.status);
+                        NotificationSrv.error(i18n.t("controllers.RootCtrl.template_selection") || "Template Selection", err.data, err.status);
                     }
                 });
         };
@@ -268,11 +268,11 @@ angular.module('theHiveControllers').controller('RootCtrl',
                     if (response !== undefined) {
                         $state.go('app.case.details', { caseId: response._id });
                     } else {
-                        NotificationSrv.log('Unable to find the case with number ' + caseId, 'error');
+                        NotificationSrv.log((i18n.t("controllers.RootCtrl.unable_to_find_the_case_with_number") || "Unable to find the case with number") + caseId, 'error');
                     }
                 })
                 .catch(function (err) {
-                    NotificationSrv.error('Case search', err.data, err.status);
+                    NotificationSrv.error(i18n.t("controllers.RootCtrl.case_search") || "Case search", err.data, err.status);
                 })
         };
 

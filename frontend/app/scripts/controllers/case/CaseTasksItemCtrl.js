@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     angular.module('theHiveControllers').controller('CaseTasksItemCtrl',
-        function ($q, $scope, $rootScope, $state, $stateParams, $timeout, $uibModal, StreamSrv, PaginatedQuerySrv, SecuritySrv, ModalSrv, CaseSrv, AuthenticationSrv, OrganisationSrv, CaseTabsSrv, CaseTaskSrv, PSearchSrv, TaskLogSrv, NotificationSrv, CortexSrv, StatSrv, task) {
+        function ($q, $scope, $rootScope, $state, $stateParams, $timeout, $uibModal, StreamSrv, PaginatedQuerySrv, SecuritySrv, ModalSrv, CaseSrv, AuthenticationSrv, OrganisationSrv, CaseTabsSrv, CaseTaskSrv, PSearchSrv, TaskLogSrv, NotificationSrv, CortexSrv, StatSrv, task, i18n) {
             var caseId = $stateParams.caseId,
                 taskId = $stateParams.itemId;
 
@@ -214,7 +214,7 @@
                       }
                   })
                   .then(function(response){
-                      NotificationSrv.log(['Responder', response.data.responderName, 'started successfully on task', $scope.task.title].join(' '), 'success');
+                      NotificationSrv.log([i18n.t("controllers.case.CaseTasksItemCtrl.responder", "Responder"), response.data.responderName, i18n.t("controllers.case.CaseTasksItemCtrl.started_successfully_on_task", "started successfully on task"), $scope.task.title].join(' '), 'success');
                   })
                   .catch(function(err) {
                       if(err && !_.isString(err)) {
@@ -250,9 +250,9 @@
 
             $scope.removeShare = function(share) {
                 var modalInstance = ModalSrv.confirm(
-                    'Remove task share',
-                    'Are you sure you want to remove this sharing rule?', {
-                        okText: 'Yes, remove it',
+                    i18n.t("controllers.case.CaseTasksItemCtrl.remove_task_share", "Remove task share"),
+                    i18n.t("controllers.case.CaseTasksItemCtrl.are_you_sure_you_want_to_remove_this_sharing_rule?", "Are you sure you want to remove this sharing rule?"), {
+                        okText: i18n.t("controllers.case.CaseTasksItemCtrl.yes,_remove_it", "Yes, remove it"),
                         flavor: 'danger'
                     }
                 );
@@ -263,11 +263,11 @@
                     })
                     .then(function(/*response*/) {
                         $scope.loadShares();
-                        NotificationSrv.log('Task sharings updated successfully', 'success');
+                        NotificationSrv.log(i18n.t("controllers.case.CaseTasksItemCtrl.task_sharings_updated_successfully", "Task sharings updated successfully"), 'success');
                     })
                     .catch(function(err) {
                         if(err && !_.isString(err)) {
-                            NotificationSrv.error('Error', 'Task sharings update failed', err.status);
+                            NotificationSrv.error('Error', i18n.t("controllers.case.CaseTasksItemCtrl.task_sharings_update_failed", "Task sharings update failed"), err.status);
                         }
                     });
             };
@@ -303,11 +303,11 @@
                     })
                     .then(function(/*response*/) {
                         $scope.loadShares();
-                        NotificationSrv.log('Task sharings updated successfully', 'success');
+                        NotificationSrv.log(i18n.t("controllers.case.CaseTasksItemCtrl.task_sharings_updated_successfully", "Task sharings updated successfully"), 'success');
                     })
                     .catch(function(err) {
                         if(err && !_.isString(err)) {
-                            NotificationSrv.error('Error', 'Task sharings update failed', err.status);
+                            NotificationSrv.error('Error', i18n.t("controllers.case.CaseTasksItemCtrl.task_sharings_update_failed", "Task sharings update failed"), err.status);
                         }
                     });
             };
@@ -337,90 +337,90 @@
             };
 
             $scope.markAsDone = function(task) {
-                CaseTaskSrv.promtForActionRequired('Require Action', 'Would you like to add a task log before marking the required action as DONE?')
+                CaseTaskSrv.promtForActionRequired(i18n.t("controllers.case.CaseTasksItemCtrl.require_action", "Require Action"), i18n.t("controllers.case.CaseTasksItemCtrl.would_you_like_to_add_a_task_log_before_marking_the_required_action_as_done?", "Would you like to add a task log before marking the required action as DONE?"))
                     .then(function(response) {
                         if(response === 'skip-log') {
                             return $q.resolve();
                         } else {
-                            return $scope.showAddLog('Please add a task log');
+                            return $scope.showAddLog(i18n.t("controllers.case.CaseTasksItemCtrl.please_add_a_task_log", "Please add a task log"));
                         }
                     })
                     .then(function() {
                         return CaseTaskSrv.markAsDone(task._id, $scope.currentUser.organisation);
                     })
                     .then(function() {
-                        NotificationSrv.log('The task\'s required action is completed', 'success');
+                        NotificationSrv.log(i18n.t("controllers.case.CaseTasksItemCtrl.the_tasks_required_action_is_completed", "The task's required action is completed"), 'success');
                     })
                     .catch(function(err) {
                         if(err && !_.isString(err)) {
-                            NotificationSrv.error('Error', 'Task required action failed to be marked as done', err.status);
+                            NotificationSrv.error('Error', i18n.t("controllers.case.CaseTasksItemCtrl.task_required_action_failed_to_be_marked_as_done", "Task required action failed to be marked as done"), err.status);
                         }
                     });
             };
 
             $scope.markAsActionRequired = function(task) {
-                CaseTaskSrv.promtForActionRequired('Require Action', 'Would you like to add a task log before requesting action?')
+                CaseTaskSrv.promtForActionRequired(i18n.t("controllers.case.CaseTasksItemCtrl.require_action", "Require Action"), i18n.t("controllers.case.CaseTasksItemCtrl.would_you_like_to_add_a_task_log_before_requesting_action?", "Would you like to add a task log before requesting action?"))
                     .then(function(response) {
                         if(response === 'skip-log') {
                             return $q.resolve();
                         } else {
-                            return $scope.showAddLog('Please add a task log');
+                            return $scope.showAddLog(i18n.t("controllers.case.CaseTasksItemCtrl.please_add_a_task_log", "Please add a task log"));
                         }
                     })
                     .then(function() {
                         return CaseTaskSrv.markAsActionRequired(task._id, $scope.currentUser.organisation);
                     })
                     .then(function() {
-                        NotificationSrv.log('The task\'s required action flag has been set', 'success');
+                        NotificationSrv.log(i18n.t("controllers.case.CaseTasksItemCtrl.the_tasks_required_action_flag_has_been_set", "The task's required action flag has been set"), 'success');
                     })
                     .catch(function(err) {
                         if(err && !_.isString(err)) {
-                            NotificationSrv.error('Error', 'Task request action failed', err.status);
+                            NotificationSrv.error('Error', i18n.t("controllers.case.CaseTasksItemCtrl.task_request_action_failed", "Task request action failed"), err.status);
                         }
                     });
 
             };
 
             $scope.markShareAsActionRequired = function(task, org) {
-                CaseTaskSrv.promtForActionRequired('Require Action', 'Would you like to add a task log before marking the required action as DONE?')
+                CaseTaskSrv.promtForActionRequired(i18n.t("controllers.case.CaseTasksItemCtrl.require_action", "Require Action"), i18n.t("controllers.case.CaseTasksItemCtrl.would_you_like_to_add_a_task_log_before_marking_the_required_action_as_done?", "Would you like to add a task log before marking the required action as DONE?"))
                     .then(function(response) {
                         if(response === 'skip-log') {
                             return $q.resolve();
                         } else {
-                            return $scope.showAddLog('Please add a task log');
+                            return $scope.showAddLog(i18n.t("controllers.case.CaseTasksItemCtrl.please_add_a_task_log", "Please add a task log"));
                         }
                     })
                     .then(function() {
                         return CaseTaskSrv.markAsActionRequired(task._id, org);
                     })
                     .then(function() {
-                        NotificationSrv.log('The task\'s required action is completed', 'success');
+                        NotificationSrv.log(i18n.t("controllers.case.CaseTasksItemCtrl.the_tasks_required_action_is_completed", "The task's required action is completed"), 'success');
                     })
                     .catch(function(err) {
                         if(err && !_.isString(err)) {
-                            NotificationSrv.error('Error', 'Task required action failed to be marked as done', err.status);
+                            NotificationSrv.error('Error', i18n.t("controllers.case.CaseTasksItemCtrl.task_required_action_failed_to_be_marked_as_done", "Task required action failed to be marked as done"), err.status);
                         }
                     });
             };
 
             $scope.markShareAsActionDone = function(task, org) {
-                CaseTaskSrv.promtForActionRequired('Require Action', 'Would you like to add a task log before marking the required action as DONE?')
+                CaseTaskSrv.promtForActionRequired(i18n.t("controllers.case.CaseTasksItemCtrl.require_action", "Require Action"), i18n.t("controllers.case.CaseTasksItemCtrl.would_you_like_to_add_a_task_log_before_marking_the_required_action_as_done?", "Would you like to add a task log before marking the required action as DONE?"))
                     .then(function(response) {
                         if(response === 'skip-log') {
                             return $q.resolve();
                         } else {
-                            return $scope.showAddLog('Please add a task log');
+                            return $scope.showAddLog(i18n.t("controllers.case.CaseTasksItemCtrl.please_add_a_task_log", "Please add a task log"));
                         }
                     })
                     .then(function() {
                         return CaseTaskSrv.markAsDone(task._id, org);
                     })
                     .then(function() {
-                        NotificationSrv.log('The task\'s required action is completed', 'success');
+                        NotificationSrv.log(i18n.t("controllers.case.CaseTasksItemCtrl.the_tasks_required_action_is_completed", "The task's required action is completed"), 'success');
                     })
                     .catch(function(err) {
                         if(err && !_.isString(err)) {
-                            NotificationSrv.error('Error', 'Task required action failed to be marked as done', err.status);
+                            NotificationSrv.error('Error', i18n.t("controllers.case.CaseTasksItemCtrl.task_required_action_failed_to_be_marked_as_done", "Task required action failed to be marked as done"), err.status);
                         }
                     });
             };

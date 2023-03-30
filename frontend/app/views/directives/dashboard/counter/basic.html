@@ -1,6 +1,6 @@
 <div class="form-group">
     <label>{{ 'views.directives.dashboard.counter.basic.title' | translate}}</label>
-    <input type="text" class="form-control" placeholder="Ex: cases per TLP" ng-model="component.options.title">
+    <input type="text" class="form-control" placeholder="{{ 'views.placeholders.directives.dashboard.line.basic.ex:_cases_per_tlp' | translateDefault: 'Ex: cases per TLP' }}" ng-model="component.options.title">
 </div>
 <div class="row">
     <div class="col-sm-6">

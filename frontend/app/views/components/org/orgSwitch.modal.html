@@ -8,7 +8,7 @@
         </p>
 
         <div class="form-group has-feedback has-feedback-left" ng-if="$dialog.currentUser.organisations.length > 5">
-            <input type="text" class="input input-lg form-control" placeholder="Filter organisations" ng-model="$modal.filter" autocomplete="off">
+            <input type="text" class="input input-lg form-control" placeholder="{{ 'views.placeholders.components.org.orgSwitch.modal.filter_organisations' | translateDefault: 'Filter organisations' }}" ng-model="$modal.filter" autocomplete="off">
             <i class="form-control-feedback glyphicon glyphicon-search"></i>
         </div>
 

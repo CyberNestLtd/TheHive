@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('theHiveControllers').controller('AdminCustomFieldsCtrl',
-        function($scope, $uibModal, CustomFieldsSrv, NotificationSrv, ModalUtilsSrv) {
+        function($scope, $uibModal, CustomFieldsSrv, NotificationSrv, ModalUtilsSrv, i18n) {
             var self = this;
 
             self.reference = {
@@ -77,26 +77,26 @@
 
 
                         if (usage.total === 0) {
-                            message = 'Are you sure you want to delete this custom field?';
+                            message = i18n.t("controllers.admin.AdminCustomFieldsCtrl.are_you_sure_you_want_to_delete_this_custom_field") || "Are you sure you want to delete this custom field?";
                         } else {
                             var segs = [
-                                'Are you sure you want to delete this custom field?',
+                                i18n.t("controllers.admin.AdminCustomFieldsCtrl.are_you_sure_you_want_to_delete_this_custom_field") || "Are you sure you want to delete this custom field?",
                                 '<br />',
                                 '<br />',
-                                'This custom field is used by:',
+                                i18n.t("controllers.admin.AdminCustomFieldsCtrl.this_custom_field_is_used_by") || "This custom field is used by:",
                                 '<ul>'
                               ];
 
                             if(usage.case) {
-                                segs.push('<li>' + usage.case + ' ' + (usage.case > 1 ? 'cases' : 'case') + '</li>');
+                                segs.push('<li>' + usage.case + ' ' + (usage.case > 1 ? i18n.t("controllers.admin.AdminCustomFieldsCtrl.cases", "cases") : i18n.t("controllers.admin.AdminCustomFieldsCtrl.case", "case")) + '</li>');
                             }
 
                             if(usage.alert) {
-                                segs.push('<li>' + usage.alert + ' ' + (usage.alert > 1 ? 'alerts' : 'alert') + '</li>');
+                                segs.push('<li>' + usage.alert + ' ' + (usage.alert > 1 ? i18n.t("controllers.admin.AdminCustomFieldsCtrl.alerts", "alerts") : i18n.t("controllers.admin.AdminCustomFieldsCtrl.alert", "alert")) + '</li>');
                             }
 
                             if(usage.caseTemplate) {
-                                segs.push('<li>' + usage.caseTemplate + ' case ' + ' ' + (usage.caseTemplate > 1 ? 'templates' : 'template') + '</li>');
+                                segs.push('<li>' + usage.caseTemplate + ' case ' + ' ' + (usage.caseTemplate > 1 ? i18n.t("controllers.admin.AdminCustomFieldsCtrl.templates", "templates") : i18n.t("controllers.admin.AdminCustomFieldsCtrl.template", "template")) + '</li>');
                             }
 
                             segs.push('</ul>');
@@ -105,8 +105,8 @@
                             isHtml = true;
                         }
 
-                        return ModalUtilsSrv.confirm('Remove custom field', message, {
-                            okText: 'Yes, remove it',
+                        return ModalUtilsSrv.confirm(i18n.t("controllers.admin.AdminCustomFieldsCtrl.remove_custom_field", "Remove custom field"), message, {
+                            okText: i18n.t("controllers.admin.AdminCustomFieldsCtrl.yes_remove_it", "Yes, remove it"),
                             flavor: 'danger',
                             isHtml: isHtml
                         });
@@ -115,7 +115,7 @@
                         return CustomFieldsSrv.removeField(customField);
                     })
                     .then(function() {
-                        NotificationSrv.log('The custom field has been removed successfully', 'success');
+                        NotificationSrv.log(i18n.t("controllers.admin.AdminCustomFieldsCtrl.the_custom_field_has_been_removed_successfully", "The custom field has been removed successfully"), 'success');
 
                         self.initCustomfields();
                         CustomFieldsSrv.clearCache();

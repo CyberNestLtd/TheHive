@@ -30,7 +30,7 @@
           </label>
         </div>
         <div ng-show="params.isZip">
-            <input type="text" class="form-control" ng-model="params.zipPassword" placeholder="Type archive's password if available"> {{params.izZip}}
+            <input type="text" class="form-control" ng-model="params.zipPassword" placeholder="{{ 'views.placeholders.partials.observables.creation.form.type_archives_password_if_available' | translateDefault: 'Type archive\'s password if available' }}"> {{params.izZip}}
         </div>
     </div>
 </div>
@@ -133,7 +133,7 @@
         <input type="hidden" name="tags" ng-model="params.tagNames" ng-required="!params.message.length"/>
 
         <div class="input-group">
-            <tags-input name="tagsInput" template="views/directives/tag-input-item.html" ng-model="params.tags" class="ti-input-sm ti-tag-selector" placeholder="Add tags" replace-spaces-with-dashes="false" min-length="2">
+            <tags-input name="tagsInput" template="views/directives/tag-input-item.html" ng-model="params.tags" class="ti-input-sm ti-tag-selector" placeholder="{{ 'views.placeholders.partials.observables.creation.form.add_tags' | translateDefault: 'Add tags' }}" replace-spaces-with-dashes="false" min-length="2">
                 <auto-complete min-length="3" debounce-delay="400" source="getTags($query)"></auto-complete>
             </tags-input>
 
@@ -151,7 +151,7 @@
 <div class="form-group" ng-class="{ 'has-error' : observableForm.description.$invalid && !observableForm.description.$pristine }">
     <label class="col-sm-3 control-label">{{ "views.partials.observables.creation.form.description" | translateDefault:  "Description" }}<i class="fa fa-asterisk text-danger"></i><i class="fa fa-asterisk text-danger"></i></label>
     <div class="col-sm-9">
-        <textarea class="form-control" name="description" ng-model="params.message" placeholder="Observable(s) description" rows="3" ng-required="!params.tags.length"></textarea>
+        <textarea class="form-control" name="description" ng-model="params.message" placeholder="{{ 'views.placeholders.partials.observables.creation.form.observable(s)_description' | translateDefault: 'Observable(s) description' }}" rows="3" ng-required="!params.tags.length"></textarea>
         <p class="help-block" ng-show="observableForm.description.$invalid && !observableForm.description.$pristine">{{ "views.partials.observables.creation.form.the_observable(s)_description_or_tags_are_required." | translateDefault:  "The observable(s) description or tags are required." }}</p>
     </div>
 </div>
