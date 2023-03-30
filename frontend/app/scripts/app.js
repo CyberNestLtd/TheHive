@@ -735,27 +735,6 @@ angular.module('thehive', [
         };
     })
 
-
-    app.controller('LanguageController', function($scope, $translate, languageService) {
-
-        var language = localStorage.getItem('language');
-        if (language) {
-            $translate.use(language);
-        }
-
-        $scope.selectedLanguage = languageService.getLanguage();
-        $scope.languages = ['en', 'es'];
-
-
-        $scope.changeLanguage = function(langKey) {
-            $translate.use(langKey);
-            languageService.setLanguage(langKey);
-            localStorage.setItem('language', langKey);
-            location.reload();
-            $translate.refresh()
-            $translate.preferredLanguage(langKey);
-        };
-    })
     .run(function ($rootScope, $state, $q, AuthenticationSrv) {
         'use strict';
         $rootScope.async = 0;
