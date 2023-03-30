@@ -4,6 +4,7 @@ angular.module('theHiveFilters', []);
 angular.module('theHiveDirectives', []);
 angular.module('theHiveComponents', []);
 
+
 angular.module('thehive', [
     'ngAnimate',
     'ngMessages',
@@ -37,7 +38,7 @@ angular.module('thehive', [
     'theHiveDirectives',
     'theHiveComponents',
     'pascalprecht.translate',
-    'ui.router'
+    'ui.router',
 ])
     .config(function ($resourceProvider) {
         'use strict';
@@ -698,7 +699,13 @@ angular.module('thehive', [
             prefix: 'scripts/languages/',
             suffix: '.json'
         });
-        $translateProvider.preferredLanguage('en');
+        if (localStorage.getItem('language')) {
+            $translateProvider.preferredLanguage(localStorage.getItem('language'));
+        } else {
+            $translateProvider.preferredLanguage('en');
+        }
+        $translateProvider.useSanitizeValueStrategy('escape');
+
     })
 
     app.filter('translateDefault', ['$translate', function($translate) {
@@ -710,8 +717,14 @@ angular.module('thehive', [
         return translation;
     };
     }])
+
+    .service('i18n', function($filter) {
+    this.t = function(key, defaultValue) {
+        return $filter('translateDefault')(key, defaultValue);
+    };
+    });
     app.service('languageService', function() {
-        var language = 'en';
+        var language = localStorage.getItem('language');
 
         this.getLanguage = function() {
             return language;
@@ -721,13 +734,26 @@ angular.module('thehive', [
             language = newLanguage;
         };
     })
+
+
     app.controller('LanguageController', function($scope, $translate, languageService) {
+
+        var language = localStorage.getItem('language');
+        if (language) {
+            $translate.use(language);
+        }
+
         $scope.selectedLanguage = languageService.getLanguage();
-        $scope.languages = ['en', 'es', 'fr'];
+        $scope.languages = ['en', 'es'];
+
 
         $scope.changeLanguage = function(langKey) {
             $translate.use(langKey);
             languageService.setLanguage(langKey);
+            localStorage.setItem('language', langKey);
+            location.reload();
+            $translate.refresh()
+            $translate.preferredLanguage(langKey);
         };
     })
     .run(function ($rootScope, $state, $q, AuthenticationSrv) {
