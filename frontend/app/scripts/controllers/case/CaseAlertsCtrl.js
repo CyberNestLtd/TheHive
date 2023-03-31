@@ -1,7 +1,7 @@
 (function() {
     'use strict';
     angular.module('theHiveControllers').controller('CaseAlertsCtrl',
-        function($scope, $state, $stateParams, $uibModal, $timeout, CaseTabsSrv, VersionSrv, NotificationSrv, alerts) {
+        function($scope, $state, $stateParams, $uibModal, $timeout, CaseTabsSrv, VersionSrv, NotificationSrv, alerts, i18n) {
             $scope.caseId = $stateParams.caseId;
             $scope.alerts = alerts;
             $scope.alertStats = [];
@@ -17,7 +17,7 @@
             // Add tab
             CaseTabsSrv.addTab(tabName, {
                 name: tabName,
-                label: 'Related Alerts',
+                label: i18n.t("controllers.case.CaseAlertsCtrl.related_alerts", "Related Alerts"),
                 closable: true,
                 state: 'app.case.alerts',
                 params: {}
@@ -91,7 +91,7 @@
                 .result
                 .catch(function(err) {
                     if(err && !_.isString(err)) {
-                        NotificationSrv.error('AlertPreview', err.data, err.status);
+                        NotificationSrv.error(i18n.t("controllers.case.CaseAlertsCtrl.alertpreview", "AlertPreview"), err.data, err.status);
                     }
 
                 });

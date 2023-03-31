@@ -1,6 +1,6 @@
 <div class="row" ng-show="links.length === 0">
     <div class="col-md-12">
-        <div class=" empty-message">No records</div>
+        <div class=" empty-message">{{ "views.partials.case.case.links.no_records" | translateDefault:  "No records" }}</div>
     </div>
 </div>
 
@@ -18,14 +18,14 @@
 
     <div class="row" ng-show="filteredLinks.length === 0">
         <div class="col-md-12">
-            <div class=" empty-message">No records</div>
+            <div class=" empty-message">{{ "views.partials.case.case.links.no_records" | translateDefault:  "No records" }}</div>
         </div>
     </div>
 
     <div class="case-item" ng-show="filteredLinks.length !== 0">
         <div class="case-details text-bold">
           <a href class="text-default" ng-click="sortBy('title')">
-            Title
+            {{ "views.partials.case.case.links.title" | translateDefault:  "Title" }}
             <i ng-show="sorting.field !== '+title' && sorting.field !== '-title'" class="fa fa-sort"></i>
             <i ng-show="sorting.field === '+title'" class="fa fa-caret-up"></i>
             <i ng-show="sorting.field === '-title'" class="fa fa-caret-down"></i>
@@ -33,7 +33,7 @@
         </div>
         <div class="case-date text-bold">
           <a href class="text-default" ng-click="sortBy('startDate')">
-            Date
+            {{ "views.partials.case.case.links.date" | translateDefault:  "Date" }}
             <i ng-show="sorting.field !== '+startDate' && sorting.field !== '-startDate'" class="fa fa-sort"></i>
             <i ng-show="sorting.field === '+startDate'" class="fa fa-caret-up"></i>
             <i ng-show="sorting.field === '-startDate'" class="fa fa-caret-down"></i>
@@ -41,7 +41,7 @@
         </div>
         <div class="case-observables-list text-bold">
           <a href class="text-default" ng-click="sortBy('linksCount')">
-            Linked observables
+            {{ "views.partials.case.case.links.linked_observables" | translateDefault:  "Linked observables" }}
             <i ng-show="sorting.field !== '+linksCount' && sorting.field !== '-linksCount'" class="fa fa-sort"></i>
             <i ng-show="sorting.field === '+linksCount'" class="fa fa-caret-up"></i>
             <i ng-show="sorting.field === '-linksCount'" class="fa fa-caret-down"></i>
@@ -60,17 +60,17 @@
                 </div>
                 <div class="case-tags flexwrap mt-xxs">
                     <span class="mr-xxxs text-muted"><i class="fa fa-tags"></i></span>
-                    <strong class="text-muted mr-xxxs" ng-if="!item.tags || item.tags.length === 0">None</strong>
+                    <strong class="text-muted mr-xxxs" ng-if="!item.tags || item.tags.length === 0">{{ "views.partials.case.case.links.none" | translateDefault:  "None" }}</strong>
                     <tag-item ng-repeat="tag in item.tags track by $index" value="tag"></tag-item>
                 </div>
                 <div class="text-success" ng-show="item.status !== 'Open'">
                     <small>
-                        (Closed at {{item.endDate | shortDate}} as <strong>{{CaseResolutionStatus[item.resolutionStatus]}}</strong>)
+                        ({{ "views.partials.case.case.links.closed_at" | translateDefault:  "Closed at" }} {{item.endDate | shortDate}} {{ "views.partials.case.case.links.as" | translateDefault:  "as" }} <strong>{{CaseResolutionStatus[item.resolutionStatus]}}</strong>)
                     </small>
                 </div>
                 <div class="text-danger" ng-if="item.mergeFrom">
                     <small>
-                        Merged from <a href ui-sref="app.case.details({caseId: item.mergeFrom[0]})"> Case #{{item.stats.mergeFrom[0].caseId}}</a> and
+                        {{ "views.partials.case.case.links.merged_from" | translateDefault:  "Merged from" }} <a href ui-sref="app.case.details({caseId: item.mergeFrom[0]})"> Case #{{item.stats.mergeFrom[0].caseId}}</a> {{ "views.partials.case.case.links.and" | translateDefault:  "and" }}
                         <a href ui-sref="app.case.details({caseId: item.mergeFrom[1]})"> Case #{{utem.stats.mergeFrom[1].caseId}}</a>
                     </small>
                 </div>
@@ -103,8 +103,8 @@
                     </a>
                 </div>
                 <div class="mt-xs" ng-if="item.linkedWith.length > 5">
-                    <a class="text-muted" ng-show="displayOptions[item.id]===5" href ng-click="displayOptions[item.id]=null"><strong>Show more links ({{item.linkedWith.length - 5}})</strong></a>
-                    <a class="text-muted" ng-show="displayOptions[item.id]===null" href ng-click="displayOptions[item.id]=5"><strong>Show less links</strong></a>
+                    <a class="text-muted" ng-show="displayOptions[item.id]===5" href ng-click="displayOptions[item.id]=null"><strong>{{ "views.partials.case.case.links.show_more_links" | translateDefault:  "Show more links" }} ({{item.linkedWith.length - 5}})</strong></a>
+                    <a class="text-muted" ng-show="displayOptions[item.id]===null" href ng-click="displayOptions[item.id]=5"><strong>{{ "views.partials.case.case.links.show_less_links" | translateDefault:  "Show less links" }}</strong></a>
                 </div>
             </div>
         </div>

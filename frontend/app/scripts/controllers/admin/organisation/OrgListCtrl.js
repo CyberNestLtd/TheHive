@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('theHiveControllers').controller('OrgListCtrl',
-        function($scope, $q, $uibModal, PaginatedQuerySrv, OrganisationSrv, NotificationSrv, FilteringSrv, appConfig) {
+        function($scope, $q, $uibModal, PaginatedQuerySrv, OrganisationSrv, NotificationSrv, FilteringSrv, appConfig, i18n) {
             var self = this;
 
             self.appConfig = appConfig;
@@ -70,7 +70,7 @@
                     })
                     .catch(function(err){
                         if (err && !_.isString(err)) {
-                            NotificationSrv.error('Error', 'Unable to save the organisation.', err.status);
+                            NotificationSrv.error('Error', i18n.t("controllers.admin.organisations.OrgListCtrl.unable_to_save_the_organisation.", "Unable to save the organisation."), err.status);
                         }
                     });
             };
@@ -113,15 +113,15 @@
                         OrganisationSrv.setLinks(org.name, newLinks)
                             .then(function() {
                                 self.load();
-                                NotificationSrv.log('Organisation updated successfully', 'success');
+                                NotificationSrv.log(i18n.t("controllers.admin.organisations.OrgListCtrl.organisation_updated_successfully", "Organisation updated successfully"), 'success');
                             })
                             .catch(function(err) {
-                                NotificationSrv.error('Error', 'Organisation update failed', err.status);
+                                NotificationSrv.error('Error', i18n.t("controllers.admin.organisations.OrgListCtrl.organisation_update_failed", "Organisation update failed"), err.status);
                             });
                     })
                     .catch(function(err) {
                         if(err && !_.isString(err)) {
-                            NotificationSrv.error('Error', 'Organisation update failed', err.status);
+                            NotificationSrv.error('Error', i18n.t("controllers.admin.organisations.OrgListCtrl.organisation_update_failed", "Organisation update failed"), err.status);
                         }
                     });
             };
@@ -130,10 +130,10 @@
                 OrganisationSrv.update(orgName, _.pick(org, 'name', 'description'))
                     .then(function(/*response*/) {
                         self.load();
-                        NotificationSrv.log('Organisation updated successfully', 'success');
+                        NotificationSrv.log(i18n.t("controllers.admin.organisations.OrgListCtrl.organisation_updated_successfully", "Organisation updated successfully"), 'success');
                     })
                     .catch(function(err) {
-                        NotificationSrv.error('Error', 'Organisation update failed', err.status);
+                        NotificationSrv.error('Error', i18n.t("controllers.admin.organisations.OrgListCtrl.organisation_update_failed", "Organisation update failed"), err.status);
                     });
             };
 
@@ -141,10 +141,10 @@
                 OrganisationSrv.create(org)
                     .then(function(/*response*/) {
                         self.load();
-                        NotificationSrv.log('Organisation created successfully', 'success');
+                        NotificationSrv.log(i18n.t("controllers.admin.organisations.OrgListCtrl.organisation_created_successfully", "Organisation created successfully"), 'success');
                     })
                     .catch(function(err) {
-                        NotificationSrv.error('Error', 'Organisation creation failed', err.status);
+                        NotificationSrv.error('Error', i18n.t("controllers.admin.organisations.OrgListCtrl.organisation_creation_failed", "Organisation creation failed"), err.status);
                     });
             };
 

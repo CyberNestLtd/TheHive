@@ -17,7 +17,7 @@
                 <button class="btn btn-sm"
                     ng-class="{true: 'btn-primary', false:'btn-default'}[$cmp.filtering.context.showFilters]"
                     type="button" ng-click="$cmp.toggleFilters()">
-                    <i class="fa fa-search"></i> Filters
+                    <i class="fa fa-search"></i> {{ "views.components.alert.observables.toolbar.filters" | translateDefault:  "Filters" }}
                 </button>
             </div>
         </div>

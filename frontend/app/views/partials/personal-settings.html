@@ -1,28 +1,28 @@
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
         <h3>
-            <center>Settings</center>
+            <center>{{ "views.partials.personal-settings.settings" | translateDefault:  "Settings" }}</center>
         </h3>
 
         <!-- Update basic user information -->
         <form name="basicForm" class="form-horizontal" ng-submit="updateBasicInfo(basicForm)" novalidate>
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Update basic information</h3>
+                    <h3 class="box-title">{{ 'views.partials.personal-settings.update_basic_information' | translate}}</h3>
                 </div>
                 <div class="box-body">
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Username</label>
+                        <label class="col-md-3 control-label">{{ "views.partials.personal-settings.username" | translateDefault:  "Username======== " }}</label>
                         <div class="col-md-9">
                             <input type="text" class="form-control input-sm" ng-model="basicData.username" readonly/>
                         </div>
                     </div>
                     <div class="form-group" ng-class="{ 'has-error' : !basicForm.name.$pristine && basicForm.name.$invalid}">
-                        <label class="col-md-3 control-label">Full name
+                        <label class="col-md-3 control-label">{{ "views.partials.personal-settings.full_name" | translateDefault:  "Full name" }}
                             <i class="fa fa-asterisk text-danger"></i>
                         </label>
                         <div class="col-md-9">
-                            <input type="text" name="name" class="form-control input-sm" placeholder="Full name" ng-model="basicData.name" required/>
+                            <input type="text" name="name" class="form-control input-sm" placeholder="{{ 'views.placeholders.partials.personal-settings.full_name' | translateDefault: 'Full name' }}" ng-model="basicData.name" required/>
                             <div ng-messages="basicForm.name.$error" ng-show="!basicForm.name.$pristine && basicForm.name.$error">
                                 <div ng-messages-include="settings-error.html"></div>
                             </div>
@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="form-group" ng-class="{ 'has-error' : basicForm.avatar.$error.maxsize}">
-                        <label class="col-md-3 control-label">Avatar</label>
+                        <label class="col-md-3 control-label">{{ "views.partials.personal-settings.avatar" | translateDefault:  "Avatar" }}</label>
                         <div class="col-md-9">
                             <div ng-show="!basicData.avatarB64 && !basicData.avatar">
                                 <div style="width: 100px;">
@@ -40,9 +40,9 @@
                                         maxsize="500"
                                         base-sixty-four-input
                                         do-not-parse-if-oversize>
-                                    <label for="avatar-input" class="mt-xxs btn btn-block btn-sm btn-primary">Choose File</label>
+                                    <label for="avatar-input" class="mt-xxs btn btn-block btn-sm btn-primary">{{ "views.partials.personal-settings.choose_file" | translateDefault:  "Choose File" }}</label>
                                 </div>
-                                <div class="help-block">Images must not exceed 500 KB. Recommended dimensions are 100x100px</div>
+                                <div class="help-block">{{ "views.partials.personal-settings.images_must_not_exceed_500_kb._recommended_dimensions_are_100x100px" | translateDefault:  "Images must not exceed 500 KB. Recommended dimensions are 100x100px" }}</div>
 
                             </div>
 
@@ -51,7 +51,7 @@
                                 <img ng-if="basicData.avatarB64" alt="User avatar" data-ng-src="{{'data:image/jpeg;base64,' + basicData.avatarB64}}"/>
                                 <!-- <img alt="User avatar" data-ng-src="{{'data:image/jpeg;base64,' + basicData.avatar}}"/> -->
                                 <br>
-                                <button class="mt-xxs btn btn-block btn-sm btn-danger" type="button" ng-click="clearAvatar(basicForm)">Clear</button>
+                                <button class="mt-xxs btn btn-block btn-sm btn-danger" type="button" ng-click="clearAvatar(basicForm)">{{ "views.partials.personal-settings.clear" | translateDefault:  "Clear" }}</button>
                             </div>
 
                             <div ng-messages="basicForm.avatar.$error" ng-show="!basicForm.avatar.$pristine && basicForm.avatar.$error">
@@ -61,7 +61,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Profile</label>
+                        <label class="col-md-3 control-label">{{ "views.partials.personal-settings.profile" | translateDefault:  "Profile" }}</label>
                         <div class="col-md-9">
                             <p class="form-control-static">{{currentUser.profile}}</p>
                             <permission-list permissions="currentUser.permissions" showLabel="false"></permission-list>
@@ -69,10 +69,10 @@
                     </div>
 
                     <div class="mt-s">
-                        <button class="btn btn-default" ng-click="cancel()" type="button">Cancel</button>
+                        <button class="btn btn-default" ng-click="cancel()" type="button">{{ "views.partials.personal-settings.cancel" | translateDefault:  "Cancel" }}</button>
                         <span class="ml-xxs">
-                            <i class="fa fa-asterisk text-danger"></i>&nbsp;Required field</span>
-                        <button class="btn btn-primary pull-right" ng-disabled="basicForm.$invalid" type="submit">Save</button>
+                            <i class="fa fa-asterisk text-danger"></i>&nbsp;{{ "views.partials.personal-settings.required_field" | translateDefault:  "Required field" }}</span>
+                        <button class="btn btn-primary pull-right" ng-disabled="basicForm.$invalid" type="submit">{{ "views.partials.personal-settings.save" | translateDefault:  "Save" }}</button>
                     </div>
 
                 </div>
@@ -84,15 +84,16 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title"><input type="checkbox" ng-model="passData.changePassword" ng-click="clearPassword(passForm, passData.changePassword)">
-                        Update password</h3>
+                        {{ "views.partials.personal-settings.update_password" | translateDefault:  "Update password" }}
+                    </h3>
                 </div>
                 <div class="box-body" ng-show="passData.changePassword">
                     <div class="form-group" ng-class="{ 'has-error' : !passForm.currentPassword.$pristine && passForm.currentPassword.$invalid}">
-                        <label class="col-md-3 control-label">Old password
+                        <label class="col-md-3 control-label">{{ "views.partials.personal-settings.old_password" | translateDefault:  "Old password" }}
                             <i class="fa fa-asterisk text-danger"></i>
                         </label>
                         <div class="col-md-9">
-                            <input type="password" name="currentPassword" class="form-control input-sm" placeholder="Current password" autocomplete="off" ng-model="passData.currentPassword" ng-required="passData.changePassword"/>
+                            <input type="password" name="currentPassword" class="form-control input-sm" placeholder="{{ 'views.placeholders.partials.personal-settings.current_password' | translateDefault: 'Current password' }}" autocomplete="off" ng-model="passData.currentPassword" ng-required="passData.changePassword"/>
                             <div ng-messages="passForm.currentPassword.$error" ng-show="!passForm.currentPassword.$pristine && passForm.currentPassword.$error">
                                 <div ng-messages-include="settings-error.html"></div>
                             </div>
@@ -100,11 +101,11 @@
                     </div>
 
                     <div class="form-group" ng-class="{ 'has-error' : !passForm.password.$pristine && passForm.password.$invalid}">
-                        <label class="col-md-3 control-label">New password
+                        <label class="col-md-3 control-label">{{ "views.partials.personal-settings.new_password" | translateDefault:  "New password" }}
                             <i class="fa fa-asterisk text-danger"></i>
                         </label>
                         <div class="col-md-9">
-                            <input type="password" name="password" class="form-control input-sm" placeholder="New password" autocomplete="off" ng-model="passData.password" ng-required="passData.changePassword"/>
+                            <input type="password" name="password" class="form-control input-sm" placeholder="{{ 'views.placeholders.partials.personal-settings.new_password' | translateDefault: 'New password' }}" autocomplete="off" ng-model="passData.password" ng-required="passData.changePassword"/>
                             <div ng-messages="passForm.password.$error" ng-show="!passForm.password.$pristine && passForm.password.$error">
                                 <div ng-messages-include="settings-error.html"></div>
                             </div>
@@ -112,25 +113,25 @@
                     </div>
 
                     <div class="form-group" ng-class="{ 'has-error' : !passForm.confirmPassword.$pristine && passForm.confirmPassword.$invalid}">
-                        <label class="col-md-3 control-label">Confirm new password
+                        <label class="col-md-3 control-label">{{ "views.partials.personal-settings.confirm_new_password" | translateDefault:  "Confirm new password" }}
                             <i class="fa fa-asterisk text-danger"></i>
                         </label>
                         <div class="col-md-9">
-                            <input type="password" name="confirmPassword" class="form-control input-sm" placeholder="Confirm Password" compare-to="passData.password" autocomplete="off" ng-model="passData.passwordConfirm" ng-required="passData.changePassword"/>
+                            <input type="password" name="confirmPassword" class="form-control input-sm" placeholder="{{ 'views.placeholders.partials.personal-settings.confirm_password' | translateDefault: 'Confirm Password' }}" compare-to="passData.password" autocomplete="off" ng-model="passData.passwordConfirm" ng-required="passData.changePassword"/>
                             <div ng-messages="passForm.confirmPassword.$error" ng-show="!passForm.confirmPassword.$pristine && passForm.confirmPassword.$error">
                                 <div ng-messages-include="settings-error.html"></div>
                             </div>
                             <div ng-class="{'has-error': passData.password!=passData.password2, 'has-success': passData.password==passData.password2 && passData.password1!=''}">
-                                <div ng-show="passData.password1 != passData.password2">Oops, that's not the same password as the first one</div>
+                                <div ng-show="passData.password1 != passData.password2">{{ "views.partials.personal-settings.oops,_that's_not_the_same_password_as_the_first_one" | translateDefault:  "Oops, that's not the same password as the first one" }}</div>
                             </div>
                         </div>
                     </div>
 
                     <div class="mt-s">
-                        <button class="btn btn-default" ng-click="cancel()" type="button">Cancel</button>
+                        <button class="btn btn-default" ng-click="cancel()" type="button">{{ "views.partials.personal-settings.cancel" | translateDefault:  "Cancel" }}</button>
                         <span class="ml-xxs">
-                            <i class="fa fa-asterisk text-danger"></i>&nbsp;Required field</span>
-                        <button class="btn btn-primary pull-right" ng-disabled="passForm.$invalid" type="submit">Save</button>
+                            <i class="fa fa-asterisk text-danger"></i>&nbsp;{{ "views.partials.personal-settings.required_field" | translateDefault:  "Required field" }}</span>
+                        <button class="btn btn-primary pull-right" ng-disabled="passForm.$invalid" type="submit">{{ "views.partials.personal-settings.save" | translateDefault:  "Save" }}</button>
                     </div>
                 </div>
             </div>
@@ -140,19 +141,19 @@
         <form ng-if="canChangeKey">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">API Key</h3>
+                    <h3 class="box-title">{{ "views.partials.personal-settings.api_key" | translateDefault:  "API Key" }}</h3>
                 </div>
                 <div class="box-body">
                     <div class="callout callout-warning mv-0" ng-if="!currentUser.hasKey">
-                        <h4>You don't have any API key.</h4>
-                        <p> Please contact your organization's administrator.</p>
+                        <h4>{{ "views.partials.personal-settings.you_don't_have_any_api_key." | translateDefault:  "You don't have any API key." }}</h4>
+                        <p> {{ "views.partials.personal-settings.please_contact_your_organization's_administrator." | translateDefault:  "Please contact your organization's administrator." }}</p>
                     </div>
                     <div class="form-group" ng-if="currentUser.hasKey">
-                        <p>You have an API key defined. You can renew it if needed.</p>
+                        <p>{{ "views.partials.personal-settings.you_have_an_api_key_defined._you_can_renew_it_if_needed." | translateDefault:  "You have an API key defined. You can renew it if needed." }}</p>
                         <div class="input-group">
                             <span class="input-group-btn">
-                                <span class="btn btn-default" ng-click="createKey()">Renew</span>
-                                <span class="btn btn-primary" ng-click="getKey()" ng-if="!keyData.key">Reveal</span>
+                                <span class="btn btn-default" ng-click="createKey()">{{ "views.partials.personal-settings.renew" | translateDefault:  "Renew" }}</span>
+                                <span class="btn btn-primary" ng-click="getKey()" ng-if="!keyData.key">{{ "views.partials.personal-settings.reveal" | translateDefault:  "Reveal" }}</span>
                             </span>
                             <input class="form-control" readonly ng-model="keyData.key" ng-if="keyData.key">
                             <span class="input-group-btn" ng-if="keyData.key">
@@ -172,35 +173,34 @@
                 <div class="box-header">
                     <h3 class="box-title">
                         <input type="checkbox" ng-model="mfaData.enabled" ng-change="enableMfa()" ng-disabled="currentUser.hasMFA">
-                        Enable Multi-Factor Authentication
+                        {{ "views.partials.personal-settings.enable_multi-factor_authentication" | translateDefault:  "Enable Multi-Factor Authentication" }}
                     </h3>
                 </div>
                 <div class="box-body" ng-show="mfaData.enabled === true">
                     <div ng-if="currentUser.hasMFA === true" class="text-center">
-                        Your have enabled Multi-Factor Authentication, do you want to disabled it?
+                        {{ "views.partials.personal-settings.your_have_enabled_multi-factor_authentication,_do_you_want_to_disabled_it?" | translateDefault:  "Your have enabled Multi-Factor Authentication, do you want to disabled it?" }}
                         <div class="mv-s">
-                            <button type="button" class="btn btn-danger" ng-click="resetMfa()">Disable MFA</button>
+                            <button type="button" class="btn btn-danger" ng-click="resetMfa()">{{ "views.partials.personal-settings.disable_mfa" | translateDefault:  "Disable MFA" }}</button>
                         </div>
                     </div>
 
                     <div ng-if="currentUser.hasMFA === false">
                         <div class="mb-m text-center">
-                            Your are going to enable Multi-Factor Authentication.
-                            Use the QRCode or the Secret to generate a MFA code and submit it.
+                            {{ "views.partials.personal-settings.your_are_going_to_enable_multi-factor_authenticationuse_the_qrcode_or_the_secret_to_generate_a_mfa_code_and_submit_it" | translateDefault:  "Your are going to enable Multi-Factor Authentication. Use the QRCode or the Secret to generate a MFA code and submit it." }}
                         </div>
 
                         <div class="row">
                             <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
                                 <div class="alert bg-primary">
-                                    Need a two-step authenticator app? Download one of the following:
+                                    {{ "views.partials.personal-settings.need_a_two-step_authenticator_app?_download_one_of_the_following:" | translateDefault:  "Need a two-step authenticator app? Download one of the following:" }}
                                     <div>
-                                        <i class="fa fa-apple"></i> iOS devices: <a href="https://apps.apple.com/fr/app/authy/id494168017" target="_blank">Authy</a>
+                                        <i class="fa fa-apple"></i> {{ "views.partials.personal-settings.ios_devices:" | translateDefault:  "iOS devices:" }} <a href="https://apps.apple.com/fr/app/authy/id494168017" target="_blank">{{ "views.partials.personal-settings.authy" | translateDefault:  "Authy" }}</a>
                                     </div>
                                     <div>
-                                        <i class="fa fa-android"></i> Android devices: <a href="https://play.google.com/store/apps/details?id=com.authy.authy&hl=fr" target="_blank">Authy</a>
+                                        <i class="fa fa-android"></i> {{ "views.partials.personal-settings.android_devices:" | translateDefault:  "Android devices:" }} <a href="https://play.google.com/store/apps/details?id=com.authy.authy&hl=fr" target="_blank">{{ "views.partials.personal-settings.authy" | translateDefault:  "Authy" }}</a>
                                     </div>
                                     <div>
-                                        <i class="fa fa-windiws"></i> Windows devices: <a href="https://www.microsoft.com/en-us/p/microsoft-authenticator/9nblgggzmcj6" target="_blank">Microsoft Authenticator</a>
+                                        <i class="fa fa-windiws"></i> {{ "views.partials.personal-settings.windows_devices:" | translateDefault:  "Windows devices:" }} <a href="https://www.microsoft.com/en-us/p/microsoft-authenticator/9nblgggzmcj6" target="_blank">{{ "views.partials.personal-settings.microsoft_authenticator" | translateDefault:  "Microsoft Authenticator" }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -215,18 +215,18 @@
                         <div class="text-center mv-s" ng-if="mfaData.secret">
                             <h3>{{mfaData.secret}}</h3>
                             <div>
-                                <a href ng-click="copySecret(mfaData.secret)"><i class="fa fa-copy"></i> Copy secret </a>
+                                <a href ng-click="copySecret(mfaData.secret)"><i class="fa fa-copy"></i> {{ "views.partials.personal-settings.copy_secret" | translateDefault:  "Copy secret" }} </a>
                             </div>
                         </div>
 
                         <div class="row">
 
                             <div class="col-xs-offset-3 col-xs-6 form-group" ng-class="{ 'has-error' : !mfaForm.mfaCode.$pristine && mfaForm.mfaCode.$invalid}">
-                                <label class="control-label">Code
+                                <label class="control-label">{{ "views.partials.personal-settings.code" | translateDefault:  "Code" }}
                                     <i class="fa fa-asterisk text-danger"></i>
                                 </label>
                                 <input type="number" name="mfaCode" class="form-control input-lg text-center"
-                                    placeholder="MFA Code" autocomplete="off"
+                                    placeholder="{{ 'views.placeholders.partials.personal-settings.mfa_code' | translateDefault: 'MFA Code' }}" autocomplete="off"
                                     ng-model="mfaData.code"
                                     ng-required="!currentUser.hasMFA"/>
                                 <div ng-messages="mfaForm.mfaCode.$error" ng-show="!mfaForm.mfaCode.$pristine && mfaForm.mfaCode.$error">
@@ -237,11 +237,11 @@
                         </div>
 
                         <div class="mt-s">
-                            <button class="btn btn-default" ng-click="cancel()" type="button">Cancel</button>
+                            <button class="btn btn-default" ng-click="cancel()" type="button">{{ "views.partials.personal-settings.cancel" | translateDefault:  "Cancel" }}</button>
                             <span class="ml-xxs">
-                                <i class="fa fa-asterisk text-danger"></i>&nbsp;Required field</span>
+                                <i class="fa fa-asterisk text-danger"></i>&nbsp;{{ "views.partials.personal-settings.required_field" | translateDefault:  "Required field" }}</span>
                             <!-- <button class="btn btn-primary pull-right" ng-disabled="mfaForm.$invalid" type="submit">Save</button> -->
-                            <button class="btn btn-primary pull-right" ng-disabled="!mfaData.code" type="submit">Save</button>
+                            <button class="btn btn-primary pull-right" ng-disabled="!mfaData.code" type="submit">{{ "views.partials.personal-settings.save" | translateDefault:  "Save" }}</button>
                         </div>
                     </div>
                 </div>
@@ -253,7 +253,7 @@
 
 <script id="settings-error.html" type="text/ng-template">
     <div class="mt-xxs text-danger" ng-message="required">
-        This field is required
+        {{ "views.partials.personal-settings.this_field_is_required" | translateDefault:  "This field is required" }}
     </div>
     <div class="mt-xxs text-danger" ng-message="minlength">
         <span translate="error.form.minlength"></span>
@@ -262,12 +262,12 @@
         <span translate="error.form.maxlength"></span>
     </div>
     <div class="mt-xxs text-danger" ng-message="maxsize">
-        Files must not exceed 500 KB
+        {{ "views.partials.personal-settings.files_must_not_exceed_500_kb" | translateDefault:  "Files must not exceed 500 KB" }}
     </div>
     <div class="mt-xxs text-danger" ng-message="compareTo">
-        Oops, that's not the same password as the first one
+        {{ "views.partials.personal-settings.oops,_that's_not_the_same_password_as_the_first_one" | translateDefault:  "Oops, that's not the same password as the first one" }}
     </div>
     <div class="mt-xxs text-danger" ng-message="mfaInvalid">
-        Oops, that's not a valid MFA code
+        {{ "views.partials.personal-settings.oops,_that's_not_a_valid_mfa_code" | translateDefault:  "Oops, that's not a valid MFA code" }}
     </div>
 </script>

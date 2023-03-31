@@ -1,6 +1,6 @@
 <form class="form-horizontal" name="form" ng-submit="vm.ok()">
     <div class="modal-header bg-primary">
-        <h3 class="modal-title">Import Dashboard</h3>
+        <h3 class="modal-title">{{ "views.partials.dashboard.import.dialog.import_dashboard" | translateDefault:  "Import Dashboard" }}</h3>
     </div>
     <div class="modal-body">
         <div class="form-group">
@@ -8,10 +8,10 @@
                 <input type="hidden" name="attachment" ng-model="vm.formData.attachment.status" required>
                 <div file-chooser="" filemodel="vm.formData.attachment"></div>
             </div>
-        </div>        
+        </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-warning pull-left" type="button" ng-click="vm.cancel()">Cancel</button>
-        <button class="btn btn-primary pull-right" type="submit" ng-disabled="form.$invalid">Yes, Import dashboard</button>
+        <button class="btn btn-warning pull-left" type="button" ng-click="vm.cancel()">{{ "views.partials.dashboard.import.dialog.cancel" | translateDefault:  "Cancel" }}</button>
+        <button class="btn btn-primary pull-right" type="submit" ng-disabled="form.$invalid">{{ "views.partials.dashboard.import.dialog.yes,_import_dashboard" | translateDefault:  "Yes, Import dashboard" }}</button>
     </div>
 </form>

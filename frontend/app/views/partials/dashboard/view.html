@@ -5,22 +5,22 @@
         </h3>
         <div class="box-tools pull-right">
             <a href class="mr-xxs btn btn-sm btn-primary" ng-click="$vm.enableEditMode()" ng-show="!!$vm.dashboard.writable && !$vm.options.editLayout">
-                <i class="fa fa-pencil"></i> Edit
+                <i class="fa fa-pencil"></i> {{ "views.partials.dashboard.view.edit" | translateDefault:  "Edit" }}
             </a>
             <a href class="mr-xxs btn btn-default btn-sm" ng-click="$vm.exportDashboard()" ng-show="!$vm.options.editLayout">
-                <i class="fa fa-download"></i> Export
+                <i class="fa fa-download"></i> {{ "views.partials.dashboard.view.export" | translateDefault:  "Export" }}
             </a>
 
             <div class="btn-group" ng-show="!$vm.options.editLayout">
-                <label class="btn btn-sm btn-default" ng-model="$vm.autoRefresh" uib-btn-radio="null">Auto Refresh - Off</label>
-                <label class="btn btn-sm btn-default" ng-model="$vm.autoRefresh" uib-btn-radio="60">1m</label>
-                <label class="btn btn-sm btn-default" ng-model="$vm.autoRefresh" uib-btn-radio="300">5m</label>
-                <label class="btn btn-sm btn-default" ng-model="$vm.autoRefresh" uib-btn-radio="600">10m</label>
-                <label class="btn btn-sm btn-default" ng-model="$vm.autoRefresh" uib-btn-radio="900">15m</label>
+                <label class="btn btn-sm btn-default" ng-model="$vm.autoRefresh" uib-btn-radio="null">{{ "views.partials.dashboard.view.auto_refresh_-_off" | translateDefault:  "Auto Refresh - Off" }}</label>
+                <label class="btn btn-sm btn-default" ng-model="$vm.autoRefresh" uib-btn-radio="60">{{ "views.partials.dashboard.view.1m" | translateDefault:  "1m" }}</label>
+                <label class="btn btn-sm btn-default" ng-model="$vm.autoRefresh" uib-btn-radio="300">{{ "views.partials.dashboard.view.5m" | translateDefault:  "5m" }}</label>
+                <label class="btn btn-sm btn-default" ng-model="$vm.autoRefresh" uib-btn-radio="600">{{ "views.partials.dashboard.view.10m" | translateDefault:  "10m" }}</label>
+                <label class="btn btn-sm btn-default" ng-model="$vm.autoRefresh" uib-btn-radio="900">{{ "views.partials.dashboard.view.15m" | translateDefault:  "15m" }}</label>
             </div>
 
             <a class="btn btn-box-tool" ui-sref="app.dashboards()">
-                <i class="fa fa-chevron-left"></i> Back to list
+                <i class="fa fa-chevron-left"></i> {{ "views.partials.dashboard.view.back_to_list" | translateDefault:  "Back to list" }}
             </a>
 
         </div>
@@ -29,23 +29,23 @@
         <div class="box-tools">
             <div class="dashboard-period pull-left">
                 <div class="mv-xxxs">
-                    <span class="label label-lg mr-xs text-black">Select period</span>
+                    <span class="label label-lg mr-xs text-black">{{ "views.partials.dashboard.view.select_period" | translateDefault:  "Select period" }}</span>
                     <span class="label label-lg label-default mr-xxs clickable"
                         ng-repeat="period in $vm.dashboardPeriods"
                         ng-click="$vm.applyPeriod(period.type)"
                         ng-class="{'label-primary': $vm.definition.period === period.type}">{{period.label}}</span>
                     <span class="label label-lg label-default mr-xxs clickable"
                         ng-click="$vm.definition.period = 'custom'"
-                        ng-class="{'label-primary': $vm.definition.period === 'custom'}">Custom period</span>
+                        ng-class="{'label-primary': $vm.definition.period === 'custom'}">{{ "views.partials.dashboard.view.custom_period" | translateDefault:  "Custom period" }}</span>
                 </div>
             </div>
             <div class="mv-xxxs form-inline pull-left" ng-show="$vm.definition.period === 'custom'">
                 <div class="form-group hpad10">
-                    <label>From</label>
+                    <label>{{ "views.partials.dashboard.view.from" | translateDefault:  "From" }}</label>
                     <dt-picker date="$vm.definition.customPeriod.fromDate"></dt-picker>
                 </div>
                 <div class="form-group hpad10">
-                    <label>To</label>
+                    <label>{{ "views.partials.dashboard.view.to" | translateDefault:  "To" }}</label>
                     <dt-picker date="$vm.definition.customPeriod.toDate"></dt-picker>
                 </div>
                 <button type="button" class="btn btn-primary" ng-click="$vm.applyPeriod('custom')">
@@ -58,10 +58,10 @@
 
 <div class="dashboard-toolbox right-toolbox" affixer affixer-offset="70" ng-show="$vm.options.editLayout">
     <div class="btn btn-app" ng-click="$vm.saveDashboard()">
-        <i class="fa fa-save"></i> Save
+        <i class="fa fa-save"></i> {{ "views.partials.dashboard.view.save" | translateDefault:  "Save" }}
     </div>
     <div class="btn btn-app" ng-click="$vm.enableViewMode()">
-        <i class="fa fa-times text-danger"></i> Cancel
+        <i class="fa fa-times text-danger"></i> {{ "views.partials.dashboard.view.cancel" | translateDefault:  "Cancel" }}
     </div>
     <hr>
     <div class="btn btn-app" ng-repeat="item in $vm.toolbox"
@@ -89,7 +89,7 @@
         <div class="chart-container-header mb-xxs clearfix" ng-show="$vm.options.editLayout">
             <span class="pull-right">
                 <a href class="text-danger" ng-click="$vm.removeContainer($index)">
-                    <i class="fa fa-times"></i> Remove ({{row.items.length}})
+                    <i class="fa fa-times"></i> {{ "views.partials.dashboard.view.remove" | translateDefault:  "Remove" }} ({{row.items.length}})
                 </a>
             </span>
         </div>

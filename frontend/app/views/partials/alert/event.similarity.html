@@ -11,11 +11,11 @@
 </div>
 
 <div class="case-item">
-    <div class="case-details text-bold">Title</div>
-    <div class="case-date text-bold">Date</div>
-    <div class="case-similarity text-bold">Observables</div>
-    <div class="case-similarity text-bold">IOCs</div>
-    <div class="case-similarity-merge text-bold">Action</div>
+    <div class="case-details text-bold">{{ "views.partials.alert.event.similarity.title" | translateDefault:  "Title" }}</div>
+    <div class="case-date text-bold">{{ "views.partials.alert.event.similarity.date" | translateDefault:  "Date" }}</div>
+    <div class="case-similarity text-bold">{{ "views.partials.alert.event.similarity.observables" | translateDefault:  "Observables" }}</div>
+    <div class="case-similarity text-bold">{{ "views.partials.alert.event.similarity.iocs" | translateDefault:  "IOCs" }}</div>
+    <div class="case-similarity-merge text-bold">{{ "views.partials.alert.event.similarity.action" | translateDefault:  "Action" }}</div>
 </div>
 
 <div class="case-collection" ng-repeat="item in filteredLinks = (dialog.event.similarCases | filter:dialog.similarityFilters | orderBy:dialog.similaritySorts) ">
@@ -30,18 +30,18 @@
             </div>
             <div class="case-tags flexwrap mt-xxs">
                 <span class="mr-xxxs text-muted"><i class="fa fa-tags"></i></span>
-                <strong class="text-muted mr-xxxs" ng-if="!item.tags || item.tags.length === 0">None</strong>
+                <strong class="text-muted mr-xxxs" ng-if="!item.tags || item.tags.length === 0">{{ "views.partials.alert.event.similarity.none" | translateDefault:  "None" }}</strong>
                 <span ng-repeat="tag in item.tags track by $index" class="label label-primary mb-xxxs mr-xxxs pointer">{{tag}}</span>
             </div>
             <div class="text-success" ng-show="item.status !== 'Open'">
                 <small>
-                    (Closed at {{item.endDate | shortDate}} as <strong>{{dialog.CaseResolutionStatus[item.resolutionStatus]}}</strong>)
+                    ({{ "views.partials.alert.event.similarity.closed_at" | translateDefault:  "Closed at" }} {{item.endDate | shortDate}} {{ "views.partials.alert.event.similarity.as" | translateDefault:  "as" }} <strong>{{dialog.CaseResolutionStatus[item.resolutionStatus]}}</strong>)
                 </small>
             </div>
             <div class="text-danger" ng-if="item.mergeFrom">
                 <small>
-                    Merged from <a href ui-sref="app.case.details({caseId: item.mergeFrom[0]})"> Case #{{item.stats.mergeFrom[0].caseId}}</a> and
-                    <a href ui-sref="app.case.details({caseId: item.mergeFrom[1]})"> Case #{{utem.stats.mergeFrom[1].caseId}}</a>
+                    {{ "views.partials.alert.event.similarity.merged_from" | translateDefault:  "Merged from" }} <a href ui-sref="app.case.details({caseId: item.mergeFrom[0]})"> Case #{{item.stats.mergeFrom[0].caseId}}</a> {{ "views.partials.alert.event.similarity.and" | translateDefault:  "and" }}
+                    <a href ui-sref="app.case.details({caseId: item.mergeFrom[1]})"> {{ "views.partials.alert.event.similarity.case_#" | translateDefault:  "Case #" }}{{utem.stats.mergeFrom[1].caseId}}</a>
                 </small>
             </div>
         </div>
@@ -68,12 +68,12 @@
                 <uib-progressbar class="progress progress-sm" max="item.iocCount" value="item.similarIocCount" type="danger"></uib-progressbar>
             </div>
             <div ng-if="item.iocCount === 0">
-                <em>N/A</em>
+                <em>{{ "views.partials.alert.event.similarity.n/a" | translateDefault:  "N/A" }}</em>
             </div>
         </div>
 
         <div class="case-similarity-merge text-center">
-            <button class="btn btn-sm btn-primary" ng-click="dialog.mergeIntoCase(item.id)">Merge in this case</button>
+            <button class="btn btn-sm btn-primary" ng-click="dialog.mergeIntoCase(item.id)">{{ "views.partials.alert.event.similarity.merge_in_this_case" | translateDefault:  "Merge in this case" }}</button>
         </div>
     </div>
 </div>

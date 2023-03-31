@@ -4,9 +4,9 @@
 (function () {
     'use strict';
     angular.module('theHiveControllers').controller('CaseCreationCtrl',
-        function ($rootScope, $scope, $uibModalInstance, CaseSrv, TaxonomyCacheSrv, NotificationSrv, TagSrv, template) {
+        function ($rootScope, $scope, $uibModalInstance, CaseSrv, TaxonomyCacheSrv, NotificationSrv, TagSrv, template, i18n) {
 
-            $rootScope.title = 'New case';
+            $rootScope.title = i18n.t("controllers.case.CaseCreationCtrl.new_case", "New case");
             $scope.activeTlp = 'active';
             $scope.activePap = 'active';
             $scope.active = true;
@@ -24,7 +24,7 @@
 
                 // Set basic info from template
                 $scope.newCase = _.defaults({
-                    status: 'Open',
+                    status: i18n.t("controllers.case.CaseCreationCtrl.open", "Open"),
                     title: '',
                     description: template.description,
                     tlp: template.tlp,
@@ -43,7 +43,7 @@
             } else {
                 $scope.tasks = [];
                 $scope.newCase = {
-                    status: 'Open'
+                    status: i18n.t("controllers.case.CaseCreationCtrl.open", "Open")
                 };
             }
 
@@ -74,7 +74,7 @@
                         return {
                             title: task,
                             flag: false,
-                            status: 'Waiting'
+                            status: i18n.t("controllers.case.CaseCreationCtrl.waiting", "Waiting")
                         };
                     });
                 }

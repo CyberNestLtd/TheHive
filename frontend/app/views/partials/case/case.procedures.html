@@ -8,7 +8,7 @@
     <div class="col-md-12 clearfix">
         <div class="pull-left">
             <h4>
-                Tactics, Techniques and Procedures ({{$vm.list.values.length || 0}} of {{$vm.list.total}})
+                {{ "views.partials.case.case.procedures.tactics,_techniques_and_procedures" | translateDefault:  "Tactics, Techniques and Procedures" }} ({{$vm.list.values.length || 0}} of {{$vm.list.total}})
             </h4>
         </div>
 
@@ -20,7 +20,7 @@
 <!-- Datalist  -->
 <div class="row mt-xs">
     <div class="col-md-12 mv-s" ng-show="$vm.list.total === 0">
-        <div class="empty-message">No records</div>
+        <div class="empty-message">{{ "views.partials.case.case.procedures.no_records" | translateDefault:  "No records" }}</div>
     </div>
 
     <div class="col-md-12" ng-show="$vm.list.total > 0">
@@ -29,7 +29,7 @@
         <div class="ttp-item-header">
             <div class="ttp-tactic">
                 <a href class="text-default" ng-click="$vm.sortByField('tactic')">
-                    Tactic
+                    {{ "views.partials.case.case.procedures.tactic" | translateDefault:  "Tactic" }}
                     <i ng-show="$vm.filtering.context.sort.indexOf('+tactic') === -1 && $vm.filtering.context.sort.indexOf('-tactic') === -1"
                         class="fa fa-sort"></i>
                     <i ng-show="$vm.filtering.context.sort.indexOf('+tactic') !== -1" class="fa fa-caret-up"></i>
@@ -38,7 +38,7 @@
             </div>
             <div class="ttp-name">
                 <a href class="text-default" ng-click="$vm.sortByField('patternId')">
-                    Technique
+                    {{ "views.partials.case.case.procedures.technique" | translateDefault:  "Technique" }}
                     <i ng-show="$vm.filtering.context.sort.indexOf('+patternId') === -1 && $vm.filtering.context.sort.indexOf('-patternId') === -1"
                         class="fa fa-sort"></i>
                     <i ng-show="$vm.filtering.context.sort.indexOf('+patternId') !== -1" class="fa fa-caret-up"></i>
@@ -48,14 +48,14 @@
             <!-- <div class="ttp-user">Created By</div> -->
             <div class="ttp-date">
                 <a href class="text-default" ng-click="$vm.sortByField('occurDate')">
-                    Occur Date
+                    {{ "views.partials.case.case.procedures.occur_date" | translateDefault:  "Occur Date" }}
                     <i ng-show="$vm.filtering.context.sort.indexOf('+occurDate') === -1 && $vm.filtering.context.sort.indexOf('-occurDate') === -1"
                         class="fa fa-sort"></i>
                     <i ng-show="$vm.filtering.context.sort.indexOf('+occurDate') !== -1" class="fa fa-caret-up"></i>
                     <i ng-show="$vm.filtering.context.sort.indexOf('-occurDate') !== -1" class="fa fa-caret-down"></i>
                 </a>
             </div>
-            <div class="ttp-action text-right">Actions</div>
+            <div class="ttp-action text-right">{{ "views.partials.case.case.procedures.actions" | translateDefault:  "Actions" }}</div>
         </div>
 
         <div class="ttp-item" ng-repeat="proc in $vm.list.values">
@@ -112,26 +112,26 @@
             <div class="ttp-body" ng-show="$vm.expanded[proc._id]">
                 <div class="row mb-xs">
                     <div class="col-sm-3">
-                        <label>Created By</label>
+                        <label>{{ "views.partials.case.case.procedures.created_by" | translateDefault:  "Created By" }}</label>
                         <div>
                             <user-info value="proc._createdBy" field="organisation"></user-info>/<user-info
                                 value="proc._createdBy" field="name"></user-info>
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <label>Created At</label>
+                        <label>{{ "views.partials.case.case.procedures.created_at" | translateDefault:  "Created At" }}</label>
                         <div>
                             <span>{{proc._createdAt | shortDate}}</span>
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <label>Updated At</label>
+                        <label>{{ "views.partials.case.case.procedures.updated_at" | translateDefault:  "Updated At" }}</label>
                         <div>
                             <span>{{(proc._updatedAt | shortDate) || '-'}}</span>
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <label>Occured At</label>
+                        <label>{{ "views.partials.case.case.procedures.occured_at" | translateDefault:  "Occured At" }}</label>
                         <div if-permission="manageProcedure" allowed="{{userPermissions}}">
                             <updatable-date on-update="$vm.updateField(proc, 'occurDate', true)" value="proc.occurDate"
                                 clearable="false"></updatable-date>
@@ -143,14 +143,14 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <label>Procedure</label>
+                        <label>{{ "views.partials.case.case.procedures.procedure" | translateDefault:  "Procedure" }}</label>
                         <div class="description-pane" if-permission="manageProcedure" allowed="{{userPermissions}}">
                             <updatable-text on-update="$vm.updateField(proc, 'description')" value="proc.description">
                             </updatable-text>
                         </div>
                         <div class="description-pane" if-not-permission="manageProcedure" allowed="{{userPermissions}}">
                             <div ng-if="!proc.description">
-                                <em class="text-warning">Not Specified</em>
+                                <em class="text-warning">{{ "views.partials.case.case.procedures.not_specified" | translateDefault:  "Not Specified" }}</em>
                             </div>
                             <div marked="proc.description" class="markdown"></div>
                         </div>

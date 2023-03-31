@@ -6,7 +6,7 @@
         .controller('AttackPatternDialogCtrl', AttackPatternDialogCtrl)
         .controller('AttackPatternImportCtrl', AttackPatternImportCtrl);
 
-    function AttackPatternListCtrl($scope, $uibModal, PaginatedQuerySrv, FilteringSrv, AttackPatternSrv, NotificationSrv, ModalSrv, appConfig) {
+    function AttackPatternListCtrl($scope, $uibModal, PaginatedQuerySrv, FilteringSrv, AttackPatternSrv, NotificationSrv, ModalSrv, appConfig, i18n) {
         var self = this;
 
         this.appConfig = appConfig;
@@ -72,7 +72,7 @@
                 })
                 .catch(function (err) {
                     if (err && !_.isString(err)) {
-                        NotificationSrv.error('Pattern import', err.data, err.status);
+                        NotificationSrv.error(i18n.t("controllers.admin.attack.AttackPatternListCtrl.pattern_import", "Pattern import"), err.data, err.status);
                     }
                 });
         };

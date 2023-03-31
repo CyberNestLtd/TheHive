@@ -11,37 +11,37 @@
 </div>
 <div>
     <span>
-        <i class="fa fa-calendar"></i> Date:
+        <i class="fa fa-calendar"></i>{{ 'views.directives.search.alert.date' | translate}}
         <strong class="text-muted">{{value.date | shortDate}}</strong>
     </span>
     <span class="ml-xxs">
-        <i class="fa fa-certificate"></i> Type:
+        <i class="fa fa-certificate"></i>{{ 'views.directives.search.alert.type' | translate}}
         <strong class="text-muted">{{value.type}}</strong>
     </span>
     <span class="ml-xxs">
-        <i class="fa fa-barcode"></i> Reference:
+        <i class="fa fa-barcode"></i> {{ 'views.directives.search.alert.reference' | translate}}
         <strong class="text-muted">{{value.sourceRef}}</strong>
     </span>
     <span class="ml-xxs">
-        <i class="fa fa-bullseye"></i> Source:
+        <i class="fa fa-bullseye"></i> {{ 'views.directives.search.alert.source' | translate}}
         <strong class="text-muted">{{value.source}}</strong>
     </span>
     <span class="ml-xxs">
-        <i class="glyphicon glyphicon-pushpin"></i> Attributes:
+        <i class="glyphicon glyphicon-pushpin"></i> {{ 'views.directives.search.alert.attributes' | translate}}
         <strong class="text-muted">{{value.artifacts.length}}</strong>
     </span>
 </div>
 <div class="mt-xs wrap" ng-if="value.tags.length>0">
-    <strong>Tags:</strong><tag-list data="value.tags"></tag-list>
+    <strong>{{ 'views.directives.search.alert.tags' | translate}}</strong><tag-list data="value.tags"></tag-list>
 </div>
 <div class="mt-xs wrap">
-    <strong>Status:</strong>
+    <strong>{{ 'views.directives.search.alert.status' | translate}}</strong>
     <div>
       <span class="label label-default" ng-class="{'label-danger': value.status==='New', 'label-warning': value.status === 'Updated'}">{{value.status}}</span>
     </div>
 </div>
 <div class="mt-xs wrap">
-    <strong>Description:</strong>
+    <strong>{{ 'views.directives.search.alert.description' | translate}}</strong>
     <div>
         <span ng-bind="value.description| limitTo: 250"></span>
     </div>

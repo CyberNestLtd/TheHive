@@ -3,9 +3,9 @@
 	<span data-dz-size></span>
 	<button data-dz-remove class="btn btn-xs btn-danger delete">
 		<i class="glyphicon glyphicon-remove-circle"></i>
-		<span>Remove</span>
+		<span>{{ 'views.directives.dropzone.remove' | translate}}</span>
 	</button>
 </div>
 <div ng-hide="filemodel != undefined" class="dz-clickable dz-message" style="border: 1px dashed red; height: 4em;">
-	<span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">Drop file or click</span>
+	<span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">{{ 'views.directives.dropzone.drop_file_or_click' | translate}}</span>
 </div>

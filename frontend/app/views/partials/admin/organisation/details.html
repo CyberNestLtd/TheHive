@@ -5,12 +5,12 @@
                 <div class="box box-default">
                     <div class="box-header with-border">
                         <h3 class="box-title">
-                            <span class="wrap">[Organisation] - {{$vm.org.name}}</span>
+                            <span class="wrap">[{{ "views.partials.admin.organisation.details.organisation" | translateDefault:  "Organisation" }}] - {{$vm.org.name}}</span>
                         </h3>
                         <div class="box-tools pull-right" ng-if="isSuperAdmin()">
                             <span class="ml-xs">
                                 <a ui-sref="app.administration.organisations">
-                                    <i class="fa fa-chevron-left"></i> Back to list
+                                    <i class="fa fa-chevron-left"></i> {{ "views.partials.admin.organisation.details.back_to_list" | translateDefault:  "Back to list" }}
                                 </a>
                             </span>
                         </div>
@@ -46,7 +46,7 @@
                         <uib-tab-heading>
                             <span>
                                 <i class="mr-xxs fa fa-users"></i>
-                                Users
+                                {{ "views.partials.admin.organisation.details.users" | translateDefault:  "Users" }}
                             </span>
                         </uib-tab-heading>
                         <div if-permission="manageUser">
@@ -55,20 +55,20 @@
                                     <div class="btn-toolbar" role="toolbar">
                                         <button class="btn btn-sm btn-primary" type="button" ng-click="$vm.showUserDialog()">
                                             <i class="fa fa-plus"></i>
-                                            Create new user
+                                            {{ "views.partials.admin.organisation.details.create_new_user" | translateDefault:  "Create new user" }}
                                         </button>
                                         <div class="btn-group" uib-dropdown>
                                             <button class="btn btn-sm btn-primary dropdown-toggle" uib-dropdown-toggle type="button">
                                                 <i class="fa fa-filter"></i>
-                                                Quick Filters
+                                                {{ "views.partials.admin.organisation.details.quick_filters" | translateDefault:  "Quick Filters" }}
                                                 <span class="caret"></span>
                                             </button>
                                             <ul class="dropdown-menu" uib-dropdown-menu>
                                                 <li>
-                                                    <a class="clickable" ng-click="$vm.filterBy('locked', false)"><i class="fa fa-unlock-alt"></i> Active users</a>
+                                                    <a class="clickable" ng-click="$vm.filterBy('locked', false)"><i class="fa fa-unlock-alt"></i> {{ "views.partials.admin.organisation.details.active_users" | translateDefault:  "Active users" }}</a>
                                                 </li>
                                                 <li>
-                                                    <a class="clickable" ng-click="$vm.filterBy('locked', true)"><i class="fa fa-lock"></i> Locked users</a>
+                                                    <a class="clickable" ng-click="$vm.filterBy('locked', true)"><i class="fa fa-lock"></i> {{ "views.partials.admin.organisation.details.locked_users" | translateDefault:  "Locked users" }}</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -79,7 +79,7 @@
 
                                         <div class="btn-group pull-right" role="group">
                                             <button class="btn btn-sm" ng-class="{true: 'btn-primary', false:'btn-default'}[$vm.filtering.context.showFilters]" type="button" ng-click="$vm.toggleFilters()">
-                                                <i class="fa fa-search"></i> Filters
+                                                <i class="fa fa-search"></i> {{ "views.partials.admin.organisation.details.filters" | translateDefault:  "Filters" }}
                                             </button>
                                         </div>
                                     </div>
@@ -93,7 +93,7 @@
                                         <div class="col-md-12 clearfix">
                                             <div class="pull-left">
                                                 <h4>
-                                                    User List ({{$vm.users.values.length || 0}} of {{$vm.users.total}})
+                                                    {{ "views.partials.admin.organisation.details.user_list" | translateDefault:  "User List" }} ({{$vm.users.values.length || 0}} of {{$vm.users.total}})
                                                 </h4>
                                             </div>
 
@@ -118,7 +118,7 @@
                         <uib-tab-heading>
                             <span>
                                 <i class="mr-xxs fa fa-file-text"></i>
-                                Case Templates
+                                {{ "views.partials.admin.organisation.details.case_templates" | translateDefault:  "Case Templates" }}
                             </span>
                         </uib-tab-heading>
                         <div if-permission="manageCaseTemplate">
@@ -129,7 +129,7 @@
                         <uib-tab-heading>
                             <span>
                                 <i class="mr-xxs fa fa-tag"></i>
-                                Custom Tags
+                                {{ "views.partials.admin.organisation.details.custom_tags" | translateDefault:  "Custom Tags" }}
                             </span>
                         </uib-tab-heading>
                         <div if-permission="manageTag">
@@ -140,7 +140,7 @@
                         <uib-tab-heading>
                             <span>
                                 <i class="mr-xxs fa fa-cogs"></i>
-                                UI Configuration
+                                {{ "views.partials.admin.organisation.details.ui_configuration" | translateDefault:  "UI Configuration" }}
                             </span>
                         </uib-tab-heading>
                         <div if-permission="manageConfig">

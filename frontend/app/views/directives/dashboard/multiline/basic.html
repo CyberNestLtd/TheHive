@@ -1,11 +1,11 @@
 <div class="form-group">
-    <label>Title</label>
-    <input type="text" class="form-control" placeholder="Ex: cases per TLP" ng-model="component.options.title">
+    <label>{{ 'views.directives.dashboard.multiline.basic.title' | translate}}</label>
+    <input type="text" class="form-control" placeholder="{{ 'views.placeholders.directives.dashboard.multiline.basic.ex:_cases_per_tlp' | translateDefault: 'Ex: cases per TLP' }}" ng-model="component.options.title">
 </div>
-<div class="row">    
+<div class="row">
     <div class="col-sm-4">
         <div class="form-group">
-            <label>Interval</label>
+            <label>{{ 'views.directives.dashboard.multiline.basic.interval' | translate}}</label>
             <select class="form-control" ng-model="component.options.interval"
                 ng-options="item.code as item.label for item in timeIntervals"></select>
         </div>

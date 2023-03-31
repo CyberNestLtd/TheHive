@@ -20,7 +20,7 @@
 
                 <div class="row mv-s" ng-show="$vm.loading === false && $vm.list.values.length === 0">
                     <div class="col-md-12">
-                        <div class="empty-message">No ATT&CK patterns found.</div>
+                        <div class="empty-message">{{ "views.partials.admin.attack.list.no_att&ck_patterns_found." | translateDefault:  "No ATT&CK patterns found." }}</div>
                     </div>
                 </div>
 
@@ -28,7 +28,7 @@
                     <div class="col-md-12">
                         <div class="loading-message">
                             <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
-                            <span>loading patterns...</span>
+                            <span>{{ "views.partials.admin.attack.list.loading_patterns..." | translateDefault:  "loading patterns..." }}</span>
                         </div>
                     </div>
                 </div>
@@ -41,11 +41,11 @@
                         <table class="table table-striped case-list">
                             <thead>
                                 <tr>
-                                    <th width="100">ID</th>
-                                    <th width="200">Name</th>
-                                    <th width="200">Sub-Technique of</th>
-                                    <th width="200">Tactics</th>
-                                    <th>Description</th>
+                                    <th width="100">{{ "views.partials.admin.attack.list.id" | translateDefault:  "ID" }}</th>
+                                    <th width="200">{{ "views.partials.admin.attack.list.name" | translateDefault:  "Name" }}</th>
+                                    <th width="200">{{ "views.partials.admin.attack.list.sub-technique_of" | translateDefault:  "Sub-Technique of" }}</th>
+                                    <th width="200">{{ "views.partials.admin.attack.list.tactics" | translateDefault:  "Tactics" }}</th>
+                                    <th>{{ "views.partials.admin.attack.list.description" | translateDefault:  "Description" }}</th>
                                     <th width="120"></th>
                                 </tr>
                             </thead>

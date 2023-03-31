@@ -1,22 +1,22 @@
 <form class="form-horizontal" name="observableForm" ng-submit="$dialog.run(observableForm);" novalidate>
     <div class="modal-header bg-primary">
-        <h3 class="modal-title">Analyzer observable(s)</h3>
+        <h3 class="modal-title">{{ "views.partials.observables.observable.analyze.analyzer_observable(s)" | translateDefault:  "Analyzer observable(s)" }}</h3>
     </div>
 
     <div class="modal-body">
         <p class="mb-xs">
-            Select the analyzers you want to run on the selected observables.
+            {{ "views.partials.observables.observable.analyze.select_the_analyzers_you_want_to_run_on_the_selected_observables." | translateDefault:  "Select the analyzers you want to run on the selected observables." }}
         </p>
 
         <div class="form-group" ng-repeat="dataType in $dialog.dataTypes track by $index">
-            <label class="col-md-3 control-label">{{dataType}} analyzers</label>
+            <label class="col-md-3 control-label">{{dataType}} {{ "views.partials.observables.observable.analyze.analyzer" | translateDefault:  "analyzers" }}</label>
             <div class="col-md-9">
                 <p class="form-control-static" ng-if="$dialog.analyzerMap[dataType].length === 0">
-                    <em class="text-muted">No Analyzer Available</em>
+                    <em class="text-muted">{{ "views.partials.observables.observable.analyze.no_analyzer_available" | translateDefault:  "No Analyzer Available" }}</em>
                 </p>
 
                 <p class="form-control-static" ng-if="$dialog.analyzerMap[dataType].length > 0">
-                    <a href ng-click="$dialog.selectAll(dataType, true)">Select all</a> / <a href ng-click="$dialog.selectAll(dataType, false)">Deselect all</a>
+                    <a href ng-click="$dialog.selectAll(dataType, true)">{{ "views.partials.observables.observable.analyze.select_all" | translateDefault:  "Select all" }}</a> / <a href ng-click="$dialog.selectAll(dataType, false)">{{ "views.partials.observables.observable.analyze.deselect_all" | translateDefault:  "Deselect all" }}</a>
                 </p>
 
                 <div class="checkbox" ng-repeat="analyzer in $dialog.analyzerMap[dataType]">
@@ -31,7 +31,7 @@
 
 
     <div class="modal-footer text-left">
-        <button class="btn btn-default" ng-click="$dialog.cancel()" type="button">Cancel</button>
-        <button class="btn btn-primary pull-right" ng-disabled="observableForm.$invalid" type="submit">Run selected analyzers</button>
+        <button class="btn btn-default" ng-click="$dialog.cancel()" type="button">{{ "views.partials.observables.observable.analyze.cancel" | translateDefault:  "Cancel" }}</button>
+        <button class="btn btn-primary pull-right" ng-disabled="observableForm.$invalid" type="submit">{{ "views.partials.observables.observable.analyze.run_selected_analyzers" | translateDefault:  "Run selected analyzers" }}</button>
     </div>
 </form>

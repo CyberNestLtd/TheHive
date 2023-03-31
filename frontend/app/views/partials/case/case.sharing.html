@@ -4,7 +4,7 @@
             <div class="btn-group">
                 <button class="btn btn-sm btn-primary" ng-click="$vm.shareCase()" ng-disabled="!$vm.enableAddButton">
                     <i class="fa fa-plus"></i>
-                    Add share
+                    {{ "views.partials.case.case.sharing.add_share" | translateDefault:  "Add share" }}
                 </button>
             </div>
         </div>
@@ -13,14 +13,14 @@
 
 <div class="row" ng-if="$vm.shares.length === 0">
     <div class="col-md-12">
-        <div class=" empty-message">No records</div>
+        <div class=" empty-message">{{ "views.partials.case.case.sharing.no_records" | translateDefault:  "No records" }}</div>
     </div>
 </div>
 
 <div class="row" ng-if="$vm.shares.length > 0">
     <div class="col-md-12">
         <p>
-            The current case is shared with the following organisation(s)
+            {{ "views.partials.case.case.sharing.the_current_case_is_shared_with_the_following_organisation(s)" | translateDefault:  "The current case is shared with the following organisation(s)" }}
         </p>
 
         <sharing-list

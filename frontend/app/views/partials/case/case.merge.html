@@ -5,10 +5,10 @@
     <div class="input-group input-group-lg search-field">
         <span class="input-group-addon">
             <label class="radio-inline">
-                <input type="radio" name="search-type" ng-model="dialog.search.type" value="title" ng-change="dialog.onTypeChange('title')"> By Title
+                <input type="radio" name="search-type" ng-model="dialog.search.type" value="title" ng-change="dialog.onTypeChange('title')"> {{ "views.partials.case.case.merge.by_title" | translateDefault:  "By Title" }}
             </label>
             <label class="radio-inline">
-                <input type="radio" name="search-type" ng-model="dialog.search.type" value="number" ng-change="dialog.onTypeChange('number')"> By Number
+                <input type="radio" name="search-type" ng-model="dialog.search.type" value="number" ng-change="dialog.onTypeChange('number')"> {{ "views.partials.case.case.merge.by_number" | translateDefault:  "By Number" }}
             </label>
         </span>
         <input type="{{dialog.search.type === 'number' ? 'number' : 'text'}}"
@@ -22,12 +22,12 @@
     </div>
 
     <div class="empty-message mv-s" ng-show="dialog.search.cases.length === 0">
-        Please search for the case to be merged with: <br>
+        {{ "views.partials.case.case.merge.please_search_for_the_case_to_be_merged_with:" | translateDefault:  "Please search for the case to be merged with:" }} <br>
         <strong>{{dialog.prompt}}</strong>
     </div>
     <div class="mv-s merge-case" ng-repeat="c in dialog.search.cases">
         <div class="alert alert-warning" ng-show="c.mergeInto">
-            WARNING: This case has already been merged with another case
+            {{ "views.partials.case.case.merge.warning:_this_case_has_already_been_merged_with_another_case" | translateDefault:  "WARNING: This case has already been merged with another case" }}
         </div>
         <h4>{{c.title}}</h4>
         <div>
@@ -38,14 +38,14 @@
             <span class="ml-xxs">
                 <i class="glyphicon glyphicon-calendar"></i>
                 <span>{{c.startDate | shortDate}}</span>&nbsp;&nbsp;
-            <span ng-show="isCaseClosed()" class="text-success">(Closed at
+            <span ng-show="isCaseClosed()" class="text-success">({{ "views.partials.case.case.merge.closed_at" | translateDefault:  "Closed at" }}
                     {{c.endDate | shortDate}}
-                    as
+                    {{ "views.partials.case.case.merge.as" | translateDefault:  "as" }}
                     <strong>{{CaseResolutionStatus[c.resolutionStatus]}}</strong>)</span>
             </span>
         </div>
         <div class="mt-xs wrap" ng-if="c.tags.length>0">
-            <strong>Tags:</strong>
+            <strong>{{ "views.partials.case.case.merge.tags:" | translateDefault:  "Tags:" }}</strong>
             <tag-list data="c.tags"></tag-list>
         </div>
         <div class="mt-xs wrap">
@@ -54,7 +54,7 @@
     </div>
 </div>
 <div class="modal-footer text-left">
-    <button class="btn btn-default" ng-click="dialog.cancel()" type="button">Cancel</button>
+    <button class="btn btn-default" ng-click="dialog.cancel()" type="button">{{ "views.partials.case.case.merge.cancel" | translateDefault:  "Cancel" }}</button>
     <button class="btn btn-primary pull-right" ng-click="dialog.merge()" ng-disabled="dialog.search.cases.length < 1"
-        type="button">Merge</button>
+        type="button">{{ "views.partials.case.case.merge.merge" | translateDefault:  "Merge" }}</button>
 </div>

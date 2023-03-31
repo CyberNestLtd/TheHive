@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12 active-filters">
-        <h4>Filters</h4>
+        <h4>{{ "views.partials.dashboard.list.filters.filters" | translateDefault:  "Filters" }}</h4>
 
         <form ng-submit="$vm.search()">
             <div class="row mb-xxxs" ng-repeat="filter in $vm.filtering.context.filters track by $index">
@@ -23,13 +23,13 @@
             <div class="mv-xs row">
                 <div class="col-sm-12 col-md-12 col-lg-8">
                     <a href class="btn btn-sm  btn-link btn-clear" ng-click="$vm.filtering.addFilter()">
-                        <i class="fa fa-plus"></i> Add a filter
+                        <i class="fa fa-plus"></i> {{ "views.partials.dashboard.list.filters.add_a_filter" | translateDefault:  "Add a filter" }}
                     </a>
                     <a href class="btn btn-sm btn-danger" ng-click="$vm.clearFilters()" ng-if="$vm.filtering.context.filters.length > 0">
-                        <i class="fa fa-times"></i> Clear
+                        <i class="fa fa-times"></i> {{ "views.partials.dashboard.list.filters.clear" | translateDefault:  "Clear" }}
                     </a>
                     <button href class="btn btn-sm btn-primary pull-right" type="submit" ng-if="$vm.filtering.context.filters.length > 0">
-                        <i class="fa fa-search"></i> Search
+                        <i class="fa fa-search"></i> {{ "views.partials.dashboard.list.filters.search" | translateDefault:  "Search" }}
                     </button>
                 </div>
             </div>

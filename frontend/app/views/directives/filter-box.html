@@ -1,7 +1,7 @@
 <div class="filter-box">
     <form ng-submit="filter()">
         <div class="input-group">
-            <input type="text" class="form-control input-sm" ng-model="query" placeholder="Filter" size="50">
+            <input type="text" class="form-control input-sm" ng-model="query" placeholder="{{ 'views.placeholders.directives.filter-box.filter' | translateDefault: 'Filter' }}" size="50">
             <span class="input-group-btn">
                 <button class="btn btn-default btn-sm" type="button" ng-click="clear()">
                     <i class="text-danger glyphicon glyphicon-remove"></i>

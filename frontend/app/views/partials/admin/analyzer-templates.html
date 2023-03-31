@@ -1,6 +1,6 @@
 <div class="box">
     <div class="box-header">
-        <h3 class="box-title">Analyzer template management</h3>
+        <h3 class="box-title">{{ "views.partials.admin.analyzer-templates.analyzer_template_management" | translateDefault:  "Analyzer template management" }}</h3>
     </div>
     <div class="box-body">
         <div class="row mb-s">
@@ -9,19 +9,19 @@
                     <!-- Single button -->
                     <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-primary" ng-click="vm.import()">
-                            <span class="fa fa-upload"></span> Import templates
+                            <span class="fa fa-upload"></span> {{ "views.partials.admin.analyzer-templates.import_templates" | translateDefault:  "Import templates" }}
                         </button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="filter-panel mb-xs">
-            <h4>Download the official templates archive</h4>
-            <p>You can download the latest archive of the official analyzer templates <a target="_blank" href="http://download.thehive-project.org/report-templates.zip?version={{vm.appConfig.versions.TheHive}}">from here</a></p>
+            <h4>{{ "views.partials.admin.analyzer-templates.download_the_official_templates_archive" | translateDefault:  "Download the official templates archive" }}</h4>
+            <p>{{ "views.partials.admin.analyzer-templates.you_can_download_the_latest_archive_of_the_official_analyzer_templates" | translateDefault:  "You can download the latest archive of the official analyzer templates" }} <a target="_blank" href="http://download.thehive-project.org/report-templates.zip?version={{vm.appConfig.versions.TheHive}}">{{ "views.partials.admin.analyzer-templates.from_here" | translateDefault:  "from here" }}</a></p>
         </div>
         <div class="row mv-s" ng-show="vm.analyzerCount === 0">
             <div class="col-md-12">
-                <div class="empty-message">No analyzer templates found.</div>
+                <div class="empty-message">{{ "views.partials.admin.analyzer-templates.no_analyzer_templates_found." | translateDefault:  "No analyzer templates found." }}</div>
             </div>
         </div>
         <div class="row" ng-show="vm.analyzerCount > 0">
@@ -29,8 +29,8 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th width="200px">Long template</th>
+                            <th>{{ "views.partials.admin.analyzer-templates.name" | translateDefault:  "Name" }}</th>
+                            <th width="200px">{{ "views.partials.admin.analyzer-templates.long_template" | translateDefault:  "Long template" }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,11 +41,11 @@
                             </td>
                             <td class="vmiddle">
                                 <div class="btn-group btn-group-sm" ng-if="analyzer.template.id">
-                                    <button type="button" class="btn btn-default" ng-click="vm.showTemplate(vm.analyzers[analyzerId])">View Template</button>
+                                    <button type="button" class="btn btn-default" ng-click="vm.showTemplate(vm.analyzers[analyzerId])">{{ "views.partials.admin.analyzer-templates.view_template" | translateDefault:  "View Template" }}</button>
                                     <button type="button" class="btn btn-danger" ng-click="vm.deleteTemplate(analyzer.template)"><i class="fa fa-times"></i></button>
                                 </div>
                                 <div class="btn-group btn-group-sm" ng-if="!analyzer.template.id">
-                                    <button type="button" class="btn btn-default" ng-click="vm.showTemplate(analyzer)">Default template</button>
+                                    <button type="button" class="btn btn-default" ng-click="vm.showTemplate(analyzer)">{{ "views.partials.admin.analyzer-templates.default_template" | translateDefault:  "Default template" }}</button>
                                 </div>
                             </td>
                         </tr>

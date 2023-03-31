@@ -1,21 +1,21 @@
 <div class="row">
     <div class="col-md-12">
         <h4 class="pv-xxs pr-xxs text-primary">
-            Analysis
+            {{ "views.partials.observables.details.analysers.analysis" | translateDefault:  "Analysis" }}
             <span class="pull-right" if-permission="manageAnalyse" allowed="{{userPermissions}}" ng-if="analysisEnabled">
-                <small><a href class="text-primary" ng-click="runAll()">Run all</a></small>
+                <small><a href class="text-primary" ng-click="runAll()">{{ "views.partials.observables.details.analysers.run_all" | translateDefault:  "Run all" }}</a></small>
             </span>
         </h4>
 
         <div ng-if="!jobs || !analyzers || analyzers.length === 0">
-            <div class="empty-message">No records</div>
+            <div class="empty-message">{{ "views.partials.observables.details.analysers.no_records" | translateDefault:  "No records" }}</div>
         </div>
 
         <table class="table table-striped" ng-if="jobs || analyzers.length > 0">
             <thead>
-                <th>Analyzer</th>
-                <th width="450">Last analysis</th>
-                <th width="60" class="text-center" if-permission="manageAnalyse" allowed="{{userPermissions}}" ng-if="analysisEnabled">Actions</th>
+                <th>{{ "views.partials.observables.details.analysers.analyzer" | translateDefault:  "Analyzer" }}</th>
+                <th width="450">{{ "views.partials.observables.details.analysers.last_analysis" | translateDefault:  "Last analysis" }}</th>
+                <th width="60" class="text-center" if-permission="manageAnalyse" allowed="{{userPermissions}}" ng-if="analysisEnabled">{{ "views.partials.observables.details.analysers.actions" | translateDefault:  "Actions" }}</th>
             </thead>
             <tbody>
                 <tr ng-repeat="(analyzerName, jobs) in analyzerJobs"
@@ -39,7 +39,7 @@
                     </td> -->
                     <td>
                         <ul class="list-unstyled">
-                            <li ng-if="jobs.length === 0"><em>None</em></li>
+                            <li ng-if="jobs.length === 0"><em>{{ "views.partials.observables.details.analysers.none" | translateDefault:  "None" }}</em></li>
                             <li ng-repeat="job in jobs" ng-show="analyzer.showRows || $first">
                                 <span class="mr-s">
                                     <i class="glyphicon" ng-class="{ Failure:'glyphicon-warning-sign text-warning', Success:'glyphicon-ok text-success', InProgress:'fa fa-cog fa-spin', Waiting:'fa fa-cog fa-spin'}[job.status]"></i>
@@ -96,17 +96,17 @@
 <div class="row observable-report" ng-if="report">
     <div class="col-md-12">
         <h4 class="pad10 text-primary">
-            Report <small>for {{report.template}} analysis of {{(report.endDate || report.startDate) | shortDate}}</small>
+            {{ "views.partials.observables.details.analysers.report" | translateDefault:  "Report" }} <small>{{ "views.partials.observables.details.analysers.for" | translateDefault:  "for" }} {{report.template}} {{ "views.partials.observables.details.analysers.analysis of" | translateDefault:  "analysis of" }} {{(report.endDate || report.startDate) | shortDate}}</small>
             <span class="pull-right">
-                <small><a href class="text-primary" ng-click="showRaw = !showRaw">{{showRaw ? 'Hide': 'Show'}} Raw Report</a></small>
+                <small><a href class="text-primary" ng-click="showRaw = !showRaw">{{showRaw ? 'Hide': 'Show'}} {{ "views.partials.observables.details.analysers.raw_report" | translateDefault:  "Raw Report" }}</a></small>
                 <small class="mh-xxxs">|</small>
-                <small><a href class="text-primary" ng-click="showArtifacts = !showArtifacts">{{showArtifacts ? 'Hide': 'Show'}} observables ({{report.content.artifacts.length || 0}})</a></small>
+                <small><a href class="text-primary" ng-click="showArtifacts = !showArtifacts">{{showArtifacts ? 'Hide': 'Show'}} {{ "views.partials.observables.details.analysers.observables" | translateDefault:  "Observables" }} ({{report.content.artifacts.length || 0}})</a></small>
             </span>
         </h4>
         <div ng-if="showArtifacts" class="">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <strong>Observables</strong> <small>Extracted from analysis report</small>
+                    <strong>{{ "views.partials.observables.details.analysers.observables" | translateDefault:  "Observables" }}</strong> <small>{{ "views.partials.observables.details.analysers.extracted_from_analysis_report" | translateDefault:  "Extracted from analysis report" }}</small>
                 </div>
                 <div class="panel-body">
                     <report-observables
@@ -124,7 +124,7 @@
         <div ng-if="showRaw">
             <div class="panel" ng-class="{'panel-info': report.content.success, 'panel-danger': !report.content.success}">
                 <div class="panel-heading">
-                    <strong>Raw report</strong>
+                    <strong>{{ "views.partials.observables.details.analysers.raw_report" | translateDefault:  "Raw report" }}</strong>
                 </div>
                 <div class="panel-body">
                     <pre>{{(report.content.full || report.content) | json}}</pre>

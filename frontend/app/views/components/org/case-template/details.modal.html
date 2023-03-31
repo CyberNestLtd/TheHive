@@ -8,7 +8,7 @@
                 <uib-tab-heading>
                     <span>
                         <i class="mr-xxs glyphicon glyphicon-folder-open"></i>
-                        Basic Information
+                        {{ "views.components.org.case-template.details.modal.basic_information" | translateDefault:  "Basic Information" }}
                     </span>
                 </uib-tab-heading>
                 <div>
@@ -19,7 +19,7 @@
                 <uib-tab-heading>
                     <span>
                         <i class="mr-xxs glyphicon glyphicon-tasks"></i>
-                        Tasks <span class="badge badge-default">{{$vm.template.tasks.length || 0}}</span>
+                        {{ "views.components.org.case-template.details.modal.tasks" | translateDefault:  "Tasks" }} <span class="badge badge-default">{{$vm.template.tasks.length || 0}}</span>
                     </span>
                 </uib-tab-heading>
                 <div>
@@ -30,7 +30,7 @@
                 <uib-tab-heading>
                     <span>
                         <i class="mr-xxs fa fa-tags"></i>
-                        Custom Fields <span class="badge badge-default">{{$vm.templateCustomFields.length || 0}}</span>
+                        {{ "views.components.org.case-template.details.modal.custom_fields" | translateDefault:  "Custom Fields" }} <span class="badge badge-default">{{$vm.templateCustomFields.length || 0}}</span>
                     </span>
                 </uib-tab-heading>
                 <div>
@@ -40,8 +40,8 @@
         </uib-tabset>
     </div>
     <div class="modal-footer text-left">
-        <button class="btn btn-default" ng-click="$vm.cancel()" type="button">Cancel</button>
-        <span class="ml-xxs"><i class="fa fa-asterisk text-danger mr-xxxs"></i>Required field</span>
-        <button class="btn btn-primary pull-right" ng-disabled="templateEditForm.$invalid" type="submit">Save template</button>
+        <button class="btn btn-default" ng-click="$vm.cancel()" type="button">{{ "views.components.org.case-template.details.modal.cancel" | translateDefault:  "Cancel" }}</button>
+        <span class="ml-xxs"><i class="fa fa-asterisk text-danger mr-xxxs"></i>{{ "views.components.org.case-template.details.modal.required_field" | translateDefault:  "Required field" }}</span>
+        <button class="btn btn-primary pull-right" ng-disabled="templateEditForm.$invalid" type="submit">{{ "views.components.org.case-template.details.modal.save_template" | translateDefault:  "Save template" }}</button>
     </div>
 </form>

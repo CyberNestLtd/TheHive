@@ -4,7 +4,7 @@
 (function() {
     'use strict';
 
-    angular.module('theHiveControllers').controller('AddTaskLogModalCtrl', function($rootScope, $scope, $uibModalInstance, TaskLogSrv, NotificationSrv, task, config) {
+    angular.module('theHiveControllers').controller('AddTaskLogModalCtrl', function($rootScope, $scope, $uibModalInstance, TaskLogSrv, NotificationSrv, task, config, i18n) {
             var self = this;
 
             this.task = task;
@@ -47,7 +47,7 @@
 
                     self.close();
                 }, function (response) {
-                    NotificationSrv.error('Add Task Log', response.data, response.status);
+                    NotificationSrv.error(i18n.t("controllers.case.tasklogs.AddTaskLogModalCtrl.add_task_log", "Add Task Log"), response.data, response.status);
                     self.state.loading = false;
                 });
 

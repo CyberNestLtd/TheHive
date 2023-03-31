@@ -3,7 +3,7 @@
 
     angular
         .module('theHiveControllers')
-        .controller('DashboardViewCtrl', function ($scope, $q, $interval, $timeout, $uibModal, AuthenticationSrv, DashboardSrv, NotificationSrv, ModalUtilsSrv, UtilsSrv, dashboard, metadata) {
+        .controller('DashboardViewCtrl', function ($scope, $q, $interval, $timeout, $uibModal, AuthenticationSrv, DashboardSrv, NotificationSrv, ModalUtilsSrv, UtilsSrv, dashboard, metadata, i18n) {
             var self = this;
 
             this.currentUser = AuthenticationSrv.currentUser;
@@ -62,13 +62,13 @@
                 maxColumns: 3,
                 cls: DashboardSrv.typeClasses,
                 labels: {
-                    container: 'Row',
-                    bar: 'Bar',
-                    donut: 'Donut',
-                    line: 'Line',
-                    counter: 'Counter',
-                    text: 'Text',
-                    multiline: 'Multi Lines'
+                    container: i18n.t("controllers.dashboard.DashboardViewCtrl.row", "Row"),
+                    bar: i18n.t("controllers.dashboard.DashboardViewCtrl.bar", "Bar"),
+                    donut: i18n.t("controllers.dashboard.DashboardViewCtrl.donut", "Donut"),
+                    line: i18n.t("controllers.dashboard.DashboardViewCtrl.line", "Line"),
+                    counter: i18n.t("controllers.dashboard.DashboardViewCtrl.counter", "Counter"),
+                    text: i18n.t("controllers.dashboard.DashboardViewCtrl.text", "Text"),
+                    multiline: i18n.t("controllers.dashboard.DashboardViewCtrl.multi_line", "Multi Lines")
                 },
                 editLayout: !_.find(this.definition.items, function (row) {
                     return row.items.length > 0;
@@ -90,8 +90,8 @@
                     // If the container is empty, don't ask for confirmation
                     promise = $q.resolve();
                 } else {
-                    promise = ModalUtilsSrv.confirm('Remove widget', 'Are you sure you want to remove this item', {
-                        okText: 'Yes, remove it',
+                    promise = ModalUtilsSrv.confirm(i18n.t("controllers.dashboard.DashboardViewCtrl.remove_widget", "Remove widget"), i18n.t("controllers.dashboard.DashboardViewCtrl.are_you_sure_you_want_to_remove_this_item", "Are you sure you want to remove this item"), {
+                        okText: i18n.t("controllers.dashboard.DashboardViewCtrl.yes,_remove_it", "Yes, remove it"),
                         flavor: 'danger'
                     });
                 }
@@ -110,7 +110,7 @@
                     .then(function (/*response*/) {
                         self.options.editLayout = false;
                         self.resizeCharts();
-                        NotificationSrv.log('The dashboard has been successfully updated', 'success');
+                        NotificationSrv.log(i18n.t("controllers.dashboard.DashboardViewCtrl.the_dashboard_has_been_successfully_updated", "The dashboard has been successfully updated"), 'success');
                     })
                     .catch(function (err) {
                         NotificationSrv.error('DashboardEditCtrl', err.data, err.status);
@@ -119,8 +119,8 @@
 
             this.removeItem = function (rowIndex, colIndex) {
 
-                ModalUtilsSrv.confirm('Remove widget', 'Are you sure you want to remove this item', {
-                    okText: 'Yes, remove it',
+                ModalUtilsSrv.confirm(i18n.t("controllers.dashboard.DashboardViewCtrl.remove_widget", "Remove widget"), i18n.t("controllers.dashboard.DashboardViewCtrl.are_you_sure_you_want_to_remove_this_item", "Are you sure you want to remove this item"), {
+                    okText: i18n.t("controllers.dashboard.DashboardViewCtrl.yes,_remove_it", "Yes, remove it"),
                     flavor: 'danger'
                 }).then(function () {
                     var row = self.definition.items[rowIndex];

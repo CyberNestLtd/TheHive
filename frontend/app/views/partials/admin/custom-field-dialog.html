@@ -1,71 +1,71 @@
 <form class="form-horizontal" name="fieldsForm" ng-submit="$vm.saveField(fieldsForm)" novalidate>
     <div class="modal-header bg-primary">
-        <h3 class="modal-title">{{$vm.customField.id ? 'Update' : 'Add'}} custom field</h3>
+        <h3 class="modal-title">{{$vm.customField.id ? 'Update' : 'Add'}} {{ "views.partials.admin.custom-field-dialog.custom_field" | translateDefault:  "custom field" }}</h3>
     </div>
     <div class="modal-body">
         <div class="form-group" ng-class="{ 'has-error' : fieldsForm.name.$invalid && !fieldsForm.name.$pristine }">
             <label class="col-sm-3 control-label">
-                Name
+                {{ "views.partials.admin.custom-field-dialog.name" | translateDefault:  "Name" }}
                 <i class="fa fa-asterisk text-danger"></i>
             </label>
             <div class="col-sm-9">
                 <input class="form-control" name="name"
-                    placeholder="Field's display name, Ex: CVSS, Threat actor, Business risk"
+                    placeholder="{{ 'views.placeholders.partials.admin.custom-field-dialog.fields_display_name,_ex:_cvss,_threat_actor,_business_risk' | translateDefault: 'Field\'s display name, Ex: CVSS, Threat actor, Business risk' }}"
                     ng-model="$vm.customField.name"
                     ng-keyup="$vm.onNamechanged(fieldsForm)"
                     required type="text">
-                <p class="help-block" ng-show="fieldsForm.name.$invalid && !fieldsForm.name.$pristine">This field is required.</p>
+                <p class="help-block" ng-show="fieldsForm.name.$invalid && !fieldsForm.name.$pristine">{{ "views.partials.admin.custom-field-dialog.this_field_is_required." | translateDefault:  "This field is required." }}</p>
             </div>
         </div>
 
         <div class="form-group" ng-class="{ 'has-error' : fieldsForm.reference.$invalid && fieldsForm.reference.$dirty }">
             <label class="col-sm-3 control-label">
-                Internal Reference
+                {{ "views.partials.admin.custom-field-dialog.internal_reference" | translateDefault:  "Internal Reference" }}
                 <i class="fa fa-asterisk text-danger"></i>
             </label>
             <div class="col-sm-9">
                 <input class="form-control" name="reference" type="text"
-                    placeholder="Internal name, Ex: cvss, threatActor, businessRisk"
+                    placeholder="{{ 'views.placeholders.partials.admin.custom-field-dialog.internal_name,_ex:_cvss,_threatactor,_businessrisk' | translateDefault: 'Internal name, Ex: cvss, threatActor, businessRisk' }}"
                     ng-model="$vm.customField.reference"
                     ng-keyup="$vm.clearUniqueNameError(fieldsForm)"
                     ng-pattern="$vm.config.referencePattern"
                     ng-readonly="!!$vm.customField.id"
                     required>
-                <p class="help-block" ng-show="fieldsForm.reference.$error.unique">There is already a field with this reference. It should be unique.</p>
-                <p class="help-block" ng-show="fieldsForm.reference.$error.required && fieldsForm.reference.$dirty">This field is required.</p>
-                <p class="help-block" ng-show="fieldsForm.reference.$error.pattern && fieldsForm.reference.$dirty">This field is should satisfy the following pattern: {{$vm.config.referencePattern}}</p>
+                <p class="help-block" ng-show="fieldsForm.reference.$error.unique">{{ "views.partials.admin.custom-field-dialog.there_is_already_a_field_with_this_reference._it_should_be_unique." | translateDefault:  "There is already a field with this reference. It should be unique." }}</p>
+                <p class="help-block" ng-show="fieldsForm.reference.$error.required && fieldsForm.reference.$dirty">{{ "views.partials.admin.custom-field-dialog.this_field_is_required." | translateDefault:  "This field is required." }}</p>
+                <p class="help-block" ng-show="fieldsForm.reference.$error.pattern && fieldsForm.reference.$dirty">{{ "views.partials.admin.custom-field-dialog.this_field_is_should_satisfy_the_following_pattern:" | translateDefault:  "This field is should satisfy the following pattern:" }} {{$vm.config.referencePattern}}</p>
             </div>
         </div>
 
         <div class="form-group" ng-class="{ 'has-error' : fieldsForm.description.$invalid && !fieldsForm.description.$pristine }">
             <label class="col-sm-3 control-label">
-                Description
+                {{ "views.partials.admin.custom-field-dialog.description" | translateDefault:  "Description" }}
                 <i class="fa fa-asterisk text-danger"></i>
             </label>
             <div class="col-sm-9">
-                <input class="form-control" name="description" ng-model="$vm.customField.description" placeholder="A brief description of the custom field" required type="text">
-                <p class="help-block" ng-show="fieldsForm.description.$invalid && !fieldsForm.description.$pristine">This field is required.</p>
+                <input class="form-control" name="description" ng-model="$vm.customField.description" placeholder="{{ 'views.placeholders.partials.admin.custom-field-dialog.a_brief_description_of_the_custom_field' | translateDefault: 'A brief description of the custom field' }}" required type="text">
+                <p class="help-block" ng-show="fieldsForm.description.$invalid && !fieldsForm.description.$pristine">{{ "views.partials.admin.custom-field-dialog.this_field_is_required." | translateDefault:  "This field is required." }}</p>
             </div>
         </div>
         <div class="form-group" ng-class="{ 'has-error' : fieldsForm.type.$invalid && !fieldsForm.type.$pristine }">
             <label class="col-sm-3 control-label">
-                Type
+                {{ "views.partials.admin.custom-field-dialog.type" | translateDefault:  "Type" }}
                 <i class="fa fa-asterisk text-danger"></i>
             </label>
             <div class="col-sm-9">
                 <select class="form-control" name="type" ng-model="$vm.customField.type"
                     ng-options="fieldType for fieldType in $vm.config.types"
-                    placeholder="Field's type" required></select>
-                <p class="help-block" ng-show="fieldsForm.type.$invalid && !fieldsForm.type.$pristine">This field is required.</p>
+                    placeholder="{{ 'views.placeholders.partials.admin.custom-field-dialog.fields_type' | translateDefault: 'Field\'s type' }}" required></select>
+                <p class="help-block" ng-show="fieldsForm.type.$invalid && !fieldsForm.type.$pristine">{{ "views.partials.admin.custom-field-dialog.this_field_is_required." | translateDefault:  "This field is required." }}</p>
             </div>
         </div>
 
         <div class="form-group" ng-show="$vm.customField.type === 'string' || $vm.customField.type === 'integer'  || $vm.customField.type === 'float'">
             <label class="col-sm-3 control-label">
-                Possible values
+                {{ "views.partials.admin.custom-field-dialog.possible_values" | translateDefault:  "Possible values" }}
             </label>
             <div class="col-sm-9">
-                <textarea class="form-control" name="options" ng-model="$vm.customField.options" rows="5" placeholder="Possible values, one per line" type="text"></textarea>
+                <textarea class="form-control" name="options" ng-model="$vm.customField.options" rows="5" placeholder="{{ 'views.placeholders.partials.admin.custom-field-dialog.possible_values,_one_per_line' | translateDefault: 'Possible values, one per line' }}" type="text"></textarea>
             </div>
         </div>
 
@@ -74,14 +74,14 @@
             <div class="col-sm-9">
                 <div class="checkbox">
                     <label>
-                        <input name="mandatory" type="checkbox" ng-model="$vm.customField.mandatory"> Is mandatory
+                        <input name="mandatory" type="checkbox" ng-model="$vm.customField.mandatory"> {{ "views.partials.admin.custom-field-dialog.is_mandatory" | translateDefault:  "Is mandatory" }}
                     </label>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer text-left">
-        <button class="btn btn-default" ng-click="$vm.cancel()" type="button">Cancel</button>
-        <button class="btn btn-primary pull-right" ng-disabled="fieldsForm.$invalid" type="submit">Save field</button>
+        <button class="btn btn-default" ng-click="$vm.cancel()" type="button">{{ "views.partials.admin.custom-field-dialog.cancel" | translateDefault:  "Cancel" }}</button>
+        <button class="btn btn-primary pull-right" ng-disabled="fieldsForm.$invalid" type="submit">{{ "views.partials.admin.custom-field-dialog.save_field" | translateDefault:  "Save field" }}</button>
     </div>
 </form>

@@ -1,15 +1,15 @@
 <psearch control="$vm.list"></psearch>
 
-<div class="empty-message" ng-show="$vm.list.total === 0">No records</div>
+<div class="empty-message" ng-show="$vm.list.total === 0">{{ "views.partials.main.index-mytasks.no_records" | translateDefault:  "No records" }}</div>
 
 <table class="table table-striped table-hover" ng-show="$vm.list.total > 0">
     <thead>
         <tr>
             <th width="70px"></th>
-            <th class="text-center" style="width: 60px;">Severity</th>
-            <th style="width: 200px;">Group</th>
-            <th>Task</th>
-            <th width="250px;">Date</th>
+            <th class="text-center" style="width: 60px;">{{ "views.partials.main.index-mytasks.severity" | translateDefault:  "Severity" }}</th>
+            <th style="width: 200px;">{{ "views.partials.main.index-mytasks.group" | translateDefault:  "Group" }}</th>
+            <th>{{ "views.partials.main.index-mytasks.task" | translateDefault:  "Task" }}</th>
+            <th width="250px;">{{ "views.partials.main.index-mytasks.date" | translateDefault:  "Date" }}</th>
         </tr>
     </thead>
 
@@ -39,7 +39,7 @@
                     </a>
                 </div>
                 <div ng-show="item.status === 'InProgress'" class="text-warning">
-                        Started <em am-time-ago="item.startDate"></em>
+                        {{ "views.partials.main.index-mytasks.started" | translateDefault:  "Started" }} <em am-time-ago="item.startDate"></em>
                 </div>
                 <div>
                     <small><entity-link value="item.extraData.case"></entity-link></small>

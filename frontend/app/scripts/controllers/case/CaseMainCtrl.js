@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     angular.module('theHiveControllers').controller('CaseMainCtrl',
-        function ($scope, $rootScope, $state, $stateParams, $q, $uibModal, CaseTabsSrv, CaseSrv, UserSrv, StreamSrv, StreamQuerySrv, NotificationSrv, UtilsSrv, CaseResolutionStatus, CaseImpactStatus, CortexSrv, caze) {
+        function ($scope, $rootScope, $state, $stateParams, $q, $uibModal, CaseTabsSrv, CaseSrv, UserSrv, StreamSrv, StreamQuerySrv, NotificationSrv, UtilsSrv, CaseResolutionStatus, CaseImpactStatus, CortexSrv, caze, i18n) {
             $scope.CaseResolutionStatus = CaseResolutionStatus;
             $scope.CaseImpactStatus = CaseImpactStatus;
             $scope.caseResponders = null;
@@ -30,7 +30,7 @@
 
             $scope.caze = caze;
             $scope.userPermissions = (caze.extraData.permissions || []).join(',');
-            $rootScope.title = 'Case #' + caze.number + ': ' + caze.title;
+            $rootScope.title = i18n.t("controllers.case.CaseMainCtrl.case_#", "Case #") + caze.number + ': ' + caze.title;
 
             $scope.canEdit = caze.extraData.permissions.indexOf('manageCase') !== -1;
 
@@ -238,7 +238,7 @@
                             return $scope.caze;
                         },
                         title: function () {
-                            return 'Merge Case #' + $scope.caze.number;
+                            return i18n.t("controllers.case.CaseMainCtrl.merger_case_#", "Merge Case #") + $scope.caze.number;
                         },
                         prompt: function () {
                             return '#' + $scope.caze.number + ': ' + $scope.caze.title;
@@ -263,11 +263,11 @@
                                 caseId: merged._id
                             });
 
-                            NotificationSrv.log('The cases have been successfully merged into a new case #' + merged.number, 'success');
+                            NotificationSrv.log(i18n.t("controllers.case.CaseMainCtrl.the_cases_have_been_successfully_merged_into_a_new_case_#", "The cases have been successfully merged into a new case #") + merged.number, 'success');
                         })
                         .catch(function (response) {
                             //this.pendingAsync = false;
-                            NotificationSrv.error('Case Merge', response.data, response.status);
+                            NotificationSrv.error(i18n.t("controllers.case.CaseMainCtrl.case_merge", "Case Merge"), response.data, response.status);
                         })
 
                     // CaseSrv.merge({}, {
@@ -276,14 +276,14 @@
                     // }, , );
                 }).catch(function (err) {
                     if (err && !_.isString(err)) {
-                        NotificationSrv.error('Case Merge', err.data, err.status);
+                        NotificationSrv.error(i18n.t("controllers.case.CaseMainCtrl.case_merge", "Case Merge"), err.data, err.status);
                     }
                 });
             };
 
             $scope.exportToMisp = function () {
                 if ($scope.appConfig.connectors.misp && $scope.appConfig.connectors.misp.servers.length === 0) {
-                    NotificationSrv.log('There are no MISP servers defined', 'error');
+                    NotificationSrv.log(i18n.t("controllers.case.CaseMainCtrl.there_are_no_misp_servers_defined", "There are no MISP servers defined"), 'error');
                     return;
                 }
 
@@ -354,7 +354,7 @@
                         }
                     })
                     .then(function (response) {
-                        NotificationSrv.log(['Responder', response.data.responderName, 'started successfully on case', $scope.caze.title].join(' '), 'success');
+                        NotificationSrv.log([i18n.t("controllers.case.CaseMainCtrl.responder", "Responder"), response.data.responderName, i18n.t("controllers.case.CaseMainCtrl.started_successfully_on_case", "started successfully on case"), $scope.caze.title].join(' '), 'success');
                     })
                     .catch(function (err) {
                         if (err && !_.isString(err)) {

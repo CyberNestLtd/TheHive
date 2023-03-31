@@ -1,6 +1,6 @@
 <form class="task-log-dialog" ng-submit="$modal.addLog()">
     <div class="modal-header bg-primary">
-        <h3 class="modal-title">Add task log</h3>
+        <h3 class="modal-title">{{ "views.partials.case.tasklogs.add-task-log.modal.add_task_log" | translateDefault:  "Add task log" }}</h3>
     </div>
     <div class="modal-body">
         <!-- Intro message -->
@@ -11,7 +11,7 @@
         <div class="task log">
             <div class="clearfix">
                 <a class="pull-right" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">
-                    <i class="fa fa-question-circle"></i> Markdown Reference
+                    <i class="fa fa-question-circle"></i> {{ "views.partials.case.tasklogs.add-task-log.modal.markdown_reference" | translateDefault:  "Markdown Reference" }}
                 </a>
             </div>
 
@@ -23,10 +23,10 @@
 
     </div>
     <div class="modal-footer text-left">
-        <button class="btn btn-default" ng-click="$modal.cancel()" type="button">Cancel</button>
+        <button class="btn btn-default" ng-click="$modal.cancel()" type="button">{{ "views.partials.case.tasklogs.add-task-log.modal.cancel" | translateDefault:  "Cancel" }}</button>
 
         <button class="btn btn-primary pull-right" type="submit" ng-disabled="$modal.state.loading || !$modal.data.message || $modal.data.message.length === 0">
-            <i class="glyphicon glyphicon-comment"></i> Add log
+            <i class="glyphicon glyphicon-comment"></i> {{ "views.partials.case.tasklogs.add-task-log.modal.add_log" | translateDefault:  "Add log" }}
         </button>
 
         <button uib-btn-checkbox btn-checkbox-false="true" btn-checkbox-true="false"
@@ -34,7 +34,7 @@
             ng-model="$modal.state.attachmentCollapsed" ng-disabled="$modal.state.loading" type="button">
             <i class="text-default glyphicon glyphicon-paperclip"></i>
             {{$modal.state.attachmentCollapsed ? 'Add' : 'Discard'}}
-            attachment
+            {{ "views.partials.case.tasklogs.add-task-log.modal.attachment" | translateDefault:  "attachment" }}
         </button>
     </div>
 </form>

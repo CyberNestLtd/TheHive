@@ -1,162 +1,162 @@
 <form class="form-horizontal" name="caseCloseForm" ng-submit="closeCase(caseCloseForm.$valid);" novalidate>
-    <div class="modal-header bg-primary">
-        <h3 class="modal-title">Close Case #{{caze.number}}</h3>
-    </div>
-    <div class="modal-body">
-        <div ng-show="!tasksValid">
-            <div align="center" class="alert alert-danger">
-                <i class="glyphicon glyphicon-exclamation-sign"></i>
-                This case contains the following open or unassigned tasks. Closing the case will permanently remove the unassigned ones.
-                <br>
-                This action cannot be undone.
-            </div>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th style="width: 40px"></th>
-                        <th>Task</th>
-                        <th style="width: 250px">Assignee</th>
-                    </tr>
-                </thead>
-                <tbody ng-repeat="task in tasks">
-                    <tr ng-if="task.status == 'Completed'">
-                        <td align="center">
-                            <i class="text-success glyphicon glyphicon-ok"></i>
-                        </td>
-                        <td>{{task.title}}</td>
-                        <td><user-info value="task.owner" field="name"></user-info><br>{{task.startDate | shortDate}}</td>
-                    </tr>
+	<div class="modal-header bg-primary">
+		<h3 class="modal-title">{{ "views.partials.case.case.close.close_case_#" | translateDefault:  "Close Case #" }}{{caze.number}}</h3>
+	</div>
+	<div class="modal-body">
+		<div ng-show="!tasksValid">
+			<div align="center" class="alert alert-danger">
+				<i class="glyphicon glyphicon-exclamation-sign"></i>
+				{{ "views.partials.case.case.close.this_case_contains_the_following_open_or_unassigned_tasks._closing_the_case_will_permanently_remove_the_unassigned_ones." | translateDefault:  "This case contains the following open or unassigned tasks. Closing the case will permanently remove the unassigned ones." }}
+				<br>
+				{{ "views.partials.case.case.close.this_action_cannot_be_undone." | translateDefault:  "This action cannot be undone." }}
+			</div>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th style="width: 40px"></th>
+						<th>{{ "views.partials.case.case.close.task" | translateDefault:  "Task" }}</th>
+						<th style="width: 250px">{{ "views.partials.case.case.close.assignee" | translateDefault:  "Assignee" }}</th>
+					</tr>
+				</thead>
+				<tbody ng-repeat="task in tasks">
+					<tr ng-if="task.status == 'Completed'">
+						<td align="center">
+							<i class="text-success glyphicon glyphicon-ok"></i>
+						</td>
+						<td>{{task.title}}</td>
+						<td><user-info value="task.owner" field="name"></user-info><br>{{task.startDate | shortDate}}</td>
+					</tr>
 
-                    <tr ng-if="task.status == 'InProgress'" ng-class="{true:'warning'}[task.flag]">
-                        <td align="center">
-                            <i class=" glyphicon" ng-class="{true:'text-yellow glyphicon-flag', false:'text-primary glyphicon-play'}[task.flag]"></i>
-                        </td>
-                        <td>{{task.title}}</td>
-                        <td><user-info value="task.owner" field="name"></user-info><br>{{task.startDate | shortDate}}</td>
-                    </tr>
+					<tr ng-if="task.status == 'InProgress'" ng-class="{true:'warning'}[task.flag]">
+						<td align="center">
+							<i class=" glyphicon" ng-class="{true:'text-yellow glyphicon-flag', false:'text-primary glyphicon-play'}[task.flag]"></i>
+						</td>
+						<td>{{task.title}}</td>
+						<td><user-info value="task.owner" field="name"></user-info><br>{{task.startDate | shortDate}}</td>
+					</tr>
 
-                    <tr ng-if="task.status == 'Waiting'">
-                        <td align="center"></td>
-                        <td>{{task.title}}</td>
-                        <td>
-                            <em>Not assigned</em>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+					<tr ng-if="task.status == 'Waiting'">
+						<td align="center"></td>
+						<td>{{task.title}}</td>
+						<td>
+							<em>{{ "views.partials.case.case.close.not_assigned" | translateDefault:  "Not assigned" }}</em>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 
-        <div ng-show="tasksValid === true">
-            <div align="center" class="alert alert-danger">
-                <i class="glyphicon glyphicon-exclamation-sign"></i>
-                You are about to close Case #{{caze.number}}. Are you sure you want to continue ?
-            </div>
+		<div ng-show="tasksValid === true">
+			<div align="center" class="alert alert-danger">
+				<i class="glyphicon glyphicon-exclamation-sign"></i>
+				{{ "views.partials.case.case.close.you_are_about_to_close_case_#" | translateDefault:  "You are about to close Case #" }}{{caze.number}}. {{ "views.partials.case.case.close.are_you_sure_you_want_to_continue_?" | translateDefault:  "Are you sure you want to continue ?" }}
+			</div>
 
-            <div class="row">
-                <div class="col-sm-9 col-sm-offset-3">
-                    <div class="indicent-header">
-                        <h2 class="background"><span>Incident</span></h2>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">Status
-                    <i class="fa fa-asterisk text-danger"></i>
-                </label>
-                <div class="col-sm-9">
-                    <div class="btn-toolbar" role="toolbar">
-                        <div class="btn-group">
-                            <label uib-btn-radio="'TruePositive'" class="btn btn-default" name="resolutionStatus" ng-model="formData.resolutionStatus">{{CaseResolutionStatus.TruePositive}}</label>
-                            <label uib-btn-radio="'FalsePositive'" class="btn btn-default" name="resolutionStatus " ng-model="formData.resolutionStatus">{{CaseResolutionStatus.FalsePositive}}</label>
-                            <label uib-btn-radio="'Indeterminate'" class="btn btn-default" name="resolutionStatus" ng-model="formData.resolutionStatus">{{CaseResolutionStatus.Indeterminate}}</label>
-                        </div>
-                        <div class="btn-group" role="group">
-                            <label uib-btn-radio="'Other'" class="btn btn-default" name="resolutionStatus" ng-model="formData.resolutionStatus">{{CaseResolutionStatus.Other}}</label>
-                        </div>
-                    </div>
-                    <p class="help-block" ng-switch="formData.resolutionStatus">
-                        <i class="fa fa-question-circle"></i>
-                        <span ng-switch-when="TruePositive">
-                            Investigation clearly demonstrates that there is something malicious (scam, phishing, malspam, malware, cybersquatting...)
-                        </span>
-                        <span ng-switch-when="FalsePositive">
-                            Investigation shows that there is nothing malicious (email with clean attachment ...)
-                        </span>
-                        <span ng-switch-when="Indeterminate">
-                            There aren't enough elements to tell that there is something malicious (original message has been deleted and not transmitted, IOC lookup with 0 hits ...)
-                        </span>
-                        <span ng-switch-when="Other">
-                            Everything that does not require an investigation (not an incident)
-                        </span>
-                    </p>
-                </div>
-            </div>
-            <div class="form-group" ng-show="formData.resolutionStatus==='TruePositive'" ng-class="{ 'has-error' : caseCloseForm.tempImpactStatus.$invalid}">
-                <label class="col-sm-3 control-label">Impact
-                    <i class="fa fa-asterisk text-danger"></i>
-                </label>
-                <div class="col-sm-9">
-                    <input type="hidden" name="tempImpactStatus" ng-model="formData.impactStatus" ng-required="formData.resolutionStatus==='TruePositive'" />
-                    <div class="btn-group radio-group">
-                        <label uib-btn-radio="'WithImpact'" class="btn btn-default" name="impactStatus" ng-model="formData.impactStatus">Yes</label>
-                        <label uib-btn-radio="'NoImpact'" class="btn btn-default" name="impactStatus" ng-model="formData.impactStatus">No</label>
-                    </div>
-                    <p class="help-block" ng-switch="formData.impactStatus" ng-show="formData.impactStatus">
-                        <i class="fa fa-question-circle"></i>
-                        <span ng-switch-when="WithImpact">
-                            Something altered availability, integrity or confidentiality
-                        </span>
-                        <span ng-switch-when="NoImpact">
-                            Security measures blocked the attack or infection
-                        </span>
-                    </p>
-                    <p class="help-block" ng-show="caseCloseForm.tempImpactStatus.$invalid">This field is required</p>
-                </div>
-            </div>
-            <div class="form-group" ng-class="{ 'has-error' : caseCloseForm.summary.$invalid && !caseCloseForm.summary.$pristine }">
-                <label class="col-sm-3 control-label">Summary
-                    <i class="fa fa-asterisk text-danger"></i>
-                </label>
-                <div class="col-sm-9">
-                    <textarea class="content-box" name="summary" placeholder="Close summary" markdown-editor="{'fullscreen': {enable: false}, 'iconlibrary': 'fa', addExtraButtons: true, resize: 'vertical'}" rows="6" ng-model="formData.summary" required></textarea>
-                    <p class="help-block" ng-show="caseCloseForm.summary.$invalid && !caseCloseForm.summary.$pristine">The case summary is required.</p>
-                </div>
-            </div>
-            <!-- Custom Fields -->
-            <div class="form-group" ng-repeat="cf in mandatoryFields" ng-init="fieldDef = customFieldsSrv.getCache(cf.name);"
-                ng-class="{ 'has-error' : caseCloseForm['customFields.' + cf.name].$invalid && !caseCloseForm['customFields.' + cf.name].$pristine }">
-                <label class="col-sm-3 control-label" uib-tooltip="{{fieldDef.description}}">{{fieldDef.name}}
-                    <i class="fa fa-asterisk text-danger"></i>
-                </label>
+			<div class="row">
+				<div class="col-sm-9 col-sm-offset-3">
+					<div class="indicent-header">
+						<h2 class="background"><span>{{ "views.partials.case.case.close.incident" | translateDefault:  "Incident" }}</span></h2>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">{{ "views.partials.case.case.close.status" | translateDefault:  "Status" }}
+					<i class="fa fa-asterisk text-danger"></i>
+				</label>
+				<div class="col-sm-9">
+					<div class="btn-toolbar" role="toolbar">
+						<div class="btn-group">
+							<label uib-btn-radio="'TruePositive'" class="btn btn-default" name="resolutionStatus" ng-model="formData.resolutionStatus">{{CaseResolutionStatus.TruePositive}}</label>
+							<label uib-btn-radio="'FalsePositive'" class="btn btn-default" name="resolutionStatus " ng-model="formData.resolutionStatus">{{CaseResolutionStatus.FalsePositive}}</label>
+							<label uib-btn-radio="'Indeterminate'" class="btn btn-default" name="resolutionStatus" ng-model="formData.resolutionStatus">{{CaseResolutionStatus.Indeterminate}}</label>
+						</div>
+						<div class="btn-group" role="group">
+							<label uib-btn-radio="'Other'" class="btn btn-default" name="resolutionStatus" ng-model="formData.resolutionStatus">{{CaseResolutionStatus.Other}}</label>
+						</div>
+					</div>
+					<p class="help-block" ng-switch="formData.resolutionStatus">
+						<i class="fa fa-question-circle"></i>
+						<span ng-switch-when="TruePositive">
+							{{ "views.partials.case.case.close.investigation_clearly_demonstrates_that_there_is_something_malicious_(scam,_phishing,_malspam,_malware,_cybersquatting...)" | translateDefault:  "Investigation clearly demonstrates that there is something malicious (scam, phishing, malspam, malware, cybersquatting...)" }}
+						</span>
+						<span ng-switch-when="FalsePositive">
+							{{ "views.partials.case.case.close.investigation_shows_that_there_is_nothing_malicious_(email_with_clean_attachment_...)" | translateDefault:  "Investigation shows that there is nothing malicious (email with clean attachment ...)" }}
+						</span>
+						<span ng-switch-when="Indeterminate">
+							{{ "views.partials.case.case.close.there_aren't_enough_elements_to_tell_that_there_is_something_malicious_(original_message_has_been_deleted_and_not_transmitted,_ioc_lookup_with_0_hits_...)" | translateDefault:  "There aren't enough elements to tell that there is something malicious (original message has been deleted and not transmitted, IOC lookup with 0 hits ...)" }}
+						</span>
+						<span ng-switch-when="Other">
+							{{ "views.partials.case.case.close.everything_that_does_not_require_an_investigation_(not_an_incident)" | translateDefault:  "Everything that does not require an investigation (not an incident)" }}
+						</span>
+					</p>
+				</div>
+			</div>
+			<div class="form-group" ng-show="formData.resolutionStatus==='TruePositive'" ng-class="{ 'has-error' : caseCloseForm.tempImpactStatus.$invalid}">
+				<label class="col-sm-3 control-label">{{ "views.partials.case.case.close.impact" | translateDefault:  "Impact" }}
+					<i class="fa fa-asterisk text-danger"></i>
+				</label>
+				<div class="col-sm-9">
+					<input type="hidden" name="tempImpactStatus" ng-model="formData.impactStatus" ng-required="formData.resolutionStatus==='TruePositive'" />
+					<div class="btn-group radio-group">
+						<label uib-btn-radio="'WithImpact'" class="btn btn-default" name="impactStatus" ng-model="formData.impactStatus">{{ "views.partials.case.case.close.yes" | translateDefault:  "Yes" }}</label>
+						<label uib-btn-radio="'NoImpact'" class="btn btn-default" name="impactStatus" ng-model="formData.impactStatus">{{ "views.partials.case.case.close.no" | translateDefault:  "No" }}</label>
+					</div>
+					<p class="help-block" ng-switch="formData.impactStatus" ng-show="formData.impactStatus">
+						<i class="fa fa-question-circle"></i>
+						<span ng-switch-when="WithImpact">
+							{{ "views.partials.case.case.close.something_altered_availability,_integrity_or_confidentiality" | translateDefault:  "Something altered availability, integrity or confidentiality" }}
+						</span>
+						<span ng-switch-when="NoImpact">
+							{{ "views.partials.case.case.close.security_measures_blocked_the_attack_or_infection" | translateDefault:  "Security measures blocked the attack or infection" }}
+						</span>
+					</p>
+					<p class="help-block" ng-show="caseCloseForm.tempImpactStatus.$invalid">{{ "views.partials.case.case.close.this_field_is_required." | translateDefault:  "This field is required." }}</p>
+				</div>
+			</div>
+			<div class="form-group" ng-class="{ 'has-error' : caseCloseForm.summary.$invalid && !caseCloseForm.summary.$pristine }">
+				<label class="col-sm-3 control-label">{{ "views.partials.case.case.close.summary" | translateDefault:  "Summary" }}
+					<i class="fa fa-asterisk text-danger"></i>
+				</label>
+				<div class="col-sm-9">
+					<textarea class="content-box" name="summary" placeholder="{{ 'views.placeholders.partials.case.case.close.close_summary' | translateDefault: 'Close summary' }}" markdown-editor="{'fullscreen': {enable: false}, 'iconlibrary': 'fa', addExtraButtons: true, resize: 'vertical'}" rows="6" ng-model="formData.summary" required></textarea>
+					<p class="help-block" ng-show="caseCloseForm.summary.$invalid && !caseCloseForm.summary.$pristine">{{ "views.partials.case.case.close.the_case_summary_is_required." | translateDefault:  "The case summary is required." }}</p>
+				</div>
+			</div>
+			<!-- Custom Fields -->
+			<div class="form-group" ng-repeat="cf in mandatoryFields" ng-init="fieldDef = customFieldsSrv.getCache(cf.name);"
+				ng-class="{ 'has-error' : caseCloseForm['customFields.' + cf.name].$invalid && !caseCloseForm['customFields.' + cf.name].$pristine }">
+				<label class="col-sm-3 control-label" uib-tooltip="{{fieldDef.description}}">{{fieldDef.name}}
+					<i class="fa fa-asterisk text-danger"></i>
+				</label>
 
-                <div class="col-sm-3" ng-if="fieldDef.options.length > 0">
-                    <select class="form-control" name="{{'customFields.' + cf.name}}" ng-model="cf.value" ng-options="v for v in fieldDef.options" required>
-                        <option value=""></option>
-                    </select>
-                    <p class="help-block" ng-show="caseCloseForm['customFields.' + cf.name].$invalid && !caseCloseForm['customFields.' + cf.name].$pristine">This field is required.</p>
-                </div>
-                <div class="col-sm-3" ng-if="fieldDef.options.length === 0" ng-switch="cf.type">
-                    <input ng-switch-when="string" name="{{'customFields.' + cf.name}}" type="text" class="form-control" ng-model="cf.value" required>
-                    <input ng-switch-when="integer" name="{{'customFields.' + cf.name}}" type="number" step="1" class="form-control" ng-model="cf.value" required>
-                    <input ng-switch-when="float" name="{{'customFields.' + cf.name}}" type="number" step=".01" class="form-control" ng-model="cf.value" required>
-                    <select ng-switch-when="boolean" name="{{'customFields.' + cf.name}}" class="form-control" ng-model="cf.value" ng-options="v for v in [true, false]" required>
-                        <option value=""></option>
-                    </select>
-                    <dt-picker ng-switch-when="date" name="{{'customFields.' + cf.name}}" date="cf.value" required="true"></dt-picker>
-                    <p class="help-block" ng-show="caseCloseForm['customFields.' + cf.name].$invalid && !caseCloseForm['customFields.' + cf.name].$pristine">This field is required.</p>
-                </div>
+				<div class="col-sm-3" ng-if="fieldDef.options.length > 0">
+					<select class="form-control" name="{{'customFields.' + cf.name}}" ng-model="cf.value" ng-options="v for v in fieldDef.options" required>
+						<option value=""></option>
+					</select>
+					<p class="help-block" ng-show="caseCloseForm['customFields.' + cf.name].$invalid && !caseCloseForm['customFields.' + cf.name].$pristine">{{ "views.partials.case.case.close.this_field_is_required." | translateDefault:  "This field is required." }}</p>
+				</div>
+				<div class="col-sm-3" ng-if="fieldDef.options.length === 0" ng-switch="cf.type">
+					<input ng-switch-when="string" name="{{'customFields.' + cf.name}}" type="text" class="form-control" ng-model="cf.value" required>
+					<input ng-switch-when="integer" name="{{'customFields.' + cf.name}}" type="number" step="1" class="form-control" ng-model="cf.value" required>
+					<input ng-switch-when="float" name="{{'customFields.' + cf.name}}" type="number" step=".01" class="form-control" ng-model="cf.value" required>
+					<select ng-switch-when="boolean" name="{{'customFields.' + cf.name}}" class="form-control" ng-model="cf.value" ng-options="v for v in [true, false]" required>
+						<option value=""></option>
+					</select>
+					<dt-picker ng-switch-when="date" name="{{'customFields.' + cf.name}}" date="cf.value" required="true"></dt-picker>
+					<p class="help-block" ng-show="caseCloseForm['customFields.' + cf.name].$invalid && !caseCloseForm['customFields.' + cf.name].$pristine">{{ "views.partials.case.case.close.this_field_is_required." | translateDefault:  "This field is required." }}</p>
+				</div>
 
-            </div>
-        </div>
+			</div>
+		</div>
 
-    </div>
-    <div class="modal-footer text-left" ng-show="!tasksValid">
-        <button class="btn btn-default" ng-click="cancel()" type="button">Cancel</button>
-        <button class="btn btn-primary pull-right" ng-disabled="tasksValid" type="button" ng-click="confirmTaskClose()">Close tasks and case</button>
-    </div>
-    <div class="modal-footer text-left" ng-show="tasksValid === true">
-        <button class="btn btn-default" ng-click="cancel()" type="button">Cancel</button>
-        <span class="btn"><i class="fa fa-asterisk text-danger"></i>&nbsp;Required field</span>
-        <button class="btn btn-primary pull-right" ng-disabled="caseCloseForm.$invalid" type="submit">Close case</button>
-    </div>
+	</div>
+	<div class="modal-footer text-left" ng-show="!tasksValid">
+		<button class="btn btn-default" ng-click="cancel()" type="button">{{ "views.partials.case.case.close.cancel" | translateDefault:  "Cancel" }}</button>
+		<button class="btn btn-primary pull-right" ng-disabled="tasksValid" type="button" ng-click="confirmTaskClose()">{{ "views.partials.case.case.close.close_tasks_and_case" | translateDefault:  "Close tasks and case" }}</button>
+	</div>
+	<div class="modal-footer text-left" ng-show="tasksValid === true">
+		<button class="btn btn-default" ng-click="cancel()" type="button">{{ "views.partials.case.case.close.cancel" | translateDefault:  "Cancel" }}</button>
+		<span class="btn"><i class="fa fa-asterisk text-danger"></i>&nbsp;{{ "views.partials.case.case.close.required_field" | translateDefault:  "Required field" }}</span>
+		<button class="btn btn-primary pull-right" ng-disabled="caseCloseForm.$invalid" type="submit">{{ "views.partials.case.case.close.close_case" | translateDefault:  "Close case" }}</button>
+	</div>
 </form>

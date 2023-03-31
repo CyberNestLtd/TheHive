@@ -1,8 +1,8 @@
 <div class="row case-details">
     <div class="col-md-8">
-        <h4 class="vpad10 text-primary">Basic Information</h4>
+        <h4 class="vpad10 text-primary">{{ "views.partials.case.case.details.basic_information" | translateDefault:  "Basic Information" }}</h4>
         <dl class="dl-horizontal clear">
-            <dt class="pull-left">Title
+            <dt class="pull-left">{{ "views.partials.case.case.details.title" | translateDefault:  "Title" }}
             </dt>
             <dd ng-if="canEdit">
                 <updatable-simple-text on-update="updateField('title', newValue)" value="caze.title"></updatable-simple-text>
@@ -13,7 +13,7 @@
         </dl>
 
         <dl class="dl-horizontal clear">
-            <dt class="pull-left">Severity</dt>
+            <dt class="pull-left">{{ "views.partials.case.case.details.severity" | translateDefault:  "Severity" }}</dt>
             <dd ng-if="canEdit">
                 <a class="noline" href ng-click="activeSev = true" ng-init="activeSev = false">
                     <severity active="activeSev" on-update="updateField('severity', newValue)" value="caze.severity"></severity>
@@ -25,7 +25,7 @@
         </dl>
 
         <dl class="dl-horizontal clear">
-            <dt class="pull-left">TLP</dt>
+            <dt class="pull-left">{{ "views.partials.case.case.details.tlp" | translateDefault:  "TLP" }}</dt>
             <dd ng-if="canEdit">
                 <a class="noline" href ng-click="activeTlp = 'active'" ng-init="activeTlp = 'static'">
                     <tlp format="activeTlp" on-update="updateField('tlp', newValue)" style="float:left;" value="caze.tlp"></tlp>
@@ -37,7 +37,7 @@
         </dl>
 
         <dl class="dl-horizontal clear">
-            <dt class="pull-left">PAP</dt>
+            <dt class="pull-left">{{ "views.partials.case.case.details.pap" | translateDefault:  "PAP" }}</dt>
             <dd ng-if="canEdit">
                 <a class="noline" href ng-click="activePap = 'active'" ng-init="activePap = 'static'">
                     <tlp format="activePap" on-update="updateField('pap', newValue)" style="float:left;" value="caze.pap" namespace="PAP"></tlp>
@@ -49,7 +49,7 @@
         </dl>
 
         <dl class="dl-horizontal">
-            <dt class="pull-left">Assignee</dt>
+            <dt class="pull-left">{{ "views.partials.case.case.details.assignee" | translateDefault:  "Assignee" }}</dt>
             <dd ng-if="canEdit">
                 <updatable-user on-update="updateField('owner', newValue)" value="caze.assignee" query="assignableUsersQuery"/>
             </dd>
@@ -59,7 +59,7 @@
         </dl>
 
         <dl class="dl-horizontal clear">
-            <dt class="pull-left">Date</dt>
+            <dt class="pull-left">{{ "views.partials.case.case.details.date" | translateDefault:  "Date" }}</dt>
             <dd ng-if="canEdit">
                 <updatable-date on-update="updateField('startDate', newValue)" value="caze.startDate"></updatable-date>
             </dd>
@@ -69,7 +69,7 @@
         </dl>
 
         <dl class="dl-horizontal">
-            <dt class="pull-left">Tags</dt>
+            <dt class="pull-left">{{ "views.partials.case.case.details.tags" | translateDefault:  "Tags" }}</dt>
             <dd ng-if="canEdit">
                 <updatable-tag-list on-update="updateField('tags', getTags(newValue))" value="caze.tags" source="getCaseTags"></updatable-tag-list>
             </dd>
@@ -79,7 +79,7 @@
         </dl>
 
         <dl class="dl-horizontal clear" ng-show="isCaseClosed()">
-            <dt class="pull-left text-success">Close date</dt>
+            <dt class="pull-left text-success">{{ "views.partials.case.case.details.close_date" | translateDefault:  "Close date" }}</dt>
             <dd class="text-success" ng-if="canEdit">
                 <updatable-date on-update="updateField('endDate', newValue)" value="caze.endDate"></updatable-date>
             </dd>
@@ -98,7 +98,7 @@
     </div>
 </div>
 <div class="vpad10">
-     <h4 class="vpad10 text-primary">Description</h4>
+     <h4 class="vpad10 text-primary">{{ "views.partials.case.case.details.description" | translateDefault:  "Description" }}</h4>
      <div class="description-pane" ng-if="canEdit">
          <updatable-text on-update="updateField('description', newValue)" value="caze.description"></updatable-text>
      </div>
@@ -107,7 +107,7 @@
      </div>
 </div>
 <div class="vpad10" ng-show="isCaseClosed()">
-     <h4 class="vpad10 text-primary">Summary</h4>
+     <h4 class="vpad10 text-primary">{{ "views.partials.case.case.details.summary" | translateDefault:  "Summary" }}</h4>
      <div class="description-pane" ng-if="canEdit">
          <updatable-text on-update="updateField('summary', newValue)" value="caze.summary"></updatable-text>
      </div>
@@ -119,15 +119,15 @@
     <responder-actions header="Responder Jobs" actions="actions"></responder-actions>
 </div>
 <div class="case-attachments vpad10" ng-if="attachments.values.length > 0">
-    <h4 class="vpad10 text-primary">Attachments</h4>
+    <h4 class="vpad10 text-primary">{{ "views.partials.case.case.details.attachments" | translateDefault:  "Attachments" }}</h4>
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Filename</th>
-                <th>Date</th>
-                <th>Type</th>
-                <th>Size</th>
-                <th style="text-align:center">Download</th>
+                <th>{{ "views.partials.case.case.details.filename" | translateDefault:  "Filename" }}</th>
+                <th>{{ "views.partials.case.case.details.date" | translateDefault:  "Date" }}</th>
+                <th>{{ "views.partials.case.case.details.type" | translateDefault:  "Type" }}</th>
+                <th>{{ "views.partials.case.case.details.size" | translateDefault:  "Size" }}</th>
+                <th style="text-align:center">{{ "views.partials.case.case.details.download" | translateDefault:  "Download" }}</th>
             </tr>
         </thead>
         <tbody>

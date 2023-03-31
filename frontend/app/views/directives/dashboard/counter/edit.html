@@ -1,19 +1,19 @@
 <uib-tabset class="nav-tabs-custom" active="layout.activeTab">
     <uib-tab index="0">
         <uib-tab-heading>
-            <i class="fa fa-bars"></i> Basic
+            <i class="fa fa-bars"></i> {{ 'views.directives.dashboard.counter.edit.basic' | translate}}
         </uib-tab-heading>
         <ng-include src="'views/directives/dashboard/counter/basic.html'"></ng-include>
     </uib-tab>
     <uib-tab index="1">
         <uib-tab-heading>
-            <i class="fa fa-sort"></i> Series
+            <i class="fa fa-sort"></i> {{ 'views.directives.dashboard.counter.edit.series' | translate}}
         </uib-tab-heading>
         <ng-include src="'views/directives/dashboard/counter/series.html'"></ng-include>
     </uib-tab>
     <uib-tab index="2">
         <uib-tab-heading>
-            <i class="fa fa-filter"></i> Filters
+            <i class="fa fa-filter"></i> {{ 'views.directives.dashboard.counter.edit.filters' | translate}}
         </uib-tab-heading>
         <ng-include src="'views/directives/dashboard/filters.html'"></ng-include>
     </uib-tab>

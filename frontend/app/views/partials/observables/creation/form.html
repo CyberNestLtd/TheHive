@@ -1,6 +1,6 @@
 
 <div class="form-group" ng-class="{ 'has-error' : observableForm.dataType.$invalid && !observableForm.dataType.$pristine }">
-    <label class="col-md-3 control-label">Type <i class="fa fa-asterisk text-danger"></i></label>
+    <label class="col-md-3 control-label">{{ "views.partials.observables.creation.form.type" | translateDefault:  "Type" }} <i class="fa fa-asterisk text-danger"></i></label>
     <div class="col-md-9">
         <input type="hidden" name="dataType" ng-model="params.dataType" required>
         <div class="btn-group" uib-dropdown>
@@ -17,34 +17,34 @@
 
 <!-- Uploaded File observable -->
 <div class="form-group" ng-show="params.isUpload === true && isFile()" ng-class="{ 'has-error' : observableForm.attachment.$invalid }">
-    <label class="col-md-3 control-label">File <i class="fa fa-asterisk text-danger"></i></label>
+    <label class="col-md-3 control-label">{{ "views.partials.observables.creation.form.file" | translateDefault:  "File" }}<i class="fa fa-asterisk text-danger"></i></label>
     <div class="col-md-9">
         <input type="hidden" name="attachment" ng-model="params.attachment.status" ng-required="params.isUpload && isFile()">
         <div file-chooser="" filemodel="params.attachment"></div>
         <div ng-show="params.attachment.upload.total === 0" class="mv-xxs p-xxs bg-warning">
-            WARNING: This file seems to be empty
+            {{ "views.partials.observables.creation.form.warning:_this_file_seems_to_be_empty" | translateDefault:  "WARNING: This file seems to be empty" }}
         </div>
         <div class="checkbox">
           <label>
-              <input type="checkbox" ng-model="params.isZip">&nbsp;The file is a zipped archive
+              <input type="checkbox" ng-model="params.isZip">&nbsp;{{ "views.partials.observables.creation.form.the_file_is_a_zipped_archive" | translateDefault:  "The file is a zipped archive" }}
           </label>
         </div>
         <div ng-show="params.isZip">
-            <input type="text" class="form-control" ng-model="params.zipPassword" placeholder="Type archive's password if available"> {{params.izZip}}
+            <input type="text" class="form-control" ng-model="params.zipPassword" placeholder="{{ 'views.placeholders.partials.observables.creation.form.type_archives_password_if_available' | translateDefault: 'Type archive\'s password if available' }}"> {{params.izZip}}
         </div>
     </div>
 </div>
 
 <!-- Existing attachment observable -->
 <div class="form-group" ng-show="!params.isUpload && isFile()">
-    <label class="col-md-3 control-label">File <i class="fa fa-asterisk text-danger"></i></label>
+    <label class="col-md-3 control-label">{{ "views.partials.observables.creation.form.file" | translateDefault:  "File" }} <i class="fa fa-asterisk text-danger"></i></label>
     <div class="col-md-9">
         <table class="table table-striped">
           <tr>
             <th class="text-center" style="width: 10px">#</th>
-            <th>Filename</th>
-            <th>Type</th>
-            <th>Size</th>
+            <th>{{ "views.partials.observables.creation.form.filename" | translateDefault:  "Filename" }}</th>
+            <th>{{ "views.partials.observables.creation.form.type" | translateDefault:  "Type" }}</th>
+            <th>{{ "views.partials.observables.creation.form.size" | translateDefault:  "Size" }}</th>
           </tr>
           <tr ng-repeat="a in params.attachment track by $index">
               <td class="text-center">#{{$index+1}}</td>
@@ -58,13 +58,13 @@
 
 <!-- Non file observable -->
 <div class="form-group" ng-show="!isFile()" ng-class="{ 'has-error' : observableForm.data.$invalid && !observableForm.data.$pristine }">
-    <label class="col-md-3 control-label">Value <i class="fa fa-asterisk text-danger"></i></label>
+    <label class="col-md-3 control-label">{{ "views.partials.observables.creation.form.value" | translateDefault:  "Value" }}<i class="fa fa-asterisk text-danger"></i></label>
     <div class="col-md-9">
         <textarea class="form-control" placeholder="{{params.dataType}}" name="data" ng-model="params.data" rows="5" ng-required="!isFile()"></textarea>
         <div class="radio">
             <label>
                 <input type="radio" name="bulk" ng-model="params.single" ng-value="false">
-                One observable per line
+                {{ "views.partials.observables.creation.form.one_observable_per_line" | translateDefault:  "One observable per line" }}
                 <span class="ml-xxxs">
                     (<ng-pluralize count="countObservables()" when="{'0': '0 observables', 'one': '1 unique observable', 'other': '{} unique observables'}"></ng-pluralize>)
                 </span>
@@ -73,14 +73,14 @@
         <div class="radio">
             <label>
                 <input type="radio" name="bulk" ng-model="params.single" ng-value="true">
-                One single multiline observable
+                {{ "views.partials.observables.creation.form.one_single_multiline_observable" | translateDefault:  "One single multiline observable" }}
             </label>
         </div>
     </div>
 </div>
 
 <div class="form-group">
-    <label class="col-md-3 control-label">TLP <i class="fa fa-asterisk text-danger"></i></label>
+    <label class="col-md-3 control-label">{{ "views.partials.observables.creation.form.tlp" | translateDefault:  "TLP" }}<i class="fa fa-asterisk text-danger"></i></label>
     <div class="col-md-9">
         <p class="form-control-static">
             <a href ng-click="activeTlp='active'">
@@ -91,7 +91,7 @@
 </div>
 
 <div class="form-group">
-    <label class="col-md-3 control-label">Is IOC</label>
+    <label class="col-md-3 control-label">{{ "views.partials.observables.creation.form.is_ioc" | translateDefault:  "Is IOC" }}</label>
     <div class="col-md-9">
         <p class="form-control-static">
             <a href ng-click="params.ioc = !params.ioc">
@@ -102,7 +102,7 @@
 </div>
 
 <div class="form-group">
-    <label class="col-md-3 control-label">Has been sighted</label>
+    <label class="col-md-3 control-label">{{ "views.partials.observables.creation.form.has_been_sighted" | translateDefault:  "Has been sighted" }}</label>
     <div class="col-md-9">
         <p class="form-control-static">
             <a href ng-click="params.sighted = !params.sighted">
@@ -113,7 +113,7 @@
 </div>
 
 <div class="form-group">
-    <label class="col-md-3 control-label">Ignore for similarity</label>
+    <label class="col-md-3 control-label">{{ "views.partials.observables.creation.form.ignore_for_similarity" | translateDefault:  "Ignore for similarity" }}</label>
     <div class="col-md-9">
         <p class="form-control-static">
             <a href ng-click="params.ignoreSimilarity = !params.ignoreSimilarity">
@@ -126,14 +126,14 @@
 <!-- missing.tags -->
 <div class="form-group" ng-class="{ 'has-error' : observableForm.tags.$invalid && !observableForm.tagsInput.$pristine }">
     <label class="col-md-3 control-label">
-        Tags
+        {{ "views.partials.observables.creation.form.tags" | translateDefault:  "Tags" }}
         <span><i class="fa fa-asterisk text-danger"></i><i class="fa fa-asterisk text-danger"></i></span>
     </label>
     <div class="col-md-9">
         <input type="hidden" name="tags" ng-model="params.tagNames" ng-required="!params.message.length"/>
 
         <div class="input-group">
-            <tags-input name="tagsInput" template="views/directives/tag-input-item.html" ng-model="params.tags" class="ti-input-sm ti-tag-selector" placeholder="Add tags" replace-spaces-with-dashes="false" min-length="2">
+            <tags-input name="tagsInput" template="views/directives/tag-input-item.html" ng-model="params.tags" class="ti-input-sm ti-tag-selector" placeholder="{{ 'views.placeholders.partials.observables.creation.form.add_tags' | translateDefault: 'Add tags' }}" replace-spaces-with-dashes="false" min-length="2">
                 <auto-complete min-length="3" debounce-delay="400" source="getTags($query)"></auto-complete>
             </tags-input>
 
@@ -149,14 +149,14 @@
 </div>
 
 <div class="form-group" ng-class="{ 'has-error' : observableForm.description.$invalid && !observableForm.description.$pristine }">
-    <label class="col-sm-3 control-label">Description <i class="fa fa-asterisk text-danger"></i><i class="fa fa-asterisk text-danger"></i></label>
+    <label class="col-sm-3 control-label">{{ "views.partials.observables.creation.form.description" | translateDefault:  "Description" }}<i class="fa fa-asterisk text-danger"></i><i class="fa fa-asterisk text-danger"></i></label>
     <div class="col-sm-9">
-        <textarea class="form-control" name="description" ng-model="params.message" placeholder="Observable(s) description" rows="3" ng-required="!params.tags.length"></textarea>
-        <p class="help-block" ng-show="observableForm.description.$invalid && !observableForm.description.$pristine">The observable(s) description or tags are required.</p>
+        <textarea class="form-control" name="description" ng-model="params.message" placeholder="{{ 'views.placeholders.partials.observables.creation.form.observable(s)_description' | translateDefault: 'Observable(s) description' }}" rows="3" ng-required="!params.tags.length"></textarea>
+        <p class="help-block" ng-show="observableForm.description.$invalid && !observableForm.description.$pristine">{{ "views.partials.observables.creation.form.the_observable(s)_description_or_tags_are_required." | translateDefault:  "The observable(s) description or tags are required." }}</p>
     </div>
 </div>
 
 <p class="clearfix">
-    <span class="pull-right"><i class="fa fa-asterisk text-danger"></i><i class="fa fa-asterisk text-danger"></i> At least, one required field</span>
-    <span class="pull-right mr-xxs"><i class="fa fa-asterisk text-danger"></i> Required field</span>
+    <span class="pull-right"><i class="fa fa-asterisk text-danger"></i><i class="fa fa-asterisk text-danger"></i>{{ "views.partials.observables.creation.form.at_least,_one_required_field" | translateDefault:  "At least, one required field" }}</span>
+    <span class="pull-right mr-xxs"><i class="fa fa-asterisk text-danger"></i> {{ "views.partials.observables.creation.form.required_field" | translateDefault:  "Required field" }}</span>
 </p>

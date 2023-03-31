@@ -1,7 +1,7 @@
 <div class="updatable-input updatable-input-select">
 	<span class="updatable-input-value-wrapper" ng-hide="updatable.updating" ng-click="edit()">
 		<span ng-if="value!==null && value !==''" class="updatable-value"><i class="fa fa-stop" style="color: {{value}};"></i> {{value}}</span>
-		<span ng-if="value === null || value === undefined || value === ''" class="updatable-value text-warning"><em>Not Specified</em></span>
+		<span ng-if="value === null || value === undefined || value === ''" class="updatable-value text-warning"><em>{{ 'views.directives.updatable-colour.not_specified' | translate}}</em></span>
 
 		<small class="updatable-input-icon">
 			<i class="glyphicon glyphicon-pencil"></i>
@@ -10,7 +10,7 @@
 
 	<form ng-submit="update()" ng-show="updatable.updating">
 		<div class="input-group input-group-sm">
-            <input type="text" class="form-control" ng-model="value" placeholder="Colour" size="8">
+            <input type="text" class="form-control" ng-model="value" placeholder="{{ 'views.placeholders.directives.updatable-colour.colour' | translateDefault: 'Colour' }}" size="8">
 
 			<span class="input-group-btn">
                 <button colorpicker colorpicker-close-on-select class="btn btn-default" ng-model="value" type="button">

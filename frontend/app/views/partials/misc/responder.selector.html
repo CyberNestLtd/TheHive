@@ -1,15 +1,15 @@
 <div class="modal-header bg-primary">
-    <h3 class="modal-title">Run responders</h3>
+    <h3 class="modal-title">{{ "views.partials.misc.responder.selector.run_responders" | translateDefault:  "Run responders" }}</h3>
 </div>
 <div class="modal-body">
     <p class="mb-xxs">
-        Please select the responder you want to run
+        {{ "views.partials.misc.responder.selector.please_select_the_responder_you_want_to_run" | translateDefault:  "Please select the responder you want to run" }}
     </p>
 
     <div class="row mb-xxs">
         <div class="col-sm-12">
             <div class="has-feedback">
-                <input type="text" ng-model="$dialog.state.filter" class="form-control" placeholder="Filter responders" autofocus>
+                <input type="text" ng-model="$dialog.state.filter" class="form-control" placeholder="{{ 'views.placeholders.partials.misc.responder.selector.filter_responders' | translateDefault: 'Filter responders' }}" autofocus>
                 <span class="glyphicon glyphicon-search form-control-feedback"></span>
             </div>
         </div>
@@ -33,5 +33,5 @@
 
 </div>
 <div class="modal-footer text-left">
-    <button class="btn btn-default" ng-click="$dialog.cancel()" type="button">Cancel</button>
+    <button class="btn btn-default" ng-click="$dialog.cancel()" type="button">{{ "views.partials.misc.responder.selector.cancel" | translateDefault:  "Cancel" }}</button>
 </div>

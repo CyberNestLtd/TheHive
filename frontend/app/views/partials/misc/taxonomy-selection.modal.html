@@ -1,18 +1,18 @@
 <form name="tagsForm" ng-submit="$modal.addSelectedTags()" novalidate>
     <div class="modal-header bg-primary">
-        <h3 class="modal-title">Select tags from library</h3>
+        <h3 class="modal-title">{{ "views.partials.misc.taxonomy-selection.modal.select_tags_from_library" | translateDefault:  "Select tags from library" }}</h3>
     </div>
     <div class="modal-body">
 
         <div class="mb-xs">
             <div class="clearfix">
                 <label>
-                    Selected tags ({{$modal.formData.selectedTags.length}})
+                    {{ "views.partials.misc.taxonomy-selection.modal.selected_tags" | translateDefault:  "Selected tags" }} ({{$modal.formData.selectedTags.length}})
                 </label>
-                <a class="pull-right" href ng-click="$modal.clearSelection()">Clear selection</a>
+                <a class="pull-right" href ng-click="$modal.clearSelection()">{{ "views.partials.misc.taxonomy-selection.modal.clear_selection" | translateDefault:  "Clear selection" }}</a>
             </div>
 
-            <div class="empty-message" ng-if="$modal.formData.selectedTags.length === 0">No tags selected</div>
+            <div class="empty-message" ng-if="$modal.formData.selectedTags.length === 0">{{ "views.partials.misc.taxonomy-selection.modal.no_tags_selected" | translateDefault:  "No tags selected" }}</div>
 
             <div ng-if="$modal.formData.selectedTags.length > 0">
                 <div class="empty-message">
@@ -21,13 +21,13 @@
                             class="clickable" ng-click="$modal.selectTag(tag)"></tag-item>
                     </div>
                 </div>
-                <p class="help-block">Click on a tag to unselect it</p>
+                <p class="help-block">{{ "views.partials.misc.taxonomy-selection.modal.click_on_a_tag_to_unselect_it" | translateDefault:  "Click on a tag to unselect it" }}</p>
             </div>
         </div>
 
         <div class="mv-xxs" ng-if="!$modal.formData.selectedTaxonomy">
             <label>
-                Choose taxonomy
+                {{ "views.partials.misc.taxonomy-selection.modal.choose_taxonomy" | translateDefault:  "Choose taxonomy" }}
             </label>
             <div class="list-group">
                 <a href class="list-group-item" ng-repeat="taxonomy in $modal.taxonomies"
@@ -36,7 +36,7 @@
                         tooltip-append-to-body="true"><i class="fa fa-question"></i></span>
                     <span>{{taxonomy.namespace}} </span>
                     <small class="pull-right mr-m"><em class="text-muted">({{taxonomy.tags.length || 0}}
-                            tags)</em></small>
+                            {{ "views.partials.misc.taxonomy-selection.modal.tags" | translateDefault:  "tags" }})</em></small>
                 </a>
             </div>
         </div>
@@ -44,16 +44,15 @@
         <div ng-if="$modal.formData.selectedTaxonomy">
             <div class="clearfix">
                 <label>
-                    Choose tags from taxonomy: {{$modal.formData.selectedTaxonomy.namespace}}
+                    {{ "views.partials.misc.taxonomy-selection.modal.choose_tags_from_taxonomy:" | translateDefault:  "Choose tags from taxonomy:" }} {{$modal.formData.selectedTaxonomy.namespace}}
                 </label>
-                <a class="pull-right" href ng-click="$modal.formData.selectedTaxonomy = undefined">Show all
-                    taxonomies</a>
+                <a class="pull-right" href ng-click="$modal.formData.selectedTaxonomy = undefined">{{ "views.partials.misc.taxonomy-selection.modal.show_all_taxonomies" | translateDefault:  "Show all taxonomies" }}</a>
             </div>
 
             <div class="row mb-xxs">
                 <div class="col-sm-12">
                     <div class="has-feedback">
-                        <input type="text" ng-model="$modal.search" class="form-control" placeholder="Filter tags"
+                        <input type="text" ng-model="$modal.search" class="form-control" placeholder="{{ 'views.placeholders.partials.misc.taxonomy-selection.modal.filter_tags' | translateDefault: 'Filter tags' }}"
                             autofocus>
                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
                     </div>
@@ -82,8 +81,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-default pull-left" type="button" ng-click="$modal.cancel()">Cancel</button>
-        <button class="btn btn-primary pull-right" type="submit" ng-disabled="$modal.formData.selectedTags === 0">Add
-            Selected tags</button>
+        <button class="btn btn-default pull-left" type="button" ng-click="$modal.cancel()">{{ "views.partials.misc.taxonomy-selection.modal.cancel" | translateDefault:  "Cancel" }}</button>
+        <button class="btn btn-primary pull-right" type="submit" ng-disabled="$modal.formData.selectedTags === 0">{{ "views.partials.misc.taxonomy-selection.modal.add_selected_tags" | translateDefault:  "Add Selected tags" }}</button>
     </div>
 </form>

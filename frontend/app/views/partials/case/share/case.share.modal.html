@@ -1,38 +1,38 @@
 <form name="shareForm" ng-submit="$modal.save()" novalidate>
     <div class="modal-header bg-primary">
-        <h3 class="modal-title">Share case</h3>
+        <h3 class="modal-title">{{ "views.partials.case.share.case.share.modal.share_case" | translateDefault:  "Share case" }}</h3>
     </div>
     <div class="modal-body">
 
         <p>
-            Select the organisations you would like to share the case with.
+            {{ "views.partials.case.share.case.share.modal.select_the_organisations_you_would_like_to_share_the_case_with." | translateDefault:  "Select the organisations you would like to share the case with." }}
         </p>
 
         <div class="form-group" ng-class="{ 'has-error' : shareForm.organisations.$invalid && !shareForm.organisations.$pristine }">
             <label>
-                Organisation
+                {{ "views.partials.case.share.case.share.modal.organisation" | translateDefault:  "Organisation" }}
                 <i class="fa fa-asterisk text-danger"></i>
             </label>
             <select class="form-control" name="organisations" ng-model="$modal.formData.organisations"
                 ng-options="organisation for organisation in $modal.organisations" multiple size="10" required>
             </select>
-            <p class="help-block" ng-show="shareForm.organisations.$invalid && !shareForm.organisations.$pristine">This field is required.</p>
+            <p class="help-block" ng-show="shareForm.organisations.$invalid && !shareForm.organisations.$pristine">{{ "views.partials.case.share.case.share.modal.this_field_is_required." | translateDefault:  "This field is required." }}</p>
         </div>
 
         <div class="form-group" ng-class="{ 'has-error' : shareForm.profile.$invalid && !shareForm.profile.$pristine }">
             <label>
-                Profile
+                {{ "views.partials.case.share.case.share.modal.profile" | translateDefault:  "Profile" }}
                 <i class="fa fa-asterisk text-danger"></i>
             </label>
             <select class="form-control" name="profile" ng-model="$modal.formData.profile" ng-options="profile for profile in $modal.profiles" required>
-                    <option value="" disabled selected>-- Select profile --</option>
+                    <option value="" disabled selected>{{ "views.partials.case.share.case.share.modal.--_select_profile_--" | translateDefault:  "-- Select profile --" }}</option>
             </select>
-            <p class="help-block" ng-show="shareForm.profile.$invalid && !shareForm.profile.$pristine">This field is required.</p>
+            <p class="help-block" ng-show="shareForm.profile.$invalid && !shareForm.profile.$pristine">{{ "views.partials.case.share.case.share.modal.this_field_is_required." | translateDefault:  "This field is required." }}</p>
         </div>
 
         <div class="form-group">
             <label>
-                Tasks
+                {{ "views.partials.case.share.case.share.modal.tasks" | translateDefault:  "Tasks" }}
                 <i class="fa fa-asterisk text-danger"></i>
             </label>
             <select class="form-control" name="tasks" ng-model="$modal.formData.tasks"
@@ -42,7 +42,7 @@
 
         <div class="form-group">
             <label>
-                Observables
+                {{ "views.partials.case.share.case.share.modal.observables" | translateDefault:  "Observables" }}
                 <i class="fa fa-asterisk text-danger"></i>
             </label>
             <select class="form-control" name="observables" ng-model="$modal.formData.observables"
@@ -52,7 +52,7 @@
 
     </div>
     <div class="modal-footer">
-        <button class="btn btn-default pull-left" type="button" ng-click="$modal.cancel()">Cancel</button>
-        <button class="btn btn-primary pull-right" type="submit" ng-disabled="shareForm.$invalid">Save</button>
+        <button class="btn btn-default pull-left" type="button" ng-click="$modal.cancel()">{{ "views.partials.case.share.case.share.modal.cancel" | translateDefault:  "Cancel" }}</button>
+        <button class="btn btn-primary pull-right" type="submit" ng-disabled="shareForm.$invalid">{{ "views.partials.case.share.case.share.modal.save" | translateDefault:  "Save" }}</button>
     </div>
 </form>

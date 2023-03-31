@@ -1,7 +1,7 @@
 <div class="updatable-input updatable-input-text">
     <!-- Display empty text -->
     <span ng-if="!updatable.updating && (!value || value.length ===0 )" class="updatable-input-value-wrapper" ng-click="edit()">
-        <span class="updatable-value text-warning"><em>Not Specified</em></span>
+        <span class="updatable-value text-warning"><em>{{ 'views.directives.updatable-text.not_specified' | translate}}</em></span>
 
         <small class="updatable-input-icon">
             <i class="glyphicon glyphicon-pencil"></i>
@@ -33,7 +33,7 @@
 				</button>
             </div>
             <a class="pull-right" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">
-                <i class="fa fa-question-circle"></i> Markdown Reference</a>
+                <i class="fa fa-question-circle"></i>{{ 'views.directives.updatable-text.markdown_reference' | translate}}</a>
         </div>
     </div>
 </div>

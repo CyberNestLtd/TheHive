@@ -4,6 +4,7 @@ angular.module('theHiveFilters', []);
 angular.module('theHiveDirectives', []);
 angular.module('theHiveComponents', []);
 
+
 angular.module('thehive', [
     'ngAnimate',
     'ngMessages',
@@ -35,7 +36,9 @@ angular.module('thehive', [
     'theHiveServices',
     'theHiveFilters',
     'theHiveDirectives',
-    'theHiveComponents'
+    'theHiveComponents',
+    'pascalprecht.translate',
+    'ui.router',
 ])
     .config(function ($resourceProvider) {
         'use strict';
@@ -691,6 +694,47 @@ angular.module('thehive', [
             }
         ]);
     })
+    .config(function($translateProvider) {
+        $translateProvider.useStaticFilesLoader({
+            prefix: 'scripts/languages/',
+            suffix: '.json'
+        });
+        if (localStorage.getItem('language')) {
+            $translateProvider.preferredLanguage(localStorage.getItem('language'));
+        } else {
+            $translateProvider.preferredLanguage('en');
+        }
+        $translateProvider.useSanitizeValueStrategy('escape');
+
+    })
+
+    app.filter('translateDefault', ['$translate', function($translate) {
+    return function(translationKey, defaultValue = '') {
+        var translation = $translate.instant(translationKey);
+        if (translation === translationKey) {
+        return defaultValue;
+        }
+        return translation;
+    };
+    }])
+
+    .service('i18n', function($filter) {
+    this.t = function(key, defaultValue) {
+        return $filter('translateDefault')(key, defaultValue);
+    };
+    });
+    app.service('languageService', function() {
+        var language = localStorage.getItem('language');
+
+        this.getLanguage = function() {
+            return language;
+        };
+
+        this.setLanguage = function(newLanguage) {
+            language = newLanguage;
+        };
+    })
+
     .run(function ($rootScope, $state, $q, AuthenticationSrv) {
         'use strict';
         $rootScope.async = 0;

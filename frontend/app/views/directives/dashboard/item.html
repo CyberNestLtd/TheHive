@@ -6,10 +6,10 @@
 
         <div class="box-tools pull-right">
             <a href class="btn btn-box-tool" ng-click="editItem()" ng-if="showEdit">
-                <i class="fa fa-pencil"></i> Edit
+                <i class="fa fa-pencil"></i> {{ 'views.directives.dashboard.item.edit' | translate}}
             </a>
             <a href class="btn btn-box-tool" ng-click="onRemove({rowIndex: rowIndex, colIndex: colIndex})" ng-if="showRemove">
-                <i class="fa fa-times"></i> Remove
+                <i class="fa fa-times"></i> {{ 'views.directives.dashboard.item.remove' | translate}}
             </a>
 
         </div>
@@ -72,7 +72,7 @@
             refresh-on="{{refreshOn}}"
             mode="mode"></dashboard-counter>
 
-        <div ng-switch-default>Unhandled chart type</div>
+        <div ng-switch-default>{{ 'views.directives.dashboard.item.unhandled_chart_type' | translate}}</div>
 
     </div>
 </div>

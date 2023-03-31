@@ -2,14 +2,14 @@
 
 	<!-- Sidebar Menu -->
 	<ul class="sidebar-menu">
-		<li class="header">MAIN MENU</li>		
-		<li class="active"><a ui-sref="home"><i class="fa fa-link"></i> <span>Home</span></a></li>
-		<li><a ui-sref="calendar"><i class="fa fa-link"></i> <span>Calendar</span></a></li>
+		<li class="header">{{ 'views.components.main-sidebar.component.main_menu' | translate}}</li>
+		<li class="active"><a ui-sref="home"><i class="fa fa-link"></i> <span>{{ 'views.components.main-sidebar.component.home' | translate}}</span></a></li>
+		<li><a ui-sref="calendar"><i class="fa fa-link"></i> <span>{{ 'views.components.main-sidebar.component.calendar' | translate}}</span></a></li>
 		<li class="treeview">
-			<a href="#"><i class="fa fa-link"></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
+			<a href="#"><i class="fa fa-link"></i> <span>{{ 'views.components.main-sidebar.component.multilevel' | translate}}</span> <i class="fa fa-angle-left pull-right"></i></a>
 			<ul class="treeview-menu">
-				<li><a href="#">Link in level 2</a></li>
-				<li><a href="#">Link in level 2</a></li>
+				<li><a href="#">{{ 'views.components.main-sidebar.component.link_1_in_level_2' | translate}}</a></li>
+				<li><a href="#">{{ 'views.components.main-sidebar.component.link_2_in_level_2' | translate}}</a></li>
 			</ul>
 		</li>
 	</ul>

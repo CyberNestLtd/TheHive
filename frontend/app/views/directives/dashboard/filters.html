@@ -1,5 +1,5 @@
 <div ng-if="!component.options.filters || component.options.filters.length === 0" class="empty-message">
-    No filters defined. <a href ng-click="addFilter()">Add a filter</a>
+    {{ 'views.directives.dashboard.filters.no_filters_defined' | translate}} <a href ng-click="addFilter()">{{ 'views.directives.dashboard.filters.add_a_filter' | translate}}</a>
 </div>
 <div class="row mb-xxxs" ng-repeat="filter in component.options.filters track by $index">
     <div class="col-sm-4">
@@ -21,6 +21,6 @@
 </div>
 <div ng-if="component.options.filters && component.options.filters.length > 0" class="mv-xs">
     <a href ng-click="addFilter()">
-        <i class="fa fa-plus"></i> Add a filter
+        <i class="fa fa-plus"></i> {{ 'views.directives.dashboard.filters.add_a_filter' | translate}}
     </a>
 </div>

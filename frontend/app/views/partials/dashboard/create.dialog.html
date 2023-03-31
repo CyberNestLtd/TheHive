@@ -5,7 +5,7 @@
     <div class="modal-body">
         <div class="form-group">
             <label class="col-sm-2 control-label">
-                Title
+                {{ "views.partials.dashboard.create.dialog.title" | translateDefault:  "Title" }}
                 <i class="fa fa-asterisk text-danger"></i>
             </label>
             <div class="col-sm-10">
@@ -14,7 +14,7 @@
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">
-                Description
+                {{ "views.partials.dashboard.create.dialog.description" | translateDefault:  "Description" }}
                 <i class="fa fa-asterisk text-danger"></i>
             </label>
             <div class="col-sm-10">
@@ -23,19 +23,19 @@
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">
-                Visibility
+                {{ "views.partials.dashboard.create.dialog.visibility" | translateDefault:  "Visibility" }}
                 <i class="fa fa-asterisk text-danger"></i>
             </label>
             <div class="col-sm-10">
                 <select class="form-control" ng-model="$vm.dashboard.status" ng-options="s for s in $vm.statuses"
                     required ng-disabled="$vm.dashboard.id && ($vm.dashboard.createdBy !== $vm.currentUser.login)">
-                    <option value="">-- select an option --</option>
+                    <option value="">{{ "views.partials.dashboard.create.dialog.--_select_an_option_--" | translateDefault:  "-- select an option --" }}</option>
                 </select>
             </div>
         </div>
     </div>
     <div class="modal-footer text-left">
-        <button class="btn btn-default" ng-click="$vm.cancel()">Cancel</button>
+        <button class="btn btn-default" ng-click="$vm.cancel()">{{ "views.partials.dashboard.create.dialog.cancel" | translateDefault:  "Cancel" }}</button>
         <button class="btn btn-primary pull-right" type="submit" ng-disabled="form.$invalid">{{ $vm.dashboard.id ?
             'Update' : 'Create' }}</button>
     </div>

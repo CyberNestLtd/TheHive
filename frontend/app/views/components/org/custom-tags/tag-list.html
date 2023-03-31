@@ -21,7 +21,7 @@
 <!-- Datalist  -->
 <div class="row mt-xs">
     <div class="col-md-12 mv-s" ng-show="$vm.list.total === 0 && $vm.list.values.length === 0">
-        <div class="empty-message">No records</div>
+        <div class="empty-message">{{ 'views.components.org.custom-tags.tag-list.no_records' | translateDefault:'No records'}}</div>
     </div>
 
     <div class="col-md-12" ng-show="$vm.list.values.length !== 0">
@@ -32,7 +32,7 @@
                 <tr>
                     <th>
                         <a href class="text-default" ng-click="$vm.sortByField('predicate')">
-                            Name
+                            {{ 'views.components.org.custom-tags.tag-list.name' | translateDefault:'Name'}}
                             <i ng-show="$vm.filtering.context.sort.indexOf('+predicate') === -1 && $vm.filtering.context.sort.indexOf('-predicate') === -1"
                                 class="fa fa-sort"></i>
                             <i ng-show="$vm.filtering.context.sort.indexOf('+predicate') !== -1"
@@ -42,19 +42,19 @@
                         </a>
                     </th>
                     <th width="250px">
-                        Colour
+                        {{ 'views.components.org.custom-tags.tag-list.colour' | translateDefault:'Colour'}}
                     </th>
-                    <th width="100px">Cases</th>
-                    <th width="100px">Alerts</th>
-                    <th width="100px">Observables</th>
-                    <th width="100px">Templates</th>
-                    <th style="width: 60px;">By</th>
+                    <th width="100px">{{ 'views.components.org.custom-tags.tag-list.cases' | translateDefault:'Cases'}}</th>
+                    <th width="100px">{{ 'views.components.org.custom-tags.tag-list.alerts' | translateDefault:'Alerts'}}</th>
+                    <th width="100px">{{ 'views.components.org.custom-tags.tag-list.observables' | translateDefault:'Observables'}}</th>
+                    <th width="100px">{{ 'views.components.org.custom-tags.tag-list.templates' | translateDefault:'Templates'}}</th>
+                    <th style="width: 60px;">{{ 'views.components.org.custom-tags.tag-list.by' | translateDefault:'By'}}</th>
                     <th style="width: 150px">
-                        Dates
+                        {{ 'views.components.org.custom-tags.tag-list.dates' | translateDefault:'Dates'}}
 
                         <a href class="text-default ml-xxxs" ng-click="$vm.sortByField('_createdAt')"
                             uib-tooltip="Sort by creation date">
-                            C.
+                            {{"views.components.org.custom-tags.tag-list.c." | translateDefault: "C." }}
                             <i ng-show="$vm.filtering.context.sort.indexOf('+_createdAt') === -1 && $vm.filtering.context.sort.indexOf('-_createdAt') === -1"
                                 class="fa fa-sort"></i>
                             <i ng-show="$vm.filtering.context.sort.indexOf('+_createdAt') !== -1"
@@ -64,7 +64,7 @@
                         </a>
                         <a href class="text-default ml-xxxs" ng-click="$vm.sortByField('_updatedAt')"
                             uib-tooltip="Sort by last update date">
-                            U.
+                            {{"views.components.org.custom-tags.tag-list.u." | translateDefault: "U." }}
                             <i ng-show="$vm.filtering.context.sort.indexOf('+_updatedAt') === -1 && $vm.filtering.context.sort.indexOf('-_updatedAt') === -1"
                                 class="fa fa-sort"></i>
                             <i ng-show="$vm.filtering.context.sort.indexOf('+_updatedAt') !== -1"
@@ -73,7 +73,7 @@
                                 class="fa fa-caret-down"></i>
                         </a>
                     </th>
-                    <th style="width: 60px">Actions</th>
+                    <th style="width: 60px">{{ 'views.components.org.custom-tags.tag-list.actions' | translateDefault:'Actions'}}</th>
                 </tr>
             </thead>
 

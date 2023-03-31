@@ -8,7 +8,7 @@
                 {{operatorMap[filter.value.operator] || '='}} <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" uib-dropdown-menu>
-                <li><a href ng-click="filter.value.operator = 'empty'">is empty</a></li>
+                <li><a href ng-click="filter.value.operator = 'empty'">{{ 'views.directives.dashboard.filter-editor.is_empty' | translate}}</a></li>
                 <li><a href ng-click="filter.value.operator = '='">=</a></li>
                 <li><a href ng-click="filter.value.operator = '!='">!=</a></li>
                 <li><a href ng-click="filter.value.operator = '<'">&lt;</a></li>
@@ -28,17 +28,17 @@
                 {{operatorMap[filter.value.operator || 'any']}} <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" uib-dropdown-menu>
-                <li><a href ng-click="filter.value.operator = 'empty'">is empty</a></li>
-                <li><a href ng-click="filter.value.operator = 'any'">any of</a></li>
-                <li><a href ng-click="filter.value.operator = 'all'">all of</a></li>
-                <li><a href ng-click="filter.value.operator = 'none'">none of</a></li>
+                <li><a href ng-click="filter.value.operator = 'empty'">{{ 'views.directives.dashboard.filter-editor.is_empty' | translate}}</a></li>
+                <li><a href ng-click="filter.value.operator = 'any'">{{ 'views.directives.dashboard.filter-editor.any_of' | translate}}</a></li>
+                <li><a href ng-click="filter.value.operator = 'all'">{{ 'views.directives.dashboard.filter-editor.all_of' | translate}}</a></li>
+                <li><a href ng-click="filter.value.operator = 'none'">{{ 'views.directives.dashboard.filter-editor.none_of' | translate}}</a></li>
             </ul>
         </div>
         <div class="col-xs-10 pl-xxxs clear" ng-show="filter.value.operator !== 'empty'">
             <div class="input-group">
                 <tags-input class="form-control-wrapper ti-tag-selector"
                     ng-model="filter.value.list"
-                    placeholder="ex: Enter a tag"
+                    placeholder="{{ 'views.placeholders.directives.dashboard.filter-editor.ex:_enter_a_tag' | translateDefault: 'ex: Enter a tag' }}"
                     replace-spaces-with-dashes="false"
                     template="views/directives/tag-input-item.html">
                         <auto-complete source="promiseFor(filter, $query)" min-length="3" debounce-delay="400"></auto-complete>
@@ -59,15 +59,15 @@
                 {{operatorMap[filter.value.operator || 'any']}} <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" uib-dropdown-menu>
-                <li><a href ng-click="filter.value.operator = 'empty'">is empty</a></li>
-                <li><a href ng-click="filter.value.operator = 'any'">any of</a></li>
-                <li><a href ng-click="filter.value.operator = 'all'">all of</a></li>
-                <li><a href ng-click="filter.value.operator = 'none'">none of</a></li>
+                <li><a href ng-click="filter.value.operator = 'empty'">{{ 'views.directives.dashboard.filter-editor.is_empty' | translate}}</a></li>
+                <li><a href ng-click="filter.value.operator = 'any'">{{ 'views.directives.dashboard.filter-editor.any_of' | translate}}</a></li>
+                <li><a href ng-click="filter.value.operator = 'all'">{{ 'views.directives.dashboard.filter-editor.all_of' | translate}}</a></li>
+                <li><a href ng-click="filter.value.operator = 'none'">{{ 'views.directives.dashboard.filter-editor.none_of' | translate}}</a></li>
             </ul>
         </div>
         <div class="col-xs-10 pl-xxxs" ng-show="filter.value.operator !== 'empty'">
             <tags-input class="form-control-wrapper" min-length="2" ng-model="filter.value.list"
-                placeholder="ex: Firstname Lastname"
+                placeholder="{{ 'views.placeholders.directives.dashboard.filter-editor.ex:_firstname_lastname' | translateDefault: 'ex: Firstname Lastname' }}"
                 replace-spaces-with-dashes="false"
                 add-from-autocomplete-only="true"
                 display-property="label">
@@ -82,16 +82,16 @@
                 {{operatorMap[filter.value.operator || 'any']}} <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" uib-dropdown-menu>
-                <li><a href ng-click="filter.value.operator = 'empty'">is empty</a></li>
-                <li><a href ng-click="filter.value.operator = 'any'">any of</a></li>
-                <li><a href ng-click="filter.value.operator = 'all'">all of</a></li>
-                <li><a href ng-click="filter.value.operator = 'none'">none of</a></li>
+                <li><a href ng-click="filter.value.operator = 'empty'">{{ 'views.directives.dashboard.filter-editor.is_empty' | translate}}</a></li>
+                <li><a href ng-click="filter.value.operator = 'any'">{{ 'views.directives.dashboard.filter-editor.any_of' | translate}}</a></li>
+                <li><a href ng-click="filter.value.operator = 'all'">{{ 'views.directives.dashboard.filter-editor.all_of' | translate}}</a></li>
+                <li><a href ng-click="filter.value.operator = 'none'">{{ 'views.directives.dashboard.filter-editor.none_of' | translate}}</a></li>
             </ul>
         </div>
         <div class="col-xs-10 pl-xxxs" ng-show="filter.value.operator !== 'empty'">
             <tags-input class="form-control-wrapper" min-length="2"
                 ng-model="filter.value.list"
-                placeholder="Enter a {{filter.field}}"
+                placeholder="{{ 'views.placeholders.directives.dashboard.filter-editor.enter_a' | translateDefault: 'Enter a' }} {{filter.field}}"
                 replace-spaces-with-dashes="false"></tags-input>
         </div>
     </div>
@@ -102,17 +102,17 @@
                 {{operatorMap[filter.value.operator || 'any']}}<span class="caret"></span>
             </button>
             <ul class="dropdown-menu" uib-dropdown-menu>
-                <li><a href ng-click="filter.value.operator = 'empty'">is empty</a></li>
-                <li><a href ng-click="filter.value.operator = 'any'">any of</a></li>
-                <li><a href ng-click="filter.value.operator = 'all'">all of</a></li>
-                <li><a href ng-click="filter.value.operator = 'none'">none of</a></li>
+                <li><a href ng-click="filter.value.operator = 'empty'">{{ 'views.directives.dashboard.filter-editor.is_empty' | translate}}</a></li>
+                <li><a href ng-click="filter.value.operator = 'any'">{{ 'views.directives.dashboard.filter-editor.any_of' | translate}}</a></li>
+                <li><a href ng-click="filter.value.operator = 'all'">{{ 'views.directives.dashboard.filter-editor.all_of' | translate}}</a></li>
+                <li><a href ng-click="filter.value.operator = 'none'">{{ 'views.directives.dashboard.filter-editor.none_of' | translate}}</a></li>
             </ul>
         </div>
         <div class="col-xs-10 pl-xxxs" ng-show="filter.value.operator !== 'empty'">
             <tags-input class="form-control-wrapper" min-length="2" ng-model="filter.value.list"
                 replace-spaces-with-dashes="false"
                 add-from-autocomplete-only="true"
-                placeholder="Enter a {{filter.field}}"
+                placeholder="{{ 'views.placeholders.directives.dashboard.filter-editor.enter_a' | translateDefault: 'Enter a' }} {{filter.field}}"
                 display-property="label">
                 <auto-complete load-on-focus="true" load-on-down-arrow="true" min-length="1"
                     source="promiseFor(filter, $query)"
@@ -124,9 +124,9 @@
 
     <div ng-switch-when="boolean" class="row">
         <div class="col-xs-12 pl-0 btn-group">
-            <label uib-btn-radio="true" class="btn btn-default" name="{{filter.field}}" ng-model="filter.value">Yes</label>
-            <label uib-btn-radio="false" class="btn btn-default" name="{{filter.field}}" ng-model="filter.value">No</label>
-            <label uib-btn-radio="null" class="btn btn-default" name="{{filter.field}}" ng-model="filter.value">Any</label>
+            <label uib-btn-radio="true" class="btn btn-default" name="{{filter.field}}" ng-model="filter.value">{{ 'views.directives.dashboard.filter-editor.yes' | translate}}</label>
+            <label uib-btn-radio="false" class="btn btn-default" name="{{filter.field}}" ng-model="filter.value">{{ 'views.directives.dashboard.filter-editor.no' | translate}}</label>
+            <label uib-btn-radio="null" class="btn btn-default" name="{{filter.field}}" ng-model="filter.value">{{ 'views.directives.dashboard.filter-editor.any' | translate}}</label>
         </div>
     </div>
 
@@ -139,21 +139,21 @@
                 {{dateOperator[filter.value.operator || 'custom']}} <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" uib-dropdown-menu>
-                <li><a href ng-click="setDateFilterOperator(filter, 'empty')">Empty</a></li>
-                <li><a href ng-click="setDateFilterOperator(filter, 'custom')">Custom</a></li>
-                <li><a href ng-click="setDateFilterOperator(filter, 'today')">Today</a></li>
-                <li><a href ng-click="setDateFilterOperator(filter, 'last7days')">Last 7 days</a></li>
-                <li><a href ng-click="setDateFilterOperator(filter, 'last30days')">Last 30 days</a></li>
-                <li><a href ng-click="setDateFilterOperator(filter, 'last3months')">Last 3 months</a></li>
-                <li><a href ng-click="setDateFilterOperator(filter, 'last6months')">Last 6 months</a></li>
-                <li><a href ng-click="setDateFilterOperator(filter, 'lastyear')">Last year</a></li>
+                <li><a href ng-click="setDateFilterOperator(filter, 'empty')">{{ 'views.directives.dashboard.filter-editor.empty' | translate}}</a></li>
+                <li><a href ng-click="setDateFilterOperator(filter, 'custom')">{{ 'views.directives.dashboard.filter-editor.custom' | translate}}</a></li>
+                <li><a href ng-click="setDateFilterOperator(filter, 'today')">{{ 'views.directives.dashboard.filter-editor.today' | translate}}</a></li>
+                <li><a href ng-click="setDateFilterOperator(filter, 'last7days')">{{ 'views.directives.dashboard.filter-editor.last_7_days' | translate}}</a></li>
+                <li><a href ng-click="setDateFilterOperator(filter, 'last30days')">{{ 'views.directives.dashboard.filter-editor.last_30_days' | translate}}</a></li>
+                <li><a href ng-click="setDateFilterOperator(filter, 'last3months')">{{ 'views.directives.dashboard.filter-editor.last_3_months' | translate}}</a></li>
+                <li><a href ng-click="setDateFilterOperator(filter, 'last6months')">{{ 'views.directives.dashboard.filter-editor.last_6_months' | translate}}</a></li>
+                <li><a href ng-click="setDateFilterOperator(filter, 'lastyear')">{{ 'views.directives.dashboard.filter-editor.last_year' | translate}}</a></li>
             </ul>
         </div>
         <div class="col-xs-5 pl-xxxs" ng-show="!filter.value.operator || filter.value.operator === 'custom'">
-            <dt-picker date="filter.value.from" placeholder="from"></dt-picker>
+            <dt-picker date="filter.value.from" placeholder="{{ 'views.placeholders.directives.dashboard.filter-editor.from' | translateDefault: 'from' }}"></dt-picker>
         </div>
         <div class="col-xs-5 pl-0" ng-show="!filter.value.operator || filter.value.operator === 'custom'">
-            <dt-picker date="filter.value.to" placeholder="to"></dt-picker>
+            <dt-picker date="filter.value.to" placeholder="{{ 'views.placeholders.directives.dashboard.filter-editor.to' | translateDefault: 'to' }}"></dt-picker>
         </div>
     </div>
 </div>

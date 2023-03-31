@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     angular.module('theHiveControllers').controller('CaseObservablesCtrl',
-        function ($scope, $q, $state, $stateParams, $filter, $uibModal, SecuritySrv, ModalUtilsSrv, FilteringSrv, StreamSrv, CaseTabsSrv, PaginatedQuerySrv, ObservableTypeSrv, CaseArtifactSrv, NotificationSrv, AnalyzerSrv, CortexSrv, VersionSrv) {
+        function ($scope, $q, $state, $stateParams, $filter, $uibModal, SecuritySrv, ModalUtilsSrv, FilteringSrv, StreamSrv, CaseTabsSrv, PaginatedQuerySrv, ObservableTypeSrv, CaseArtifactSrv, NotificationSrv, AnalyzerSrv, CortexSrv, VersionSrv, i18n) {
 
             CaseTabsSrv.activateTab($state.current.data.tab);
 
@@ -255,7 +255,7 @@
                     $q.all(_.map(operations, function (operation) {
                         return CaseArtifactSrv.bulkUpdate(operation.ids, operation.patch);
                     })).then(function (/*responses*/) {
-                        NotificationSrv.log('Selected observables have been updated successfully', 'success');
+                        NotificationSrv.log(i18n.t("controllers.case.CaseObservablesCtrl.selected_observables_have_been_updated_successfully", "Selected observables have been updated successfully"), 'success');
                     });
                 });
             };
@@ -293,7 +293,7 @@
                             );
                         })
                         .then(function () {
-                            NotificationSrv.log('Analyzers have been successfully started for the selected observables', 'success');
+                            NotificationSrv.log(i18n.t("controllers.case.CaseObservablesCtrl.analyzers_have_been_successfully_started_for_the_selected_observables", "Analyzers have been successfully started for the selected observables"), 'success');
                         }, function () {
 
                         });
@@ -310,8 +310,8 @@
 
             $scope.removeObservables = function () {
 
-                ModalUtilsSrv.confirm('Remove Observables', 'Are you sure you want to delete the selected Observables?', {
-                    okText: 'Yes, remove them',
+                ModalUtilsSrv.confirm(i18n.t("controllers.case.CaseObservablesCtrl.remove_observables", "Remove Observables"), i18n.t("controllers.case.CaseObservablesCtrl.are_you_sure_you_want_to_delete_the_selected_observables?", "Are you sure you want to delete the selected Observables?"), {
+                    okText: i18n.t("controllers.case.CaseObservablesCtrl.yes,_remove_them", "Yes, remove them"),
                     flavor: 'danger'
                 }).then(function () {
 
@@ -323,7 +323,7 @@
                         }).$promise;
                     }));
                 }).then(function (/*responses*/) {
-                    NotificationSrv.log('The selected observables have been deleted', 'success');
+                    NotificationSrv.log(i18n.t("controllers.case.CaseObservablesCtrl.the_selected_observables_have_been_deleted", "The selected observables have been deleted"), 'success');
                 }).catch(function (/*err*/) {
                     //NotificationSrv.error('Observable deletion', response.data, response.status);
                 });
@@ -360,7 +360,7 @@
                         );
                     })
                     .then(function () {
-                        NotificationSrv.log('Analyzers have been successfully started for ' + nbArtifacts + ' observables', 'success');
+                        NotificationSrv.log(i18n.t("controllers.case.CaseObservablesCtrl.analyzers_have_been_successfully_started_for", "Analyzers have been successfully started for") +' '+ nbArtifacts +' '+i18n.t("controllers.case.CaseObservablesCtrl.observables", "observables"), 'success');
                     }, function () {
 
                     });
@@ -405,7 +405,7 @@
                         });
                     })
                     .catch(function (/*err*/) {
-                        NotificationSrv.error('Unable to fetch the analysis report');
+                        NotificationSrv.error(i18n.t("controllers.case.CaseObservablesCtrl.unable_to_fetch_the_analysis_report", "Unable to fetch the analysis report"));
                     });
             };
 
@@ -429,7 +429,7 @@
                     })
                     .then(function (response) {
                         var data = '[' + $filter('fang')(observable.data || observable.attachment.name) + ']';
-                        NotificationSrv.log(['Responder', response.data.responderName, 'started successfully on observable', data].join(' '), 'success');
+                        NotificationSrv.log([i18n.t("controllers.case.CaseObservablesCtrl.responder", "Responder"), response.data.responderName, i18n.t("controllers.case.CaseObservablesCtrl.started_successfully_on_observable", "started successfully on observable"), data].join(' '), 'success');
                     })
                     .catch(function (err) {
                         if (err && !_.isString(err)) {

@@ -5,7 +5,7 @@
     'use strict';
 
     angular.module('theHiveControllers').controller('ObservableCreationCtrl',
-        function($scope, $stateParams, $uibModalInstance, TaxonomyCacheSrv, clipboard, CaseArtifactSrv, ObservableTypeSrv, NotificationSrv, TagSrv, params) {
+        function($scope, $stateParams, $uibModalInstance, TaxonomyCacheSrv, clipboard, CaseArtifactSrv, ObservableTypeSrv, NotificationSrv, TagSrv, params, i18n) {
 
             $scope.activeTlp = 'active';
             $scope.pendingAsync = false;
@@ -147,12 +147,12 @@
                     $scope.step = 'error';
                     $scope.pendingAsync = false;
 
-                    NotificationSrv.log('Observables have been successfully created', 'success');
+                    NotificationSrv.log(i18n.t("controllers.case.ObservableCreationCtrl.observables_have_been_successfully_created", "Observables have been successfully created"), 'success');
 
                 } else {
                     success = angular.isObject(response.data) ? 1 : response.data.length;
 
-                    NotificationSrv.log('Observables have been successfully created', 'success');
+                    NotificationSrv.log(i18n.t("controllers.case.ObservableCreationCtrl.observables_have_been_successfully_created", "Observables have been successfully created"), 'success');
 
                     $uibModalInstance.close(response);
                 }
@@ -169,7 +169,7 @@
 										if(response.data.type) {
                         NotificationSrv.error('ObservableCreationCtrl', response.data.message, response.status);
                     } else {
-                        NotificationSrv.error('ObservableCreationCtrl', 'An unexpected error occurred while creating the observables', response.status);
+                        NotificationSrv.error('ObservableCreationCtrl', i18n.t("controllers.case.ObservableCreationCtrl.an_unexpected_error_occurred_while_creating_the_observables", "An unexpected error occurred while creating the observables"), response.status);
                     }
 
                     //$uibModalInstance.close(response);

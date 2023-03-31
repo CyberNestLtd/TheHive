@@ -2,30 +2,30 @@
     <div class="col-md-12">
         <form name="settingsForm" class="mt-xs form-horizontal" ng-submit="$ctrl.save(settingsForm)" novalidate>
             <div class="form-group">
-                <label class="col-lg-3 col-md-4 control-label">Hide <em>Empty Case</em> button</label>
+                <label class="col-lg-3 col-md-4 control-label">{{ 'views.components.org.config.list.hide' | translateDefault:'Hide' }} <em> {{ 'views.components.org.config.list.empty_case' | translateDefault:'Empty Case'}} </em>{{ 'views.components.org.config.list.button' | translateDefault:'button'}} </label>
                 <div class="col-lg-9 col-md-8">
                     <div class="checkbox">
                         <label>
-                          <input name="hideEmptyCaseButton" type="checkbox" ng-model="$ctrl.configs['hideEmptyCaseButton']"> Check this to disallow creating empty cases
+                          <input name="hideEmptyCaseButton" type="checkbox" ng-model="$ctrl.configs['hideEmptyCaseButton']"> {{ 'views.components.org.config.list.check_this_to_disallow_creating_empty_cases' | translateDefault:'Check this to disallow creating empty cases'}}
                         </label>
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-lg-3 col-md-4 control-label">Merge alerts into closed cases</label>
+                <label class="col-lg-3 col-md-4 control-label">{{ 'views.components.org.config.list.merge_alerts_into_closed_cases' | translateDefault:'Merge alerts into closed cases'}}</label>
                 <div class="col-lg-9 col-md-6">
                     <div class="checkbox">
                         <label>
                           <input name="disallowMergeAlertInResolvedSimilarCases" type="checkbox"
-                              ng-model="$ctrl.configs['disallowMergeAlertInResolvedSimilarCases']"> Check this to disallow merging alerts into closed cases
+                              ng-model="$ctrl.configs['disallowMergeAlertInResolvedSimilarCases']"> {{ 'views.components.org.config.list.check_this_to_disallow_merging_alerts_into_closed_cases' | translateDefault:'Check this to disallow merging alerts into closed cases'}}
                         </label>
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-lg-3 col-md-4 control-label">Select the default filter of alert case similarity panel</label>
+                <label class="col-lg-3 col-md-4 control-label">{{ 'views.components.org.config.list.select_the_default_filter_of_alert_case_similarity_panel' | translateDefault:'Select the default filter of alert case similarity panel'}}</label>
                 <div class="col-lg-6 col-md-8">
                     <select class="form-control" name="defaultAlertSimilarCaseFilter"
                         ng-options="k as o.label for (k, o) in $ctrl.alertSimilarityFilters"
@@ -35,22 +35,22 @@
             </div>
 
             <div class="form-group">
-                <label class="col-lg-3 col-md-4 control-label">Define the default date format used to display dates</label>
+                <label class="col-lg-3 col-md-4 control-label">{{ 'views.components.org.config.list.define_the_default_date_format_used_to_display_dates' | translateDefault:'Define the default date format used to display dates'}}</label>
                 <div class="col-lg-6 col-md-8">
                     <input class="form-control" type="text" name="defaultDateFormat" ng-model="$ctrl.configs['defaultDateFormat']">
-                    <span>Result preview: <code>{{$ctrl.date | amDateFormat:$ctrl.configs['defaultDateFormat']}}</code></span>
+                    <span>{{ 'views.components.org.config.list.result_preview' | translateDefault:'Result preview: '}}<code>{{$ctrl.date | amDateFormat:$ctrl.configs['defaultDateFormat']}}</code></span>
 
                     <div class="mt-xxs">
-                        <label>More examples:</label>
+                        <label>{{ 'views.components.org.config.list.more_examples' | translateDefault:'More examples:'}}</label>
                         <ul class="list-unstyled">
-                            <li><em class="text-bold">YYYY-MM-DD HH:mm</em> results in <code>{{$ctrl.date | amDateFormat:'YYYY-MM-DD HH:mm'}}</code></li>
-                            <li><em class="text-bold">DD/MM/YYYY HH:mm</em> results in <code>{{$ctrl.date | amDateFormat:'DD/MM/YYYY HH:mm'}}</code></li>
-                            <li><em class="text-bold">DD.MM.YY HH:mm:ss</em> results in <code>{{$ctrl.date | amDateFormat:'DD.MM.YY HH:mm:ss'}}</code></li>
-                            <li><em class="text-bold">MM-DD-YYYY HH:mm:ssZ</em> results in <code>{{$ctrl.date | amDateFormat:'MM-DD-YYYY HH:mm:ssZ'}}</code></li>
-                            <li><em class="text-bold">ddd, MMM Do, YYYY H:mm Z</em> results in <code>{{$ctrl.date | amDateFormat:'ddd, MMM Do, YYYY H:mm Z'}}</code></li>
+                            <li><em class="text-bold">{{ 'views.components.org.config.list.yyyy-mm-dd_hh:mm' | translateDefault:'YYYY-MM-DD HH:mm'}}</em> {{ 'views.components.org.config.list.results_in' | translateDefault:'results in'}} <code>{{$ctrl.date | amDateFormat:'YYYY-MM-DD HH:mm'}}</code></li>
+                            <li><em class="text-bold">{{ 'views.components.org.config.list.dd/mm/yyyy_hh:mm' | translateDefault:'DD/MM/YYYY HH:mm'}}</em> {{ 'views.components.org.config.list.results_in' | translateDefault:'results in'}} <code>{{$ctrl.date | amDateFormat:'DD/MM/YYYY HH:mm'}}</code></li>
+                            <li><em class="text-bold">{{ 'views.components.org.config.list.dd.mm.yy_hh:mm:ss' | translateDefault:'DD.MM.YY HH:mm:ss'}}</em> {{ 'views.components.org.config.list.results_in' | translateDefault:'results in'}} <code>{{$ctrl.date | amDateFormat:'DD.MM.YY HH:mm:ss'}}</code></li>
+                            <li><em class="text-bold">{{ 'views.components.org.config.list.mm-dd-yyyy_hh:mm:ssz' | translateDefault:'MM-DD-YYYY HH:mm:ssZ'}}</em> {{ 'views.components.org.config.list.results_in' | translateDefault:'results in'}} <code>{{$ctrl.date | amDateFormat:'MM-DD-YYYY HH:mm:ssZ'}}</code></li>
+                            <li><em class="text-bold">{{ 'views.components.org.config.list.ddd,_mmm_do,_yyyy_h:mm_z' | translateDefault:'ddd, MMM Do, YYYY H:mm Z'}}</em> {{ 'views.components.org.config.list.results_in' | translateDefault:'results in'}} <code>{{$ctrl.date | amDateFormat:'ddd, MMM Do, YYYY H:mm Z'}}</code></li>
                         </ul>
                         <div class="mt-xxs">
-                            <span>For more details about the format <a href="https://momentjs.com/docs/#/displaying/format/" target="_blank">click here</a></span>
+                            <span>{{ 'views.components.org.config.list.for_more_details_about_the_format' | translateDefault:'For more details about the format'}} <a href="https://momentjs.com/docs/#/displaying/format/" target="_blank">{{ 'views.components.org.config.list.click_here' | translateDefault:'click here'}}</a></span>
                         </div>
 
                     </div>
@@ -60,7 +60,7 @@
             <!-- defaultDateFormat -->
 
             <div class="mt-s">
-                <button class="btn btn-primary pull-right" ng-disabled="settingsForm.$invalid" type="submit">Save</button>
+                <button class="btn btn-primary pull-right" ng-disabled="settingsForm.$invalid" type="submit">{{ 'views.components.org.config.list.save' | translateDefault:'Save'}}</button>
             </div>
         </form>
     </div>

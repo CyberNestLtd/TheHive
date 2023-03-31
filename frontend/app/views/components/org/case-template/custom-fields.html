@@ -2,13 +2,13 @@
     <div class="mb-xs">
         <div class="btn-group">
             <button class="btn btn-sm btn-primary" type="button" ng-click="$vm.addCustomFieldRow()">
-                <i class="mr-xxxs fa fa-plus"></i>Add custom field
+                <i class="mr-xxxs fa fa-plus"></i>{{ 'views.components.org.case-template.custom-fields.add_custom_field' | translateDefault:'Add custom field'}}
             </button>
         </div>
     </div>
 
     <div class="empty-message" ng-if="$vm.templateCustomFields.length === 0">
-        No custom fields have been added. <a href class="mr-xxxs" ng-click="$vm.addCustomFieldRow()">Add a custom field</a>
+        {{ 'views.components.org.case-template.custom-fields.no_custom_fields_have_been_added.' | translateDefault:'No custom fields have been added.'}} <a href class="mr-xxxs" ng-click="$vm.addCustomFieldRow()">{{ 'views.components.org.case-template.custom-fields.add_a_custom_field' | translateDefault:'Add a custom field'}}</a>
     </div>
 
     <div ng-if="$vm.templateCustomFields.length !== 0" ui-sortable="$vm.sortableFields" ng-model="$vm.templateCustomFields">
@@ -18,7 +18,7 @@
                     <span class="drag-handle text-primary clickable mr-xxs">
                         <i class="fa fa-bars"></i>
                     </span>
-                    <a href ng-click="$vm.removeCustomField(cf)"><span class="pull-right text-danger"><i class="fa fa-trash"></i> Delete</span></a>
+                    <a href ng-click="$vm.removeCustomField(cf)"><span class="pull-right text-danger"><i class="fa fa-trash"></i> {{ 'views.components.org.case-template.custom-fields.delete' | translateDefault:'Delete'}}</span></a>
                 </div>
                 <div class="col-sm-6">
                     <select class="form-control" ng-model="cf.name" ng-options="item.reference as item.name for (key, item) in $vm.fields | orderObjectBy:'name'" required></select>

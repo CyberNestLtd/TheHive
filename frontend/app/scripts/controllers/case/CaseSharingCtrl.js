@@ -1,7 +1,7 @@
 (function() {
     'use strict';
     angular.module('theHiveControllers').controller('CaseSharingCtrl',
-        function($scope, $state, $stateParams, $uibModal, $timeout, ModalSrv, CaseSrv, CaseTabsSrv, NotificationSrv, organisations, profiles, shares) {
+        function($scope, $state, $stateParams, $uibModal, $timeout, ModalSrv, CaseSrv, CaseTabsSrv, NotificationSrv, organisations, profiles, shares, i18n) {
             var self = this;
 
             this.caseId = $stateParams.caseId;
@@ -70,11 +70,11 @@
                     CaseSrv.setShares(self.caseId, shares)
                         .then(function(/*response*/) {
                             self.load();
-                            NotificationSrv.log('Case sharings updated successfully', 'success');
+                            NotificationSrv.log(i18n.t("controllers.case.CaseSharingCtrl.case_sharings_updated_successfully", "Case sharings updated successfully"), 'success');
                         })
                         .catch(function(err) {
                             if(err && !_.isString(err)) {
-                                NotificationSrv.error('Error', 'Case sharings update failed', err.status);
+                                NotificationSrv.error('Error', i18n.t("controllers.case.CaseSharingCtrl.case_sharings_update_failed", "Case sharings update failed"), err.status);
                             }
                         });
                 });
@@ -82,9 +82,9 @@
 
             this.removeShare = function(share) {
                 var modalInstance = ModalSrv.confirm(
-                    'Remove case share',
-                    'Are you sure you want to remove this sharing rule?', {
-                        okText: 'Yes, remove it',
+                    i18n.t("controllers.case.CaseSharingCtrl.remove_case_share", "Remove case share"),
+                    i18n.t("controllers.case.CaseSharingCtrl.are_you_sure_you_want_to_remove_this_sharing_rule?", "Are you sure you want to remove this sharing rule?"), {
+                        okText: i18n.t("controllers.case.CaseSharingCtrl.yes,_remove_it", "Yes, remove it"),
                         flavor: 'danger'
                     }
                 );
@@ -95,11 +95,11 @@
                     })
                     .then(function(/*response*/) {
                         self.load();
-                        NotificationSrv.log('Case sharings updated successfully', 'success');
+                        NotificationSrv.log(i18n.t("controllers.case.CaseSharingCtrl.case_sharings_updated_successfully", "Case sharings updated successfully"), 'success');
                     })
                     .catch(function(err) {
                         if(err && !_.isString(err)) {
-                            NotificationSrv.error('Error', 'Case sharings update failed', err.status);
+                            NotificationSrv.error('Error', i18n.t("controllers.case.CaseSharingCtrl.case_sharings_update_failed", "Case sharings update failed"), err.status);
                         }
                     });
             };
@@ -108,12 +108,12 @@
                 CaseSrv.updateShare(org, { profile: profile })
                     .then(function(/*response*/) {
                         self.load();
-                        NotificationSrv.log('Case sharings updated successfully', 'success');
+                        NotificationSrv.log(i18n.t("controllers.case.CaseSharingCtrl.case_sharings_updated_successfully", "Case sharings updated successfully"), 'success');
                     })
                     .catch(function(err) {
                         self.load();
                         if(err && !_.isString(err)) {
-                            NotificationSrv.error('Error', 'Case sharings update failed', err.status);
+                            NotificationSrv.error('Error', i18n.t("controllers.case.CaseSharingCtrl.case_sharings_update_failed", "Case sharings update failed"), err.status);
                         }
                     });
             };

@@ -1,13 +1,13 @@
 <div class="modal-header bg-danger">
-    <h3 class="modal-title">Permanently remove case #{{caze.number}}</h3>
+    <h3 class="modal-title">{{ "views.partials.case.case.delete.confirm.permanently_remove_case_#" | translateDefault:  "Permanently remove case #" }}{{caze.number}}</h3>
 </div>
 <div class="modal-body">
-    <p>Are you sure you want to permanently delete this case?</p>
-    <p class="text-danger"><b>This action might take a while and cannot be undone.</b></p>
+    <p>{{ "views.partials.case.case.delete.confirm.are_you_sure_you_want_to_permanently_delete_this_case?" | translateDefault:  "Are you sure you want to permanently delete this case?" }}</p>
+    <p class="text-danger"><b>{{ "views.partials.case.case.delete.confirm.this_action_might_take_a_while_and_cannot_be_undone." | translateDefault:  "This action might take a while and cannot be undone." }}</b></p>
 </div>
 <div class="modal-footer text-left">
-    <button class="btn btn-default" ng-click="cancel()" ng-disabled="loading" type="button">Cancel</button>
+    <button class="btn btn-default" ng-click="cancel()" ng-disabled="loading" type="button">{{ "views.partials.case.case.delete.confirm.cancel" | translateDefault:  "Cancel" }}</button>
     <button class="btn btn-danger pull-right" ng-click="confirm()" ng-disabled="loading" type="button">
-        Yes, remove it.
+        {{ "views.partials.case.case.delete.confirm.yes,_remove_it." | translateDefault:  "Yes, remove it." }}
     </button>
 </div>

@@ -1,14 +1,14 @@
 <div ng-if="format === 'active'">
-	<span class="label" ng-class="{ true:'label-info', false:'label-default' }[value == 0]" ng-click="update(0)">WHITE</span>
-	<span class="label" ng-class="{ true:'label-success', false:'label-default' }[value == 1]" ng-click="update(1)">GREEN</span>
-	<span class="label" ng-class="{ true:'label-warning', false:'label-default' }[value == 2]" ng-click="update(2)">AMBER</span>
-	<span class="label" ng-class="{ true:'label-danger', false:'label-default' }[value == 3]" ng-click="update(3)">RED</span>
+	<span class="label" ng-class="{ true:'label-info', false:'label-default' }[value == 0]" ng-click="update(0)">{{ 'views.directives.tlp.white' | translate}}</span>
+	<span class="label" ng-class="{ true:'label-success', false:'label-default' }[value == 1]" ng-click="update(1)">{{ 'views.directives.tlp.green' | translate}}</span>
+	<span class="label" ng-class="{ true:'label-warning', false:'label-default' }[value == 2]" ng-click="update(2)">{{ 'views.directives.tlp.amber' | translate}}</span>
+	<span class="label" ng-class="{ true:'label-danger', false:'label-default' }[value == 3]" ng-click="update(3)">{{ 'views.directives.tlp.red' | translate}}</span>
 </div>
 <span ng-if="format === 'static'" ng-switch="value">
-	<span ng-switch-when="0" class="label label-info">{{namespace || 'TLP'}}:WHITE</span>
-	<span ng-switch-when="1" class="label label-success">{{namespace || 'TLP'}}:GREEN</span>
-	<span ng-switch-when="2" class="label label-warning">{{namespace || 'TLP'}}:AMBER</span>
-	<span ng-switch-when="3" class="label label-danger">{{namespace || 'TLP'}}:RED</span>
+	<span ng-switch-when="0" class="label label-info">{{namespace || 'TLP'}}:{{ 'views.directives.tlp.white' | translate}}</span>
+	<span ng-switch-when="1" class="label label-success">{{namespace || 'TLP'}}:{{ 'views.directives.tlp.green' | translate}}</span>
+	<span ng-switch-when="2" class="label label-warning">{{namespace || 'TLP'}}:{{ 'views.directives.tlp.amber' | translate}}</span>
+	<span ng-switch-when="3" class="label label-danger">{{namespace || 'TLP'}}:{{ 'views.directives.tlp.red' | translate}}</span>
 </span>
 <span ng-if="format !== 'active' && format !== 'static'">
 	<span ng-switch-when="0" class="text-tlp-default fa fa-circle-o hpad10" uib-tooltip="{{namespace || 'TLP'}}:WHITE"></span>

@@ -1,30 +1,29 @@
 <form class="" name="form" ng-submit="$vm.ok()">
     <div class="modal-header bg-primary">
-        <h3 class="modal-title">Import taxonomies archive</h3>
+        <h3 class="modal-title">{{ "views.partials.admin.taxonomy.import.import_taxonomies_archive" | translateDefault:  "Import taxonomies archive" }}</h3>
     </div>
     <div class="modal-body">
 
         <div class="filter-panel mb-s">
-            <h4>Download the official MISP taxonomies archive</h4>
-            <p>You can download the latest archive of the official MISP Taxonomies <a target="_blank"
-                    href="https://github.com/MISP/misp-taxonomies/archive/main.zip?version=TheHive-{{$vm.appConfig.versions.TheHive}}">from
-                    here</a></p>
+            <h4>{{ "views.partials.admin.taxonomy.import.download_the_official_misp_taxonomies_archive" | translateDefault:  "Download the official MISP taxonomies archive" }}</h4>
+            <p>{{ "views.partials.admin.taxonomy.import.you_can_download_the_latest_archive_of_the_official_misp_taxonomies" | translateDefault:  "You can download the latest archive of the official MISP Taxonomies" }}<a target="_blank"
+                    href="https://github.com/MISP/misp-taxonomies/archive/main.zip?version=TheHive-{{$vm.appConfig.versions.TheHive}}">
+                    {{ "views.partials.admin.taxonomy.import.from_here" | translateDefault:  "from here" }}</a></p>
         </div>
 
         <div class="form-group">
-            <label class="control-label">Taxonomies archive</label>
+            <label class="control-label">{{ "views.partials.admin.taxonomy.import.taxonomies_archive" | translateDefault:  "Taxonomies archive" }}</label>
             <input type="hidden" name="attachment" ng-model="$vm.formData.attachment.status" required>
             <div file-chooser="" filemodel="$vm.formData.attachment"></div>
 
             <p class="help-block">
-                The taxonomies archive must be a valid ZIP file containing at least one file names
-                <em>machinetag.json</em>
+                {{ "views.partials.admin.taxonomy.import.the_taxonomies_archive_must_be_a_valid_zip_file_containing_at_least_one_file_names" | translateDefault:  "The taxonomies archive must be a valid ZIP file containing at least one file names" }}
+                <em>{{ "views.partials.admin.taxonomy.import.machinetag.json" | translateDefault:  "machinetag.json" }}</em>
             </p>
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-default pull-left" type="button" ng-click="$vm.cancel()">Cancel</button>
-        <button class="btn btn-primary pull-right" type="submit" ng-disabled="form.$invalid || !!$vm.loading">Yes,
-            Import it</button>
+        <button class="btn btn-default pull-left" type="button" ng-click="$vm.cancel()">{{ "views.partials.admin.taxonomy.import.cancel" | translateDefault:  "Cancel" }}</button>
+        <button class="btn btn-primary pull-right" type="submit" ng-disabled="form.$invalid || !!$vm.loading">{{ "views.partials.admin.taxonomy.import.yes,_import_it" | translateDefault:  "Yes, Import it" }}</button>
     </div>
 </form>

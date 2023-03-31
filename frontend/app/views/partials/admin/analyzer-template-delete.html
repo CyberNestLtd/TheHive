@@ -1,15 +1,15 @@
 <div class="modal-header bg-primary">
-    <h3 class="modal-title">Remove report template</h3>
+    <h3 class="modal-title">{{ "views.partials.admin.analyzer-template-delete.remove_report_template" | translateDefault:  "Remove report template" }}</h3>
 </div>
 <div class="modal-body">
     <p>
-        Are you sure you want to delete the {{vm.template.reportType}} report template for analyzer <strong>{{vm.template.analyzerId}}</strong>.
+        {{ "views.partials.admin.analyzer-template-delete.are_you_sure_you_want_to_delete_the" | translateDefault:  "Are you sure you want to delete the" }} {{vm.template.reportType}} {{ "views.partials.admin.analyzer-template-delete.report_template_for_analyzer" | translateDefault:  "report template for analyzer" }} <strong>{{vm.template.analyzerId}}</strong>.
     </p>
     <p>
-        This action cannot be undone.
+        {{ "views.partials.admin.analyzer-template-delete.this_action_cannot_be_undone." | translateDefault:  "This action cannot be undone." }}
     </p>
 </div>
 <div class="modal-footer text-left">
-    <button class="btn btn-default" ng-click="vm.cancel()" type="button">Cancel</button>
-    <button class="btn btn-danger pull-right" ng-click="vm.ok()">Yes, Delete the report template</button>
+    <button class="btn btn-default" ng-click="vm.cancel()" type="button">{{ "views.partials.admin.analyzer-template-delete.cancel" | translateDefault:  "Cancel" }}</button>
+    <button class="btn btn-danger pull-right" ng-click="vm.ok()">{{ "views.partials.admin.analyzer-template-delete.yes,_delete_the_report_template" | translateDefault:  "Yes, Delete the report template" }}</button>
 </div>

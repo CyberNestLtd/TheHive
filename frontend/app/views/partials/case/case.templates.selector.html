@@ -1,29 +1,29 @@
 <div class="modal-header bg-primary">
-    <h3 class="modal-title">Create new Case</h3>
+    <h3 class="modal-title">{{ "views.partials.case.case.templates.selector.create_new_case" | translateDefault:  "Create new Case" }}</h3>
 </div>
 <div class="modal-body">
     <div class="mv-xs" ng-if="!!!dialog.state.hideEmptyCaseButton">
         <button class="btn btn-block btn-primary btn-lg" ng-click="dialog.next()">
-            Empty Case
+            {{ "views.partials.case.case.templates.selector.empty_case" | translateDefault:  "Empty Case" }}
         </button>
 
-        <p class="mv-m text-separator text-muted">OR</p>
+        <p class="mv-m text-separator text-muted">{{ "views.partials.case.case.templates.selector.or" | translateDefault:  "OR" }}</p>
     </div>
 
     <div class="box box-default">
         <div class="box-header">
-            <h3 class="box-title">Select a template</h3>
+            <h3 class="box-title">{{ "views.partials.case.case.templates.selector.select_a_template" | translateDefault:  "Select a template" }}</h3>
             <div class="box-tools pull-right">
                 <div class="has-feedback">
                     <input type="text" ng-model="dialog.state.filter" class="form-control input-sm"
-                        placeholder="Filter templates" autofocus>
+                        placeholder="{{ 'views.placeholders.partials.case.case.templates.selector.filter_templates' | translateDefault: 'Filter templates' }}" autofocus>
                     <span class="glyphicon glyphicon-search form-control-feedback"></span>
                 </div>
             </div>
         </div>
         <div class="box-body template-selector">
             <div class="empty-message" ng-if="dialog.filteredTemplate.length === 0">
-                No templates found
+                {{ "views.partials.case.case.templates.selector.no_templates_found" | translateDefault:  "No templates found" }}
             </div>
             <table class="table table-hover table-striped">
                 <tbody>
@@ -42,5 +42,5 @@
     </div>
 </div>
 <div class="modal-footer text-left">
-    <button class="btn btn-default" ng-click="dialog.cancel()" type="button">Cancel</button>
+    <button class="btn btn-default" ng-click="dialog.cancel()" type="button">{{ "views.partials.case.case.templates.selector.cancel" | translateDefault:  "Cancel" }}</button>
 </div>

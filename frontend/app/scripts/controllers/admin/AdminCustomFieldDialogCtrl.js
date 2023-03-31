@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('theHiveControllers').controller('AdminCustomFieldDialogCtrl', function($scope, $uibModalInstance, CustomFieldsSrv, NotificationSrv, customField) {
+    angular.module('theHiveControllers').controller('AdminCustomFieldDialogCtrl', function($scope, $uibModalInstance, CustomFieldsSrv, NotificationSrv, customField, i18n) {
         var self = this;
         self.config = {
             types: [
@@ -14,7 +14,7 @@
         self.customField.options = (customField.options || []).join('\n');
 
         var onSuccess = function(data) {
-            NotificationSrv.log('The Custom field has been successfully saved.', 'success');
+            NotificationSrv.log(i18n.t("controllers.admin.AdminCustomFieldDialogCtrl.the_custom_field_has_been_successfully_saved") || "The Custom field has been successfully saved.", 'success');
             $uibModalInstance.close(data);
         };
 

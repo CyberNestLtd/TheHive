@@ -4,7 +4,8 @@
 
 <div class="row" ng-if="$ctrl.users.total === 0">
     <div class="col-md-12">
-        <div class="empty-message">No users defined.</div>
+        <div class="empty-message">{{ 'views.components.org.user.list.no_users_defined.' | translate }}
+</div>
     </div>
 </div>
 
@@ -15,10 +16,10 @@
         <table class="table table-striped case-list valigned">
             <thead>
                 <tr>
-                    <th style="width: 80px">Status</th>
+                    <th style="width: 80px">{{ 'views.components.org.user.list.status' | translate}}</th>
                     <th>
                         <a href class="text-default" ng-click="$ctrl.sortByField('login')">
-                            Login
+                            {{ 'views.components.org.user.list.login' | translate}}
                             <i ng-show="$ctrl.sort.indexOf('+login') === -1 && $ctrl.sort.indexOf('-login') === -1"
                                 class="fa fa-sort"></i>
                             <i ng-show="$ctrl.sort.indexOf('+login') !== -1" class="fa fa-caret-up"></i>
@@ -27,7 +28,7 @@
                     </th>
                     <th style="width: 150px">
                         <a href class="text-default" ng-click="$ctrl.sortByField('name')">
-                            Full Name
+                            {{ 'views.components.org.user.list.full_name' | translate}}
                             <i ng-show="$ctrl.sort.indexOf('+name') === -1 && $ctrl.sort.indexOf('-name') === -1"
                                 class="fa fa-sort"></i>
                             <i ng-show="$ctrl.sort.indexOf('+name') !== -1" class="fa fa-caret-up"></i>
@@ -36,18 +37,18 @@
                     </th>
                     <th style="width: 140px">
                         <a href class="text-default" ng-click="$ctrl.sortByField('profile')">
-                            Profile
+                            {{ 'views.components.org.user.list.profile' | translate}}
                             <i ng-show="$ctrl.sort.indexOf('+profile') === -1 && $ctrl.sort.indexOf('-profile') === -1"
                                 class="fa fa-sort"></i>
                             <i ng-show="$ctrl.sort.indexOf('+profile') !== -1" class="fa fa-caret-up"></i>
                             <i ng-show="$ctrl.sort.indexOf('-profile') !== -1" class="fa fa-caret-down"></i>
                         </a>
                     </th>
-                    <th>Password</th>
-                    <th>API Key</th>
-                    <th class="text-center" style="width: 100px" ng-if="$ctrl.mfaEnabled">MFA</th>
+                    <th>{{ 'views.components.org.user.list.password' | translate}}</th>
+                    <th>{{ 'views.components.org.user.list.api_key' | translate}}</th>
+                    <th class="text-center" style="width: 100px" ng-if="$ctrl.mfaEnabled">{{ 'views.components.org.user.list.mfa' | translate}}</th>
                     <th class="text-center" style="width: 150px">
-                        Dates
+                        {{ 'views.components.org.user.list.dates' | translate}}
                         <a href class="text-default" ng-click="$ctrl.sortByField('_createdAt')">
                             C.
                             <i ng-show="$ctrl.sort.indexOf('+_createdAt') === -1 && $ctrl.sort.indexOf('-_createdAt') === -1"
@@ -108,18 +109,18 @@
                     <td>
                         <span ng-if="!user.hasKey">
                             <span class="btn btn-sm btn-default" ng-class="{true: 'disabled'}[user.locked]"
-                                ng-click="$ctrl.createKey(user)">Create API Key</span>
+                                ng-click="$ctrl.createKey(user)">{{ 'views.components.org.user.list.create_api_key' | translate}}</span>
                         </span>
                         <span ng-if="user.hasKey">
                             <div class="input-group input-group-sm">
                                 <span class="input-group-btn">
                                     <span class="btn btn-sm btn-default" ng-class="{true: 'disabled'}[user.locked]"
-                                        ng-click="$ctrl.createKey(user)">Renew</span>
+                                        ng-click="$ctrl.createKey(user)">{{ 'views.components.org.user.list.renew' | translate}}</span>
                                     <span class="btn btn-sm btn-danger" ng-class="{true: 'disabled'}[user.locked]"
-                                        ng-click="$ctrl.revokeKey(user)">Revoke</span>
+                                        ng-click="$ctrl.revokeKey(user)">{{ 'views.components.org.user.list.revoke' | translate}}</span>
                                     <span class="btn btn-sm btn-primary" ng-class="{true: 'disabled'}[user.locked]"
                                         ng-click="$ctrl.getKey(user)"
-                                        ng-if="!$ctrl.userKeyCache[user._id]">Reveal</span>
+                                        ng-if="!$ctrl.userKeyCache[user._id]">{{ 'views.components.org.user.list.reveal' | translate}}</span>
                                 </span>
                                 <input class="form-control" readonly ng-model="$ctrl.userKeyCache[user._id]"
                                     ng-if="$ctrl.userKeyCache[user._id]">
@@ -133,22 +134,22 @@
                     </td>
                     <td class="text-center" ng-if="$ctrl.mfaEnabled">
                         <span ng-if="!user.hasMFA">
-                            No
+                            {{"views.components.org.user.list.no" | translateDefault: "No" }}
                         </span>
                         <span ng-if="user.hasMFA">
                             <button type="button" class="btn btn-danger btn-sm"
-                                ng-click="$ctrl.resetMfa(user)">Reset</button>
+                                ng-click="$ctrl.resetMfa(user)">{{ 'views.components.org.user.list.reset' | translate}}</button>
                         </span>
                     </td>
                     <td>
                         <div
                             ng-class="{'text-bold': $ctrl.sort.indexOf('+_createdAt') !== -1 || $ctrl.sort.indexOf('-_createdAt') !== -1}">
-                            C. <a href ng-click="$ctrl.addFilterValue('_createdAt', user._createdAt)">{{user._createdAt
+                            {{"views.components.org.user.list.c." | translateDefault: "C." }} <a href ng-click="$ctrl.addFilterValue('_createdAt', user._createdAt)">{{user._createdAt
                                 | shortDate}}</a>
                         </div>
                         <div ng-if="user._updatedAt > 0"
                             ng-class="{'text-bold': $ctrl.sort.indexOf('+_updatedAt') !== -1 || $ctrl.sort.indexOf('-_updatedAt') !== -1}">
-                            U. <a href ng-click="$ctrl.addFilterValue('_updatedAt', user._updatedAt)">{{user._updatedAt
+                            {{"views.components.org.user.list.u." | translateDefault: "U." }} <a href ng-click="$ctrl.addFilterValue('_updatedAt', user._updatedAt)">{{user._updatedAt
                                 | shortDate}}</a>
                         </div>
                     </td>
@@ -184,7 +185,7 @@
 </div>
 <script type="text/ng-template" id="permissionsPopoverTemplate.html">
     <div class="wrap">
-        <em ng-if="user.permissions.length === 0" class="text-muted">No Permissions</em>
+        <em ng-if="user.permissions.length === 0" class="text-muted">{{ 'views.components.org.user.list.no_permissions' | translate}}</em>
         <span class="label label-default mr-xxs" ng-repeat="permission in user.permissions">{{permission}}</span>
     </div>
 </script>

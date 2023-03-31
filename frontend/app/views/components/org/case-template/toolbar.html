@@ -4,39 +4,39 @@
 
             <div class="btn-group">
                 <button class="btn btn-sm btn-primary" ng-click="$vm.newTemplate()">
-                    <i class="mr-xxxs fa fa-plus"></i>New template
+                    <i class="mr-xxxs fa fa-plus"></i>  {{ "views.components.org.case-template.toolbar.new_template" | translateDefault:  "New template" }}
                 </button>
             </div>
             <div class="btn-group">
                 <button class="btn btn-sm btn-default" ng-click="$vm.importTemplate()">
-                    <i class="mr-xxxs fa fa-upload"></i>Import template
+                    <i class="mr-xxxs fa fa-upload"></i>  {{ "views.components.org.case-template.toolbar.import_template" | translateDefault:  "Import template" }}
                 </button>
             </div>
 
             <div class="btn-group" uib-dropdown>
                 <button class="btn btn-primary btn-sm dropdown-toggle" uib-dropdown-toggle type="button">
                     <i class="mr-xxxs fa fa-sort"></i>
-                    Sort by
+                      {{ "views.components.org.case-template.toolbar.sort_by" | translateDefault:  "Sort by" }}
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" uib-dropdown-menu>
                     <li>
-                        <a ng-click="$vm.sortBy(['+displayName'])">Ascendant display name</a>
+                        <a ng-click="$vm.sortBy(['+displayName'])">  {{ "views.components.org.case-template.toolbar.ascendant_display_name" | translateDefault:  "Ascendant display name" }}</a>
                     </li>
                     <li>
-                        <a ng-click="$vm.sortBy(['-displayName'])">Descendent display name</a>
+                        <a ng-click="$vm.sortBy(['-displayName'])">  {{ "views.components.org.case-template.toolbar.descendent_display_name" | translateDefault:  "Descendent display name" }}</a>
                     </li>
                     <li>
-                        <a ng-click="$vm.sortBy(['-_createdAt'])">Newest first</a>
+                        <a ng-click="$vm.sortBy(['-_createdAt'])">  {{ "views.components.org.case-template.toolbar.newest_first" | translateDefault:  "Newest first" }}</a>
                     </li>
                     <li>
-                        <a ng-click="$vm.sortBy(['+_createdAt'])">Oldest first</a>
+                        <a ng-click="$vm.sortBy(['+_createdAt'])">  {{ "views.components.org.case-template.toolbar.oldest_first" | translateDefault:  "Oldest first" }}</a>
                     </li>
                     <li>
-                        <a ng-click="$vm.sortBy(['-_updatedAt'])">Most recently updated first</a>
+                        <a ng-click="$vm.sortBy(['-_updatedAt'])">  {{ "views.components.org.case-template.toolbar.most_recently_updated_first" | translateDefault:  "Most recently updated first" }}</a>
                     </li>
                     <li>
-                        <a ng-click="$vm.sortBy(['+_updatedAt'])">Least recently updated first</a>
+                        <a ng-click="$vm.sortBy(['+_updatedAt'])">  {{ "views.components.org.case-template.toolbar.least_recently_updated_first" | translateDefault:  "Least recently updated first" }}</a>
                     </li>
                 </ul>
             </div>
@@ -47,7 +47,7 @@
 
             <div class="btn-group pull-right" role="group">
                 <button class="btn btn-sm" ng-class="{true: 'btn-primary', false:'btn-default'}[$vm.filtering.context.showFilters]" type="button" ng-click="$vm.toggleFilters()">
-                    <i class="fa fa-search"></i> Filters
+                    <i class="fa fa-search"></i>   {{ "views.components.org.case-template.toolbar.filters" | translateDefault:  "Filters" }}
                 </button>
             </div>
         </div>

@@ -1,15 +1,15 @@
 <div class="modal-header bg-primary">
-    <h3 class="modal-title">Add custom field to Case #{{caze.number}}</h3>
+    <h3 class="modal-title">{{ "views.partials.case.case.add.field.add_custom_field_to_case_#" | translateDefault:  "Add custom field to Case #" }}{{caze.number}}</h3>
 </div>
 <div class="modal-body">
     <div class="vpad20">
-        You are about to add the <strong uib-tooltip="{{data.description}}">{{data.name}}</strong> custom field to the case <strong>#{{caze.number}}: {{caze.title}}</strong>
+        {{ "views.partials.case.case.add.field.you_are_about_to_add_the" | translateDefault:  "You are about to add the" }} <strong uib-tooltip="{{data.description}}">{{data.name}}</strong> {{ "views.partials.case.case.add.field.custom_field_to_the_case" | translateDefault:  "custom field to the case" }} <strong>#{{caze.number}}: {{caze.title}}</strong>
         <br/>
         <br/>
-        Are you sure you want to continue ?
+        {{ "views.partials.case.case.add.field.are_you_sure_you_want_to_continue_?" | translateDefault:  "Are you sure you want to continue ?" }}
     </div>
 </div>
 <div class="modal-footer text-left">
-    <button class="btn btn-default" ng-click="cancel()" type="button">Cancel</button>
-    <button class="btn btn-primary pull-right" type="button" ng-click="confirm()">Confirm</button>
+    <button class="btn btn-default" ng-click="cancel()" type="button">{{ "views.partials.case.case.add.field.cancel" | translateDefault:  "Cancel" }}</button>
+    <button class="btn btn-primary pull-right" type="button" ng-click="confirm()">{{ "views.partials.case.case.add.field.confirm" | translateDefault:  "Confirm" }}</button>
 </div>

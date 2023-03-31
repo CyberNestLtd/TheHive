@@ -4,7 +4,7 @@
 (function () {
     'use strict';
 
-    angular.module('theHiveControllers').controller('AddProcedureModalCtrl', function ($rootScope, $scope, $uibModalInstance, NotificationSrv, ProcedureSrv, AttackPatternSrv, caseId) {
+    angular.module('theHiveControllers').controller('AddProcedureModalCtrl', function ($rootScope, $scope, $uibModalInstance, NotificationSrv, ProcedureSrv, AttackPatternSrv, caseId, i18n) {
         var self = this;
 
         this.caseId = caseId;
@@ -33,9 +33,9 @@
             }).then(function (/*response*/) {
                 self.state.loading = false;
                 $uibModalInstance.close();
-                NotificationSrv.log('Tactic, Technique and Procedure added successfully', 'success');
+                NotificationSrv.log(i18n.t("controllers.case.procedure.AddProcedureModalCtrl.tactic,_technique_and_procedure_added_successfully", "Tactic, Technique and Procedure added successfully"), 'success');
             }).catch(function (err) {
-                NotificationSrv.error('Add TTP', err.data, err.status);
+                NotificationSrv.error(i18n.t("controllers.case.procedure.AddProcedureModalCtrl.add_ttp", "Add TTP"), err.data, err.status);
                 self.state.loading = false;
             });
         };

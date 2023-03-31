@@ -5,26 +5,26 @@
             <div class="btn-group" uib-dropdown>
                 <button class="btn btn-primary btn-sm dropdown-toggle" uib-dropdown-toggle type="button">
                     <i class="fa fa-filter"></i>
-                    Quick Filters
+                    {{ "views.components.alert.similarity.toolbar.quick_filters" | translateDefault:  "Quick Filters" }}
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" uib-dropdown-menu>
                     <li>
-                        <a ng-click="$cmp.applyDefaultFilter()"><i class="fa fa-filter"></i> Default filter</a>
+                        <a ng-click="$cmp.applyDefaultFilter()"><i class="fa fa-filter"></i> {{ "views.components.alert.similarity.toolbar.default_filter" | translateDefault:  "Default filter" }}</a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a ng-click="$cmp.filterBy('status', 'Open')"><i class="fa fa-folder-open-o"></i> Open cases</a>
+                        <a ng-click="$cmp.filterBy('status', 'Open')"><i class="fa fa-folder-open-o"></i> {{ "views.components.alert.similarity.toolbar.open_cases" | translateDefault:  "Open cases" }}</a>
                     </li>
                     <li>
-                        <a ng-click="$cmp.filterBy('status', 'Resolved')"><i class="fa fa-folder-o"></i> Closed cases</a>
+                        <a ng-click="$cmp.filterBy('status', 'Resolved')"><i class="fa fa-folder-o"></i> {{ "views.components.alert.similarity.toolbar.closed_cases" | translateDefault:  "Closed cases" }}</a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a ng-click="$cmp.filterBy('resolutionStatus', 'TruePositive')"><i class="fa fa-exclamation-circle"></i> Closed - True Positive</a>
+                        <a ng-click="$cmp.filterBy('resolutionStatus', 'TruePositive')"><i class="fa fa-exclamation-circle"></i> {{ "views.components.alert.similarity.toolbar.closed_-_true_positive" | translateDefault:  "Closed - True Positive" }}</a>
                     </li>
                     <li>
-                        <a ng-click="$cmp.filterBy('resolutionStatus', 'Indeterminate')"><i class="fa fa-question-circle-o "></i> Closed - Indeterminate</a>
+                        <a ng-click="$cmp.filterBy('resolutionStatus', 'Indeterminate')"><i class="fa fa-question-circle-o "></i> {{ "views.components.alert.similarity.toolbar.closed_-_indeterminate" | translateDefault:  "Closed - Indeterminate" }}</a>
                     </li>
                 </ul>
             </div>
@@ -35,13 +35,13 @@
                     <select class="form-control input-sm"
                         ng-model="$cmp.pagination.pageSize"
                         ng-options="v for v in [10,15,30,50]"></select>
-                    <span class="page-sizer-label nowrap ml-xxs">per page</span>
+                    <span class="page-sizer-label nowrap ml-xxs">{{ "views.components.alert.similarity.toolbar.per_page" | translateDefault:  "per page" }}</span>
                 </div>
             </div>
 
             <div class="btn-group pull-right" role="group">
                 <button class="btn btn-sm" ng-class="{true: 'btn-primary', false:'btn-default'}[$cmp.filtering.context.showFilters]" type="button" ng-click="$cmp.toggleFilters()">
-                    <i class="fa fa-search"></i> Filters
+                    <i class="fa fa-search"></i>{{ "views.components.alert.similarity.toolbar.filters" | translateDefault:  "Filters" }}
                 </button>
             </div>
         </div>

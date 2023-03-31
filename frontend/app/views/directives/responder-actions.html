@@ -3,11 +3,11 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th width="80" class="text-center">Status</th>
-                <th>Name</th>
-                <th width="200">Cortex Server</th>
-                <th width="120">Date</th>
-                <th width="40" class="text-center">Actions</th>
+                <th width="80" class="text-center">{{ 'views.directives.responder-actions.status' | translate}}</th>
+                <th>{{ 'views.directives.responder-actions.name' | translate}}</th>
+                <th width="200">{{ 'views.directives.responder-actions.cortex_server' | translate}}</th>
+                <th width="120">{{ 'views.directives.responder-actions.date' | translate}}</th>
+                <th width="40" class="text-center">{{ 'views.directives.responder-actions.actions' | translate}}</th>
             </tr>
         </thead>
         <tbody>
@@ -21,13 +21,13 @@
                 <td>
                     <div>{{action.responderName}}</div>
                     <div ng-if="action.status === 'Failure'" class="text-danger wrap mt-xxs">
-                        <a class="text-danger" href ng-click="action.showError = !!!action.showError">{{action.showError ? 'Hide' : 'Show'}} error</a>
+                        <a class="text-danger" href ng-click="action.showError = !!!action.showError">{{action.showError ? 'Hide' : 'Show'}} {{ 'views.directives.responder-actions.error' | translate}}</a>
                         <pre ng-show="action.showError" class="error-trace">{{action.errorMessage}}</pre>
                     </div>
                 </td>
                 <td>{{action.cortexId}}</td>
                 <td>{{action.startDate | shortDate}}</td>
-                <td class="text-center">                    
+                <td class="text-center">
                     <a href class="noline" ng-click="showResponderJob(action)" ng-if="action.status !== 'Failure'" uib-tooltip="Show action report" tooltip-placement="left-middle"><i class="fa fa-search"></i></a>
                 </td>
             </tr>

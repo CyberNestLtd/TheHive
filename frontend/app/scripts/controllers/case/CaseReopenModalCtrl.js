@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('theHiveControllers')
-        .controller('CaseReopenModalCtrl', function($scope, $uibModalInstance, NotificationSrv) {
+        .controller('CaseReopenModalCtrl', function($scope, $uibModalInstance, NotificationSrv, i18n) {
 
             $scope.cancel = function() {
                 $uibModalInstance.dismiss();
@@ -13,7 +13,7 @@
                     .then(function(caze) {
                         $scope.caze = caze;
 
-                        NotificationSrv.log('The case #' + caze.number + ' has been reopened', 'success');
+                        NotificationSrv.log(i18n.t("controllers.case.CaseReopenModalCtrl.the_case_#", "The case #") + caze.number +' '+ i18n.t("controllers.case.CaseReopenModalCtrl.has_been_reopened", "has been reopened"), 'success');
                     });
                 $uibModalInstance.close();
             };

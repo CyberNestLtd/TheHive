@@ -1,6 +1,6 @@
 <form class="form-horizontal" name="form" ng-submit="vm.ok()">
     <div class="modal-header bg-primary">
-        <h3 class="modal-title">Import Case Template</h3>
+        <h3 class="modal-title">{{ "views.components.org.case-template.import.import_case_template" | translateDefault:  "Import Case Template" }}</h3>
     </div>
     <div class="modal-body">
         <div class="form-group">
@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-warning pull-left" type="button" ng-click="vm.cancel()">Cancel</button>
-        <button class="btn btn-primary pull-right" type="submit" ng-disabled="form.$invalid">Yes, Import</button>
+        <button class="btn btn-warning pull-left" type="button" ng-click="vm.cancel()">{{ "views.components.org.case-template.import.cancel" | translateDefault:  "Cancel" }}</button>
+        <button class="btn btn-primary pull-right" type="submit" ng-disabled="form.$invalid">{{ "views.components.org.case-template.import.yes,_import" | translateDefault:  "Yes, Import" }}</button>
     </div>
 </form>

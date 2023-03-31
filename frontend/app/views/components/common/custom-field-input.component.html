@@ -33,14 +33,14 @@
                 on-update="$ctrl.updateField(newValue)"
                 value="$ctrl.value" clearable="true"></updatable-boolean>
 
-            <span ng-switch-default>Not Editable</span>
+            <span ng-switch-default>{{ "views.components.common.custom-field-input.component.not_editable" | translateDefault:  "Not Editable" }}</span>
         </div>
     </dd>
     <dd ng-if="!$ctrl.editable" ng-switch="$ctrl.field.type">
         <span ng-switch-when="date">{{$ctrl.value | shortDate}}</span>
         <span ng-switch-default>
             {{$ctrl.value}}
-            <em class="text-warning" ng-if="!$ctrl.value">Not Specified</em>
+            <em class="text-warning" ng-if="!$ctrl.value">{{ "views.components.common.custom-field-input.component.not_specified" | translateDefault:  "Not Specified" }}</em>
         </span>
     </dd>
 </dl>

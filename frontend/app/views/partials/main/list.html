@@ -2,13 +2,13 @@
     <div ng-Class="{ 'col-md-9': $vm.appLayout.showFlow, 'col-md-12': !$vm.appLayout.showFlow}">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title" ng-if="$vm.view.data == 'mytasks'">My tasks ({{$vm.list.total}})</h3>
-                <h3 class="box-title" ng-if="$vm.view.data == 'waitingtasks'">Waiting tasks ({{$vm.list.total}})</h3>
+                <h3 class="box-title" ng-if="$vm.view.data == 'mytasks'">{{ "views.partials.main.list.my_tasks" | translateDefault:  "My tasks" }} ({{$vm.list.total}})</h3>
+                <h3 class="box-title" ng-if="$vm.view.data == 'waitingtasks'">{{ "views.partials.main.list.waiting_tasks" | translateDefault:  "Waiting tasks" }} ({{$vm.list.total}})</h3>
 
                 <div class="box-tools pull-right" ng-show="!$vm.appLayout.showFlow">
                     <span class="ml-xs" tooltip="Open in new window">
                         <a class="text-muted" href ng-click="$vm.layoutSrv.showFlow(true)">
-                            <i class="fa fa-plus"></i> Show live stream
+                            <i class="fa fa-plus"></i> {{ "views.partials.main.list.show_live_stream" | translateDefault:  "Show live stream" }}
                         </a>
                     </span>
                 </div>
@@ -48,13 +48,13 @@
                 <div class="box-tools pull-right">
                     <span class="ml-xs" tooltip="Open in new window">
                         <a class="text-muted" href ng-click="$vm.layoutSrv.detachFlow()">
-                            <i class="fa fa-external-link"></i> Open in new window
+                            <i class="fa fa-external-link"></i> {{ "views.partials.main.list.open_in_new_window" | translateDefault:  "Open in new window" }}
                         </a>
                     </span>
 
                     <span class="ml-xs" tooltip="Hide">
                         <a class="text-muted" href ng-click="$vm.layoutSrv.showFlow(false)">
-                            <i class="fa fa-minus"></i> Hide
+                            <i class="fa fa-minus"></i> {{ "views.partials.main.list.hide" | translateDefault:  "Hide" }}
                         </a>
                     </span>
                 </div>

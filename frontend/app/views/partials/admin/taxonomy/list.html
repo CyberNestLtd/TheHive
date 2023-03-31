@@ -22,7 +22,7 @@
 
                 <div class="row mv-s" ng-show="$vm.loading === false && $vm.list.values.length === 0">
                     <div class="col-md-12">
-                        <div class="empty-message">No taxnomies found.</div>
+                        <div class="empty-message">{{ "views.partials.admin.taxonomy.list.no_taxnomies_found." | translateDefault:  "No taxnomies found." }}</div>
                     </div>
                 </div>
 
@@ -30,7 +30,7 @@
                     <div class="col-md-12">
                         <div class="loading-message">
                             <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
-                            <span>loading taxonomies...</span>
+                            <span>{{ "views.partials.admin.taxonomy.list.loading_taxonomies..." | translateDefault:  "loading taxonomies..." }}</span>
                         </div>
                     </div>
                 </div>
@@ -44,10 +44,10 @@
                             <thead>
                                 <tr>
                                     <th width="10"></th>
-                                    <th width="300">Namespace</th>
-                                    <th>Description</th>
-                                    <th width="100" class="text-center">Version</th>
-                                    <th width="80" class="text-center"># Tags</th>
+                                    <th width="300">{{ "views.partials.admin.taxonomy.list.namespace" | translateDefault:  "Namespace" }}</th>
+                                    <th>{{ "views.partials.admin.taxonomy.list.description" | translateDefault:  "Description" }}</th>
+                                    <th width="100" class="text-center">{{ "views.partials.admin.taxonomy.list.version" | translateDefault:  "Version" }}</th>
+                                    <th width="80" class="text-center">{{ "views.partials.admin.taxonomy.list.#_tags" | translateDefault:  "# Tags" }}</th>
                                     <th width="120"></th>
                                 </tr>
                             </thead>

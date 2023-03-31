@@ -16,7 +16,7 @@
     <div class="row">
 
         <div class="col-md-12" ng-show="$cmp.list.total === 0">
-            <div class="empty-message">No records</div>
+            <div class="empty-message">{{ "views.components.alert.similar-case-list.component.no_records" | translateDefault:  "No records" }}</div>
         </div>
 
         <div class="col-md-12" ng-show="$cmp.list.total > 0">
@@ -31,7 +31,7 @@
             <div class="case-item">
                 <div class="case-details text-bold">
                     <a href class="text-default" ng-click="$cmp.sortByField('fTitle')">
-                        Title
+                        {{ "views.components.alert.similar-case-list.component.title" | translateDefault:  "Title" }}
                         <i ng-show="$cmp.sortField !== '+fTitle' && $cmp.sortField !== '-fTitle'"
                             class="fa fa-sort"></i>
                         <i ng-show="$cmp.sortField === '+fTitle'" class="fa fa-caret-up"></i>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="case-date text-bold">
                     <a href class="text-default" ng-click="$cmp.sortByField('sCreatedAt')">
-                        Created At
+                        {{ "views.components.alert.similar-case-list.component.created_at" | translateDefault:  "Created At" }}
                         <i ng-show="$cmp.sortField !== '+sCreatedAt' && $cmp.sortField !== '-sCreatedAt'"
                             class="fa fa-sort"></i>
                         <i ng-show="$cmp.sortField === '+sCreatedAt'" class="fa fa-caret-up"></i>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="case-similarity text-bold">
                     <a href class="text-default" ng-click="$cmp.sortByField('fObservables')">
-                        Observables
+                        {{ "views.components.alert.similar-case-list.component.observables" | translateDefault:  "Observables" }}
                         <i ng-show="$cmp.sortField !== '+fObservables' && $cmp.sortField !== '-fObservables'"
                             class="fa fa-sort"></i>
                         <i ng-show="$cmp.sortField === '+fObservables'" class="fa fa-caret-up"></i>
@@ -58,14 +58,14 @@
                 </div>
                 <div class="case-similarity text-bold">
                     <a href class="text-default" ng-click="$cmp.sortByField('fIocs')">
-                        IOCs
+                        {{ "views.components.alert.similar-case-list.component.iocs" | translateDefault:  "IOCs" }}
                         <i ng-show="$cmp.sortField !== '+fIocs' && $cmp.sortField !== '-fIocs'" class="fa fa-sort"></i>
                         <i ng-show="$cmp.sortField === '+fIocs'" class="fa fa-caret-up"></i>
                         <i ng-show="$cmp.sortField === '-fIocs'" class="fa fa-caret-down"></i>
                     </a>
                 </div>
-                <div class="case-similarity-match text-bold">Matches</div>
-                <div class="case-similarity-merge text-bold">Action</div>
+                <div class="case-similarity-match text-bold">{{ "views.components.alert.similar-case-list.component.matches" | translateDefault:  "Matches" }}</div>
+                <div class="case-similarity-merge text-bold">{{ "views.components.alert.similar-case-list.component.action" | translateDefault:  "Action" }}</div>
             </div>
 
             <!-- Table filter -->
@@ -73,7 +73,7 @@
                 <div class="case-details text-bold">
                     <div class="form-group has-feedback has-clear">
                         <input type="text" class="form-control input-sm" ng-model="$cmp.similarityFilters.fTitle"
-                            placeholder="Filter by title">
+                            placeholder="{{ 'views.placeholders.components.alert.similar-case-list.component.filter_by_title' | translateDefault: 'Filter by title' }}">
                         <a class="fa fa-times-circle form-control-feedback form-control-clear text-muted"
                             ng-click="$cmp.similarityFilters.fTitle = undefined"
                             style="pointer-events: auto;cursor: pointer;"></a>
@@ -83,7 +83,7 @@
                 <div class="case-similarity text-bold">
                     <div class="form-group has-feedback has-clear">
                         <input type="number" class="form-control input-sm" ng-model="$cmp.rateFilters.fObservables"
-                            placeholder="% min.">
+                            placeholder="{{ 'views.placeholders.components.alert.similar-case-list.component.%_min.' | translateDefault: '% min.' }}">
                         <a class="fa fa-times-circle form-control-feedback form-control-clear text-muted"
                             ng-click="$cmp.rateFilters.fObservables = undefined"
                             style="pointer-events: auto;cursor: pointer;"></a>
@@ -92,7 +92,7 @@
                 <div class="case-similarity text-bold">
                     <div class="form-group has-feedback has-clear">
                         <input type="number" class="form-control input-sm" ng-model="$cmp.rateFilters.fIocs"
-                            placeholder="% min." step="1" min="0">
+                            placeholder="{{ 'views.placeholders.components.alert.similar-case-list.component.%_min.' | translateDefault: '% min.' }}" step="1" min="0">
                         <a class="fa fa-times-circle form-control-feedback form-control-clear text-muted"
                             ng-click="$cmp.rateFilters.fIocs = undefined"
                             style="pointer-events: auto;cursor: pointer;"></a>
@@ -107,7 +107,7 @@
                 <div class="case-similarity-merge text-bold">
                     <div class="text-center">
                         <a class="btn btn-link btn-clear btn-sm" ng-click="$cmp.clearLocalFilters()"><i
-                                class="fa fa-times"></i> Clear Filters</a>
+                                class="fa fa-times"></i> {{ "views.components.alert.similar-case-list.component.clear_filters" | translateDefault:  "Clear Filters" }}</a>
                     </div>
                 </div>
             </div>
@@ -129,21 +129,21 @@
                         <div class="case-tags flexwrap mt-xxs">
                             <span class="mr-xxxs text-muted"><i class="fa fa-tags"></i></span>
                             <strong class="text-muted mr-xxxs"
-                                ng-if="!item.case.tags || item.case.tags.length === 0">None</strong>
+                                ng-if="!item.case.tags || item.case.tags.length === 0">{{ "views.components.alert.similar-case-list.component.none" | translateDefault:  "None" }}</strong>
                             <tag-item ng-repeat="tag in item.case.tags track by $index"
                                 ng-click="$cmp.addFilterValue('tags', tag)" class="pointer" value="tag"></tag-item>
                         </div>
                         <div class="text-success" ng-show="item.case.status !== 'Open'">
                             <small>
-                                (Closed at {{item.case.endDate | shortDate}} as
+                                ({{ "views.components.alert.similar-case-list.component.closed_at" | translateDefault:  "Closed at" }} {{item.case.endDate | shortDate}} {{ "views.components.alert.similar-case-list.component.as" | translateDefault:  "as" }}
                                 <strong>{{$cmp.CaseResolutionStatus[item.case.resolutionStatus]}}</strong>)
                             </small>
                         </div>
                         <div class="text-danger" ng-if="item.case.mergeFrom">
                             <small>
-                                Merged from <a href ui-sref="app.case.details({caseId: item.case.mergeFrom[0]})"> Case
-                                    #{{item.case.stats.mergeFrom[0].caseId}}</a> and
-                                <a href ui-sref="app.case.details({caseId: item.case.mergeFrom[1]})"> Case
+                                {{ "views.components.alert.similar-case-list.component.merged_from" | translateDefault:  "Merged from" }} <a href ui-sref="app.case.details({caseId: item.case.mergeFrom[0]})"> {{ "views.components.alert.similar-case-list.component.case" | translateDefault:  "Case" }}
+                                    #{{item.case.stats.mergeFrom[0].caseId}}</a> {{ "views.components.alert.similar-case-list.component.and" | translateDefault:  "and" }}
+                                <a href ui-sref="app.case.details({caseId: item.case.mergeFrom[1]})"> {{ "views.components.alert.similar-case-list.component.case" | translateDefault:  "Case" }}
                                     #{{utem.stats.mergeFrom[1].caseId}}</a>
                             </small>
                         </div>
@@ -179,7 +179,7 @@
                                 value="item.similarIocCount" type="danger"></uib-progressbar>
                         </div>
                         <div ng-if="item.iocCount === 0">
-                            <em>N/A</em>
+                            <em>{{ "views.components.alert.similar-case-list.component.n/a" | translateDefault:  "N/A" }}</em>
                         </div>
                     </div>
                     <div class="case-similarity-match">
@@ -191,8 +191,7 @@
 
                     <div class="case-similarity-merge text-center">
                         <button class="btn btn-sm btn-primary" ng-click="$cmp.merge(item.case._id)"
-                            ng-if="!!!$cmp.readonly && !($cmp.state.disallowMerge && item.case.status === 'Resolved')">Merge
-                            in this case</button>
+                            ng-if="!!!$cmp.readonly && !($cmp.state.disallowMerge && item.case.status === 'Resolved')">{{ "views.components.alert.similar-case-list.component.merge_in_this_case" | translateDefault:  "Merge in this case" }}</button>
                     </div>
                 </div>
             </div>

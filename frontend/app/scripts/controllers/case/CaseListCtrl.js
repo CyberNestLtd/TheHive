@@ -4,7 +4,7 @@
         .controller('CaseListCtrl', CaseListCtrl)
         .controller('CaseBulkDeleteModalCtrl', CaseBulkDeleteModalCtrl);
 
-    function CaseListCtrl($scope, $rootScope, $q, $uibModal, StreamQuerySrv, FilteringSrv, SecuritySrv, ModalUtilsSrv, PaginatedQuerySrv, EntitySrv, CaseSrv, UserSrv, AuthenticationSrv, CaseResolutionStatus, CaseImpactStatus, NotificationSrv, CortexSrv, UtilsSrv) {
+    function CaseListCtrl($scope, $rootScope, $q, $uibModal, StreamQuerySrv, FilteringSrv, SecuritySrv, ModalUtilsSrv, PaginatedQuerySrv, EntitySrv, CaseSrv, UserSrv, AuthenticationSrv, CaseResolutionStatus, CaseImpactStatus, NotificationSrv, CortexSrv, UtilsSrv, i18n) {
         var self = this;
 
         this.openEntity = EntitySrv.open;
@@ -297,10 +297,10 @@
 
             return CaseSrv.bulkUpdate(ids, { flag: flag })
                 .then(function (/*responses*/) {
-                    NotificationSrv.log('Selected cases have been updated successfully', 'success');
+                    NotificationSrv.log(i18n.t("controllers.case.CaseListCtrl.selected_cases_have_been_updated_successfully", "Selected cases have been updated successfully"), 'success');
                 })
                 .catch(function (err) {
-                    NotificationSrv.error('Bulk flag cases', err.data, err.status);
+                    NotificationSrv.error(i18n.t("controllers.case.CaseListCtrl.bulk_flag_cases", "Bulk flag cases"), err.data, err.status);
                 });
 
         }
@@ -323,7 +323,7 @@
                 $q.all(_.map(operations, function (operation) {
                     return CaseSrv.bulkUpdate(operation.ids, operation.patch);
                 })).then(function (/*responses*/) {
-                    NotificationSrv.log('Selected cases have been updated successfully', 'success');
+                    NotificationSrv.log(i18n.t("controllers.case.CaseListCtrl.selected_cases_have_been_updated_successfully", "Selected cases have been updated successfully"), 'success');
                 });
             });
         };
@@ -344,23 +344,23 @@
 
             modal.result.catch(function (err) {
                 if (err && !_.isString(err)) {
-                    NotificationSrv.error('Case Remove', err.data, err.status);
+                    NotificationSrv.error(i18n.t("controllers.case.CaseListCtrl.case_remove", "Case Remove"), err.data, err.status);
                 }
             })
         }
 
         this.bulkReopen = function () {
-            return ModalUtilsSrv.confirm('Reopen cases', 'Are you sure you want to reopen the selected cases?', {
-                okText: 'Yes, proceed'
+            return ModalUtilsSrv.confirm(i18n.t("controllers.case.CaseListCtrl.reopen_cases", "Reopen cases"), i18n.t("controllers.case.CaseListCtrl.are_you_sure_you_want_to_reopen_the_selected_cases?", "Are you sure you want to reopen the selected cases?"), {
+                okText: i18n.t("controllers.case.CaseListCtrl.yes,_proceed", "Yes, proceed")
             }).then(function () {
                 var ids = _.pluck(self.selection, '_id');
 
                 return CaseSrv.bulkUpdate(ids, { status: 'Open' })
                     .then(function (/*responses*/) {
-                        NotificationSrv.log('Selected cases have been reopened successfully', 'success');
+                        NotificationSrv.log(i18n.t("controllers.case.CaseListCtrl.selected_cases_have_been_reopened_successfully", "Selected cases have been reopened successfully"), 'success');
                     })
                     .catch(function (err) {
-                        NotificationSrv.error('Bulk reopen cases', err.data, err.status);
+                        NotificationSrv.error(i18n.t("controllers.case.CaseListCtrl.bulk_reopen_cases", "Bulk reopen cases"), err.data, err.status);
                     });
             });
         }
@@ -395,7 +395,7 @@
 
             return modal.result.catch(function (err) {
                 if (err && !_.isString(err)) {
-                    NotificationSrv.error('Case bulk close', err.data, err.status);
+                    NotificationSrv.error(i18n.t("controllers.case.CaseListCtrl.case_bulk_close", "Case bulk close"), err.data, err.status);
                 }
             });
         }
@@ -407,8 +407,8 @@
         };
 
         this.bulkClose = function () {
-            return ModalUtilsSrv.confirm('Close cases', 'Are you sure you want to close the selected ' + self.selection.length + ' case(s)?', {
-                okText: 'Yes, proceed'
+            return ModalUtilsSrv.confirm(i18n.t("controllers.case.CaseListCtrl.close_cases", "Close cases"), i18n.t("controllers.case.CaseListCtrl.are_you_sure_you_want_to_close_the_selected", "Are you sure you want to close the selected")+' '+ self.selection.length + ' '+i18n.t("controllers.case.CaseListCtrl.case(s)?", "case(s)?"), {
+                okText: i18n.t("controllers.case.CaseListCtrl.yes,_proceed", "Yes, proceed")
             }).then(function () {
                 return self.selection.reduce(function (initialPromise, nextCase) {
                     return initialPromise
@@ -416,7 +416,7 @@
                 }, $q.resolve());
             }).catch(function (err) {
                 if (err && !_.isString(err)) {
-                    NotificationSrv.error('Case bulk close', err.data, err.status);
+                    NotificationSrv.error(i18n.t("controllers.case.CaseListCtrl.case_bulk_close", "Case bulk close"), err.data, err.status);
                 }
             });
         }
@@ -440,7 +440,7 @@
                     }
                 })
                 .then(function (response) {
-                    NotificationSrv.log(['Responder', response.data.responderName, 'started successfully on case', caze.title].join(' '), 'success');
+                    NotificationSrv.log([i18n.t("controllers.case.CaseListCtrl.responder", "Responder"), response.data.responderName, i18n.t("controllers.case.CaseListCtrl.started_successfully_on_case", "started successfully on case"), caze.title].join(' '), 'success');
                 })
                 .catch(function (err) {
                     if (err && !_.isString(err)) {
@@ -450,7 +450,7 @@
         };
     }
 
-    function CaseBulkDeleteModalCtrl($uibModalInstance, $q, CaseSrv, NotificationSrv, selection) {
+    function CaseBulkDeleteModalCtrl($uibModalInstance, $q, CaseSrv, NotificationSrv, selection, i18n) {
         var self = this;
 
         this.selection = selection;
@@ -474,13 +474,13 @@
             $q.all(promises)
                 .then(function (responses) {
                     self.loading = false;
-                    NotificationSrv.log('Cases have been deleted successfully: ' + responses.length, 'success');
+                    NotificationSrv.log(i18n.t("controllers.case.CaseListCtrl.cases_have_been_deleted_successfully:", "Cases have been deleted successfully: ")+' ' + responses.length, 'success');
                     $uibModalInstance.close();
                 })
                 .catch(function (errors) {
                     self.loading = false;
                     _.each(errors, function (err) {
-                        NotificationSrv.error('Bulk delete cases', err.data, err.status);
+                        NotificationSrv.error(i18n.t("controllers.case.CaseListCtrl.bulk_delete_cases", "Bulk delete cases"), err.data, err.status);
                     });
                 })
         }

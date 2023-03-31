@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     angular.module('theHiveControllers')
-        .controller('AlertEventCtrl', function ($scope, $rootScope, $state, $uibModal, $uibModalInstance, ModalUtilsSrv, TagSrv, AuthenticationSrv, CustomFieldsSrv, CaseResolutionStatus, AlertingSrv, NotificationSrv, UiSettingsSrv, clipboard, event, templates, readonly) {
+        .controller('AlertEventCtrl', function ($scope, $rootScope, $state, $uibModal, $uibModalInstance, ModalUtilsSrv, TagSrv, AuthenticationSrv, CustomFieldsSrv, CaseResolutionStatus, AlertingSrv, NotificationSrv, UiSettingsSrv, clipboard, event, templates, readonly, i18n) {
             var self = this;
             var eventId = event._id;
 
@@ -32,7 +32,7 @@
             };
 
             self.getCustomFieldName = function (fieldDef) {
-                return 'customFields.' + fieldDef.reference + '.' + fieldDef.type;
+                return i18n.t("controllers.alert.AlertEventCtrl.customFields", "customFields.") + fieldDef.reference + '.' + fieldDef.type;
             };
 
             self.getTags = function (selection) {
@@ -66,7 +66,7 @@
 
                 return AlertingSrv.update(self.event._id, field)
                     .then(function () {
-                        NotificationSrv.log('Alert updated successfully', 'success');
+                        NotificationSrv.log(i18n.t("controllers.alert.AlertEventCtrl.alert_updated_successfully", "Alert updated successfully."), 'success');
                     })
                     .catch(function (response) {
                         NotificationSrv.error('AlertEventCtrl', response.data, response.status);
@@ -119,7 +119,7 @@
                             return self.event;
                         },
                         title: function () {
-                            return 'Merge Alert: ' + self.event.title;
+                            return i18n.t("controllers.alert.AlertEventCtrl.merge_alert", "Merge Alert: ")+' '+ self.event.title;
                         },
                         prompt: function () {
                             return self.event.title;
@@ -167,14 +167,14 @@
             };
 
             this.delete = function () {
-                ModalUtilsSrv.confirm('Remove Alert', 'Are you sure you want to delete this Alert?', {
-                    okText: 'Yes, remove it',
+                ModalUtilsSrv.confirm(i18n.t("controllers.alert.AlertEventCtrl.remove_alert", "Remove Alert"), i18n.t("controllers.alert.AlertEventCtrl.are_you_sure_you_want_to_delete_this_alert?", "Are you sure you want to delete this Alert?"), {
+                    okText: i18n.t("controllers.alert.AlertEventCtrl.yes,_remove_it", "Yes, remove it"),
                     flavor: 'danger'
                 }).then(function () {
                     AlertingSrv.forceRemove(self.event._id)
                         .then(function () {
                             $uibModalInstance.close();
-                            NotificationSrv.log('Alert has been permanently deleted', 'success');
+                            NotificationSrv.log(i18n.t("controllers.alert.AlertEventCtrl.alert_has_been_permanently_deleted", "Alert has been permanently deleted"), 'success');
                         })
                         .catch(function (response) {
                             NotificationSrv.error('AlertEventCtrl', response.data, response.status);
@@ -208,7 +208,7 @@
 
             self.copyId = function (id) {
                 clipboard.copyText(id);
-                NotificationSrv.log('Alert ID has been copied to clipboard', 'success');
+                NotificationSrv.log(i18n.t("controllers.alert.AlertEventCtrl.alert_id_has_been_copied_to_clipboard", "Alert ID has been copied to clipboard"), 'success');
             };
 
             this.$onInit = function () {

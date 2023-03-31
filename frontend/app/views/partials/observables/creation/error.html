@@ -1,19 +1,19 @@
 <div class="alert alert-danger">
-    Failed to create the following observables
+    {{ "views.partials.observables.creation.error.failed_to_create_the_following_observables" | translateDefault:  "Failed to create the following observables" }}
 </div>
 <table class="table table-striped">
     <thead>
-        <th>Observable</th>
-        <th>Reason</th>
+        <th>{{ "views.partials.observables.creation.error.observable" | translateDefault:  "Observable" }}</th>
+        <th>{{ "views.partials.observables.creation.error.reason" | translateDefault:  "Reason" }}</th>
     </thead>
     <tbody>
         <tr ng-repeat="o in failedObservables">
             <td class="wrap">{{o.data | fang}}</td>
             <td class="nowrap" ng-switch="o.type">
-                <span ng-switch-when="CreateError">Already exists</span>
-                <span ng-switch-when="ConflictError">Already exists</span>
-                <span ng-switch-when="AttributeError">Format error</span>
-                <span ng-switch-default>Unexpected error</span>
+                <span ng-switch-when="CreateError">{{ "views.partials.observables.creation.error.already_exists" | translateDefault:  "Already exists" }}</span>
+                <span ng-switch-when="ConflictError">{{ "views.partials.observables.creation.error.already_exists" | translateDefault:  "Already exists" }}</span>
+                <span ng-switch-when="AttributeError">{{ "views.partials.observables.creation.error.format_error" | translateDefault:  "Format error" }}</span>
+                <span ng-switch-default>{{ "views.partials.observables.creation.error.unexpected_error" | translateDefault:  "Unexpected error" }}</span>
             </td>
         </tr>
     </tbody>

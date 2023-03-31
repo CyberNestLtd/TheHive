@@ -3,7 +3,7 @@
         <h3 class="box-title">Search result ({{searchResults.total | limitedCount}} records(s) found)</h3>
     </div> -->
     <div class="m-xs text-primary">
-        <h3>Search scope</h3>
+        <h3>{{ "views.partials.search.list.search_scope" | translateDefault:  "Search scope" }}</h3>
     </div>
     <div class="m-xs entity-bar">
         <div class="entity-item" ng-repeat="item in toolbar" ng-click="setEntity(item.name)"
@@ -17,8 +17,8 @@
         </div>
     </div>
     <div class="m-xs text-primary">
-        <h3>Search filters <small ng-show="config.entity !== 'all'">{{config[config.entity].filters.length || 0 }}
-                filter(s) applied</small></h3>
+        <h3>{{ "views.partials.search.list.search_filters" | translateDefault:  "Search filters" }} <small ng-show="config.entity !== 'all'">{{config[config.entity].filters.length || 0 }}
+        {{ "views.partials.search.list.filter(s)_applied" | translateDefault:  "filter(s) applied" }}</small></h3>
     </div>
     <div class="m-xs">
         <!-- <div ng-if="!config[config.entity].search && !config[config.entity].filters.length > 0" class="empty-message">
@@ -41,7 +41,7 @@
             </div> -->
             <div class="row">
                 <div class="col-sm-12 col-md-12col-lg-8">
-                    <p>Please specify your search criterias, by adding your search filters </p>
+                    <p>{{ "views.partials.search.list.please_specify_your_search_criterias,_by_adding_your_search_filters" | translateDefault:  "Please specify your search criterias, by adding your search filters" }} </p>
                 </div>
             </div>
             <div class="row mb-xxxs" ng-repeat="filter in config[config.entity].filters track by $index">
@@ -65,22 +65,22 @@
                 <div class="col-sm-12 col-md-12 col-lg-8">
                     <!-- <a href class="btn btn-link btn-clear" ng-click="addFilter()" ng-show="config.entity !== 'all'"> -->
                     <a href class="btn btn-default" ng-click="addFilter()" ng-show="config.entity !== 'all'">
-                        <i class="fa fa-plus"></i> Add filter
+                        <i class="fa fa-plus"></i> {{ "views.partials.search.list.add_filter" | translateDefault:  "Add filter" }}
                     </a>
                     <a href class="btn btn-danger" ng-click="clearFilters()"
                         ng-show="config[config.entity].filters.length > 0">
-                        <i class="fa fa-times"></i> Clear filters
+                        <i class="fa fa-times"></i> {{ "views.partials.search.list.clear_filters" | translateDefault:  "Clear filters" }}
                     </a>
                     <button href class="btn btn-primary pull-right" type="submit"
                         ng-show="config[config.entity].filters.length > 0">
-                        <i class="fa fa-search"></i> Search
+                        <i class="fa fa-search"></i> {{ "views.partials.search.list.search" | translateDefault:  "Search" }}
                     </button>
                 </div>
             </div>
         </form>
     </div>
     <div class="m-xs text-primary" ng-if="searchResults">
-        <h3>Search Result <small>{{searchResults.total | limitedCount}} records(s) found</small></h3>
+        <h3>{{ "views.partials.search.list.search_result" | translateDefault:  "Search Result" }} <small>{{searchResults.total | limitedCount}} {{ "views.partials.search.list.records(s)_found" | translateDefault:  "records(s) found" }}</small></h3>
     </div>
     <div class="box-body">
         <div class="row">
@@ -88,7 +88,7 @@
             <div class="col-md-12"
                 ng-if="searchResults && (!searchResults.values || searchResults.values.length === 0)">
                 <div class="empty-message">
-                    No result found.
+                    {{ "views.partials.search.list.no_result_found." | translateDefault:  "No result found." }}
                 </div>
             </div>
             <div class="col-md-12" ng-repeat="value in searchResults.values" ng-switch="value._type">

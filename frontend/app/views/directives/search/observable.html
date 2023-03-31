@@ -26,24 +26,24 @@
     <span ng-bind="value.startDate | shortDate"></span>
 
     <span ng-if="value.alert">
-        <i class="fa fa-certificate ml-xxs"></i> Type:
+        <i class="fa fa-certificate ml-xxs"></i> {{ 'views.directives.search.observable.type' | translate}}
         <span>{{value.alert.type}}</span>
 
-        <i class="fa fa-barcode ml-xxs"></i> Reference:
+        <i class="fa fa-barcode ml-xxs"></i>{{ 'views.directives.search.observable.reference' | translate}}
         <span>{{value.alert.sourceRef}}</span>
 
-        <i class="fa fa-bullseye ml-xxs"></i> Source:
+        <i class="fa fa-bullseye ml-xxs"></i>{{ 'views.directives.search.observable.source' | translate}}
         <span>{{value.alert.source}}</span>
     </span>
 </div>
 
 <div class="mt-xs wrap" ng-if="value.alert">
-    <strong>Alert:</strong><br>
+    <strong>{{ 'views.directives.search.observable.alert' | translate}}</strong><br>
     <span>{{value.alert.title}}</span>
 </div>
 
 <div class="mt-xs wrap" ng-if="value.tags.length>0">
-    <strong>Tags:</strong>
+    <strong>{{ 'views.directives.search.observable.tags' | translate}}</strong>
     <tag-list data="value.tags"></tag-list>
 </div>
 <div class="mt-xs wrap">

@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('theHiveControllers').controller('CaseDetailsCtrl', function($scope, $state, $uibModal, PaginatedQuerySrv, CaseTabsSrv, UserSrv, TagSrv) {
+    angular.module('theHiveControllers').controller('CaseDetailsCtrl', function($scope, $state, $uibModal, PaginatedQuerySrv, CaseTabsSrv, UserSrv, TagSrv, i18n) {
 
         CaseTabsSrv.activateTab($state.current.data.tab);
 
@@ -68,7 +68,7 @@
         };
     });
 
-    angular.module('theHiveControllers').controller('CaseCustomFieldsCtrl', function($scope, $uibModal, NotificationSrv, ModalUtilsSrv, CustomFieldsSrv, CaseSrv) {
+    angular.module('theHiveControllers').controller('CaseCustomFieldsCtrl', function($scope, $uibModal, NotificationSrv, ModalUtilsSrv, CustomFieldsSrv, CaseSrv, i18n) {
 
         $scope.getCustomFieldName = function(fieldDef) {
             return 'customFields.' + fieldDef.reference + '.' + fieldDef.type;
@@ -104,8 +104,8 @@
         };
 
         $scope.removeField = function(fieldId) {
-            ModalUtilsSrv.confirm('Remove custom field value', 'Are you sure you want to delete this case custom field value?', {
-                okText: 'Yes, remove it',
+            ModalUtilsSrv.confirm(i18n.t("controllers.case.CaseDetailsCtrl.remove_custom_field_value", "Remove custom field value"), i18n.t("controllers.case.CaseDetailsCtrl.are_you_sure_you_want_to_delete_this_case_custom_field_value?", "Are you sure you want to delete this case custom field value?"), {
+                okText: i18n.t("controllers.case.CaseDetailsCtrl.yes,_remove_it", "Yes, remove it"),
                 flavor: 'danger'
             })
                 .then(function () {
@@ -122,7 +122,7 @@
                 })
                 .catch(function(err) {
                     if(err && !_.isString(err)) {
-                        NotificationSrv.error('Remove custom field', err.data, err.status);
+                        NotificationSrv.error(i18n.t("controllers.case.CaseDetailsCtrl.remove_custom_field", "Remove custom field"), err.data, err.status);
                     }
                 });
         }

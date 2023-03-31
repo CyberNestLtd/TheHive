@@ -1,7 +1,7 @@
 <div class="updatable-input updatable-input-text">
 	<span class="updatable-input-value-wrapper pb-xxxs" ng-hide="updatable.updating" ng-click="edit()">
 		<span ng-if="value!==null && value !==''" class="updatable-value"><tag-item value="value" colour="colour"></tag-item></span>
-		<span ng-if="value===null || value ===''" class="updatable-value text-warning"><em>Not Specified</em></span>
+		<span ng-if="value===null || value ===''" class="updatable-value text-warning"><em>{{ 'views.directives.updatable-tag-list.not_specified' | translate}}</em></span>
 
 		<small class="updatable-input-icon">
 			<i class="glyphicon glyphicon-pencil"></i>

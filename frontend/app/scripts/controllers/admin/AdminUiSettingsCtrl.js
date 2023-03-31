@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('theHiveControllers').controller('AdminUiSettingsCtrl', function($scope, $q, NotificationSrv, UiSettingsSrv, uiConfig) {
+    angular.module('theHiveControllers').controller('AdminUiSettingsCtrl', function($scope, $q, NotificationSrv, UiSettingsSrv, uiConfig, i18n) {
             var self = this;
 
             self.isDirtySetting = function(key, newValue) {
@@ -30,10 +30,10 @@
                 $q.all(promises)
                     .then(function(/*responses*/) {
                         self.loadSettings();
-                        NotificationSrv.log('UI Settings updated successfully', 'success');
+                        NotificationSrv.log(i18n.t("controllers.admin.AdminUiSettingsCtrl.ui_settings_updated_successfully", "UI Settings updated successfully"), 'success');
                     })
                     .catch(function(/*errors*/) {
-                        NotificationSrv.error('An error occurred during UI Settings update');
+                        NotificationSrv.error(i18n.t("controllers.admin.AdminUiSettingsCtrl.an_error_occurred_during_ui_settings_update", "An error occurred during UI Settings update"));
                     });
             };
 

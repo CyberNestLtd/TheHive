@@ -10,7 +10,7 @@
     </div>
     <div class="box-body">
         <div class="empty-message" ng-if="!$cmp.data || ($cmp.data.length === 0)">
-            No Data
+            {{ "views.components.list.stats-item.component.no_data" | translateDefault:  "No Data" }}
         </div>
         <table ng-if="$cmp.mode === 'table'" class="table table-condensed">
             <tr ng-repeat="item in $cmp.data">

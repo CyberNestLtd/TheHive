@@ -1,5 +1,5 @@
 <div class="wrap">
-    <em ng-if="permissions.length === 0" class="text-muted">No Permissions</em>
+    <em ng-if="permissions.length === 0" class="text-muted">{{ 'views.directives.permission-list.no_permissions' | translate}}</em>
     <strong ng-if="showLabel && permissions.length > 0">{{label || 'Permissions'}}: </strong>
     <span class="label label-default mr-xxs" ng-repeat="permission in permissions">{{permission}}</span>
 </div>
