@@ -13,8 +13,7 @@
     "dependencies": {
         "angular-gettext": "^2.4.2",
         "angular-translate": "^2.19.0",
-        "angular-translate-loader-static-files": "^2.19.0",
-        "list-files-in-dir": "^0.1.5"
+        "angular-translate-loader-static-files": "^2.19.0"
     },
     "devDependencies": {
         "autoprefixer": "^9.7.6",

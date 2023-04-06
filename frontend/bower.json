@@ -1,6 +1,6 @@
 {
   "name": "thehive",
-  "version": "4.1.23-1",
+  "version": "4.1.24-1",
   "license": "AGPL-3.0",
   "dependencies": {
     "jquery": "^3.4.1",
@@ -54,7 +54,10 @@
     "bootstrap-sass": "bootstrap-sass-official#^3.4.1",
     "angular-bootstrap-multiselect": "https://github.com/bentorfs/angular-bootstrap-multiselect.git#^1.1.11",
     "qrcode.js": "qrcode#^1.0.2",
-    "angular-qr": "^0.2.0"
+    "angular-qr": "^0.2.0",
+    "angular-gettext": "^2.4.2",
+    "angular-translate": "^2.19.0",
+    "angular-translate-loader-static-files": "^2.19.0"
   },
   "devDependencies": {
     "angular-mocks": "1.7.8"
