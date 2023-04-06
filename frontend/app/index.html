@@ -120,6 +120,9 @@
     <script src="bower_components/qrcode.js/lib/qrcode.js"></script>
     <script src="bower_components/qrcode/lib/qrcode.js"></script>
     <script src="bower_components/angular-qr/src/angular-qr.js"></script>
+    <script src="bower_components/angular-gettext/dist/angular-gettext.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
     <!-- endbower -->
 
     <script type="text/javascript" src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
@@ -130,13 +133,6 @@
     <script src="bower_components/cryptojslib/components/sha256-min.js"></script>
     <script src="bower_components/cryptojslib/components/md5-min.js"></script>
     <!-- endbuild -->
-
-
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-translate/angular-translate.js"></script>
-    <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.29/angular-ui-router.min.js"></script>
-
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <!-- injector:js -->
@@ -166,20 +162,28 @@
     <script src="scripts/components/sharing/SharingModalCtrl.js"></script>
     <script src="scripts/components/sharing/task/SharingListCmp.js"></script>
     <script src="scripts/controllers/AboutCtrl.js"></script>
+    <script src="scripts/controllers/AuthenticationCtrl.js"></script>
+    <script src="scripts/controllers/LanguageCtrl.js"></script>
+    <script src="scripts/controllers/LiveCtrl.js"></script>
+    <script src="scripts/controllers/MainPageCtrl.js"></script>
+    <script src="scripts/controllers/MigrationCtrl.js"></script>
+    <script src="scripts/controllers/RootCtrl.js"></script>
+    <script src="scripts/controllers/SearchCtrl.js"></script>
+    <script src="scripts/controllers/SettingsCtrl.js"></script>
     <script src="scripts/controllers/admin/AdminAnalyzerTemplatesCtrl.js"></script>
     <script src="scripts/controllers/admin/AdminCustomFieldDialogCtrl.js"></script>
     <script src="scripts/controllers/admin/AdminCustomFieldsCtrl.js"></script>
     <script src="scripts/controllers/admin/AdminObservablesCtrl.js"></script>
     <script src="scripts/controllers/admin/AdminUiSettingsCtrl.js"></script>
     <script src="scripts/controllers/admin/attack/AttackPatternListCtrl.js"></script>
-    <script src="scripts/controllers/admin/organisation/case-template/AdminCaseTemplateImportCtrl.js"></script>
-    <script src="scripts/controllers/admin/organisation/case-template/AdminCaseTemplateTasksCtrl.js"></script>
     <script src="scripts/controllers/admin/organisation/OrgDetailsCtrl.js"></script>
     <script src="scripts/controllers/admin/organisation/OrgLinksModalCtrl.js"></script>
     <script src="scripts/controllers/admin/organisation/OrgListCtrl.js"></script>
     <script src="scripts/controllers/admin/organisation/OrgModalCtrl.js"></script>
     <script src="scripts/controllers/admin/organisation/OrgUserModalCtrl.js"></script>
     <script src="scripts/controllers/admin/organisation/OrgUsersCtrl.js"></script>
+    <script src="scripts/controllers/admin/organisation/case-template/AdminCaseTemplateImportCtrl.js"></script>
+    <script src="scripts/controllers/admin/organisation/case-template/AdminCaseTemplateTasksCtrl.js"></script>
     <script src="scripts/controllers/admin/platform/PlatformStatusCtrl.js"></script>
     <script src="scripts/controllers/admin/profile/ProfileListCtrl.js"></script>
     <script src="scripts/controllers/admin/profile/ProfileModalCtrl.js"></script>
@@ -187,7 +191,6 @@
     <script src="scripts/controllers/alert/AlertEventCtrl.js"></script>
     <script src="scripts/controllers/alert/AlertListCtrl.js"></script>
     <script src="scripts/controllers/alert/AlertStatsCtrl.js"></script>
-    <script src="scripts/controllers/AuthenticationCtrl.js"></script>
     <script src="scripts/controllers/case/CaseAlertsCtrl.js"></script>
     <script src="scripts/controllers/case/CaseCloseModalCtrl.js"></script>
     <script src="scripts/controllers/case/CaseCreationCtrl.js"></script>
@@ -211,24 +214,18 @@
     <script src="scripts/controllers/case/CaseUpdateCtrl.js"></script>
     <script src="scripts/controllers/case/ObservableAnalyzeCtrl.js"></script>
     <script src="scripts/controllers/case/ObservableCreationCtrl.js"></script>
-    <script src="scripts/controllers/case/ObservablesStatsCtrl.js"></script>
     <script src="scripts/controllers/case/ObservableUpdateCtrl.js"></script>
+    <script src="scripts/controllers/case/ObservablesStatsCtrl.js"></script>
     <script src="scripts/controllers/case/procedure/AddProcedureModalCtrl.js"></script>
     <script src="scripts/controllers/case/share/CaseShareModalCtrl.js"></script>
     <script src="scripts/controllers/case/tasklogs/AddTaskLogModalCtrl.js"></script>
     <script src="scripts/controllers/cortex/CortexInstanceDialogCtrl.js"></script>
     <script src="scripts/controllers/cortex/ResponderActionDialogCtrl.js"></script>
-    <script src="scripts/controllers/dashboard/DashboardsCtrl.js"></script>
     <script src="scripts/controllers/dashboard/DashboardViewCtrl.js"></script>
-    <script src="scripts/controllers/LiveCtrl.js"></script>
-    <script src="scripts/controllers/MainPageCtrl.js"></script>
-    <script src="scripts/controllers/MigrationCtrl.js"></script>
+    <script src="scripts/controllers/dashboard/DashboardsCtrl.js"></script>
     <script src="scripts/controllers/misc/ResponderSelectorCtrl.js"></script>
     <script src="scripts/controllers/misc/ServerInstanceDialogCtrl.js"></script>
     <script src="scripts/controllers/misc/TaxonomySelectionModalCtrl.js"></script>
-    <script src="scripts/controllers/RootCtrl.js"></script>
-    <script src="scripts/controllers/SearchCtrl.js"></script>
-    <script src="scripts/controllers/SettingsCtrl.js"></script>
     <script src="scripts/directives/affixer.js"></script>
     <script src="scripts/directives/alert-duration.js"></script>
     <script src="scripts/directives/auto-focus.js"></script>
@@ -302,7 +299,9 @@
     <script src="scripts/filters/showDate.js"></script>
     <script src="scripts/filters/tag-value.js"></script>
     <script src="scripts/filters/urlencode.js"></script>
+    <script src="scripts/languages/LANG.js"></script>
     <script src="scripts/services/AnalyzerInfoSrv.js"></script>
+    <script src="scripts/services/EntitySrv.js"></script>
     <script src="scripts/services/api/AlertingSrv.js"></script>
     <script src="scripts/services/api/AnalyzerSrv.js"></script>
     <script src="scripts/services/api/AnalyzerTemplateSrv.js"></script>
@@ -331,26 +330,25 @@
     <script src="scripts/services/api/UserSrv.js"></script>
     <script src="scripts/services/api/VersionSrv.js"></script>
     <script src="scripts/services/common/Constants.js"></script>
+    <script src="scripts/services/common/HtmlSanitizeSrv.js"></script>
+    <script src="scripts/services/common/QueryBuilderSrv.js"></script>
+    <script src="scripts/services/common/QuerySrv.js"></script>
+    <script src="scripts/services/common/SecuritySrv.js"></script>
+    <script src="scripts/services/common/UtilsSrv.js"></script>
     <script src="scripts/services/common/data/CaseArtifactSrv.js"></script>
     <script src="scripts/services/common/data/FileResource.js"></script>
-    <script src="scripts/services/common/data/PaginatedQuerySrv.js"></script>
     <script src="scripts/services/common/data/PSearchSrv.js"></script>
+    <script src="scripts/services/common/data/PaginatedQuerySrv.js"></script>
     <script src="scripts/services/common/data/SearchSrv.js"></script>
     <script src="scripts/services/common/data/StatSrv.js"></script>
     <script src="scripts/services/common/data/StreamQuerySrv.js"></script>
     <script src="scripts/services/common/data/StreamSrv.js"></script>
     <script src="scripts/services/common/data/StreamStatSrv.js"></script>
-    <script src="scripts/services/common/HtmlSanitizeSrv.js"></script>
-    <script src="scripts/services/common/QueryBuilderSrv.js"></script>
-    <script src="scripts/services/common/QuerySrv.js"></script>
-    <script src="scripts/services/common/SecuritySrv.js"></script>
     <script src="scripts/services/common/ui/AppLayoutSrv.js"></script>
     <script src="scripts/services/common/ui/FilteringSrv.js"></script>
-    <script src="scripts/services/common/ui/modal/ModalSrv.js"></script>
     <script src="scripts/services/common/ui/ModalUtilsSrv.js"></script>
     <script src="scripts/services/common/ui/NotificationSrv.js"></script>
-    <script src="scripts/services/common/UtilsSrv.js"></script>
-    <script src="scripts/services/EntitySrv.js"></script>
+    <script src="scripts/services/common/ui/modal/ModalSrv.js"></script>
     <script src="scripts/services/ui/AfkSrv.js"></script>
     <script src="scripts/services/ui/CaseTabsSrv.js"></script>
     <script src="scripts/services/ui/ChartSrv.js"></script>
@@ -358,8 +356,6 @@
     <script src="scripts/thirdparty/theme.js"></script>
     <script src="scripts/utils/highlight.min.js"></script>
     <script src="scripts/utils/saveSvgAsPng.js"></script>
-    <script src="scripts/controllers/LanguageCtrl.js"></script>
-    <script src="scripts/languages/LANG.js"></script>
     <!-- endinjector -->
     <!-- endbuild -->
 
