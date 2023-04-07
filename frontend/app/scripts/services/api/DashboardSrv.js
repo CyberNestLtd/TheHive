@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('theHiveServices').service('DashboardSrv', function (QueryBuilderSrv, localStorageService, $q, AuthenticationSrv, $http) {
+    angular.module('theHiveServices').service('DashboardSrv', function (QueryBuilderSrv, localStorageService, $q, AuthenticationSrv, $http, i18n) {
         var baseUrl = './api/dashboard';
         var self = this;
 
@@ -22,51 +22,51 @@
         this.dashboardPeriods = [
             {
                 type: 'all',
-                label: 'All time'
+                label: (i18n.t("controllers.services.api.DashboardSrv.all_time") || "All time")
             },
             {
                 type: 'last3Months',
-                label: 'Last 3 months'
+                label: (i18n.t("controllers.services.api.DashboardSrv.last_3_months") || "Last 3 months")
             },
             {
                 type: 'last30Days',
-                label: 'Last 30 days'
+                label: (i18n.t("controllers.services.api.DashboardSrv.last_30_days") || "Last 30 days")
             },
             {
                 type: 'last7Days',
-                label: 'Last 7 days'
+                label: (i18n.t("controllers.services.api.DashboardSrv.last_7_days") || "Last 7 days")
             }
         ];
 
         this.timeIntervals = [{
             code: '1d',
-            label: 'By day'
+            label: (i18n.t("controllers.services.api.DashboardSrv.by_day") || "By day")
         }, {
             code: '1w',
-            label: 'By week'
+            label: (i18n.t("controllers.services.api.DashboardSrv.by_week") || "By week")
         }, {
             code: '1M',
-            label: 'By month'
+            label: (i18n.t("controllers.services.api.DashboardSrv.by_month") || "By month")
         }, {
             code: '1y',
-            label: 'By year'
+            label: (i18n.t("controllers.services.api.DashboardSrv.by_year") || "By year")
         }];
 
         this.aggregations = [{
             id: 'count',
-            label: 'count'
+            label: (i18n.t("controllers.services.api.DashboardSrv.count") || "count")
         }, {
             id: 'sum',
-            label: 'sum'
+            label: (i18n.t("controllers.services.api.DashboardSrv.sum") || "sum")
         }, {
             id: 'avg',
-            label: 'avg'
+            label: (i18n.t("controllers.services.api.DashboardSrv.avg") || "avg")
         }, {
             id: 'min',
-            label: 'min'
+            label: (i18n.t("controllers.services.api.DashboardSrv.min") || "min")
         }, {
             id: 'max',
-            label: 'max'
+            label: (i18n.t("controllers.services.api.DashboardSrv.max") || "max")
         }];
 
         this.serieTypes = ['line', 'area', 'spline', 'area-spline', 'bar'];
@@ -83,10 +83,10 @@
 
         this.sortOptions = [{
             name: '+_count',
-            label: 'Ascendant (Smaller first)'
+            label: (i18n.t("controllers.services.api.DashboardSrv.ascending") || "Ascendant (Smaller first)")
         }, {
             name: '-_count',
-            label: 'Descendant (Bigger first)'
+            label: (i18n.t("controllers.services.api.DashboardSrv.descending") || "Descendant (Bigger first)")
         }];
 
         this.colorsPattern = [

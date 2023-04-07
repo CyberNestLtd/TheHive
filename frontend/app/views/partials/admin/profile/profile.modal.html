@@ -1,6 +1,6 @@
 <form class="form-horizontal" name="profileForm" ng-submit="$modal.ok()" novalidate>
     <div class="modal-header bg-primary">
-        <h3 class="modal-title">{{$modal.isEdit ? 'Update' : 'Add'}} {{ "views.partials.admin.profile.profile.modal.profile" | translateDefault:  "profile" }}</h3>
+        <h3 class="modal-title">{{$modal.isEdit ? ('views.partials.admin.profile.profile.modal.update' | translateDefault: 'Update') : ('views.partials.admin.profile.profile.modal.add' | translateDefault: 'Add')}} {{ "views.partials.admin.profile.profile.modal.profile" | translateDefault:  "profile" }}</h3>
     </div>
     <div class="modal-body">
         <div class="form-group">

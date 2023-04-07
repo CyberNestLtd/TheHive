@@ -74,6 +74,9 @@ module.exports = function(config) {
       'bower_components/qrcode.js/lib/qrcode.js',
       'bower_components/qrcode/lib/qrcode.js',
       'bower_components/angular-qr/src/angular-qr.js',
+      'bower_components/angular-gettext/dist/angular-gettext.js',
+      'bower_components/angular-translate/angular-translate.js',
+      'bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "bower_components/cryptojslib/components/core-min.js",

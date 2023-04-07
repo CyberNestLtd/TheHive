@@ -1,3 +1,4 @@
 var LANGUAGES = [
-    'en'
+    'en',
+    'es'
 ];

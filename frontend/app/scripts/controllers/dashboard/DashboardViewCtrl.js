@@ -53,7 +53,7 @@
             });
 
             this.canEditDashboard = function () {
-                return (this.createdBy === this.currentUser.login) || this.dashboardStatus === 'Shared';
+                return (this.createdBy === this.currentUser.login) || this.dashboardStatus === i18n.t("controllers.dashboard.DashboardViewCtrl.shared", "Shared");
             };
 
             this.options = {
