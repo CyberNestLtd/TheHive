@@ -1,37 +1,37 @@
 (function () {
     'use strict';
     angular.module('theHiveServices')
-        .factory('AlertingSrv', function ($q, $http, $rootScope, StatSrv, StreamSrv, PSearchSrv, PaginatedQuerySrv) {
+        .factory('AlertingSrv', function ($q, $http, $rootScope, StatSrv, StreamSrv, PSearchSrv, PaginatedQuerySrv, i18n) {
 
             var baseUrl = './api/alert';
 
             var similarityFilters = {
                 'none': {
-                    label: 'None',
+                    label: (i18n.t('controllers.services.api.AlertingSrv.none') || "None"),
                     filters: []
                 },
                 'open-cases': {
-                    label: 'Open Cases',
+                    label: (i18n.t('controllers.services.api.AlertingSrv.open_cases') || "Open Cases"),
                     filters: [{
                         field: 'status',
                         type: 'enumeration',
                         value: {
                             list: [{
                                 text: 'Open',
-                                label: 'Open'
+                                label: (i18n.t('controllers.services.api.AlertingSrv.open') || "Open")
                             }]
                         }
                     }]
                 },
                 'open-cases-last-7days': {
-                    label: 'Open Cases in the last 7 days',
+                    label: (i18n.t('controllers.services.api.AlertingSrv.open_cases_in_the_7_days') || "Open Cases in the last 7 days"),
                     filters: [{
                         field: 'status',
                         type: 'enumeration',
                         value: {
                             list: [{
                                 text: 'Open',
-                                label: 'Open'
+                                label: (i18n.t('controllers.services.api.AlertingSrv.open') || "Open")
                             }]
                         }
                     }, {
@@ -45,14 +45,14 @@
                     }]
                 },
                 'open-cases-last-30days': {
-                    label: 'Open Cases in the last 30 days',
+                    label: (i18n.t('controllers.services.api.AlertingSrv.open_cases_in_the_30_days') || "Open Cases in the last 30 days"),
                     filters: [{
                         field: 'status',
                         type: 'enumeration',
                         value: {
                             list: [{
                                 text: 'Open',
-                                label: 'Open'
+                                label: (i18n.t('controllers.services.api.AlertingSrv.open') || "Open")
                             }]
                         }
                     }, {
@@ -66,14 +66,14 @@
                     }]
                 },
                 'open-cases-last-3months': {
-                    label: 'Open Cases in the last 3 months',
+                    label: (i18n.t('controllers.services.api.AlertingSrv.open_cases_in_the_3_months') || "Open Cases in the last 3 months"),
                     filters: [{
                         field: 'status',
                         type: 'enumeration',
                         value: {
                             list: [{
                                 text: 'Open',
-                                label: 'Open'
+                                label: (i18n.t('controllers.services.api.AlertingSrv.open') || "Open")
                             }]
                         }
                     }, {
@@ -87,14 +87,14 @@
                     }]
                 },
                 'open-cases-last-year': {
-                    label: 'Open Cases in the last year',
+                    label: (i18n.t('controllers.services.api.AlertingSrv.open_cases_in_the_last_yaer') || "Open Cases in the last year"),
                     filters: [{
                         field: 'status',
                         type: 'enumeration',
                         value: {
                             list: [{
                                 text: 'Open',
-                                label: 'Open'
+                                label: (i18n.t('controllers.services.api.AlertingSrv.open') || "Open")
                             }]
                         }
                     }, {
@@ -108,14 +108,14 @@
                     }]
                 },
                 'resolved-cases': {
-                    label: 'Resolved cases',
+                    label: (i18n.t('controllers.services.api.AlertingSrv.resolved_cases') || "Resolved cases"),
                     filters: [{
                         field: 'status',
                         type: 'enumeration',
                         value: {
                             list: [{
                                 text: 'Resolved',
-                                label: 'Resolved'
+                                label: (i18n.t('controllers.services.api.AlertingSrv.resolved') || "Resolved")
                             }]
                         }
                     }]

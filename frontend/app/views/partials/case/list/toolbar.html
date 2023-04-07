@@ -6,7 +6,7 @@
                 <button type="button" class="btn btn-sm btn-default" uib-dropdown-toggle
                     ng-disabled="$vm.selection.length === 0">
                     <ng-pluralize count="$vm.selection.length"
-                        when="{'0': 'No case selected', 'one': '{} selected case', 'other': '{} selected cases'}">
+                        when="{'0': 'views.partials.case.list.toolbar.no_case_selected', 'one': '{}' 'views.partials.case.list.toolbar.selected_case', 'other': '{}' 'views.partials.case.list.toolbar.selected_cases'}">
                     </ng-pluralize>
                     <span class="caret"></span>
                 </button>

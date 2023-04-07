@@ -93,7 +93,7 @@
                                         <div class="col-md-12 clearfix">
                                             <div class="pull-left">
                                                 <h4>
-                                                    {{ "views.partials.admin.organisation.details.user_list" | translateDefault:  "User List" }} ({{$vm.users.values.length || 0}} of {{$vm.users.total}})
+                                                    {{ "views.partials.admin.organisation.details.user_list" | translateDefault:  "User List" }} ({{$vm.users.values.length || 0}} {{ "views.partials.admin.organisation.details.of" | translateDefault:  "of" }} {{$vm.users.total}})
                                                 </h4>
                                             </div>
 

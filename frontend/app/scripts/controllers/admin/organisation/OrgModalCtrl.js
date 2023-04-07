@@ -1,9 +1,16 @@
 (function() {
     'use strict';
-
+    angular.module('theHiveControllers').service('ModelService', function(i18n) {
+        this.modelConstant = {
+            edit: (i18n.t("controllers.admin.organisation.OrgModelCtrl.edit") || "Edit "),
+            create: (i18n.t("controllers.admin.organisation.OrgModelCtrl.create") || "Create ")
+        };
+    });
     angular.module('theHiveControllers').controller('OrgModalCtrl',
-        function($scope, $uibModalInstance, OrganisationSrv, organisation, mode) {
+        function($scope, $uibModalInstance, OrganisationSrv, organisation, mode, ModelService) {
             var self = this;
+
+            $scope.modelConstant = ModelService.modelConstant;
 
             this.organisation = organisation;
             this.mode = mode;

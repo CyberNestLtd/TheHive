@@ -1,6 +1,6 @@
 (function() {
     'use strict';
-    angular.module('theHiveDirectives').directive('filterEditor', function($q, AuthenticationSrv, TaxonomyCacheSrv, UserSrv, TagSrv, UtilsSrv) {
+    angular.module('theHiveDirectives').directive('filterEditor', function($q, AuthenticationSrv, TaxonomyCacheSrv, UserSrv, TagSrv, UtilsSrv, i18n) {
         return {
             restrict: 'E',
             scope: {
@@ -11,21 +11,21 @@
             templateUrl: 'views/directives/dashboard/filter-editor.html',
             link: function(scope) {
                 scope.operatorMap = {
-                    empty: 'Is Empty',
-                    any: 'Any Of',
-                    none: 'None Of',
-                    all: 'All Of'
+                    empty: (i18n.t("controllers.directives.dashboard.filter-editor.is_empty") || "Is Empty"),
+                    any: (i18n.t("controllers.directives.dashboard.filter-editor.any_of") || "Any of"),
+                    none: (i18n.t("controllers.directives.dashboard.filter-editor.none_of") || "None Of"),
+                    all: (i18n.t("controllers.directives.dashboard.filter-editor.all_of") || "All Of")
                 };
 
                 scope.dateOperator = {
-                    empty: 'Empty',
-                    custom: 'Custom',
-                    today: 'Today',
-                    last7days: 'Last 7 days',
-                    last30days: 'Last 30 days',
-                    last3months: 'Last 3 months',
-                    last6months: 'Last 6 months',
-                    lastyear: 'Last year'
+                    empty: (i18n.t("controllers.directives.dashboard.filter-editor.empty") || "Empty"),
+                    custom: (i18n.t("controllers.directives.dashboard.filter-editor.custom") || "Custom"),
+                    today: (i18n.t("controllers.directives.dashboard.filter-editor.today") || "Today"),
+                    last7days: (i18n.t("controllers.directives.dashboard.filter-editor.last_7_days") || "Last 7 days"),
+                    last30days: (i18n.t("controllers.directives.dashboard.filter-editor.last_30_days") || "Last 30 days"),
+                    last3months: (i18n.t("controllers.directives.dashboard.filter-editor.last_3_months") || "Last 3 months"),
+                    last6months: (i18n.t("controllers.directives.dashboard.filter-editor.last_6_months") || "Last 6 months"),
+                    lastyear: (i18n.t("controllers.directives.dashboard.filter-editor.last_year") || "Last year")
                 };
 
                 scope.setDateFilterOperator = function(filter, operator) {

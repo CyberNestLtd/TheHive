@@ -1,6 +1,6 @@
 <form class="form-horizontal" name="fieldsForm" ng-submit="$vm.saveField(fieldsForm)" novalidate>
     <div class="modal-header bg-primary">
-        <h3 class="modal-title">{{$vm.customField.id ? 'Update' : 'Add'}} {{ "views.partials.admin.custom-field-dialog.custom_field" | translateDefault:  "custom field" }}</h3>
+        <h3 class="modal-title">{{$vm.customField.id ? ('views.partials.admin.custom-field-dialog.update' | translateDefault: 'Update') : ('views.partials.admin.custom-field-dialog.add' | translateDefault: 'Add')}} {{ "views.partials.admin.custom-field-dialog.custom_field" | translateDefault:  "custom field" }}</h3>
     </div>
     <div class="modal-body">
         <div class="form-group" ng-class="{ 'has-error' : fieldsForm.name.$invalid && !fieldsForm.name.$pristine }">

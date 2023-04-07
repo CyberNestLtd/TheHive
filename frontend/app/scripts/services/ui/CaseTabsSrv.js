@@ -1,30 +1,30 @@
 (function() {
     'use strict';
-    angular.module('theHiveServices').service('CaseTabsSrv', function() {
+    angular.module('theHiveServices').service('CaseTabsSrv', function(i18n) {
 
         var tabs = {
             'details': {
                 name: 'details',
                 active: true,
-                label: 'Details',
+                label: (i18n.t("controllers.services.ui.CaseTabsSrv.details") || "Details"),
                 state: 'app.case.details'
             },
             'tasks': {
                 name: 'tasks',
                 active: false,
-                label: 'Tasks',
+                label: (i18n.t("controllers.services.ui.CaseTabsSrv.tasks") || "Tasks"),
                 state: 'app.case.tasks'
             },
             'observables': {
                 name: 'observables',
                 active: false,
-                label: 'Observables',
+                label: ''(i18n.t("controllers.services.ui.CaseTabsSrv.observables") || "Observables"),
                 state: 'app.case.observables'
             },
             'procedures': {
                 name: 'procedures',
                 active: false,
-                label: 'TTPs',
+                label: 'TTPs'(i18n.t("controllers.services.ui.CaseTabsSrv.ttps") || "TTPs"),
                 state: 'app.case.procedures'
             }
         };
