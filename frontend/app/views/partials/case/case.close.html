@@ -1,6 +1,6 @@
 <form class="form-horizontal" name="caseCloseForm" ng-submit="closeCase(caseCloseForm.$valid);" novalidate>
 	<div class="modal-header bg-primary">
-		<h3 class="modal-title">{{ "views.partials.case.case.close.close_case" | translateDefault:  "Close Case #" }}{{caze.number}}</h3>
+		<h3 class="modal-title">{{ "views.partials.case.case.close.close_case_#" | translateDefault:  "Close Case #" }} {{caze.number}}</h3>
 	</div>
 	<div class="modal-body">
 		<div ng-show="!tasksValid">
