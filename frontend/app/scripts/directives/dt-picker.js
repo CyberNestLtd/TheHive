@@ -1,6 +1,6 @@
 (function() {
     'use strict';
-    angular.module('theHiveDirectives').directive('dtPicker', function() {
+    angular.module('theHiveDirectives').directive('dtPicker',['$translate', function($translate) {
         return {
             restrict: 'E',
             scope: {
@@ -10,6 +10,7 @@
             },
             templateUrl: 'views/directives/dt-picker.html',
             link: function(scope, elem) {
+                var langKey = localStorage.getItem('language');
                 var dtEl = $(elem).find('.input-datetime');
                 /*var dtPicker = */
                 dtEl.datetimepicker({
@@ -17,6 +18,7 @@
                     weekStart: 1,
                     startView: 2,
                     minView: 2,
+                    language: langKey,
                     autoclose: true
                 });
 
@@ -51,6 +53,6 @@
                 });
             }
         };
-    });
+    }]);
 
 })();

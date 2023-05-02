@@ -3,7 +3,7 @@
         <div class="box">
             <div class="box-header with-border">
                 <h3 class="box-title">
-                    <datalist-header title="List of cases" list="$vm.list" total="$vm.caseCountAll"></datalist-header>
+                    {{ "views.partials.case.case.list.list_of_cases" | translateDefault:  "List of cases" }}<datalist-header list="$vm.list" total="$vm.caseCountAll"></datalist-header>
                 </h3>
                 <div class="box-tools pull-right" ng-show="!appLayout.showFlow">
                     <span class="ml-xs" tooltip="Open in new window">

@@ -22,6 +22,5 @@
             $translate.refresh()
             $translate.preferredLanguage(langKey);
         };
-
     })
 })();

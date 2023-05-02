@@ -5,6 +5,16 @@
         .controller('AlertListCtrl', function ($rootScope, $scope, $q, $state, $uibModal, TagSrv, UiSettingsSrv, StreamQuerySrv, CaseTemplateSrv, UtilsSrv, ModalUtilsSrv, AlertingSrv, NotificationSrv, FilteringSrv, CortexSrv, Severity, VersionSrv, i18n) {
             var self = this;
 
+            $scope.getCaseSelectionMessage = function(count) {
+                if (count === 0) {
+                    return 'No Case Selected';
+                } else if (count === 1) {
+                    return 'Selected case';
+                } else {
+                    return 'Selected Cases';
+                }
+            };
+
             self.urls = VersionSrv.mispUrls();
 
             self.list = [];
